@@ -1,0 +1,113 @@
+# RFS brand guide
+
+Real-Fruit-Snacks · short form **RFS** · tagline **Real tools. No filler.**
+Themes: **Nightshift** (dark, default) · **Dayshift** (light) · accent **Ember**
+
+This is the source of truth. If an asset in `brand/` disagrees with this file, the asset is wrong.
+
+---
+
+## 1. Color — *Nightshift* / *Dayshift*
+
+Two themes. **Nightshift** (dark) is the default; **Dayshift** (light) is derived from it. The accent color is **Ember**. Same structure, same hues, values shifted until every accent passes WCAG AA (≥ 4.5:1) as text on its background.
+
+| Token | Nightshift | Dayshift | Rule |
+|---|---|---|---|
+| `bg` | `#0C0D10` | `#F6F5F2` | Page. Never pure black or pure white. |
+| `surface` | `#13151A` | `#FFFFFF` | Cards, panels. One step up from bg. |
+| `raised` | `#1A1D24` | `#ECEAE4` | Inputs, chips, nested cards. |
+| `line` | `#262A33` | `#D6D3CB` | All borders. Borders replace shadows (Dayshift may add a 1px hairline shadow on cards). |
+| `text` | `#E8E6E1` | `#1A1B1E` | Body. Never `#FFF` for body copy. |
+| `mute` | `#8A8F99` | `#6B6F78` | Secondary text, captions. |
+| `primary` · Ember | `#FF6A3D` | `#C43F11` | The brand. One per screen. Glow allowed in Nightshift only. |
+| `accent` · Amber | `#FFC247` | `#9A6700` | Warnings, second category, prompts. |
+| `signal` · Mint | `#3DDC97` | `#167A4E` | Success / running. Only ever means "OK". |
+| `code-bg` | `#070809` | `#FFFFFF` | Code blocks follow the theme. Nightshift: one step darker than bg. Dayshift: surface white with ink text. |
+
+Machine-readable: `brand/tokens/rfs.css`, `brand/tokens/rfs.tokens.json`.
+
+**Don't:** use Mint decoratively · use Ember for errors (Ember is brand, not danger) · add a third accent · use gradients anywhere.
+
+## 2. Type
+
+**IBM Plex Sans** for UI and prose. **IBM Plex Mono** for code, labels, and the wordmark. One superfamily so prose and code look designed together. Both are OFL and on Google Fonts.
+
+```
+--rfs-font-sans: "IBM Plex Sans", Inter, system-ui, sans-serif;
+--rfs-font-mono: "IBM Plex Mono", "JetBrains Mono", ui-monospace, monospace;
+```
+
+| Role | Size / line | Face · weight | Tracking |
+|---|---|---|---|
+| display | 48 / 1.05 | Sans 700 | −0.03em |
+| h1 | 32 / 1.1 | Sans 700 | −0.02em |
+| h2 | 22 / 1.2 | Sans 600 | −0.01em |
+| body | 15 / 1.6 | Sans 400 | 0 |
+| small | 13 / 1.5 | Sans 400 · mute | 0 |
+| label | 11 / 1 | Mono 500 · caps | +0.08em |
+| code | 13 / 1.7 | Mono 400 | 0 |
+| wordmark | — | Mono 600 | −0.05em |
+
+## 3. Mark — *Caps Tile*
+
+`RFS` in Plex Mono SemiBold, centered on a rounded tile, Ember rule beneath.
+
+- Tile: 64-unit grid, corner radius 14 (0.219 × side). Fill `#1A1D24` in Nightshift, `#1A1B1E` in Dayshift.
+- Letters: 28 units, tracking −1.5, baseline at 43. Always white.
+- Rule: 36 × 4 units, radius 2, at y = 48. Ember (theme value).
+- Clear space: one corner radius on every side. Minimum size: 16 px.
+- Lockup: tile + wordmark, gap = 0.3 × tile side, wordmark cap-height ≈ 0.55 × tile side.
+- Single-color: tile becomes a 3-unit outline; letters and rule take the one color. For print, etching, stickers.
+
+**Don't:** rotate · outline the color version · recolor the letters · put the mark on Ember (use the single-color white version instead) · bake the glow into an asset — glow is a CSS effect in Nightshift UI only.
+
+Masters: `brand/mark/rfs-mark-{dark,light}.svg`. All text is outlined; no font is required to render any asset.
+
+## 4. Voice
+
+Four traits, each with a test:
+
+| Trait | Means | Test |
+|---|---|---|
+| **Plain** | Short sentences. Concrete nouns. The reader is busy and competent. | Could a tired admin at 2 am act on it? |
+| **Specific** | Versions, OS names, command names, numbers. | Is every adjective replaceable with a fact? |
+| **Dry** | Humor lives in details — a flag name, a commit message — never in the headline. | Still funny with the emoji removed? (There are no emoji.) |
+| **Honest** | Say what it doesn't do. "Tested on" is a list. Known issues above the fold. | Is the first limitation visible without scrolling? |
+
+Banned: emoji · "blazing", "powerful", "modern", "seamless", "supercharge", "awesome" · "Welcome!" · "coming soon" · exclamation marks.
+First person singular is correct for one maintainer. Sentence case everywhere, including headings.
+
+README order (fixed): one-liner → install → context → what's in it → tested on → known issues → configuration → license. Template: `templates/repo/README.md`.
+
+## 5. Naming
+
+| Thing | Rule | Example |
+|---|---|---|
+| Repo | `thing-it-does`, lowercase, hyphens, 2–3 words. No `awesome-`, `my-`, `-tool`. | `port-sync` |
+| Description | ≤ 60 chars, sentence case, no period, no emoji. Identical to README line 1. | `Keeps a forwarded VPN port and qBittorrent in sync` |
+| Topics | Max 6. ≥ 1 language tag + ≥ 1 domain tag. | `python` `networking` `self-hosted` |
+| PowerShell | Approved `Verb-Noun`. `Rfs` prefix only on the entry point. | `Get-RfsHelp`, `Rotate-Cert` |
+| CLI | One binary per repo, named after the repo. Subcommands are verbs. | `port-sync check` |
+| Install line | One canonical form per platform, first thing in the README. | `irm rfs.sh/<repo> \| iex` · `curl -fsSL rfs.sh/<repo> \| sh` |
+| Releases | SemVer, tag `vX.Y.Z`, title = tag. No codenames. | `v1.4.0` |
+| Retiring | Replace README with `Superseded by [repo](link).` then archive. Never delete, never rename history. | — |
+| The org | `Real-Fruit-Snacks` in URLs. **RFS** everywhere else. Never "Real Fruit Snacks", never lowercase `rfs`. | — |
+
+## 6. Where each asset goes
+
+| Need | File |
+|---|---|
+| GitHub org / repo avatar | `brand/mark/rfs-mark-dark-512.png` |
+| Circular avatars (Discord, X, Mastodon) | `brand/social/rfs-avatar-dark-512.png` |
+| README header | `assets/rfs-lockup-{dark,light}.svg` via `<picture>` |
+| Org profile header | `assets/rfs-banner-{dark,light}.svg` — full-bleed hero (1200×320): field + dot grid + Ember glow, tile centered, tagline in Sans 600, org name in mono caps. Place with `width="100%"`; never box it. |
+| GitHub social preview (org / this repo) | `brand/social/rfs-social-org-dark-1280x640.png` |
+| Per-repo social preview | `tools/make-social.py <repo> "<description>"` |
+| X / Mastodon / Bluesky header | `brand/social/rfs-header-dark-1500x500.png` |
+| Website | copy `brand/web/*` to site root; paste `brand/web/head.html` into `<head>` |
+| CSS variables | `brand/tokens/rfs.css` |
+| Print / stickers / etching | `brand/mark/rfs-mark-mono-{white,ink}.svg` |
+
+---
+
+*Decided October 2026. Change this file first; regenerate assets second.*
