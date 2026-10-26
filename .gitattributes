@@ -1,0 +1,5 @@
+# Left out of the release zip (git archive): repo plumbing and this repo's own cover.
+.github/        export-ignore
+docs/           export-ignore
+.gitattributes  export-ignore
+.gitignore      export-ignore

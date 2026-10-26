@@ -17,6 +17,22 @@ Org-wide defaults and the RFS identity. Themes are **Nightshift** (dark, default
 | [`tools/`](tools/) | `make-cover.py` renders a repo's README cover and social preview from its `docs/assets/cover.toml`; `make-org-art.py` renders the profile banner, org social preview and X header from `brand/org.toml`; `make-avatar.py` renders the profile picture | You, once per repo and after a description or tool-list change |
 | [`BRAND.md`](BRAND.md) | The identity guide: color, type, mark, voice, naming | Anyone touching the brand |
 
+## Get the kit
+
+Each release has the whole kit as one zip, plus the two token files on their own. These links always point at the newest release:
+
+| File | Link |
+|---|---|
+| Everything (guide, assets, tokens, tools, templates) | https://github.com/Real-Fruit-Snacks/.github/releases/latest/download/rfs-brand.zip |
+| CSS variables | https://github.com/Real-Fruit-Snacks/.github/releases/latest/download/rfs.css |
+| Design tokens (JSON) | https://github.com/Real-Fruit-Snacks/.github/releases/latest/download/rfs.tokens.json |
+
+```powershell
+curl.exe -LO https://github.com/Real-Fruit-Snacks/.github/releases/latest/download/rfs-brand.zip
+```
+
+To publish a release: add a `## X.Y.Z (date)` section to `CHANGELOG.md`, commit, then `git tag vX.Y.Z` and `git push origin vX.Y.Z`. The release workflow checks that the committed SVGs match what the tools generate, builds the zip and publishes it, titled with the tag.
+
 ## Starting a new repo
 
 1. Copy `templates/repo/README.md`, fill it in, delete the HTML comments.

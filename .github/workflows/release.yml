@@ -1,0 +1,42 @@
+# Push a tag (vX.Y.Z) to publish a release of the brand kit.
+# Assets have fixed names, so these URLs always fetch the newest release:
+#   https://github.com/Real-Fruit-Snacks/.github/releases/latest/download/rfs-brand.zip
+#   https://github.com/Real-Fruit-Snacks/.github/releases/latest/download/rfs.css
+#   https://github.com/Real-Fruit-Snacks/.github/releases/latest/download/rfs.tokens.json
+name: release
+on:
+  push:
+    tags: ["v*.*.*"]
+permissions:
+  contents: write
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Check the version is in CHANGELOG.md
+        run: |
+          v="${GITHUB_REF_NAME#v}"
+          grep -q "^## ${v} " CHANGELOG.md || { echo "CHANGELOG.md has no '## ${v} ' section"; exit 1; }
+          awk -v v="$v" '$0 ~ "^## "v" " {on=1; next} /^## / {on=0} on' CHANGELOG.md > notes.md
+      - name: Check the committed SVGs match the generators
+        run: |
+          pip install fonttools==4.66.1 resvg-py==0.5.0 pillow==12.3.0
+          python tools/make-cover.py docs/assets/cover.toml
+          python tools/make-org-art.py
+          python tools/make-avatar.py
+          git diff --exit-code -- '*.svg' || { echo "re-run the tools and commit their output"; exit 1; }
+      - name: Build the kit
+        run: |
+          git archive --format=zip --prefix="rfs-brand-${GITHUB_REF_NAME}/" -o rfs-brand.zip "$GITHUB_REF_NAME"
+          cp brand/tokens/rfs.css brand/tokens/rfs.tokens.json .
+          unzip -l rfs-brand.zip | tail -1
+      - name: Publish
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release create "$GITHUB_REF_NAME" --title "$GITHUB_REF_NAME" --notes-file notes.md \
+            rfs-brand.zip rfs.css rfs.tokens.json
