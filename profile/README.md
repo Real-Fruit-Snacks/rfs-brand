@@ -1,7 +1,7 @@
 <p align="center">
   <picture>
     <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/Real-Fruit-Snacks/.github/main/assets/rfs-banner-dark.svg">
-    <img alt="RFS — Real tools. No filler." src="https://raw.githubusercontent.com/Real-Fruit-Snacks/.github/main/assets/rfs-banner-light.svg" width="100%">
+    <img alt="RFS — Real tools. No filler." src="https://raw.githubusercontent.com/Real-Fruit-Snacks/.github/main/assets/rfs-banner-light.svg" width="880">
   </picture>
 </p>
 

@@ -1,7 +1,7 @@
 <p align="center">
   <picture>
     <source media="(prefers-color-scheme: dark)" srcset="assets/rfs-banner-dark.svg">
-    <img alt="RFS — Real tools. No filler." src="assets/rfs-banner-light.svg" width="560">
+    <img alt="RFS — Real tools. No filler." src="assets/rfs-banner-light.svg" width="880">
   </picture>
 </p>
 
@@ -31,4 +31,3 @@ Edit `BRAND.md` first, then regenerate assets. Assets are derived; the guide is 
 ## Licenses
 
 Code in `tools/` is MIT. Fonts in `tools/fonts/` are IBM Plex, SIL Open Font License (`OFL.txt`). The RFS mark and name are not licensed for reuse.
-- **Get-RepoDigest.ps1** - build a single Markdown digest of GitHub and/or local repos (metadata, file tree, README) for uploading to Claude.
