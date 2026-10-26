@@ -9,7 +9,7 @@ Small, sharp tools for people who run their own infrastructure. Mostly PowerShel
 
 ### Start here
 
-| | | |
+| Tool | Description | Language |
 |---|---|---|
 | [`HydroShot`](https://github.com/Real-Fruit-Snacks/HydroShot) | Fast screenshot capture and annotation, pure Rust | Rust |
 | [`proton-qbit-port-sync`](https://github.com/Real-Fruit-Snacks/proton-qbit-port-sync) | Keeps qBittorrent's port synced to Proton VPN | PowerShell |
