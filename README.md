@@ -1,6 +1,6 @@
 # .github
 
-RFS identity, org profile, and repo templates.
+RFS brand, profile art and repo templates.
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="docs/assets/cover-dark.svg">
@@ -11,8 +11,7 @@ Org-wide defaults and the RFS identity. Themes are **Nightshift** (dark, default
 
 | Path | What it is | Who reads it |
 |---|---|---|
-| [`profile/README.md`](profile/README.md) | The org profile page | GitHub, automatically |
-| [`assets/`](assets/) | The profile banner and the mark, loaded by raw URL | The org profile |
+| [`assets/`](assets/) | The profile banner and the mark, loaded by raw URL | The profile page, [`Real-Fruit-Snacks/Real-Fruit-Snacks`](https://github.com/Real-Fruit-Snacks/Real-Fruit-Snacks) |
 | [`brand/`](brand/) | The full asset set — mark, lockups, social, web icons, design tokens | You, when you need a file |
 | [`templates/repo/`](templates/repo/) | README template and per-repo settings checklist | You, when starting or cleaning up a repo |
 | [`tools/`](tools/) | `make-cover.py` renders a repo's README cover and social preview from its `docs/assets/cover.toml`; `make-org-art.py` renders the profile banner, org social preview and X header from `brand/org.toml`; `make-avatar.py` renders the profile picture | You, once per repo and after a description or tool-list change |
@@ -26,9 +25,11 @@ Org-wide defaults and the RFS identity. Themes are **Nightshift** (dark, default
 
 ## Changing the brand
 
-Edit `BRAND.md` first, then regenerate assets. Assets are derived; the guide is the source. The org profile loads its banner from `assets/` by raw URL, so a change there is live on the next page load. Repo covers are committed in each repo, so they only change when you re-run `make-cover.py` there.
+Edit `BRAND.md` first, then regenerate assets. Assets are derived; the guide is the source. The profile page loads its banner from `assets/` by raw URL, so a change there is live on the next page load. Repo covers are committed in each repo, so they only change when you re-run `make-cover.py` there.
 
-When a tool is added, renamed or archived, update `brand/org.toml` and `profile/README.md`, then run `python3 tools/make-org-art.py`.
+When a tool is added, renamed or archived, update `brand/org.toml`, the README in `Real-Fruit-Snacks/Real-Fruit-Snacks` and `tools.json` in the site repo, then run `python3 tools/make-org-art.py`.
+
+Real-Fruit-Snacks is a personal account, so GitHub shows the profile README from the `Real-Fruit-Snacks/Real-Fruit-Snacks` repo; a `profile/` folder here would only work for an organization.
 
 ## Licenses
 
