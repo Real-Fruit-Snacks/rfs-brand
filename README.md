@@ -1,10 +1,10 @@
-# .github
+# rfs-brand
 
 RFS brand, profile art and repo templates.
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="docs/assets/cover-dark.svg">
-  <img alt=".github: a miniature repo cover, the Ember, Amber and Mint colour swatches, and IBM Plex Sans and Mono specimens" src="docs/assets/cover-light.svg" width="100%">
+  <img alt="rfs-brand: a miniature repo cover, the Ember, Amber and Mint colour swatches, and IBM Plex Sans and Mono specimens" src="docs/assets/cover-light.svg" width="100%">
 </picture>
 
 Org-wide defaults and the RFS identity. Themes are **Nightshift** (dark, default) and **Dayshift** (light); asset filenames keep plain `-dark` / `-light` suffixes so they stay self-describing. Everything that makes the repos under `Real-Fruit-Snacks` look and read like one org lives here.
@@ -23,12 +23,12 @@ Each release has the whole kit as one zip, plus the two token files on their own
 
 | File | Link |
 |---|---|
-| Everything (guide, assets, tokens, tools, templates) | https://github.com/Real-Fruit-Snacks/.github/releases/latest/download/rfs-brand.zip |
-| CSS variables | https://github.com/Real-Fruit-Snacks/.github/releases/latest/download/rfs.css |
-| Design tokens (JSON) | https://github.com/Real-Fruit-Snacks/.github/releases/latest/download/rfs.tokens.json |
+| Everything (guide, assets, tokens, tools, templates) | https://github.com/Real-Fruit-Snacks/rfs-brand/releases/latest/download/rfs-brand.zip |
+| CSS variables | https://github.com/Real-Fruit-Snacks/rfs-brand/releases/latest/download/rfs.css |
+| Design tokens (JSON) | https://github.com/Real-Fruit-Snacks/rfs-brand/releases/latest/download/rfs.tokens.json |
 
 ```powershell
-curl.exe -LO https://github.com/Real-Fruit-Snacks/.github/releases/latest/download/rfs-brand.zip
+curl.exe -LO https://github.com/Real-Fruit-Snacks/rfs-brand/releases/latest/download/rfs-brand.zip
 ```
 
 To publish a release: add a `## X.Y.Z (date)` section to `CHANGELOG.md`, commit, then `git tag vX.Y.Z` and `git push origin vX.Y.Z`. The release workflow checks that the committed SVGs match what the tools generate, builds the zip and publishes it, titled with the tag.
@@ -37,7 +37,7 @@ To publish a release: add a `## X.Y.Z (date)` section to `CHANGELOG.md`, commit,
 
 1. Copy `templates/repo/README.md`, fill it in, delete the HTML comments.
 2. Work through `templates/repo/SETTINGS-CHECKLIST.md`.
-3. Copy `templates/repo/cover.toml` to the repo's `docs/assets/`, fill it in, then `python3 tools/make-cover.py <repo>/docs/assets/cover.toml`. Commit the `cover-*` files; upload `social-dark.png` as the social preview.
+3. Copy `templates/repo/cover.toml` to the repo's `docs/assets/`, fill it in, then `python3 tools/make-cover.py ../<repo>/docs/assets/cover.toml` (from this repo, with the clones side by side). Commit the `cover-*` files; upload `social-dark.png` as the social preview.
 
 ## Changing the brand
 

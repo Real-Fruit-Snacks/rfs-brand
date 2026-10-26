@@ -1,8 +1,8 @@
 # Push a tag (vX.Y.Z) to publish a release of the brand kit.
 # Assets have fixed names, so these URLs always fetch the newest release:
-#   https://github.com/Real-Fruit-Snacks/.github/releases/latest/download/rfs-brand.zip
-#   https://github.com/Real-Fruit-Snacks/.github/releases/latest/download/rfs.css
-#   https://github.com/Real-Fruit-Snacks/.github/releases/latest/download/rfs.tokens.json
+#   https://github.com/Real-Fruit-Snacks/rfs-brand/releases/latest/download/rfs-brand.zip
+#   https://github.com/Real-Fruit-Snacks/rfs-brand/releases/latest/download/rfs.css
+#   https://github.com/Real-Fruit-Snacks/rfs-brand/releases/latest/download/rfs.tokens.json
 name: release
 on:
   push:

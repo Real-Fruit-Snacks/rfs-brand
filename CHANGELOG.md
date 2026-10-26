@@ -2,6 +2,10 @@
 
 Each release publishes `rfs-brand.zip` (everything below except `.github/` and `docs/`), `rfs.css` and `rfs.tokens.json`.
 
+## 1.0.1 (2026-10-26)
+
+- The repo is now `Real-Fruit-Snacks/rfs-brand` (was `Real-Fruit-Snacks/.github`). Old URLs redirect, but update links and clone paths: the tools are run as `rfs-brand/tools/...` from the folder holding your clones.
+
 ## 1.0.0 (2026-10-26)
 
 First release of the RFS brand kit.

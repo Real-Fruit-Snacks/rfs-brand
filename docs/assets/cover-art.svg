@@ -1,4 +1,4 @@
-<!-- .github cover panel: what this repo holds. 480x368, origin = panel top-left.
+<!-- rfs-brand cover panel: what this repo holds. 480x368, origin = panel top-left.
      Rendered by tools/make-cover.py; colours are {tokens}. -->
 <rect width="480" height="368" fill="{surface}"/>
 <!-- a repo cover, in miniature -->

@@ -1,6 +1,6 @@
 # Cover + social preview for this repo. Lives at docs/assets/cover.toml.
 # Render (from the folder that holds both clones):
-#   python3 .github/tools/make-cover.py <repo>/docs/assets/cover.toml
+#   python3 rfs-brand/tools/make-cover.py <repo>/docs/assets/cover.toml
 # Rules: BRAND.md section 7. Delete these comments if you like; the tool ignores them.
 
 name        = "repo-name"

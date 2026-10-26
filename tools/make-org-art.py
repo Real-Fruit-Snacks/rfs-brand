@@ -7,7 +7,7 @@ usage:
 Reads brand/org.toml (tagline + the tool list shown in the panel) and writes:
     assets/rfs-banner-{dark,light}.svg                1200x400  profile README header (Real-Fruit-Snacks/Real-Fruit-Snacks)
     brand/lockup/rfs-banner-{dark,light}-1600.png     1600x533  same, as PNG
-    brand/social/rfs-social-org-{dark,light}.svg      1280x640  GitHub social preview (.github repo, org links)
+    brand/social/rfs-social-org-{dark,light}.svg      1280x640  social card for links to the profile and the site
     brand/social/rfs-social-org-{dark,light}-1280x640.png
     brand/social/rfs-header-{dark,light}-1500x500.png  X / Mastodon / Bluesky header
 

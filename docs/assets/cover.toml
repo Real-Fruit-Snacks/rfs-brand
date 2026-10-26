@@ -1,6 +1,6 @@
 # Cover + social preview for this repo. Regenerate from the repo root:
 #   python3 tools/make-cover.py docs/assets/cover.toml
-name        = ".github"
+name        = "rfs-brand"
 description = "RFS brand, profile art and repo templates."
 bullets = [
   "Colours, type and the Caps Tile mark",
