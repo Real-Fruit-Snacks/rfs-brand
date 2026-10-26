@@ -6,9 +6,9 @@ Themes **Nightshift** (dark, default) / **Dayshift** (light) · accent **Ember**
 |---|---|
 | GitHub org avatar, circular avatars (Discord, X, Mastodon) | `social/rfs-avatar-dark-1024.png` (from `tools/make-avatar.py`) |
 | README header | None; the RFS mark is on the repo cover (BRAND.md §7) |
-| Org profile header | `lockup/rfs-banner-{dark,light}.svg` |
-| GitHub social preview | `social/rfs-social-org-dark-1280x640.png` |
-| X / Mastodon header | `social/rfs-header-dark-1500x500.png` |
+| Org profile header | `../assets/rfs-banner-{dark,light}.svg` (PNG: `lockup/rfs-banner-*-1600.png`), from `tools/make-org-art.py` |
+| Org social card | `social/rfs-social-org-dark-1280x640.png` (from `tools/make-org-art.py`) |
+| X / Mastodon header | `social/rfs-header-dark-1500x500.png` (from `tools/make-org-art.py`) |
 | Website | copy `web/*` to site root, paste `web/head.html` into `<head>` |
 | CSS variables | `tokens/rfs.css` |
 | Print / stickers / etching | `mark/rfs-mark-mono-{white,ink}.svg` |

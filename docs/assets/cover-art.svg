@@ -1,0 +1,36 @@
+<!-- .github cover panel: what this repo holds. 480x368, origin = panel top-left.
+     Rendered by tools/make-cover.py; colours are {tokens}. -->
+<rect width="480" height="368" fill="{surface}"/>
+<!-- a repo cover, in miniature -->
+<rect x="24.5" y="24.5" width="431" height="167" rx="8" fill="{bg}" stroke="{line}"/>
+<rfs-text font="mono-semibold" size="30" x="44" y="84" ls="-1.5" fill="{text}">carify</rfs-text>
+<rect x="45" y="96" width="101" height="3" rx="1.5" fill="{ember}"/>
+<rect x="44" y="114" width="150" height="7" rx="2" fill="{text}"/>
+<rect x="44" y="127" width="104" height="7" rx="2" fill="{text}"/>
+<rect x="44" y="146" width="4" height="4" rx="1" fill="{ember}"/><rect x="54" y="146" width="120" height="4" rx="2" fill="{mute}"/>
+<rect x="44" y="158" width="4" height="4" rx="1" fill="{ember}"/><rect x="54" y="158" width="96" height="4" rx="2" fill="{mute}"/>
+<rect x="250.5" y="44.5" width="185" height="127" rx="5" fill="{code-bg}" stroke="{line}"/>
+<rect x="251" y="45" width="184" height="16" rx="5" fill="{surface}"/><rect x="251" y="60" width="184" height="1" fill="{line}"/>
+<circle cx="262" cy="53" r="2.5" fill="{line}"/><circle cx="271" cy="53" r="2.5" fill="{line}"/><circle cx="280" cy="53" r="2.5" fill="{line}"/>
+<rect x="264" y="76" width="5" height="6" rx="1" fill="{ember}"/><rect x="274" y="76" width="112" height="6" rx="2" fill="{text}"/>
+<rect x="264" y="92" width="86" height="6" rx="2" fill="{mint}"/>
+<rect x="264" y="108" width="5" height="6" rx="1" fill="{ember}"/><rect x="274" y="108" width="128" height="6" rx="2" fill="{text}"/>
+<rect x="264" y="124" width="98" height="6" rx="2" fill="{mute}"/>
+<rect x="264" y="140" width="70" height="6" rx="2" fill="{mute}"/>
+<!-- colour tokens -->
+<rect x="24" y="214" width="78" height="40" rx="6" fill="{ember}"/>
+<rect x="112" y="214" width="78" height="40" rx="6" fill="{amber}"/>
+<rect x="200" y="214" width="78" height="40" rx="6" fill="{mint}"/>
+<rect x="288" y="214" width="78" height="40" rx="6" fill="{text}"/>
+<rect x="376.5" y="214.5" width="79" height="39" rx="6" fill="{bg}" stroke="{line}"/>
+<rfs-text font="mono" size="11" x="24" y="274" ls="0.5" fill="{mute}">ember</rfs-text>
+<rfs-text font="mono" size="11" x="112" y="274" ls="0.5" fill="{mute}">amber</rfs-text>
+<rfs-text font="mono" size="11" x="200" y="274" ls="0.5" fill="{mute}">mint</rfs-text>
+<rfs-text font="mono" size="11" x="288" y="274" ls="0.5" fill="{mute}">text</rfs-text>
+<rfs-text font="mono" size="11" x="376" y="274" ls="0.5" fill="{mute}">bg</rfs-text>
+<!-- type -->
+<rect x="24" y="294" width="432" height="1" fill="{line}"/>
+<rfs-text font="sans-semibold" size="40" x="24" y="344" fill="{text}">Aa</rfs-text>
+<rfs-text font="mono" size="11" x="84" y="338" ls="0.5" fill="{mute}">Plex Sans</rfs-text>
+<rfs-text font="mono-semibold" size="40" x="248" y="344" ls="-2" fill="{text}">Aa</rfs-text>
+<rfs-text font="mono" size="11" x="306" y="338" ls="0.5" fill="{mute}">Plex Mono</rfs-text>

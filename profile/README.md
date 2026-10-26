@@ -1,9 +1,7 @@
-<p align="center">
-  <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/Real-Fruit-Snacks/.github/main/assets/rfs-banner-dark.svg">
-    <img alt="RFS — Real tools. No filler." src="https://raw.githubusercontent.com/Real-Fruit-Snacks/.github/main/assets/rfs-banner-light.svg" width="880">
-  </picture>
-</p>
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/Real-Fruit-Snacks/.github/main/assets/rfs-banner-dark.svg">
+  <img alt="RFS: Real tools. No filler. Beside it, a terminal listing screen-mark, port-sync, carify, certapi, identity-gen and powershell-toolbox" src="https://raw.githubusercontent.com/Real-Fruit-Snacks/.github/main/assets/rfs-banner-light.svg" width="100%">
+</picture>
 
 Small, sharp tools for people who run their own infrastructure. Mostly PowerShell, Python, Rust, and things that should have existed already.
 
@@ -11,16 +9,18 @@ Small, sharp tools for people who run their own infrastructure. Mostly PowerShel
 
 | Tool | Description | Language |
 |---|---|---|
-| [`HydroShot`](https://github.com/Real-Fruit-Snacks/HydroShot) | Fast screenshot capture and annotation, pure Rust | Rust |
+| [`screen-mark`](https://github.com/Real-Fruit-Snacks/screen-mark) | Screenshot capture and annotation in pure Rust | Rust |
 | [`port-sync`](https://github.com/Real-Fruit-Snacks/port-sync) | Keeps qBittorrent's port synced to Proton VPN | PowerShell |
-| [`carify`](https://github.com/Real-Fruit-Snacks/carify) | Convert video for Uconnect USB playback, via ffmpeg | PowerShell |
+| [`carify`](https://github.com/Real-Fruit-Snacks/carify) | Convert video for Uconnect USB playback, via ffmpeg | PowerShell, sh |
+| [`certapi`](https://github.com/Real-Fruit-Snacks/certapi) | mTLS API client for the Windows certificate store | C# |
+| [`identity-gen`](https://github.com/Real-Fruit-Snacks/identity-gen) | Offline generator for throwaway signup identities | HTML |
 | [`forge-framework`](https://github.com/Real-Fruit-Snacks/forge-framework) | Modular offensive-security framework with a console | Python |
 
 ### Everything else
 
-**Active** — [`identity-gen`](https://github.com/Real-Fruit-Snacks/identity-gen) · [`open-file`](https://github.com/Real-Fruit-Snacks/open-file) · [`windows-cert-api-tester`](https://github.com/Real-Fruit-Snacks/windows-cert-api-tester)
+**Active** — [`powershell-toolbox`](https://github.com/Real-Fruit-Snacks/powershell-toolbox) · [`open-file`](https://github.com/Real-Fruit-Snacks/open-file)
 
-**Retired** — `Kraken` · `Maelstrom` · `Rapids` · `Lure` · `Undertow` — the water series. Archived; each README says what superseded it.
+**Retired** — `Kraken` · `Maelstrom` · `Rapids` · `Lure` · `Undertow` — the water series. Archived and read-only; no fixes or releases.
 
 ### How these are built
 

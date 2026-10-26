@@ -1,0 +1,16 @@
+# Org art: the profile banner, the org social preview and the X/Mastodon header.
+# Render with:  python3 tools/make-org-art.py
+# List the maintained tools; update it when one is added, renamed or archived.
+
+tagline = "Real tools. No filler."
+
+# Shown in the terminal panel as `gh repo list` output: name, language, a few
+# words. At most 7 rows; name <= 18 chars, lang <= 4, what <= 24.
+tools = [
+  ["screen-mark",        "rust",   "capture and annotate"],
+  ["port-sync",          "pwsh",   "qBittorrent + Proton"],
+  ["carify",             "sh",     "video for Uconnect"],
+  ["certapi",            "c#",     "mTLS via the cert store"],
+  ["identity-gen",       "html",   "throwaway identities"],
+  ["powershell-toolbox", "pwsh",   "standalone scripts"],
+]
