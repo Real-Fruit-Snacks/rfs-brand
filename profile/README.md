@@ -12,7 +12,7 @@ Small, sharp tools for people who run their own infrastructure. Mostly PowerShel
 | Tool | Description | Language |
 |---|---|---|
 | [`HydroShot`](https://github.com/Real-Fruit-Snacks/HydroShot) | Fast screenshot capture and annotation, pure Rust | Rust |
-| [`proton-qbit-port-sync`](https://github.com/Real-Fruit-Snacks/proton-qbit-port-sync) | Keeps qBittorrent's port synced to Proton VPN | PowerShell |
+| [`port-sync`](https://github.com/Real-Fruit-Snacks/port-sync) | Keeps qBittorrent's port synced to Proton VPN | PowerShell |
 | [`carify`](https://github.com/Real-Fruit-Snacks/carify) | Convert video for Uconnect USB playback, via ffmpeg | PowerShell |
 | [`forge-framework`](https://github.com/Real-Fruit-Snacks/forge-framework) | Modular offensive-security framework with a console | Python |
 
