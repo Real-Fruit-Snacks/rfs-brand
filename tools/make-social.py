@@ -30,16 +30,15 @@ T = {"dark": dict(bg="#0c0d10", tile="#1a1d24", fg="#fff", ember="#ff6a3d", text
 repo, desc = sys.argv[1], sys.argv[2]
 theme = sys.argv[3] if len(sys.argv) > 3 else "dark"
 c = T[theme]
-s = 96; x0 = 120; y0 = 200
+s = 96; x0 = 120; y0 = 255   # lockup block (tile top to description) centred on the 640 height
 tile = (f'<rect x="{x0}" y="{y0}" width="{s}" height="{s}" rx="{14*s/64}" fill="{c["tile"]}"/>'
         f'<path d="{path(MONO,"RFS",x0+s/2, y0+64, 42, -2, "middle")}" fill="{c["fg"]}"/>'
         f'<rect x="{x0+21}" y="{y0+72}" width="{54}" height="6" rx="3" fill="{c["ember"]}"/>')
 svg = f'''<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 640" width="1280" height="640">
 <rect width="1280" height="640" fill="{c["bg"]}"/>{tile}
-<path d="{path(MONO, repo, 248, 262, 56, -2)}" fill="{c["text"]}"/>
-<path d="{path(SANS, desc, 248, 318, 26)}" fill="{c["mute"]}"/>
+<path d="{path(MONO, repo, 248, y0+62, 56, -2)}" fill="{c["text"]}"/>
+<path d="{path(SANS, desc, 248, y0+118, 26)}" fill="{c["mute"]}"/>
 <path d="{path(MONO, "github.com/Real-Fruit-Snacks", 120, 560, 20)}" fill="{c["mute"]}"/>
-<rect x="120" y="500" width="120" height="6" rx="3" fill="{c["ember"]}"/>
 </svg>'''
 out = f"rfs-social-{repo}-{theme}.png"
 cairosvg.svg2png(bytestring=svg.encode(), write_to=out, output_width=1280, output_height=640)
