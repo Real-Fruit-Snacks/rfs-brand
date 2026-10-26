@@ -1,0 +1,29 @@
+# Cover + social preview for this repo. Lives at docs/assets/cover.toml.
+# Render (from the folder that holds both clones):
+#   python3 .github/tools/make-cover.py <repo>/docs/assets/cover.toml
+# Rules: BRAND.md section 7. Delete these comments if you like; the tool ignores them.
+
+name        = "repo-name"
+description = "What it does, for whom"          # identical to the README one-liner
+
+# 0-4 short facts. No adjectives that a number could replace.
+bullets = [
+  "What it does, concretely",
+  "What it runs on",
+]
+
+# Default panel: a terminal. Lines starting "$ " are commands (Ember prompt),
+# "ok " is Mint, "! " is Amber, anything else is muted output. Max 12 lines,
+# about 50 characters each. Show a real install and a real run.
+[panel]
+kind  = "terminal"
+title = "pwsh"
+lines = [
+  "$ irm rfs.sh/repo-name | iex",
+  "ok repo-name 1.0.0 installed",
+]
+
+# A tool with a UI draws itself instead; see screen-mark/docs/assets/cover-art.svg.
+# [panel]
+# kind = "art"
+# file = "cover-art.svg"

@@ -97,16 +97,35 @@ README order (fixed): one-liner → install → context → what's in it → tes
 
 | Need | File |
 |---|---|
-| GitHub org / repo avatar | `brand/mark/rfs-mark-dark-512.png` |
-| Circular avatars (Discord, X, Mastodon) | `brand/social/rfs-avatar-dark-512.png` |
-| README header | `assets/rfs-lockup-{dark,light}.svg` via `<picture>` |
+| GitHub org avatar, and any square or circular avatar (Discord, X, Mastodon) | `brand/social/rfs-avatar-dark-1024.png` (also 512, 256, SVG), from `tools/make-avatar.py`: the cover look (dot grid, Ember glow, full-width rule), full bleed, safe for a circle crop |
+| App icons, favicons, small marks | `brand/mark/rfs-mark-dark-*.png` (the Caps Tile) |
+| README header | None. The README starts with `# repo-name`; the org mark is on the cover (§7). Never put the lockup above the title. |
 | Org profile header | `assets/rfs-banner-{dark,light}.svg` — full-bleed hero (1200×320): field + dot grid + Ember glow, tile centered, tagline in Sans 600, org name in mono caps. Place with `width="100%"`; never box it. |
 | GitHub social preview (org / this repo) | `brand/social/rfs-social-org-dark-1280x640.png` |
-| Per-repo social preview | `tools/make-social.py <repo> "<description>"` |
+| Per-repo README cover + social preview | `tools/make-cover.py <repo>/docs/assets/cover.toml` — see section 7 |
 | X / Mastodon / Bluesky header | `brand/social/rfs-header-dark-1500x500.png` |
 | Website | copy `brand/web/*` to site root; paste `brand/web/head.html` into `<head>` |
 | CSS variables | `brand/tokens/rfs.css` |
 | Print / stickers / etching | `brand/mark/rfs-mark-mono-{white,ink}.svg` |
+
+## 7. Repo cover
+
+Every tool repo gets one cover. It is the image under the README one-liner, the docs site's `og:image`, and the GitHub social preview, all from one `docs/assets/cover.toml` rendered by `tools/make-cover.py`. Don't draw covers by hand; change the tool and re-run it.
+
+| Part | Rule |
+|---|---|
+| Size | 1200×560 cover (rounded 12px), 1280×640 social preview (same cover centred, square corners) |
+| Field | `bg`, 26px dot grid, Ember glow from the lower right (Nightshift only) |
+| Text column | Name, rule, description and bullets as one block at x 88, centred vertically on the panel |
+| Repo name | Plex Mono 600, 70px, −0.05em; shrinks to 44px for long names, never wraps |
+| Rule | Ember, 5px, exactly as wide as the name's ink, 7px below the descender line (same height on every cover) |
+| Description | The README one-liner, Plex Sans 600 24/32, two lines at most |
+| Bullets | 0–4 facts, Plex Sans 15, `mute`, Ember square markers. Facts, not adjectives |
+| Org | RFS tile (40px) + `REAL-FRUIT-SNACKS` in Plex Mono 11 caps, in the image's bottom-left corner (32px margin; 40px on the social preview) |
+| Panel | 480×368, right side. Default: a terminal showing the install line and a real run. A tool with a UI draws itself instead (`kind = "art"`, an SVG fragment using colour tokens; `screen-mark` is the reference) |
+| Not on it | URLs, version numbers, star counts, screenshots of other people's software |
+
+Outputs: `cover-{dark,light}.svg` (README, via `<picture>`), `cover-{dark,light}.png` (site `og:image`, 1200×560), `social-{dark,light}.png` (upload `social-dark.png` in Settings → Social preview). All text is outlined, so nothing depends on installed fonts.
 
 ---
 

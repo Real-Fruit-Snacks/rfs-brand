@@ -4,9 +4,8 @@ Themes **Nightshift** (dark, default) / **Dayshift** (light) · accent **Ember**
 
 | Need | Use |
 |---|---|
-| GitHub org / repo avatar | `mark/rfs-mark-dark-512.png` |
-| Circular avatars (Discord, X, Mastodon) | `social/rfs-avatar-dark-512.png` |
-| README header | `lockup/rfs-lockup-horizontal-{dark,light}.svg` via `<picture>` |
+| GitHub org avatar, circular avatars (Discord, X, Mastodon) | `social/rfs-avatar-dark-1024.png` (from `tools/make-avatar.py`) |
+| README header | None; the RFS mark is on the repo cover (BRAND.md §7) |
 | Org profile header | `lockup/rfs-banner-{dark,light}.svg` |
 | GitHub social preview | `social/rfs-social-org-dark-1280x640.png` |
 | X / Mastodon header | `social/rfs-header-dark-1500x500.png` |

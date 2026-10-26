@@ -4,14 +4,8 @@
   Voice: Plain · Specific · Dry · Honest. No emoji. No "blazing", "powerful", "modern", "seamless".
   Every adjective should be replaceable with a fact. If it can't be, delete it.
   Delete every HTML comment before committing.
+  No RFS lockup or logo above the title: the org mark lives on the cover (BRAND.md §7).
 -->
-
-<p align="center">
-  <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/Real-Fruit-Snacks/.github/main/assets/rfs-lockup-dark.svg">
-    <img alt="RFS" src="https://raw.githubusercontent.com/Real-Fruit-Snacks/.github/main/assets/rfs-lockup-light.svg" height="40">
-  </picture>
-</p>
 
 # repo-name
 
@@ -22,6 +16,15 @@
   Bad:  "A powerful, modern tool for seamlessly synchronising your VPN configuration!"
 -->
 What it does, for whom
+
+<!--
+  Cover: generated, never hand-drawn. docs/assets/cover.toml → tools/make-cover.py (BRAND.md §7).
+  Alt text says what the panel shows, in one sentence.
+-->
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="docs/assets/cover-dark.svg">
+  <img alt="repo-name: what the panel shows" src="docs/assets/cover-light.svg" width="100%">
+</picture>
 
 <!--
   Install comes BEFORE the explanation. One canonical line per platform you actually support.

@@ -15,14 +15,14 @@ Org-wide defaults and the RFS identity. Themes are **Nightshift** (dark, default
 | [`assets/`](assets/) | Header SVGs and the avatar, referenced by every repo README via raw URL | Other repos |
 | [`brand/`](brand/) | The full asset set — mark, lockups, social, web icons, design tokens | You, when you need a file |
 | [`templates/repo/`](templates/repo/) | README template and per-repo settings checklist | You, when starting or cleaning up a repo |
-| [`tools/`](tools/) | `make-social.py` — generates a 1280×640 social-preview card for any repo | You, once per repo |
+| [`tools/`](tools/) | `make-cover.py` — renders a repo's README cover and 1280×640 social preview from its `docs/assets/cover.toml` | You, once per repo and after a description change |
 | [`BRAND.md`](BRAND.md) | The identity guide: color, type, mark, voice, naming | Anyone touching the brand |
 
 ## Starting a new repo
 
 1. Copy `templates/repo/README.md`, fill it in, delete the HTML comments.
 2. Work through `templates/repo/SETTINGS-CHECKLIST.md`.
-3. `python3 tools/make-social.py <repo-name> "<one-line description>"` → upload the PNG as the social preview.
+3. Copy `templates/repo/cover.toml` to the repo's `docs/assets/`, fill it in, then `python3 tools/make-cover.py <repo>/docs/assets/cover.toml`. Commit the `cover-*` files; upload `social-dark.png` as the social preview.
 
 ## Changing the brand
 
