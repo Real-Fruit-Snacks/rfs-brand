@@ -12,5 +12,6 @@ tools = [
   ["carify",             "sh",     "video for Uconnect"],
   ["certapi",            "c#",     "mTLS via the cert store"],
   ["identity-gen",       "html",   "throwaway identities"],
+  ["amazon-order-sync",  "node",   "orders to Markdown"],
   ["powershell-toolbox", "pwsh",   "standalone scripts"],
 ]
