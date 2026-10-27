@@ -14,12 +14,13 @@ bullets = [
 
 # Default panel: a terminal. Lines starting "$ " are commands (Ember prompt),
 # "ok " is Mint, "! " is Amber, anything else is muted output. Max 12 lines,
-# about 50 characters each. Show a real install and a real run.
+# about 50 characters each. Show a real install and a real run; the raw URL
+# is too long for the panel, so shorten its host to "...".
 [panel]
 kind  = "terminal"
 title = "pwsh"
 lines = [
-  "$ irm rfs.sh/repo-name | iex",
+  "$ irm .../repo-name/main/install.ps1 | iex",
   "ok repo-name 1.0.0 installed",
 ]
 
@@ -27,3 +28,8 @@ lines = [
 # [panel]
 # kind = "art"
 # file = "cover-art.svg"
+
+# Or shows a screenshot per theme, 960x736 (see open-file/docs/assets/cover.toml):
+# [panel]
+# kind = "screenshot"
+# file = "cover-shot-{theme}.png"

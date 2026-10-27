@@ -28,10 +28,11 @@ What it does, for whom
 
 <!--
   Install comes BEFORE the explanation. One canonical line per platform you actually support.
-  Use the language fence that matches the shell: powershell / sh.
+  Use the language fence that matches the shell: powershell / sh. Install from the repo's raw URL
+  (until rfs.sh exists).
 -->
 ```powershell
-irm rfs.sh/repo-name | iex
+irm https://raw.githubusercontent.com/Real-Fruit-Snacks/repo-name/main/install.ps1 | iex
 ```
 
 <!--

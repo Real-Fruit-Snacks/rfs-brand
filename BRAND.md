@@ -88,7 +88,7 @@ README order (fixed): one-liner → install → context → what's in it → tes
 | Topics | Max 6. ≥ 1 language tag + ≥ 1 domain tag. | `python` `networking` `self-hosted` |
 | PowerShell | Approved `Verb-Noun`. `Rfs` prefix only on the entry point. | `Get-RfsHelp`, `Rotate-Cert` |
 | CLI | One binary per repo, named after the repo. Subcommands are verbs. | `port-sync check` |
-| Install line | One canonical form per platform, first thing in the README. | `irm rfs.sh/<repo> \| iex` · `curl -fsSL rfs.sh/<repo> \| sh` |
+| Install line | One canonical form per platform, first thing in the README, from the repo's raw URL (until rfs.sh exists). | `irm https://raw.githubusercontent.com/Real-Fruit-Snacks/<repo>/main/install.ps1 \| iex` · `curl -fsSL https://raw.githubusercontent.com/Real-Fruit-Snacks/<repo>/main/install.sh \| sh` |
 | Releases | SemVer, tag `vX.Y.Z`, title = tag. No codenames. | `v1.4.0` |
 | Retiring | Replace README with `Superseded by [repo](link).` then archive. Never delete, never rename history. | — |
 | The org | `Real-Fruit-Snacks` in URLs. **RFS** everywhere else. Never "Real Fruit Snacks", never lowercase `rfs`. | — |

@@ -13,7 +13,8 @@ Layout (fixed, so every repo matches):
     left   repo name (Plex Mono 600) / Ember rule / description (Plex Sans 600,
            up to 2 lines) / up to 4 bullets (Plex Sans 400)
     bottom-left corner  RFS tile + REAL-FRUIT-SNACKS label
-    right  480x368 panel: a terminal (default) or the repo's own art file
+    right  480x368 panel: a terminal (default), the repo's own art file, or a
+           screenshot of the app
 
 All text is converted to outlines, so the SVGs render the same on GitHub,
 in browsers and in image viewers without the fonts installed.
@@ -31,7 +32,7 @@ cover.toml:
     [panel]
     kind  = "terminal"                                # default
     title = "pwsh"                                    # optional window title
-    lines = ["$ irm rfs.sh/carify | iex",             # "$ " command (Ember prompt)
+    lines = ["$ ./install.sh",                         # "$ " command (Ember prompt)
              "ok carify 1.1.0 installed",             # "ok " Mint
              "! no ffmpeg on PATH",                   # "! " Amber
              "plain output"]                          # anything else: mute
@@ -40,6 +41,15 @@ cover.toml:
     [panel]
     kind = "art"
     file = "cover-art.svg"     # SVG fragment, see "Art files" below
+
+    # or, for a tool with a UI, a screenshot per theme:
+    [panel]
+    kind = "screenshot"
+    file = "cover-shot-{theme}.png"   # {theme} is dark or light; PNG or JPEG
+
+Screenshots fill the panel (scaled to cover it, anchored top-centre) and are
+clipped to its rounded rectangle. Capture at the panel's shape, 480:368, and
+at 2x (960x736) or more: the image is embedded in the SVG, so keep it small.
 
 Art files: plain SVG elements (no <svg> wrapper) drawn in a 480x368 box with
 its origin at the panel's top-left corner; they are clipped to the panel's
@@ -274,6 +284,25 @@ def panel_art(cfg, c, base):
     return clipped.strip(), top.strip()
 
 
+def panel_screenshot(cfg, theme, base):
+    import base64
+    name = cfg.get("file", "cover-shot-{theme}.png").replace("{theme}", theme)
+    p = os.path.join(base, name)
+    try:
+        data = open(p, "rb").read()
+    except OSError as e:
+        sys.exit(f"screenshot: {e}")
+    if data[:8] == b"\x89PNG\r\n\x1a\n":
+        mime = "image/png"
+    elif data[:3] == b"\xff\xd8\xff":
+        mime = "image/jpeg"
+    else:
+        sys.exit(f"screenshot: {name} is not a PNG or JPEG")
+    uri = f"data:{mime};base64,{base64.b64encode(data).decode()}"
+    return (f'<image href="{uri}" x="0" y="0" width="{PW}" height="{PH}" '
+            f'preserveAspectRatio="xMidYMin slice"/>'), ""
+
+
 # ---------------------------------------------------------------- compose
 def compose(cfg, theme, base, social=False):
     c = THEMES[theme]
@@ -317,8 +346,10 @@ def compose(cfg, theme, base, social=False):
         inner, top = panel_terminal(pcfg, c)
     elif kind == "art":
         inner, top = panel_art(pcfg, c, base)
+    elif kind == "screenshot":
+        inner, top = panel_screenshot(pcfg, theme, base)
     else:
-        sys.exit(f"panel kind must be 'terminal' or 'art', not {kind!r}")
+        sys.exit(f"panel kind must be 'terminal', 'art' or 'screenshot', not {kind!r}")
     o.append(f'<rect x="{PX}" y="{PY}" width="{PW}" height="{PH}" rx="10" fill="{c["desk"]}"/>')
     o.append(f'<g transform="translate({PX} {PY})"><g clip-path="url(#m)">{inner}</g>{top}</g>')
     o.append(f'<rect x="{PX + .5}" y="{PY + .5}" width="{PW - 1}" height="{PH - 1}" rx="9.5" fill="none" stroke="{c["line"]}"/>')
