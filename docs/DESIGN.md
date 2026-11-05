@@ -4,7 +4,7 @@ BRAND.md is the design system. This file only records decisions specific to this
 
 ## Concept
 
-The first screen is this repo's cover (BRAND.md §7) at full size, and it runs. Name, Ember rule, description and the four cover.toml bullets sit on the left. A terminal sits on the right. Behind them is the 26px dot grid with the Nightshift glow from the lower right. Below it, the page walks BRAND.md in order, §1 to §9. Each section's number hangs in the left margin and links to that section of the guide. The kit download comes first, and "Starting a repo" comes last.
+The first screen is this repo's cover (BRAND.md §7) at full size, and it runs. Name, Ember rule, description and four facts sit on the left (they were the v1 cover's bullets; the v2 cover has none, so the hero no longer matches the cover exactly). A terminal sits on the right. Behind them is the 26px dot grid with the Nightshift glow from the lower right. Below it, the page walks BRAND.md in order, §1 to §9. Each section's number hangs in the left margin and links to that section of the guide. The kit download comes first, and "Starting a repo" comes last.
 
 ## Wow moment
 

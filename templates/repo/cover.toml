@@ -1,37 +1,77 @@
 # Cover + social preview for this repo. Lives at docs/assets/cover.toml.
 # Render (from the folder that holds both clones):
 #   python3 rfs-brand/tools/make-cover.py <repo>/docs/assets/cover.toml
+# Check it at the sizes people see it (README 830px, Slack/Discord/X cards 400px):
+#   python3 rfs-brand/tools/make-cover.py <repo>/docs/assets/cover.toml --preview /tmp/cover-preview.png
 # Rules: BRAND.md section 7. Delete these comments if you like; the tool ignores them.
 
 name        = "repo-name"
-description = "What it does, for whom"          # identical to the README one-liner
+description = "What it does, for whom"   # the README one-liner, no trailing period
 
-# 0-4 short facts. No adjectives that a number could replace.
-bullets = [
-  "What it does, concretely",
-  "What it runs on",
-]
+# No bullets: they're in the README, and a 400px card can't show them.
+# (layout = "v1" brings back the old cover with bullets, for a repo not moved yet.)
 
-# Default panel: a terminal. Lines starting "$ " are commands (Ember prompt),
-# "ok " is Mint, "! " is Amber, "x " is Raspberry (a failure), anything else is
-# muted output. The prefix is not drawn, so the words must say what happened
-# (BRAND.md section 9). Max 12 lines,
-# about 50 characters each. Show a real install and a real run; the raw URL
-# is too long for the panel, so shorten its host to "...".
+# The panel: the one thing that shows what the tool does. Pick the first kind
+# that fits. Everything in it has to read with the cover 400px wide, so the
+# tool refuses text that won't fit rather than shrinking it to a grey line.
+# Values are a real run or the README's own examples; never invent figures.
+#
+# Terminal lines and status lines: the prefix picks the colour and isn't drawn,
+# so the words must say what happened (BRAND.md section 9). "$ " a command
+# (Ember prompt), "ok " Mint, "! " Amber, "x " Raspberry (a failure), anything
+# else muted output.
+
+# 1. flow: input -> the tool -> output, for a tool that turns one thing into
+#    another. port-sync is the reference.
 [panel]
-kind  = "terminal"
-title = "pwsh"
-lines = [
-  "$ irm .../repo-name/main/install.ps1 | iex",
-  "ok repo-name 1.0.0 installed",
-]
+kind   = "flow"
+status = ["ok what happened, in the tool's own words"]   # 0-2 lines in a strip along the foot
 
-# A tool with a UI draws itself instead; see screen-mark/docs/assets/cover-art.svg.
+[panel.input]                  # what goes in
+label = "Source"               # Plex Sans 600 26
+note  = "what it is"           # optional, Mono 22, muted; label + note fit one line
+value = "48213"                # one big value (Mono 600 64), or:
+# chips = ["HEVC 10-bit", "1080p", "AC3 5.1"]   # up to 3 short chips
+tone  = "amber"                # text | mute | amber | mint | fault (mint and fault are status)
+
+[panel.tool]                   # the repo's tool, a pill on the Ember connector
+label = "repo-name"
+note  = "every 15 s"           # optional
+
+[panel.output]                 # what comes out: the same keys as the input.
+label = "Destination"          # Drawn mirrored (value above label), so the two
+note  = "what it is"           # values face each other across the connector.
+value = "48213"
+tone  = "mint"                 # Mint means it worked: the status line says so
+
+# 2. terminal: the command and the lines that matter, six at most, about 35
+#    characters each with the prompt. Type is 26 down to 22px to fit; a real
+#    line isn't reworded, pick a shorter one. Show a run, not the install line:
+#    that's in the README and too long for the panel. The command types on load
+#    (45 ms a character) and the whole cover's motion must end by 3.5 s, which
+#    leaves room for a command of about 30 characters. agent-toolkit is the
+#    reference.
+# [panel]
+# kind  = "terminal"           # the default kind
+# title = "pwsh"               # optional window title
+# lines = [
+#   "$ repo-name check",
+#   "ok 3 of 3 checks passed",
+# ]
+
+# 3. art: the tool draws itself, for a tool with a UI. An SVG fragment in a
+#    528x448 box using colour tokens, with fewer and bigger parts than the real
+#    screen. See screen-mark/docs/assets/cover-art.svg and make-cover.py.
 # [panel]
 # kind = "art"
 # file = "cover-art.svg"
+# viewbox = "0 0 480 368"      # optional: scale a drawing made for another box
 
-# Or shows a screenshot per theme, 960x736 (see open-file/docs/assets/cover.toml):
+# 4. screenshot: one per theme, for a UI too detailed to redraw. Crop to the
+#    part that reads at 400px. See open-file/docs/assets/cover.toml.
 # [panel]
 # kind = "screenshot"
-# file = "cover-shot-{theme}.png"
+# file = "cover-shot-{theme}.png"   # {theme} is dark or light; PNG or JPEG
+# crop = [0, 0, 1056, 896]          # optional: x, y, width, height in image pixels
+# fit  = "cover"                    # cover (fill the panel, trim the edges) or
+#                                   # contain (all of the crop, on the theme's bg)

@@ -13,7 +13,7 @@
 <meta property="og:image" content="https://real-fruit-snacks.github.io/rfs-brand/assets/cover-dark.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="560">
-<meta property="og:image:alt" content="rfs-brand: a miniature repo cover, the Ember, Amber and Mint colour swatches, and IBM Plex Sans and Mono specimens">
+<meta property="og:image:alt" content="rfs-brand: the RFS Caps Tile, IBM Plex Sans and Mono specimens, and the Ember, Amber, Mint and Raspberry swatches">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="assets/favicon.ico" sizes="32x32">
 <link rel="icon" href="assets/icon.svg" type="image/svg+xml">
@@ -441,45 +441,66 @@
   <div class="wrap">
     <div class="sec">
       <a class="no" href="https://github.com/Real-Fruit-Snacks/rfs-brand/blob/main/BRAND.md#7-repo-cover" aria-label="BRAND.md section 7">§7</a>
-      <h2 id="covers-h">Repo cover</h2>
-      <p class="lede">Every tool repo gets one cover: the image under the README one-liner, the docs site's <code>og:image</code> and the GitHub social preview, all from one <code>docs/assets/cover.toml</code> rendered by <code>tools/make-cover.py</code>. Don't draw covers by hand; change the tool and re-run it.</p>
+      <h2 id="covers-h">Repo cover <span class="tag">v2</span></h2>
+      <p class="lede">Every tool repo gets one cover: the image under the README one-liner, the docs site's <code>og:image</code> and the GitHub social preview, all from one <code>docs/assets/cover.toml</code> rendered by <code>tools/make-cover.py</code>. Most people see it as a card 400 to 500 px wide, so it's built for that: a big name, one sentence, and one panel that shows what the tool does. Don't draw covers by hand; change the tool and re-run it.</p>
     </div>
 
     <div class="source">
       <figure class="src">
         <pre><code>name        = <span class="str">"rfs-brand"</span>
-description = <span class="str">"RFS brand, profile art and repo templates."</span>
-bullets = [
-  <span class="str">"Colours, type and the Caps Tile mark"</span>,
-  <span class="str">"Cover and avatar generators"</span>,
-  <span class="str">"README template and settings checklist"</span>,
-  <span class="str">"Profile banner, social card and X header"</span>,
-]
+description = <span class="str">"RFS brand, profile art and repo templates"</span>
 
 [panel]
 kind = <span class="str">"art"</span>
 file = <span class="str">"cover-art.svg"</span></code></pre>
-        <figcaption>In: this repo's <code>docs/assets/cover.toml</code></figcaption>
+        <figcaption>In: this repo's <code>docs/assets/cover.toml</code>. No bullets: they're in the README, and a card can't show them.</figcaption>
       </figure>
       <figure class="out">
-        <img class="only-night" src="assets/cover-dark.svg" alt="rfs-brand: a miniature repo cover, the Ember, Amber and Mint colour swatches, and IBM Plex Sans and Mono specimens" width="1200" height="560" loading="lazy">
-        <img class="only-day" src="assets/cover-light.svg" alt="rfs-brand: a miniature repo cover, the Ember, Amber and Mint colour swatches, and IBM Plex Sans and Mono specimens" width="1200" height="560" loading="lazy">
-        <figcaption>Out: <code>cover-{dark,light}.svg</code> and <code>.png</code> at 1200 × 560, and <code>social-{dark,light}.png</code> at 1280 × 640</figcaption>
+        <img class="only-night" src="assets/cover-dark.svg" alt="rfs-brand: the RFS Caps Tile, IBM Plex Sans and Mono specimens, and the Ember, Amber, Mint and Raspberry swatches" width="1200" height="560" loading="lazy">
+        <img class="only-day" src="assets/cover-light.svg" alt="rfs-brand: the RFS Caps Tile, IBM Plex Sans and Mono specimens, and the Ember, Amber, Mint and Raspberry swatches" width="1200" height="560" loading="lazy">
+        <figcaption>Out: <code>cover-{dark,light}.svg</code>, which move once on load, and <code>.png</code> at 1200 × 560, and <code>social-{dark,light}.png</code> at 1280 × 640</figcaption>
       </figure>
     </div>
 
-    <h3 class="sub">Six repos, one layout</h3>
-    <p class="sub-p">A terminal panel by default. A tool with a UI draws itself, or shows a screenshot.</p>
+    <div class="at400">
+      <figure>
+        <img class="only-night" src="assets/cover-dark.svg" alt="" width="400" height="187" loading="lazy">
+        <img class="only-day" src="assets/cover-light.svg" alt="" width="400" height="187" loading="lazy">
+      </figure>
+      <div>
+        <h3 class="sub">Judged at 400 px</h3>
+        <p class="sub-p">That's this cover at the width of a Slack, Discord or X card, where everything is a third of its size and anything drawn under about 20 px turns into a grey line. <code>make-cover.py --preview</code> shows a cover at 1200, 830 and 400 px in both themes; judge it there, not at 1200. The tool refuses text that won't fit rather than shrinking it.</p>
+      </div>
+    </div>
+
+    <div class="scroll-x">
+    <table class="where parts">
+      <caption class="sr-only">The parts of a repo cover</caption>
+      <thead><tr><th scope="col">Part</th><th scope="col">Rule</th></tr></thead>
+      <tbody>
+        <tr><th scope="row">Name</th><td>Plex Mono 600, as large as the 480 px column allows, up to 120 px. A name that would be under 80 px breaks after a hyphen onto two lines.</td></tr>
+        <tr><th scope="row">Rule</th><td>Ember, as wide as the name's widest line, below the descenders. It draws in on load.</td></tr>
+        <tr><th scope="row">Description</th><td>The README one-liner and nothing else: Plex Sans 600 at 30 px, one line or two even ones, no trailing period.</td></tr>
+        <tr><th scope="row">Panel</th><td>528 × 448, one of the four kinds below. Values come from a real run or the README's examples, never invented.</td></tr>
+        <tr><th scope="row">Motion</th><td>Once, on load, §8's motions only, 3.5 s at most. An <code>&lt;img&gt;</code> may ignore reduced motion, so nothing flashes, loops or moves larger than a line, and the still frame is the finished cover.</td></tr>
+        <tr><th scope="row">Org</th><td>The RFS tile and <code>REAL-FRUIT-SNACKS</code> in the bottom-left corner.</td></tr>
+      </tbody>
+    </table>
+    </div>
+
+    <h3 class="sub">Four panel kinds</h3>
+    <p class="sub-p"><b>Flow</b> for a tool that turns one thing into another: input, the tool on an Ember connector, output. <b>Terminal</b> for a command: six lines at most, and it types. <b>Art</b> when the tool has a UI and draws itself. <b>Screenshot</b> when the UI is too detailed to draw, cropped to what still reads.</p>
     <div class="covers">
-        <figure><a href="https://github.com/Real-Fruit-Snacks/screen-mark"><img class="only-night" src="https://raw.githubusercontent.com/Real-Fruit-Snacks/screen-mark/main/docs/assets/cover-dark.svg" alt="screen-mark cover" width="1200" height="560" loading="lazy"><img class="only-day" src="https://raw.githubusercontent.com/Real-Fruit-Snacks/screen-mark/main/docs/assets/cover-light.svg" alt="screen-mark cover" width="1200" height="560" loading="lazy"></a><figcaption>screen-mark</figcaption></figure>
-        <figure><a href="https://github.com/Real-Fruit-Snacks/certapi"><img class="only-night" src="https://raw.githubusercontent.com/Real-Fruit-Snacks/certapi/main/docs/assets/cover-dark.svg" alt="certapi cover" width="1200" height="560" loading="lazy"><img class="only-day" src="https://raw.githubusercontent.com/Real-Fruit-Snacks/certapi/main/docs/assets/cover-light.svg" alt="certapi cover" width="1200" height="560" loading="lazy"></a><figcaption>certapi</figcaption></figure>
-        <figure><a href="https://github.com/Real-Fruit-Snacks/carify"><img class="only-night" src="https://raw.githubusercontent.com/Real-Fruit-Snacks/carify/main/docs/assets/cover-dark.svg" alt="carify cover" width="1200" height="560" loading="lazy"><img class="only-day" src="https://raw.githubusercontent.com/Real-Fruit-Snacks/carify/main/docs/assets/cover-light.svg" alt="carify cover" width="1200" height="560" loading="lazy"></a><figcaption>carify</figcaption></figure>
-        <figure><a href="https://github.com/Real-Fruit-Snacks/port-sync"><img class="only-night" src="https://raw.githubusercontent.com/Real-Fruit-Snacks/port-sync/main/docs/assets/cover-dark.svg" alt="port-sync cover" width="1200" height="560" loading="lazy"><img class="only-day" src="https://raw.githubusercontent.com/Real-Fruit-Snacks/port-sync/main/docs/assets/cover-light.svg" alt="port-sync cover" width="1200" height="560" loading="lazy"></a><figcaption>port-sync</figcaption></figure>
-        <figure><a href="https://github.com/Real-Fruit-Snacks/identity-gen"><img class="only-night" src="https://raw.githubusercontent.com/Real-Fruit-Snacks/identity-gen/main/docs/assets/cover-dark.svg" alt="identity-gen cover" width="1200" height="560" loading="lazy"><img class="only-day" src="https://raw.githubusercontent.com/Real-Fruit-Snacks/identity-gen/main/docs/assets/cover-light.svg" alt="identity-gen cover" width="1200" height="560" loading="lazy"></a><figcaption>identity-gen</figcaption></figure>
-        <figure><a href="https://github.com/Real-Fruit-Snacks/amazon-order-sync"><img class="only-night" src="https://raw.githubusercontent.com/Real-Fruit-Snacks/amazon-order-sync/main/docs/assets/cover-dark.svg" alt="amazon-order-sync cover" width="1200" height="560" loading="lazy"><img class="only-day" src="https://raw.githubusercontent.com/Real-Fruit-Snacks/amazon-order-sync/main/docs/assets/cover-light.svg" alt="amazon-order-sync cover" width="1200" height="560" loading="lazy"></a><figcaption>amazon-order-sync</figcaption></figure>
+        <figure><a href="https://github.com/Real-Fruit-Snacks/port-sync"><img class="only-night" src="https://raw.githubusercontent.com/Real-Fruit-Snacks/port-sync/main/docs/assets/cover-dark.svg" alt="port-sync cover: Proton VPN's forwarded port 48213 passing through port-sync to qBittorrent's listening port" width="1200" height="560" loading="lazy"><img class="only-day" src="https://raw.githubusercontent.com/Real-Fruit-Snacks/port-sync/main/docs/assets/cover-light.svg" alt="port-sync cover: Proton VPN's forwarded port 48213 passing through port-sync to qBittorrent's listening port" width="1200" height="560" loading="lazy"></a><figcaption>port-sync <span class="kind">flow</span></figcaption></figure>
+        <figure><a href="https://github.com/Real-Fruit-Snacks/carify"><img class="only-night" src="https://raw.githubusercontent.com/Real-Fruit-Snacks/carify/main/docs/assets/cover-dark.svg" alt="carify cover: HEVC 10-bit, 1080p and AC3 5.1 going in, H.264 8-bit, 720p and AAC 2.0 coming out" width="1200" height="560" loading="lazy"><img class="only-day" src="https://raw.githubusercontent.com/Real-Fruit-Snacks/carify/main/docs/assets/cover-light.svg" alt="carify cover: HEVC 10-bit, 1080p and AC3 5.1 going in, H.264 8-bit, 720p and AAC 2.0 coming out" width="1200" height="560" loading="lazy"></a><figcaption>carify <span class="kind">flow</span></figcaption></figure>
+        <figure><a href="https://github.com/Real-Fruit-Snacks/certapi"><img class="only-night" src="https://raw.githubusercontent.com/Real-Fruit-Snacks/certapi/main/docs/assets/cover-dark.svg" alt="certapi cover: a Windows store certificate, CN=matt, signing a request that comes back 200 OK over TLS 1.3" width="1200" height="560" loading="lazy"><img class="only-day" src="https://raw.githubusercontent.com/Real-Fruit-Snacks/certapi/main/docs/assets/cover-light.svg" alt="certapi cover: a Windows store certificate, CN=matt, signing a request that comes back 200 OK over TLS 1.3" width="1200" height="560" loading="lazy"></a><figcaption>certapi <span class="kind">flow</span></figcaption></figure>
+        <figure><a href="https://github.com/Real-Fruit-Snacks/agent-toolkit"><img class="only-night" src="https://raw.githubusercontent.com/Real-Fruit-Snacks/agent-toolkit/main/docs/assets/cover-dark.svg" alt="agent-toolkit cover: the Windows install script typing, then its lines and done" width="1200" height="560" loading="lazy"><img class="only-day" src="https://raw.githubusercontent.com/Real-Fruit-Snacks/agent-toolkit/main/docs/assets/cover-light.svg" alt="agent-toolkit cover: the Windows install script typing, then its lines and done" width="1200" height="560" loading="lazy"></a><figcaption>agent-toolkit <span class="kind">terminal</span></figcaption></figure>
+        <figure><a href="https://github.com/Real-Fruit-Snacks/screen-mark"><img class="only-night" src="https://raw.githubusercontent.com/Real-Fruit-Snacks/screen-mark/main/docs/assets/cover-dark.svg" alt="screen-mark cover: the capture overlay with a selection, an arrow, a box, a step marker and the tool bar" width="1200" height="560" loading="lazy"><img class="only-day" src="https://raw.githubusercontent.com/Real-Fruit-Snacks/screen-mark/main/docs/assets/cover-light.svg" alt="screen-mark cover: the capture overlay with a selection, an arrow, a box, a step marker and the tool bar" width="1200" height="560" loading="lazy"></a><figcaption>screen-mark <span class="kind">art</span></figcaption></figure>
+        <figure><a href="https://github.com/Real-Fruit-Snacks/open-file"><img class="only-night" src="https://raw.githubusercontent.com/Real-Fruit-Snacks/open-file/main/docs/assets/cover-dark.svg" alt="open-file cover: the forks lesson's board, a knight on f6 checking the king and attacking the rook" width="1200" height="560" loading="lazy"><img class="only-day" src="https://raw.githubusercontent.com/Real-Fruit-Snacks/open-file/main/docs/assets/cover-light.svg" alt="open-file cover: the forks lesson's board, a knight on f6 checking the king and attacking the rook" width="1200" height="560" loading="lazy"></a><figcaption>open-file <span class="kind">screenshot</span></figcaption></figure>
     </div>
     <pre class="cmds"><code><span class="c"># from the folder that holds both clones</span>
 python3 rfs-brand/tools/make-cover.py my-repo/docs/assets/cover.toml   <span class="c"># cover + social preview</span>
+python3 rfs-brand/tools/make-cover.py my-repo/docs/assets/cover.toml --preview preview.png   <span class="c"># at 1200, 830, 400</span>
 python3 rfs-brand/tools/make-org-art.py                                <span class="c"># profile banner, org card, X header</span>
 python3 rfs-brand/tools/make-avatar.py                                 <span class="c"># profile picture</span>
 
@@ -547,7 +568,7 @@ pip install fonttools resvg-py pillow</code></pre>
         <div class="stage s-sweep"><button class="btn" type="button" data-theme-toggle>Switch to <span data-next-theme>Dayshift</span></button></div>
       </div>
     </div>
-    <p class="limits">An entrance totals 1.2 s at most and never delays reading the headline. Nothing loops except the cursor's two blinks. Every motion sits inside <code>prefers-reduced-motion: no-preference</code>. No parallax, no scroll-jacking.</p>
+    <p class="limits">An entrance totals 1.2 s at most and never delays reading the headline. Nothing loops except the cursor's two blinks. Every motion sits inside <code>prefers-reduced-motion: no-preference</code>. No parallax, no scroll-jacking. Repo covers are the one exception: a cover may run to 3.5 s, since its terminal types, and because an <code>&lt;img&gt;</code> can ignore reduced motion, it has to be safe without it (§7).</p>
   </div>
 </section>
 

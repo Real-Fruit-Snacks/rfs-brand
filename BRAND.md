@@ -137,20 +137,33 @@ README order (fixed): one-liner → install → context → what's in it → tes
 
 Every tool repo gets one cover. It is the image under the README one-liner, the docs site's `og:image`, and the GitHub social preview, all from one `docs/assets/cover.toml` rendered by `tools/make-cover.py`. Don't draw covers by hand; change the tool and re-run it.
 
+Most people see a cover as a social card, 400–500px wide in Slack, Discord or X, or at about 830px in a README. At 400px everything is a third of its size, so anything drawn under about 20px turns into a grey line. Design for the card: a big name, one sentence, and one panel that shows what the tool does. `make-cover.py --preview FILE` shows the cover at 1200, 830 and 400px in both themes; judge it there.
+
 | Part | Rule |
 |---|---|
 | Size | 1200×560 cover (rounded 12px), 1280×640 social preview (same cover centred, square corners) |
 | Field | `bg`, 26px dot grid, Ember glow from the lower right (Nightshift only) |
-| Text column | Name, rule, description and bullets as one block at x 88, centred vertically on the panel |
-| Repo name | Plex Mono 600, 70px, −0.05em; shrinks to 44px for long names, never wraps |
-| Rule | Ember, 5px, exactly as wide as the name's ink, 7px below the descender line (same height on every cover) |
-| Description | The README one-liner, Plex Sans 600 24/32, two lines at most |
-| Bullets | 0–4 facts, Plex Sans 15, `mute`, Ember square markers. Facts, not adjectives |
+| Grid | Text column at x 72–552; panel at x 600–1128, y 56–504 (528×448). The column is centred on the panel |
+| Repo name | Plex Mono 600, −0.05em, as large as the 480px column allows, up to 120px. A name that would be under 80px on one line breaks after a hyphen onto two lines (the hyphen stays on the first); each line's ink starts at the column edge |
+| Rule | Ember, as wide as the name's widest line of ink, 0.06 × the name's size high, below the descender line. It draws in on load (§8) |
+| Description | The README one-liner and nothing else: Plex Sans 600 30/38, one line, or two of even length. No trailing period, even if the README has one |
+| Bullets | None. They are in the README, and they can't be read on a card |
 | Org | RFS tile (40px) + `REAL-FRUIT-SNACKS` in Plex Mono 11 caps, in the image's bottom-left corner (32px margin; 40px on the social preview) |
-| Panel | 480×368, right side. Default: a terminal showing the install line and a real run. A tool with a UI draws itself instead (`kind = "art"`, an SVG fragment using colour tokens; `screen-mark` is the reference) |
-| Not on it | URLs, version numbers, star counts, screenshots of other people's software |
+| Panel | The one thing that shows what the tool does, at sizes that read at 400px. Four kinds, below |
+| Not on it | URLs, version numbers, star counts, screenshots of other people's software, invented figures. Values come from a real run or the README's own examples |
 
-Outputs: `cover-{dark,light}.svg` (README, via `<picture>`), `cover-{dark,light}.png` (site `og:image`, 1200×560), `social-{dark,light}.png` (upload `social-dark.png` in Settings → Social preview). All text is outlined, so nothing depends on installed fonts.
+The panel, in the order to consider the kinds:
+
+| Kind | For | Rules |
+|---|---|---|
+| `flow` | A tool that turns one thing into another: a port, a file, a request | Input, the tool on an Ember connector, output, top to bottom. The output is mirrored (its value above its label), so the two values face each other across the connector. Each end has a label (Sans 600 26), an optional note (Mono 22, `mute`) and one big value (Mono 600 64) or up to three chips. Up to two status lines sit in a log strip along the panel's foot, in terminal colours (§9). The connector draws in and the status lines print (§8) |
+| `terminal` | A tool whose moment is a command | The command and the lines that matter, six at most, at 22–26px: about 35 characters a line, prompt included. Real lines aren't reworded to fit; pick shorter ones. The window is as tall as its lines. The command types, the lines print, and the cursor blinks twice and stays (§8) |
+| `art` | A tool with a UI | The tool draws itself: an SVG fragment in the 528×448 box, in colour tokens, with fewer and bigger parts than the real screen. `screen-mark` is the reference. It doesn't move |
+| `screenshot` | A UI too detailed to redraw | One PNG or JPEG per theme, cropped to the part that still reads at 400px (`crop`; `fit = "contain"` sits it on `bg`, seamless when the app uses the brand `bg`). `open-file` is the reference. It doesn't move |
+
+Mint and Raspberry in a panel are status, as everywhere (§1): a Mint value or chip means it worked, and a word beside it says so.
+
+Outputs: `cover-{dark,light}.svg` (README, via `<picture>`; these move once, §8), `cover-{dark,light}.png` (site `og:image`, 1200×560, the finished frame), `social-{dark,light}.png` (upload `social-dark.png` in Settings → Social preview). All text is outlined, so nothing depends on installed fonts. A cover made before this layout keeps rendering, unchanged, with `layout = "v1"` in its `cover.toml`. `templates/repo/cover.toml` documents every field.
 
 ## 8. Motion
 
@@ -166,12 +179,14 @@ Motion brings the brand's own parts to life; it never decorates. Both themes mov
 
 The brand's motions (use these; don't invent others):
 
-- The Ember rule draws in, left to right, under a name or the wordmark. Once, on load.
-- A terminal types its command at `--rfs-type-rate`, then prints its output one line at a time, 100–200ms apart. The cursor blinks twice, then stays.
+- The Ember rule draws in, left to right, under a name or the wordmark. Once, on load. On a repo cover, a flow's connector draws in the same way, top to bottom.
+- A terminal types its command at `--rfs-type-rate`, then prints its output one line at a time, 100–200ms apart. The cursor blinks twice, then stays. A cover's status lines print the same way.
 - In Nightshift, the dot grid warms to Ember around the pointer (fine pointers only). Dayshift has no glow.
 - The theme switch sweeps the new theme in from the control, in a circle, at `--rfs-dur-slow`.
 
 An entrance totals 1.2s at most and never delays reading the headline. Nothing loops except the cursor's two blinks. Every motion sits inside `prefers-reduced-motion: no-preference`; with reduced motion the page is the finished still frame. No parallax, no scroll-jacking.
+
+**Repo covers** are the one exception to the 1.2s: a cover's SVG may run up to 3.5s, because a terminal types its command at the type rate. The name and the description are there from the first frame, so nothing waits on it, and `make-cover.py` refuses a cover that runs longer. Covers are shown through `<img>`, where a browser may not apply `prefers-reduced-motion` (Chromium doesn't), so their motion must be safe without that switch: once, on load; nothing flashes or loops beyond the cursor's two blinks; nothing larger than the rule, the connector or a line of type moves. The styles outside the media query are the finished frame, which is also what the PNGs show.
 
 ## 9. Terminal and code
 

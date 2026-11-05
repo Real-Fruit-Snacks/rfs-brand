@@ -1,36 +1,20 @@
-<!-- rfs-brand cover panel: what this repo holds. 480x368, origin = panel top-left.
-     Rendered by tools/make-cover.py; colours are {tokens}. -->
-<rect width="480" height="368" fill="{surface}"/>
-<!-- a repo cover, in miniature -->
-<rect x="24.5" y="24.5" width="431" height="167" rx="8" fill="{bg}" stroke="{line}"/>
-<rfs-text font="mono-semibold" size="30" x="44" y="84" ls="-1.5" fill="{text}">carify</rfs-text>
-<rect x="45" y="96" width="101" height="3" rx="1.5" fill="{ember}"/>
-<rect x="44" y="114" width="150" height="7" rx="2" fill="{text}"/>
-<rect x="44" y="127" width="104" height="7" rx="2" fill="{text}"/>
-<rect x="44" y="146" width="4" height="4" rx="1" fill="{ember}"/><rect x="54" y="146" width="120" height="4" rx="2" fill="{mute}"/>
-<rect x="44" y="158" width="4" height="4" rx="1" fill="{ember}"/><rect x="54" y="158" width="96" height="4" rx="2" fill="{mute}"/>
-<rect x="250.5" y="44.5" width="185" height="127" rx="5" fill="{code-bg}" stroke="{line}"/>
-<rect x="251" y="45" width="184" height="16" rx="5" fill="{surface}"/><rect x="251" y="60" width="184" height="1" fill="{line}"/>
-<circle cx="262" cy="53" r="2.5" fill="{line}"/><circle cx="271" cy="53" r="2.5" fill="{line}"/><circle cx="280" cy="53" r="2.5" fill="{line}"/>
-<rect x="264" y="76" width="5" height="6" rx="1" fill="{ember}"/><rect x="274" y="76" width="112" height="6" rx="2" fill="{text}"/>
-<rect x="264" y="92" width="86" height="6" rx="2" fill="{mint}"/>
-<rect x="264" y="108" width="5" height="6" rx="1" fill="{ember}"/><rect x="274" y="108" width="128" height="6" rx="2" fill="{text}"/>
-<rect x="264" y="124" width="98" height="6" rx="2" fill="{mute}"/>
-<rect x="264" y="140" width="70" height="6" rx="2" fill="{mute}"/>
-<!-- colour tokens -->
-<rect x="24" y="214" width="78" height="40" rx="6" fill="{ember}"/>
-<rect x="112" y="214" width="78" height="40" rx="6" fill="{amber}"/>
-<rect x="200" y="214" width="78" height="40" rx="6" fill="{mint}"/>
-<rect x="288" y="214" width="78" height="40" rx="6" fill="{text}"/>
-<rect x="376.5" y="214.5" width="79" height="39" rx="6" fill="{bg}" stroke="{line}"/>
-<rfs-text font="mono" size="11" x="24" y="274" ls="0.5" fill="{mute}">ember</rfs-text>
-<rfs-text font="mono" size="11" x="112" y="274" ls="0.5" fill="{mute}">amber</rfs-text>
-<rfs-text font="mono" size="11" x="200" y="274" ls="0.5" fill="{mute}">mint</rfs-text>
-<rfs-text font="mono" size="11" x="288" y="274" ls="0.5" fill="{mute}">text</rfs-text>
-<rfs-text font="mono" size="11" x="376" y="274" ls="0.5" fill="{mute}">bg</rfs-text>
-<!-- type -->
-<rect x="24" y="294" width="432" height="1" fill="{line}"/>
-<rfs-text font="sans-semibold" size="40" x="24" y="344" fill="{text}">Aa</rfs-text>
-<rfs-text font="mono" size="11" x="84" y="338" ls="0.5" fill="{mute}">Plex Sans</rfs-text>
-<rfs-text font="mono-semibold" size="40" x="248" y="344" ls="-2" fill="{text}">Aa</rfs-text>
-<rfs-text font="mono" size="11" x="306" y="338" ls="0.5" fill="{mute}">Plex Mono</rfs-text>
+<!-- rfs-brand cover panel (layout v2): what the kit is. 528x448, origin = panel top-left.
+     Rendered by tools/make-cover.py; colours are {tokens}. The Caps Tile is the master,
+     brand/mark/rfs-mark-dark.svg, at 176px; the swatches are the four colours with a job
+     (BRAND.md section 1); the specimens are the two type families (section 2). -->
+<rect width="528" height="448" fill="{surface}"/>
+<g transform="translate(32 32) scale(2.7500)"><rect x="0" y="0" width="64" height="64" rx="14.0" fill="{tile}"/><path d="M14.207 43.0H10.539V23.456H17.959Q20.815 23.456 22.327 25.08Q23.839 26.704 23.839 29.503Q23.839 31.66 22.845 33.13Q21.851 34.6 20.003 34.992L24.175 43.0H20.144L16.419 35.412H14.207ZM17.203 32.556Q18.687 32.556 19.331 31.954Q19.976 31.352 19.976 30.036V28.972Q19.976 27.656 19.331 27.054Q18.687 26.451 17.203 26.451H14.207V32.556Z M25.924 43.0V23.456H38.692V26.48H29.592V31.576H37.796V34.6H29.592V43.0Z M47.076 43.336Q44.556 43.336 42.778 42.468Q41.0 41.6 39.879 40.172L42.092 37.876Q43.184 39.136 44.458 39.738Q45.732 40.34 47.188 40.34Q48.867 40.34 49.763 39.584Q50.66 38.828 50.66 37.4Q50.66 36.224 49.988 35.622Q49.316 35.019 47.72 34.768L45.647 34.432Q42.932 33.956 41.784 32.458Q40.635 30.96 40.635 28.916Q40.635 26.116 42.455 24.618Q44.275 23.12 47.495 23.12Q49.792 23.12 51.458 23.848Q53.123 24.576 54.132 25.836L51.976 28.131Q51.192 27.208 50.099 26.662Q49.007 26.116 47.524 26.116Q44.332 26.116 44.332 28.747Q44.332 29.868 45.004 30.456Q45.676 31.044 47.3 31.323L49.344 31.688Q51.891 32.164 53.123 33.564Q54.355 34.964 54.355 37.147Q54.355 38.519 53.879 39.653Q53.403 40.788 52.48 41.614Q51.556 42.44 50.197 42.888Q48.839 43.336 47.076 43.336Z" fill="{tile-fg}"/><rect x="14.0" y="48.0" width="36.0" height="4.0" rx="2.0" fill="{ember}"/></g>
+<rfs-text font="sans-semibold" size="96" x="242" y="128" fill="{text}">Aa</rfs-text>
+<rfs-text font="mono-semibold" size="96" x="382" y="128" ls="-4.8" fill="{text}">Aa</rfs-text>
+<rfs-text font="mono" size="16" x="244" y="162" fill="{mute}">Plex Sans</rfs-text>
+<rfs-text font="mono" size="16" x="386" y="162" fill="{mute}">Plex Mono</rfs-text>
+<rfs-text font="sans-semibold" size="22" x="244" y="204" fill="{text}">Real tools. No filler.</rfs-text>
+<rect x="32" y="234" width="464" height="1.5" fill="{line}"/>
+<rect x="32" y="262" width="104" height="96" rx="8" fill="{ember}"/>
+<rfs-text font="sans-semibold" size="20" x="32" y="392" fill="{text}">Ember</rfs-text>
+<rect x="152" y="262" width="104" height="96" rx="8" fill="{amber}"/>
+<rfs-text font="sans-semibold" size="20" x="152" y="392" fill="{text}">Amber</rfs-text>
+<rect x="272" y="262" width="104" height="96" rx="8" fill="{mint}"/>
+<rfs-text font="sans-semibold" size="20" x="272" y="392" fill="{text}">Mint</rfs-text>
+<rect x="392" y="262" width="104" height="96" rx="8" fill="{fault}"/>
+<rfs-text font="sans-semibold" size="20" x="392" y="392" fill="{text}">Raspberry</rfs-text>

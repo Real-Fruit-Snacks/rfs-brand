@@ -1,14 +1,11 @@
 # Cover + social preview for this repo. Regenerate from the repo root:
 #   python3 tools/make-cover.py docs/assets/cover.toml
+# Layout v2 (BRAND.md section 7): name, rule, the README one-liner, and one panel.
 name        = "rfs-brand"
-description = "RFS brand, profile art and repo templates."
-bullets = [
-  "Colours, type and the Caps Tile mark",
-  "Cover and avatar generators",
-  "README template and settings checklist",
-  "Profile banner, social card and X header",
-]
+description = "RFS brand, profile art and repo templates"   # README line 1, without its period (BRAND.md section 5)
 
+# The kit draws itself: the Caps Tile, the two type families and the four
+# colours with a job (drawn at 528x448 for layout v2).
 [panel]
 kind = "art"
 file = "cover-art.svg"

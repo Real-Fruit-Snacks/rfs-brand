@@ -2,6 +2,28 @@
 
 Each release publishes `rfs-brand.zip` (everything below except `.github/` and `docs/`), `rfs.css` and `rfs.tokens.json`.
 
+## 1.4.0 (2026-11-05)
+
+Covers v2: repo covers are redesigned to be read where most people see them, as a 400–500px social card or an 830px README image. Each tool repo has to regenerate its cover; until it does, `layout = "v1"` in its `cover.toml` keeps the old one, byte for byte.
+
+- BRAND.md §7 is rewritten for the new layout:
+  - **Name and description.** The repo name is as large as its 480px column allows, up to 120px; long hyphenated names break onto two lines. The description is the README one-liner (Plex Sans 600 30/38, up to two even lines), and it drops a trailing period.
+  - **No bullets.**
+  - **The panel** is 528×448 (was 480×368) and shows the one thing the tool does, in four kinds: `flow` (new), `terminal`, `art` and `screenshot`.
+- BRAND.md §8: covers are the one exception to the 1.2s entrance and may run up to 3.5s. Their motion must be safe even where a browser ignores `prefers-reduced-motion` in an `<img>`, as Chromium does. A flow's connector draws in like the rule.
+- `make-cover.py`:
+  - Layout v2 is the default; `layout = "v1"` in cover.toml, or `--layout v1`, renders the old cover exactly as before.
+  - New `flow` panel: input, the tool on an Ember connector, then output, with up to two status lines in terminal colours.
+  - `terminal` keeps to six lines at 22–26px and sizes its window to them.
+  - `art` files are drawn in a 528×448 box; `viewbox` scales an older drawing to fit.
+  - `screenshot` takes `crop = [x, y, w, h]` and `fit = "contain"`.
+  - The README SVGs animate once with BRAND §8's motions: the rule and connector draw in, a terminal types its command at 45ms a character and prints its lines, the cursor blinks twice and stays, and status lines print. The styles outside the motion are the finished frame, so the PNGs and social previews are unchanged by it. A cover whose motion would run past 3.5s is refused.
+  - `--preview FILE` writes the cover at 1200, 830 and 400px in both themes, plus the social card at 400.
+  - Text that won't fit at a size that reads on a card is refused, not shrunk.
+- `templates/repo/cover.toml` documents the v2 fields.
+- This repo's own cover is v2: the Caps Tile, the two type families and the four colours with a job.
+- The site's §7 section describes v2, and its gallery shows one cover of each panel kind.
+
 ## 1.3.0 (2026-11-04)
 
 - New tokens `primary-hover` (`#FC7951` / `#AC370C`) and `primary-press` (`#F98864` / `#98330F`). Each mixes 12% or 24% of `text` into Ember, so a hovered or pressed button moves away from its `on-primary` text and gains contrast in both themes (7.4 / 6.4:1 hover, 8.1 / 7.5:1 pressed).
