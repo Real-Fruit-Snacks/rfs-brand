@@ -118,8 +118,13 @@
       </ul>
     </div>
     <aside class="news" aria-labelledby="news-h">
-      <h3 id="news-h">New in 1.2.0</h3>
+      <h3 id="news-h">New in 1.3.0</h3>
       <p class="when">4 November 2026</p>
+      <ul>
+        <li>Hover and pressed tokens for Ember buttons: <code>primary-hover</code> and <code>primary-press</code>. Both gain contrast in both themes.</li>
+        <li>A states rule for buttons, links and secondary controls: hover, pressed and disabled.</li>
+      </ul>
+      <p class="when">1.2.0, the same day</p>
       <ul>
         <li>Dayshift text colours pass 4.5:1 on bg, surface and raised. Before, Amber failed on bg and four colours failed on raised.</li>
         <li>Three colour tokens: <code>on-primary</code>, <code>line-strong</code> and <code>fault</code>.</li>
@@ -153,6 +158,8 @@
         <tr><th scope="row"><code>text</code></th><td><i style="--c:#E8E6E1"></i>#E8E6E1</td><td><i style="--c:#1A1B1E"></i>#1A1B1E</td><td>Body. Never <code>#FFF</code> for body copy.</td></tr>
         <tr><th scope="row"><code>mute</code></th><td><i style="--c:#8A8F99"></i>#8A8F99</td><td><i style="--c:#666A73"></i>#666A73<span class="was">was #6B6F78</span></td><td>Secondary text, captions.</td></tr>
         <tr><th scope="row"><code>primary</code><span class="alias">Ember</span></th><td><i style="--c:#FF6A3D"></i>#FF6A3D</td><td><i style="--c:#C03B0A"></i>#C03B0A<span class="was">was #C43F11</span></td><td>The brand. One per screen. Glow in Nightshift only.</td></tr>
+        <tr class="new"><th scope="row"><code>primary-hover</code><span class="tag">new in 1.3.0</span></th><td><i style="--c:#FC7951"></i>#FC7951</td><td><i style="--c:#AC370C"></i>#AC370C</td><td>Ember on hover: 12% of text mixed in, so it moves away from on-primary. 7.4:1 and 6.4:1.</td></tr>
+        <tr class="new"><th scope="row"><code>primary-press</code><span class="tag">new in 1.3.0</span></th><td><i style="--c:#F98864"></i>#F98864</td><td><i style="--c:#98330F"></i>#98330F</td><td>Ember while pressed: 24% of text. 8.1:1 and 7.5:1.</td></tr>
         <tr class="new"><th scope="row"><code>on-primary</code><span class="tag">new in 1.2.0</span></th><td><i style="--c:#0C0D10"></i>#0C0D10</td><td><i style="--c:#FFFFFF"></i>#FFFFFF</td><td>Text and icons on Ember fills. Dark in Nightshift, because white on Ember is only 2.9:1.</td></tr>
         <tr><th scope="row"><code>accent</code><span class="alias">Amber</span></th><td><i style="--c:#FFC247"></i>#FFC247</td><td><i style="--c:#925F00"></i>#925F00<span class="was">was #9A6700</span></td><td>Warnings, a second category, prompts.</td></tr>
         <tr><th scope="row"><code>signal</code><span class="alias">Mint</span></th><td><i style="--c:#3DDC97"></i>#3DDC97</td><td><i style="--c:#15794D"></i>#15794D<span class="was">was #167A4E</span></td><td>Success, running. Only ever means OK.</td></tr>

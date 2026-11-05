@@ -21,6 +21,8 @@ Two themes. **Nightshift** (dark) is the default; **Dayshift** (light) is derive
 | `text` | `#E8E6E1` | `#1A1B1E` | Body. Never `#FFF` for body copy. |
 | `mute` | `#8A8F99` | `#666A73` | Secondary text, captions. |
 | `primary` · Ember | `#FF6A3D` | `#C03B0A` | The brand. One per screen. Glow allowed in Nightshift only. |
+| `primary-hover` | `#FC7951` | `#AC370C` | Ember fill on hover: 12% of `text` mixed in, so it moves away from `on-primary` (7.4:1 / 6.4:1). |
+| `primary-press` | `#F98864` | `#98330F` | Ember fill while pressed: 24% of `text` (8.1:1 / 7.5:1). |
 | `on-primary` | `#0C0D10` | `#FFFFFF` | Text and icons on Ember fills (buttons). Dark in Nightshift: white on Ember is only 2.9:1. |
 | `accent` · Amber | `#FFC247` | `#925F00` | Warnings, second category, prompts. |
 | `signal` · Mint | `#3DDC97` | `#15794D` | Success / running. Only ever means "OK". |
@@ -32,6 +34,16 @@ Machine-readable: `brand/tokens/rfs.css`, `brand/tokens/rfs.tokens.json`.
 **Status always has a word.** Mint, Amber and Raspberry are never the only signal: pair them with `ok`, `warn` or `fail` (or a line that says what happened). To red–green colour-blind readers Dayshift Ember and Amber look the same, and Mint and Raspberry come close; the word carries the meaning (WCAG 1.4.1). Mint and Raspberry are status colors, not accents.
 
 **Focus:** a 2px Ember outline with a 3px offset on every focusable element (≥ 4.9:1 against `bg` in both themes). Never remove it without a replacement that is at least as visible.
+
+**States.** Every change takes `--rfs-dur-fast` with `--rfs-ease`, and hover styles sit inside `@media (hover: hover)` so they never stick on touch screens.
+
+| Element | Hover | Pressed | Disabled |
+|---|---|---|---|
+| Ember button | fill `primary-hover`; may lift 1px | fill `primary-press`; no lift | — (don't disable the primary action; explain what's missing instead) |
+| Link | underline turns Ember; the text color stays | — | — |
+| Secondary control (outline button, toggle, copy) | text `mute` → `text`, border `line-strong` → `mute` | moves down 1px | text `mute`, border `line`, no hover, default cursor |
+
+Never lighten or darken Ember with a filter: `brightness()` moves Dayshift Ember toward its white text and lowers the contrast. Hover colors never replace focus; a hovered control that has focus shows both.
 
 **Don't:** use Mint or Raspberry decoratively · use Ember for errors (Ember is brand, not danger; errors are Raspberry) · add a third accent · use gradients anywhere.
 

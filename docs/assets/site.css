@@ -184,7 +184,9 @@ ul.plain li::marker { color: var(--rfs-primary); }
 @media (hover: hover) { .btn:hover { border-color: var(--rfs-mute); } }
 .btn:active { transform: translateY(1px); }
 .btn.primary { background: var(--rfs-primary); border-color: var(--rfs-primary); color: var(--rfs-on-primary); font-weight: 600; }
-@media (hover: hover) { .btn.primary:hover { background: color-mix(in srgb, var(--rfs-primary) 88%, var(--rfs-text)); border-color: transparent; } }
+@media (hover: hover) { .btn.primary:hover { background: var(--rfs-primary-hover); border-color: transparent; } }
+/* after the hover rule, so pressing wins while the pointer is over the button */
+.btn.primary:active { background: var(--rfs-primary-press); border-color: transparent; transform: none; }
 .actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 18px; }
 ol.steps { margin: 0; padding: 0; list-style: none; counter-reset: s; display: grid; gap: var(--rfs-space-3); }
 ol.steps li { counter-increment: s; position: relative; padding-left: 40px; }

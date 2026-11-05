@@ -2,8 +2,10 @@
 
 Each release publishes `rfs-brand.zip` (everything below except `.github/` and `docs/`), `rfs.css` and `rfs.tokens.json`.
 
-## Unreleased
+## 1.3.0 (2026-11-04)
 
+- New tokens `primary-hover` (`#FC7951` / `#AC370C`) and `primary-press` (`#F98864` / `#98330F`). Each mixes 12% or 24% of `text` into Ember, so a hovered or pressed button moves away from its `on-primary` text and gains contrast in both themes (7.4 / 6.4:1 hover, 8.1 / 7.5:1 pressed).
+- BRAND.md §1 **States**: hover, pressed and disabled for Ember buttons, links and secondary controls. Hover sits inside `@media (hover: hover)`, and Ember is never changed with a `brightness()` filter, which in Dayshift moves it toward its white text.
 - The site (docs/) is redesigned around the brand: the rfs-brand cover runs as the first screen, then BRAND.md §1–§9, with both themes' contrast measured on every surface and a demo of each §8 motion. It also links the manifest and app icons, and offers rfs.tokens.json as a download.
 - BRAND.md §5: the PowerShell example is `Update-Cert` (was `Rotate-Cert`, and Rotate is not an approved verb).
 - `templates/repo/cover.toml` documents the `x ` (Raspberry) terminal prefix.

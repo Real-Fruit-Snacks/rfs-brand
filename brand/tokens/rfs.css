@@ -8,6 +8,8 @@
   --rfs-text:#E8E6E1;
   --rfs-mute:#8A8F99;
   --rfs-primary:#FF6A3D;
+  --rfs-primary-hover:#FC7951;
+  --rfs-primary-press:#F98864;
   --rfs-on-primary:#0C0D10;
   --rfs-accent:#FFC247;
   --rfs-signal:#3DDC97;
@@ -39,6 +41,8 @@
   --rfs-text:#1A1B1E;
   --rfs-mute:#666A73;
   --rfs-primary:#C03B0A;
+  --rfs-primary-hover:#AC370C;
+  --rfs-primary-press:#98330F;
   --rfs-on-primary:#FFFFFF;
   --rfs-accent:#925F00;
   --rfs-signal:#15794D;
@@ -54,6 +58,8 @@
   --rfs-text:#1A1B1E;
   --rfs-mute:#666A73;
   --rfs-primary:#C03B0A;
+  --rfs-primary-hover:#AC370C;
+  --rfs-primary-press:#98330F;
   --rfs-on-primary:#FFFFFF;
   --rfs-accent:#925F00;
   --rfs-signal:#15794D;
