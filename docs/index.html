@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>rfs-brand — the RFS colours, type, mark and repo templates</title>
-<meta name="description" content="The RFS identity: Nightshift and Dayshift colours with an Ember accent, IBM Plex Sans and Mono, the Caps Tile mark, and the tools that draw every repo cover and the profile art.">
+<title>rfs-brand: the RFS colours, type, mark, motion and repo templates</title>
+<meta name="description" content="The RFS identity: Nightshift and Dayshift colours with an Ember accent, IBM Plex Sans and Mono, the Caps Tile mark, motion and terminal rules, and the tools that draw every repo cover and the profile art.">
 <link rel="canonical" href="https://real-fruit-snacks.github.io/rfs-brand/">
 <meta property="og:title" content="rfs-brand">
 <meta property="og:description" content="RFS brand, profile art and repo templates">
@@ -15,9 +15,10 @@
 <meta property="og:image:height" content="560">
 <meta property="og:image:alt" content="rfs-brand: a miniature repo cover, the Ember, Amber and Mint colour swatches, and IBM Plex Sans and Mono specimens">
 <meta name="twitter:card" content="summary_large_image">
-<link rel="icon" href="assets/icon.svg" type="image/svg+xml">
 <link rel="icon" href="assets/favicon.ico" sizes="32x32">
+<link rel="icon" href="assets/icon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<link rel="manifest" href="assets/manifest.webmanifest">
 <meta name="theme-color" content="#0C0D10">
 <script>
   // Theme before first paint: a saved choice wins, otherwise follow the OS.
@@ -28,149 +29,449 @@
     } catch (e) {}
   })();
 </script>
-<link rel="preload" href="assets/fonts/ibm-plex-sans-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/ibm-plex-mono-latin-600-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/ibm-plex-sans-latin-600-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/ibm-plex-sans-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="assets/rfs.css">
 <link rel="stylesheet" href="assets/site.css">
+<link rel="stylesheet" href="assets/brand.css">
 </head>
 <body>
+<a class="skip" href="#install">Skip to the kit</a>
 
 <header class="site">
   <div class="wrap">
     <a class="brand" href="https://real-fruit-snacks.github.io/" aria-label="RFS home">
-      <picture>
-        <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/Real-Fruit-Snacks/rfs-brand/main/assets/rfs-lockup-dark.svg">
-        <img alt="RFS" src="https://raw.githubusercontent.com/Real-Fruit-Snacks/rfs-brand/main/assets/rfs-lockup-light.svg" data-lockup>
-      </picture>
+      <span class="lock"><img class="only-night" src="assets/rfs-lockup-dark.svg" alt="" width="81" height="26"><img class="only-day" src="assets/rfs-lockup-light.svg" alt="" width="81" height="26"></span>
+      <span class="tile"><img class="only-night" src="assets/rfs-mark-dark.svg" alt="" width="26" height="26"><img class="only-day" src="assets/rfs-mark-light.svg" alt="" width="26" height="26"></span>
       <span class="sep" aria-hidden="true"></span>
       <span class="name">rfs-brand</span>
     </a>
-    <nav>
+    <nav class="sections" aria-label="Page">
       <a href="#colour">Colour</a>
       <a href="#type">Type</a>
       <a href="#mark">Mark</a>
-      <a href="#covers">Covers</a>
       <a href="#voice">Voice</a>
-      <a href="https://github.com/Real-Fruit-Snacks/rfs-brand/blob/main/BRAND.md">BRAND.md</a>
-      <a class="keep" href="https://github.com/Real-Fruit-Snacks/rfs-brand">GitHub</a>
-      <button class="toggle" type="button" id="theme" aria-label="Switch between Nightshift and Dayshift"><span class="night">Nightshift</span><span class="day">Dayshift</span></button>
+      <a href="#covers">Covers</a>
+      <a href="#motion">Motion</a>
+      <a href="#terminal">Terminal</a>
+      <a class="ext" href="https://github.com/Real-Fruit-Snacks/rfs-brand/blob/main/BRAND.md">BRAND.md</a>
+      <a class="ext" href="https://github.com/Real-Fruit-Snacks/rfs-brand">GitHub</a>
     </nav>
+    <button class="toggle" type="button" id="theme" aria-label="Nightshift Dayshift: switch theme"><span class="night">Nightshift</span><span class="day">Dayshift</span></button>
   </div>
 </header>
 
-<div class="hero">
-  <div class="grid-bg" aria-hidden="true"></div>
-  <div class="glow" aria-hidden="true"></div>
-  <div class="wrap">
-    <div>
-      <p class="label">Nightshift · Dayshift · Ember</p>
-      <h1>rfs-brand</h1>
-      <p class="lead">RFS brand, profile art and repo templates</p>
-      <p class="sub">Everything that makes the Real-Fruit-Snacks repos look and read like one set: two themes, one accent, one type family, one mark, and the tools that draw every cover from a few lines of TOML. <a href="https://github.com/Real-Fruit-Snacks/rfs-brand/blob/main/BRAND.md">BRAND.md</a> is the source of truth; this page is built with it.</p>
+<main id="main">
 
-      <div class="install" id="install">
-        <div class="tabs" role="tablist">
-          <button role="tab" aria-selected="true" data-pane="zip">Whole kit</button>
-          <button role="tab" aria-selected="false" data-pane="css">CSS variables</button>
-        </div>
-        <div class="pane" data-active data-id="zip"><pre><code>curl -LO https://github.com/Real-Fruit-Snacks/rfs-brand/releases/latest/download/rfs-brand.zip</code></pre><button class="copy" data-copy="curl -LO https://github.com/Real-Fruit-Snacks/rfs-brand/releases/latest/download/rfs-brand.zip">Copy</button></div>
-        <div class="pane" data-id="css"><pre><code>curl -LO https://github.com/Real-Fruit-Snacks/rfs-brand/releases/latest/download/rfs.css</code></pre><button class="copy" data-copy="curl -LO https://github.com/Real-Fruit-Snacks/rfs-brand/releases/latest/download/rfs.css">Copy</button></div>
-        <div class="foot">The <a href="https://github.com/Real-Fruit-Snacks/rfs-brand/releases/latest">latest release</a>: the guide, every asset, the tokens as CSS and JSON, the generators and the repo templates. The links always point at the newest version.</div>
+<!-- The first screen is this repo's cover (BRAND.md §7), at full size and running. -->
+<div class="cover-hero" data-warm>
+  <div class="field" aria-hidden="true"><i class="dots"></i><i class="warm"></i><i class="glow"></i></div>
+  <div class="wrap cover-grid">
+    <div class="cover-text">
+      <h1 class="name"><span>rfs-brand</span></h1>
+      <p class="desc">RFS brand, profile art and repo templates.</p>
+      <ul class="facts">
+        <li>Colours, type and the Caps Tile mark</li>
+        <li>Cover and avatar generators</li>
+        <li>README template and settings checklist</li>
+        <li>Profile banner, social card and X header</li>
+      </ul>
+      <div class="cta">
+        <a class="btn primary" href="https://github.com/Real-Fruit-Snacks/rfs-brand/releases/latest/download/rfs-brand.zip">Download rfs-brand.zip</a>
+        <a class="read" href="https://github.com/Real-Fruit-Snacks/rfs-brand/blob/main/BRAND.md">Read BRAND.md, the source of truth</a>
       </div>
     </div>
-    <div style="display:grid;place-items:center">
-      <img class="only-night" src="assets/rfs-mark-dark.svg" alt="The RFS Caps Tile mark" width="260" height="260">
-      <img class="only-day" src="assets/rfs-mark-light.svg" alt="The RFS Caps Tile mark" width="260" height="260">
+    <div class="term cover-term">
+      <div class="bar" aria-hidden="true"><i></i><i></i><i></i><span>pwsh</span></div>
+      <pre class="lines" id="hero-term" data-type="load"><span class="ln"><span class="p">$</span> <span class="t">python3 tools/make-cover.py docs/assets/cover.toml</span></span>
+<span class="ln o">wrote …/docs/assets/cover-dark.svg</span>
+<span class="ln o">wrote …/docs/assets/cover-light.svg</span>
+<span class="ln o">wrote …/docs/assets/cover-dark.png</span>
+<span class="ln o">wrote …/docs/assets/cover-light.png</span>
+<span class="ln o">wrote …/docs/assets/social-dark.png</span>
+<span class="ln o">wrote …/docs/assets/social-light.png</span>
+<span class="ln end"><span class="cursor"></span></span></pre>
+      <script>if (matchMedia('(prefers-reduced-motion: no-preference)').matches) document.getElementById('hero-term').classList.add('booting');</script>
     </div>
   </div>
 </div>
 
-<section id="colour">
-  <div class="wrap">
-    <p class="label">Colour</p>
-    <h2>Nightshift, the default</h2>
-    <p class="mute" style="max-width:70ch">Dayshift is the same structure with values shifted until every accent passes WCAG AA as text on its background. No gradients, no third accent, Ember never for errors.</p>
-    <div class="swatches" style="margin-top:18px">
-        <div class="sw"><i style="background:#0C0D10"></i><div><b>bg</b><code>#0C0D10</code><br><span class="mute">Page</span></div></div>
-        <div class="sw"><i style="background:#13151A"></i><div><b>surface</b><code>#13151A</code><br><span class="mute">Cards, panels</span></div></div>
-        <div class="sw"><i style="background:#1A1D24"></i><div><b>raised</b><code>#1A1D24</code><br><span class="mute">Inputs, chips</span></div></div>
-        <div class="sw"><i style="background:#262A33"></i><div><b>line</b><code>#262A33</code><br><span class="mute">Every border</span></div></div>
-        <div class="sw"><i style="background:#E8E6E1"></i><div><b>text</b><code>#E8E6E1</code><br><span class="mute">Body</span></div></div>
-        <div class="sw"><i style="background:#8A8F99"></i><div><b>mute</b><code>#8A8F99</code><br><span class="mute">Secondary text</span></div></div>
-        <div class="sw"><i style="background:#FF6A3D"></i><div><b>Ember</b><code>#FF6A3D</code><br><span class="mute">The brand, once per screen</span></div></div>
-        <div class="sw"><i style="background:#FFC247"></i><div><b>Amber</b><code>#FFC247</code><br><span class="mute">Warnings, a second category</span></div></div>
-        <div class="sw"><i style="background:#3DDC97"></i><div><b>Mint</b><code>#3DDC97</code><br><span class="mute">Success, and only that</span></div></div>
-        <div class="sw"><i style="background:#070809"></i><div><b>code-bg</b><code>#070809</code><br><span class="mute">Code blocks</span></div></div>
+<section id="install" class="kit" aria-labelledby="kit-h">
+  <div class="wrap kit-grid">
+    <div class="kit-main">
+      <h2 id="kit-h">Get the kit</h2>
+      <p class="lede">Each release has the whole kit as one zip, plus the two token files on their own. These links always point at the <a href="https://github.com/Real-Fruit-Snacks/rfs-brand/releases/latest">latest release</a>.</p>
+      <ul class="files">
+        <li>
+          <p class="f-name"><code>rfs-brand.zip</code> <span>The guide, every asset, the tokens, the generators and the repo templates</span></p>
+          <div class="cmdline"><pre><code>curl -LO https://github.com/Real-Fruit-Snacks/rfs-brand/releases/latest/download/rfs-brand.zip</code></pre><button class="copy" type="button" data-copy="curl -LO https://github.com/Real-Fruit-Snacks/rfs-brand/releases/latest/download/rfs-brand.zip">Copy</button></div>
+        </li>
+        <li>
+          <p class="f-name"><code>rfs.css</code> <span>CSS variables: both themes, the fonts, space and motion</span></p>
+          <div class="cmdline"><pre><code>curl -LO https://github.com/Real-Fruit-Snacks/rfs-brand/releases/latest/download/rfs.css</code></pre><button class="copy" type="button" data-copy="curl -LO https://github.com/Real-Fruit-Snacks/rfs-brand/releases/latest/download/rfs.css">Copy</button></div>
+        </li>
+        <li>
+          <p class="f-name"><code>rfs.tokens.json</code> <span>The same tokens as JSON, with the type scale and radii</span></p>
+          <div class="cmdline"><pre><code>curl -LO https://github.com/Real-Fruit-Snacks/rfs-brand/releases/latest/download/rfs.tokens.json</code></pre><button class="copy" type="button" data-copy="curl -LO https://github.com/Real-Fruit-Snacks/rfs-brand/releases/latest/download/rfs.tokens.json">Copy</button></div>
+        </li>
+      </ul>
     </div>
-    <h2 style="margin-top:36px">Dayshift</h2>
-    <div class="swatches">
-        <div class="sw"><i style="background:#F6F5F2"></i><div><b>bg</b><code>#F6F5F2</code></div></div>
-        <div class="sw"><i style="background:#FFFFFF"></i><div><b>surface</b><code>#FFFFFF</code></div></div>
-        <div class="sw"><i style="background:#ECEAE4"></i><div><b>raised</b><code>#ECEAE4</code></div></div>
-        <div class="sw"><i style="background:#D6D3CB"></i><div><b>line</b><code>#D6D3CB</code></div></div>
-        <div class="sw"><i style="background:#1A1B1E"></i><div><b>text</b><code>#1A1B1E</code></div></div>
-        <div class="sw"><i style="background:#666A73"></i><div><b>mute</b><code>#666A73</code></div></div>
-        <div class="sw"><i style="background:#C03B0A"></i><div><b>Ember</b><code>#C03B0A</code></div></div>
-        <div class="sw"><i style="background:#925F00"></i><div><b>Amber</b><code>#925F00</code></div></div>
-        <div class="sw"><i style="background:#15794D"></i><div><b>Mint</b><code>#15794D</code></div></div>
-        <div class="sw"><i style="background:#FFFFFF"></i><div><b>code-bg</b><code>#FFFFFF</code></div></div>
-    </div>
+    <aside class="news" aria-labelledby="news-h">
+      <h3 id="news-h">New in 1.2.0</h3>
+      <p class="when">4 November 2026</p>
+      <ul>
+        <li>Dayshift text colours pass 4.5:1 on bg, surface and raised. Before, Amber failed on bg and four colours failed on raised.</li>
+        <li>Three colour tokens: <code>on-primary</code>, <code>line-strong</code> and <code>fault</code>.</li>
+        <li>A space scale, 4 to 96 px, and motion tokens.</li>
+        <li>The focus ring rule, and two guide sections: <a href="#motion">Motion</a> and <a href="#terminal">Terminal and code</a>.</li>
+      </ul>
+      <p><a class="solo" href="https://github.com/Real-Fruit-Snacks/rfs-brand/blob/main/CHANGELOG.md">The changelog</a></p>
+    </aside>
   </div>
 </section>
 
-<section id="type">
-  <div class="wrap two">
-    <div>
-      <p class="label">Type</p>
-      <h2>IBM Plex Sans and Mono</h2>
-      <p class="mute">One superfamily, so prose and code look designed together. Both are under the SIL Open Font License; every page and generator bundles its own copy.</p>
-      <p style="font-family:var(--rfs-font-sans);font-weight:700;font-size:40px;letter-spacing:-.03em;line-height:1.05;margin-top:22px">Real tools. No filler.</p>
-      <p style="font-family:var(--rfs-font-mono);font-weight:600;font-size:40px;letter-spacing:-.05em;line-height:1.05">RFS</p>
+<!-- §1 -->
+<section id="colour" aria-labelledby="colour-h">
+  <div class="wrap">
+    <div class="sec">
+      <a class="no" href="https://github.com/Real-Fruit-Snacks/rfs-brand/blob/main/BRAND.md#1-color--nightshift--dayshift" aria-label="BRAND.md section 1">§1</a>
+      <h2 id="colour-h">Colour</h2>
+      <p class="lede">Two themes with the same structure and the same hues. Nightshift is the default; Dayshift is derived from it, with values shifted until every text colour passes WCAG AA (4.5:1) on bg, surface and raised. The accent is Ember.</p>
     </div>
-    <table>
-      <tr><th>Role</th><th>Size / line · face</th></tr>
-      <tr><td>display</td><td>48 / 1.05 · Sans 700 · −0.03em</td></tr>
-      <tr><td>h1</td><td>32 / 1.1 · Sans 700 · −0.02em</td></tr>
-      <tr><td>h2</td><td>22 / 1.2 · Sans 600 · −0.01em</td></tr>
-      <tr><td>body</td><td>15 / 1.6 · Sans 400</td></tr>
-      <tr><td>small</td><td>13 / 1.5 · Sans 400, mute</td></tr>
-      <tr><td>label</td><td>11 / 1 · Mono 500, caps, +0.08em</td></tr>
-      <tr><td>code</td><td>13 / 1.7 · Mono 400</td></tr>
-      <tr><td>wordmark</td><td>Mono 600 · −0.05em</td></tr>
+
+    <div class="scroll-x">
+    <table class="tokens">
+      <caption class="sr-only">Colour tokens in Nightshift and Dayshift</caption>
+      <thead><tr><th scope="col">Token</th><th scope="col">Nightshift</th><th scope="col">Dayshift</th><th scope="col">Rule</th></tr></thead>
+      <tbody>
+        <tr><th scope="row"><code>bg</code></th><td><i style="--c:#0C0D10"></i>#0C0D10</td><td><i style="--c:#F6F5F2"></i>#F6F5F2</td><td>Page. Never pure black or pure white.</td></tr>
+        <tr><th scope="row"><code>surface</code></th><td><i style="--c:#13151A"></i>#13151A</td><td><i style="--c:#FFFFFF"></i>#FFFFFF</td><td>Cards, panels. One step up from bg.</td></tr>
+        <tr><th scope="row"><code>raised</code></th><td><i style="--c:#1A1D24"></i>#1A1D24</td><td><i style="--c:#ECEAE4"></i>#ECEAE4</td><td>Inputs, chips, nested cards.</td></tr>
+        <tr><th scope="row"><code>line</code></th><td><i style="--c:#262A33"></i>#262A33</td><td><i style="--c:#D6D3CB"></i>#D6D3CB</td><td>Dividers and decorative borders. Borders replace shadows.</td></tr>
+        <tr class="new"><th scope="row"><code>line-strong</code><span class="tag">new in 1.2.0</span></th><td><i style="--c:#636872"></i>#636872</td><td><i style="--c:#89867F"></i>#89867F</td><td>Inputs and any border that identifies a control. At least 3:1 against bg, surface and raised, which <code>line</code> is not.</td></tr>
+        <tr><th scope="row"><code>text</code></th><td><i style="--c:#E8E6E1"></i>#E8E6E1</td><td><i style="--c:#1A1B1E"></i>#1A1B1E</td><td>Body. Never <code>#FFF</code> for body copy.</td></tr>
+        <tr><th scope="row"><code>mute</code></th><td><i style="--c:#8A8F99"></i>#8A8F99</td><td><i style="--c:#666A73"></i>#666A73<span class="was">was #6B6F78</span></td><td>Secondary text, captions.</td></tr>
+        <tr><th scope="row"><code>primary</code><span class="alias">Ember</span></th><td><i style="--c:#FF6A3D"></i>#FF6A3D</td><td><i style="--c:#C03B0A"></i>#C03B0A<span class="was">was #C43F11</span></td><td>The brand. One per screen. Glow in Nightshift only.</td></tr>
+        <tr class="new"><th scope="row"><code>on-primary</code><span class="tag">new in 1.2.0</span></th><td><i style="--c:#0C0D10"></i>#0C0D10</td><td><i style="--c:#FFFFFF"></i>#FFFFFF</td><td>Text and icons on Ember fills. Dark in Nightshift, because white on Ember is only 2.9:1.</td></tr>
+        <tr><th scope="row"><code>accent</code><span class="alias">Amber</span></th><td><i style="--c:#FFC247"></i>#FFC247</td><td><i style="--c:#925F00"></i>#925F00<span class="was">was #9A6700</span></td><td>Warnings, a second category, prompts.</td></tr>
+        <tr><th scope="row"><code>signal</code><span class="alias">Mint</span></th><td><i style="--c:#3DDC97"></i>#3DDC97</td><td><i style="--c:#15794D"></i>#15794D<span class="was">was #167A4E</span></td><td>Success, running. Only ever means OK.</td></tr>
+        <tr class="new"><th scope="row"><code>fault</code><span class="alias">Raspberry</span><span class="tag">new in 1.2.0</span></th><td><i style="--c:#F06292"></i>#F06292</td><td><i style="--c:#B0306A"></i>#B0306A</td><td>Errors and failures. Only ever means failed. Raspberry, not red, so it can't be mistaken for Ember.</td></tr>
+        <tr><th scope="row"><code>code-bg</code></th><td><i style="--c:#070809"></i>#070809</td><td><i style="--c:#FFFFFF"></i>#FFFFFF</td><td>Code blocks. One step darker than bg in Nightshift; surface white in Dayshift.</td></tr>
+      </tbody>
     </table>
+    </div>
+
+    <div class="proof" id="contrast">
+      <div class="proof-head">
+        <h3>Every text colour, on every surface</h3>
+        <p>Measured contrast, both themes. AA asks for 4.5:1 for text and 3:1 for control borders. Before 1.2.0, Dayshift Amber measured 4.46:1 on bg, and mute, Ember, Amber and Mint all fell short on raised. Each moved a few steps darker. Nightshift didn't change.</p>
+      </div>
+      <div class="panes">
+        <figure class="pane p-night">
+          <figcaption>Nightshift</figcaption>
+          <table class="cx">
+            <thead><tr><th scope="col"><span class="sr-only">Colour</span></th><th scope="col">bg</th><th scope="col">surface</th><th scope="col">raised</th></tr></thead>
+            <tbody>
+              <tr class="r-text"><th scope="row">text</th><td><b>Aa</b>15.58</td><td><b>Aa</b>14.64</td><td><b>Aa</b>13.52</td></tr>
+              <tr class="r-mute"><th scope="row">mute</th><td><b>Aa</b>5.99</td><td><b>Aa</b>5.63</td><td><b>Aa</b>5.20</td></tr>
+              <tr class="r-ember"><th scope="row">Ember</th><td><b>Aa</b>6.83</td><td><b>Aa</b>6.42</td><td><b>Aa</b>5.93</td></tr>
+              <tr class="r-amber"><th scope="row">Amber</th><td><b>Aa</b>12.08</td><td><b>Aa</b>11.36</td><td><b>Aa</b>10.49</td></tr>
+              <tr class="r-mint"><th scope="row">Mint</th><td><b>Aa</b>11.00</td><td><b>Aa</b>10.33</td><td><b>Aa</b>9.54</td></tr>
+              <tr class="r-fault"><th scope="row">Raspberry</th><td><b>Aa</b>6.35</td><td><b>Aa</b>5.97</td><td><b>Aa</b>5.52</td></tr>
+              <tr class="r-strong"><th scope="row">line-strong</th><td><s></s>3.47</td><td><s></s>3.26</td><td><s></s>3.01</td></tr>
+            </tbody>
+          </table>
+          <p class="on"><span class="chip">on-primary</span> 6.83:1 on Ember. White would be 2.85:1.</p>
+        </figure>
+        <figure class="pane p-day">
+          <figcaption>Dayshift</figcaption>
+          <table class="cx">
+            <thead><tr><th scope="col"><span class="sr-only">Colour</span></th><th scope="col">bg</th><th scope="col">surface</th><th scope="col">raised</th></tr></thead>
+            <tbody>
+              <tr class="r-text"><th scope="row">text</th><td><b>Aa</b>15.80</td><td><b>Aa</b>17.22</td><td><b>Aa</b>14.31</td></tr>
+              <tr class="r-mute"><th scope="row">mute</th><td><b>Aa</b>4.97</td><td><b>Aa</b>5.42</td><td><b>Aa</b>4.51</td></tr>
+              <tr class="r-ember"><th scope="row">Ember</th><td><b>Aa</b>4.98</td><td><b>Aa</b>5.42</td><td><b>Aa</b>4.51</td></tr>
+              <tr class="r-amber"><th scope="row">Amber</th><td><b>Aa</b>4.99</td><td><b>Aa</b>5.44</td><td><b>Aa</b>4.52</td></tr>
+              <tr class="r-mint"><th scope="row">Mint</th><td><b>Aa</b>4.97</td><td><b>Aa</b>5.42</td><td><b>Aa</b>4.51</td></tr>
+              <tr class="r-fault"><th scope="row">Raspberry</th><td><b>Aa</b>5.54</td><td><b>Aa</b>6.04</td><td><b>Aa</b>5.02</td></tr>
+              <tr class="r-strong"><th scope="row">line-strong</th><td><s></s>3.33</td><td><s></s>3.63</td><td><s></s>3.02</td></tr>
+            </tbody>
+          </table>
+          <p class="on"><span class="chip">on-primary</span> 5.42:1 on Ember.</p>
+        </figure>
+      </div>
+    </div>
+
+    <dl class="rules">
+      <div><dt>Ember</dt><dd>The brand, once per screen. Glow in Nightshift only. Never for errors.</dd></div>
+      <div><dt>Mint and Raspberry</dt><dd>Status, not decoration. Mint only ever means OK; Raspberry only ever means failed.</dd></div>
+      <div><dt>A word with every status</dt><dd>Pair the colour with <code>ok</code>, <code>warn</code> or <code>fail</code>, or a line that says what happened. To red–green colour-blind readers, Dayshift Ember and Amber look the same, and Mint and Raspberry come close.</dd></div>
+      <div><dt>Focus</dt><dd>A 2px Ember outline with a 3px offset on every focusable element. Press Tab on this page to see it.</dd></div>
+      <div><dt>Never</dt><dd>Gradients, or a third accent.</dd></div>
+    </dl>
   </div>
 </section>
 
-<section id="mark">
-  <div class="wrap two">
-    <div>
-      <p class="label">Mark</p>
-      <h2>The Caps Tile</h2>
-      <p>RFS in Plex Mono SemiBold on a rounded tile (radius 14 of 64), with an Ember rule beneath. Letters are always white. Clear space is one corner radius; the smallest size is 16 px.</p>
-      <p class="mute">Don't rotate it, outline the colour version, recolour the letters, or put it on Ember. The glow is a CSS effect in Nightshift interfaces, never part of an asset.</p>
-      <div class="actions"><a class="btn" href="https://github.com/Real-Fruit-Snacks/rfs-brand/tree/main/brand/mark">Marks</a><a class="btn" href="https://github.com/Real-Fruit-Snacks/rfs-brand/tree/main/brand/lockup">Lockups</a><a class="btn" href="https://github.com/Real-Fruit-Snacks/rfs-brand/tree/main/brand/web">Web icons</a></div>
-    </div>
-    <div style="display:grid;gap:22px;align-content:center">
-      <img class="only-night" src="assets/rfs-lockup-dark.svg" alt="RFS horizontal lockup" style="max-width:100%;height:auto">
-      <img class="only-day" src="assets/rfs-lockup-light.svg" alt="RFS horizontal lockup" style="max-width:100%;height:auto">
-    </div>
-  </div>
-</section>
-
-<section id="covers">
+<!-- §2 -->
+<section id="type" aria-labelledby="type-h">
   <div class="wrap">
-    <p class="label">Covers</p>
-    <h2>Every repo, one layout</h2>
-    <p class="mute" style="max-width:72ch">A repo's cover is the image under its README one-liner, its site's link preview and its GitHub social preview, all drawn by <code>tools/make-cover.py</code> from <code>docs/assets/cover.toml</code>. A terminal panel by default; a tool with a UI draws itself.</p>
-    <div class="gallery" style="grid-template-columns:repeat(auto-fit,minmax(320px,1fr));margin-top:20px">
-        <figure><a href="https://github.com/Real-Fruit-Snacks/screen-mark"><img class="only-night" src="https://raw.githubusercontent.com/Real-Fruit-Snacks/screen-mark/main/docs/assets/cover-dark.svg" alt="screen-mark cover" loading="lazy"><img class="only-day" src="https://raw.githubusercontent.com/Real-Fruit-Snacks/screen-mark/main/docs/assets/cover-light.svg" alt="screen-mark cover" loading="lazy"></a><figcaption>screen-mark</figcaption></figure>
-        <figure><a href="https://github.com/Real-Fruit-Snacks/certapi"><img class="only-night" src="https://raw.githubusercontent.com/Real-Fruit-Snacks/certapi/main/docs/assets/cover-dark.svg" alt="certapi cover" loading="lazy"><img class="only-day" src="https://raw.githubusercontent.com/Real-Fruit-Snacks/certapi/main/docs/assets/cover-light.svg" alt="certapi cover" loading="lazy"></a><figcaption>certapi</figcaption></figure>
-        <figure><a href="https://github.com/Real-Fruit-Snacks/carify"><img class="only-night" src="https://raw.githubusercontent.com/Real-Fruit-Snacks/carify/main/docs/assets/cover-dark.svg" alt="carify cover" loading="lazy"><img class="only-day" src="https://raw.githubusercontent.com/Real-Fruit-Snacks/carify/main/docs/assets/cover-light.svg" alt="carify cover" loading="lazy"></a><figcaption>carify</figcaption></figure>
-        <figure><a href="https://github.com/Real-Fruit-Snacks/port-sync"><img class="only-night" src="https://raw.githubusercontent.com/Real-Fruit-Snacks/port-sync/main/docs/assets/cover-dark.svg" alt="port-sync cover" loading="lazy"><img class="only-day" src="https://raw.githubusercontent.com/Real-Fruit-Snacks/port-sync/main/docs/assets/cover-light.svg" alt="port-sync cover" loading="lazy"></a><figcaption>port-sync</figcaption></figure>
-        <figure><a href="https://github.com/Real-Fruit-Snacks/identity-gen"><img class="only-night" src="https://raw.githubusercontent.com/Real-Fruit-Snacks/identity-gen/main/docs/assets/cover-dark.svg" alt="identity-gen cover" loading="lazy"><img class="only-day" src="https://raw.githubusercontent.com/Real-Fruit-Snacks/identity-gen/main/docs/assets/cover-light.svg" alt="identity-gen cover" loading="lazy"></a><figcaption>identity-gen</figcaption></figure>
-        <figure><a href="https://github.com/Real-Fruit-Snacks/amazon-order-sync"><img class="only-night" src="https://raw.githubusercontent.com/Real-Fruit-Snacks/amazon-order-sync/main/docs/assets/cover-dark.svg" alt="amazon-order-sync cover" loading="lazy"><img class="only-day" src="https://raw.githubusercontent.com/Real-Fruit-Snacks/amazon-order-sync/main/docs/assets/cover-light.svg" alt="amazon-order-sync cover" loading="lazy"></a><figcaption>amazon-order-sync</figcaption></figure>
+    <div class="sec">
+      <a class="no" href="https://github.com/Real-Fruit-Snacks/rfs-brand/blob/main/BRAND.md#2-type" aria-label="BRAND.md section 2">§2</a>
+      <h2 id="type-h">Type</h2>
+      <p class="lede">IBM Plex Sans for UI and prose, IBM Plex Mono for code, labels and the wordmark: one superfamily, so prose and code look designed together. Both are under the SIL Open Font License, and every page and generator bundles its own copy.</p>
     </div>
-    <pre style="margin-top:24px"><code><span class="c"># from the folder that holds both clones</span>
+
+    <dl class="ramp">
+      <div><dt><code>display</code><span>48 / 1.05 · Sans 700 · −0.03em</span></dt><dd class="t-display">Real tools. No filler.</dd></div>
+      <div><dt><code>h1</code><span>32 / 1.1 · Sans 700 · −0.02em</span></dt><dd class="t-h1">Starting a new repo</dd></div>
+      <div><dt><code>h2</code><span>22 / 1.2 · Sans 600 · −0.01em</span></dt><dd class="t-h2">Known issues</dd></div>
+      <div><dt><code>body</code><span>16 / 1.6 · Sans 400 · 16 px since 1.2.0, was 15</span></dt><dd class="t-body">Keeps a forwarded VPN port and qBittorrent in sync. Short sentences, concrete nouns; the reader is busy and competent. Prose stays between 60 and 75 characters a line.</dd></div>
+      <div><dt><code>small</code><span>13 / 1.5 · Sans 400 · mute</span></dt><dd class="t-small">Secondary text and captions.</dd></div>
+      <div><dt><code>label</code><span>11 / 1 · Mono 500 · caps · +0.08em</span></dt><dd class="t-label">Nightshift · Dayshift · Ember</dd></div>
+      <div><dt><code>code</code><span>13 / 1.7 · Mono 400</span></dt><dd class="t-code">port-sync check</dd></div>
+      <div><dt><code>wordmark</code><span>Mono 600 · −0.05em</span></dt><dd class="t-word">RFS</dd></div>
+    </dl>
+
+    <div class="type-foot">
+      <div class="faces">
+        <h3>The stacks</h3>
+        <pre><code>--rfs-font-sans: <span class="str">"IBM Plex Sans"</span>, Inter, system-ui, sans-serif;
+--rfs-font-mono: <span class="str">"IBM Plex Mono"</span>, <span class="str">"JetBrains Mono"</span>, ui-monospace, monospace;</code></pre>
+        <p class="mute">Sentence case everywhere, headings included. Sizes are for the web at 1×; covers and banners keep their own (§7).</p>
+      </div>
+      <div class="space" id="space">
+        <h3>Space <span class="tag">new in 1.2.0</span></h3>
+        <p>A 4 px base and nine steps. Use the steps, not one-off values: 8–12 inside a component, 16–24 between related blocks, 48–96 between sections.</p>
+        <ol class="scale">
+          <li><code>--rfs-space-1</code><i style="--w:4px"></i><span>4</span></li>
+          <li><code>--rfs-space-2</code><i style="--w:8px"></i><span>8</span></li>
+          <li><code>--rfs-space-3</code><i style="--w:12px"></i><span>12</span></li>
+          <li><code>--rfs-space-4</code><i style="--w:16px"></i><span>16</span></li>
+          <li><code>--rfs-space-5</code><i style="--w:24px"></i><span>24</span></li>
+          <li><code>--rfs-space-6</code><i style="--w:32px"></i><span>32</span></li>
+          <li><code>--rfs-space-7</code><i style="--w:48px"></i><span>48</span></li>
+          <li><code>--rfs-space-8</code><i style="--w:64px"></i><span>64</span></li>
+          <li><code>--rfs-space-9</code><i style="--w:96px"></i><span>96</span></li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- §3 -->
+<section id="mark" aria-labelledby="mark-h">
+  <div class="wrap">
+    <div class="sec">
+      <a class="no" href="https://github.com/Real-Fruit-Snacks/rfs-brand/blob/main/BRAND.md#3-mark--caps-tile" aria-label="BRAND.md section 3">§3</a>
+      <h2 id="mark-h">Mark: the Caps Tile</h2>
+      <p class="lede">RFS in Plex Mono SemiBold, centred on a rounded tile, with an Ember rule beneath. The letters are always white.</p>
+    </div>
+
+    <div class="mark-grid">
+      <figure class="build">
+        <svg viewBox="-8 -9 118 86" role="img" aria-labelledby="build-t">
+          <title id="build-t">The Caps Tile on its 64-unit grid: corner radius 14, letters 28 units with the baseline at 43, and a 36 by 4 Ember rule at y 48</title>
+          <defs>
+            <pattern id="g4" width="4" height="4" patternUnits="userSpaceOnUse"><path d="M4 0V4H0" fill="none" stroke="#fff" stroke-opacity=".09" stroke-width=".12"/></pattern>
+          </defs>
+          <rect class="k-tile" width="64" height="64" rx="14"/>
+          <rect width="64" height="64" fill="url(#g4)"/>
+          <path fill="#fff" d="M14.20 43.0H10.53V23.45H17.95Q20.81 23.45 22.32 25.08Q23.83 26.70 23.83 29.50Q23.83 31.66 22.84 33.13Q21.85 34.6 20.00 34.99L24.17 43.0H20.14L16.41 35.41H14.20ZM17.20 32.55Q18.68 32.55 19.33 31.95Q19.97 31.35 19.97 30.03V28.97Q19.97 27.65 19.33 27.05Q18.68 26.45 17.20 26.45H14.20V32.55Z M25.92 43.0V23.45H38.69V26.48H29.59V31.57H37.79V34.6H29.59V43.0Z M47.07 43.33Q44.55 43.33 42.77 42.46Q41.0 41.6 39.87 40.17L42.09 37.87Q43.18 39.13 44.45 39.73Q45.73 40.34 47.18 40.34Q48.86 40.34 49.76 39.58Q50.66 38.82 50.66 37.4Q50.66 36.22 49.98 35.62Q49.31 35.01 47.72 34.76L45.64 34.43Q42.93 33.95 41.78 32.45Q40.63 30.96 40.63 28.91Q40.63 26.11 42.45 24.61Q44.27 23.12 47.49 23.12Q49.79 23.12 51.45 23.84Q53.12 24.57 54.13 25.83L51.97 28.13Q51.19 27.20 50.09 26.66Q49.00 26.11 47.52 26.11Q44.33 26.11 44.33 28.74Q44.33 29.86 45.00 30.45Q45.67 31.04 47.3 31.32L49.34 31.68Q51.89 32.16 53.12 33.56Q54.35 34.96 54.35 37.14Q54.35 38.51 53.87 39.65Q53.40 40.78 52.48 41.61Q51.55 42.44 50.19 42.88Q48.83 43.33 47.07 43.33Z"/>
+          <rect class="k-rule" x="14" y="48" width="36" height="4" rx="2"/>
+          <g class="k-guide">
+            <path d="M14 14 L4.1 4.1"/>
+            <path d="M0 14 A14 14 0 0 1 14 0" stroke-dasharray="1 1"/>
+            <path d="M-3 43 H70" stroke-dasharray="1 1"/>
+            <path d="M51 50 H70"/>
+            <path d="M56 33 H70"/>
+            <path d="M0 69 H64 M0 67.5 V70.5 M64 67.5 V70.5"/>
+          </g>
+          <g class="k-label">
+            <text x="-1" y="-3.5">radius 14</text>
+            <text x="72" y="34">RFS, Plex Mono 600</text>
+            <text x="72" y="37.6">28 units, −1.5</text>
+            <text x="72" y="44">baseline 43</text>
+            <text x="72" y="51">rule 36 × 4, y 48</text>
+            <text x="32" y="75" text-anchor="middle">64</text>
+          </g>
+        </svg>
+      </figure>
+
+      <div class="mark-side">
+        <dl class="spec">
+          <div><dt>Tile</dt><dd>64-unit grid, corner radius 14 (0.219 × side). <code>#1A1D24</code> in Nightshift, <code>#1A1B1E</code> in Dayshift.</dd></div>
+          <div><dt>Letters</dt><dd>28 units, tracking −1.5, baseline at 43. Always white.</dd></div>
+          <div><dt>Rule</dt><dd>36 × 4 units, radius 2, at y = 48. Ember, the theme's value.</dd></div>
+          <div><dt>Clear space</dt><dd>One corner radius on every side. Smallest size 16 px.</dd></div>
+        </dl>
+
+        <div class="small16">
+          <h3>At 16 px</h3>
+          <p>The master's letters blur into a grey bar, so favicons and icons at 48 px or less use the small-size mark: the same tile, colours and rule, with the letters redrawn on the 16 px grid in 4-unit strokes.</p>
+          <div class="px">
+            <figure>
+              <div class="px-pair"><img class="only-night" src="assets/rfs-mark-dark-16.png" alt="" width="16" height="16"><img class="only-day" src="assets/rfs-mark-light-16.png" alt="" width="16" height="16"><img class="z only-night" src="assets/rfs-mark-dark-16.png" alt="The master mark rendered at 16 px, enlarged: the letters smear together" width="96" height="96" loading="lazy"><img class="z only-day" src="assets/rfs-mark-light-16.png" alt="The master mark rendered at 16 px, enlarged: the letters smear together" width="96" height="96" loading="lazy"></div>
+              <figcaption>Master, at 16 px</figcaption>
+            </figure>
+            <figure>
+              <div class="px-pair"><img class="only-night" src="assets/rfs-mark-small-dark-16.png" alt="" width="16" height="16"><img class="only-day" src="assets/rfs-mark-small-light-16.png" alt="" width="16" height="16"><img class="z only-night" src="assets/rfs-mark-small-dark-16.png" alt="The small-size mark at 16 px, enlarged: R, F and S stay readable" width="96" height="96" loading="lazy"><img class="z only-day" src="assets/rfs-mark-small-light-16.png" alt="The small-size mark at 16 px, enlarged: R, F and S stay readable" width="96" height="96" loading="lazy"></div>
+              <figcaption>Small-size mark, at 16 px</figcaption>
+            </figure>
+          </div>
+        </div>
+
+        <div class="lockup">
+          <img class="only-night" src="assets/rfs-lockup-dark.svg" alt="The RFS horizontal lockup: the tile beside the RFS wordmark" width="200" height="64" loading="lazy">
+          <img class="only-day" src="assets/rfs-lockup-light.svg" alt="The RFS horizontal lockup: the tile beside the RFS wordmark" width="200" height="64" loading="lazy">
+          <p class="mute">Lockup: the tile and the wordmark, gap 0.3 × the tile's side, wordmark cap height about 0.55 × the side.</p>
+        </div>
+
+        <p class="donts">Don't rotate it, outline the colour version, recolour the letters, put it on Ember (use the single-colour white version), or bake the glow into an asset.</p>
+        <div class="actions"><a class="btn" href="https://github.com/Real-Fruit-Snacks/rfs-brand/tree/main/brand/mark">Marks</a><a class="btn" href="https://github.com/Real-Fruit-Snacks/rfs-brand/tree/main/brand/lockup">Lockups</a><a class="btn" href="https://github.com/Real-Fruit-Snacks/rfs-brand/tree/main/brand/web">Web icons</a></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- §4 -->
+<section id="voice" aria-labelledby="voice-h">
+  <div class="wrap">
+    <div class="sec">
+      <a class="no" href="https://github.com/Real-Fruit-Snacks/rfs-brand/blob/main/BRAND.md#4-voice" aria-label="BRAND.md section 4">§4</a>
+      <h2 id="voice-h">Voice</h2>
+      <p class="lede">Four traits, each with a test. First person singular is correct for one maintainer. Sentence case everywhere, including headings.</p>
+    </div>
+    <dl class="traits">
+      <div><dt>Plain</dt><dd><p>Short sentences. Concrete nouns. The reader is busy and competent.</p><p class="test">Could a tired admin at 2 am act on it?</p></dd></div>
+      <div><dt>Specific</dt><dd><p>Versions, OS names, command names, numbers.</p><p class="test">Is every adjective replaceable with a fact?</p></dd></div>
+      <div><dt>Dry</dt><dd><p>Humour lives in details, like a flag name or a commit message. Never in the headline.</p><p class="test">Still funny with the emoji removed? There are no emoji.</p></dd></div>
+      <div><dt>Honest</dt><dd><p>Say what it doesn't do. “Tested on” is a list. Known issues go above the fold.</p><p class="test">Is the first limitation visible without scrolling?</p></dd></div>
+    </dl>
+    <p class="banned"><span class="b-label">Banned</span> <s>blazing</s> <s>powerful</s> <s>modern</s> <s>seamless</s> <s>supercharge</s> <s>awesome</s> <s>Welcome!</s> <s>coming soon</s> <span class="mute">and every emoji and exclamation mark.</span></p>
+  </div>
+</section>
+
+<!-- §5 -->
+<section id="naming" aria-labelledby="naming-h">
+  <div class="wrap">
+    <div class="sec">
+      <a class="no" href="https://github.com/Real-Fruit-Snacks/rfs-brand/blob/main/BRAND.md#5-naming" aria-label="BRAND.md section 5">§5</a>
+      <h2 id="naming-h">Naming</h2>
+      <p class="lede">Repos, descriptions, commands and releases follow one pattern, so the org reads as one set.</p>
+    </div>
+    <div class="scroll-x">
+    <table class="names">
+      <caption class="sr-only">Naming rules with examples</caption>
+      <thead><tr><th scope="col">Thing</th><th scope="col">Rule</th><th scope="col">Example</th></tr></thead>
+      <tbody>
+        <tr><th scope="row">Repo</th><td><code>thing-it-does</code>: lowercase, hyphens, 2–3 words. No <code>awesome-</code>, <code>my-</code> or <code>-tool</code>.</td><td><code>port-sync</code></td></tr>
+        <tr><th scope="row">Description</th><td>60 characters or fewer, sentence case, no period, no emoji. Identical to the README's first line.</td><td>Keeps a forwarded VPN port and qBittorrent in sync</td></tr>
+        <tr><th scope="row">Topics</th><td>At most 6, with at least one language tag and one domain tag.</td><td><code>python</code> <code>networking</code> <code>self-hosted</code></td></tr>
+        <tr><th scope="row">PowerShell</th><td>Approved <code>Verb-Noun</code>. The <code>Rfs</code> prefix only on the entry point.</td><td><code>Get-RfsHelp</code>, <code>Update-Cert</code></td></tr>
+        <tr><th scope="row">CLI</th><td>One binary per repo, named after the repo. Subcommands are verbs.</td><td><code>port-sync check</code></td></tr>
+        <tr><th scope="row">Install line</th><td>One canonical form per platform, first thing in the README, from the repo's raw URL until rfs.sh exists.</td><td><code>irm https://raw.githubusercontent.com/Real-Fruit-Snacks/&lt;repo&gt;/main/install.ps1 | iex</code></td></tr>
+        <tr><th scope="row">Releases</th><td>SemVer, tag <code>vX.Y.Z</code>, title = tag. No codenames.</td><td><code>v1.4.0</code></td></tr>
+        <tr><th scope="row">Retiring</th><td>Replace the README with <code>Superseded by [repo](link).</code> then archive. Never delete, never rename history.</td><td class="mute">—</td></tr>
+        <tr><th scope="row">The org</th><td><code>Real-Fruit-Snacks</code> in URLs, <strong>RFS</strong> everywhere else. Never “Real Fruit Snacks”, never lowercase <code>rfs</code>.</td><td class="mute">—</td></tr>
+      </tbody>
+    </table>
+    </div>
+  </div>
+</section>
+
+<!-- §6 -->
+<section id="assets" aria-labelledby="assets-h">
+  <div class="wrap">
+    <div class="sec">
+      <a class="no" href="https://github.com/Real-Fruit-Snacks/rfs-brand/blob/main/BRAND.md#6-where-each-asset-goes" aria-label="BRAND.md section 6">§6</a>
+      <h2 id="assets-h">Where each asset goes</h2>
+      <p class="lede">Every file has one job. The profile art comes from <code>tools/make-org-art.py</code> and <code>brand/org.toml</code>, the avatar from <code>tools/make-avatar.py</code>. When a tool is added, renamed or archived, update <code>org.toml</code> and re-run.</p>
+    </div>
+
+    <figure class="art banner" id="banner">
+      <img class="only-night" src="assets/rfs-banner-dark.svg" alt="RFS banner: Real tools. No filler., beside a terminal listing the tools" width="1200" height="400" loading="lazy">
+      <img class="only-day" src="assets/rfs-banner-light.svg" alt="RFS banner: Real tools. No filler., beside a terminal listing the tools" width="1200" height="400" loading="lazy">
+      <figcaption><b>Org profile header</b> 1200 × 400, at the top of the profile README in <a href="https://github.com/Real-Fruit-Snacks/Real-Fruit-Snacks">Real-Fruit-Snacks/Real-Fruit-Snacks</a>, placed at <code>width="100%"</code> and never boxed. <code class="path">assets/rfs-banner-{dark,light}.svg</code></figcaption>
+    </figure>
+
+    <div class="art-row">
+      <figure class="art avatar">
+        <img src="assets/rfs-avatar-dark-512.png" alt="The RFS avatar: RFS over an Ember rule on the dot grid, cropped to a circle" width="512" height="512" loading="lazy">
+        <figcaption><b>Avatar</b> GitHub, Discord, X and Mastodon. Full bleed, safe for a circle crop. <code class="path">brand/social/rfs-avatar-dark-1024.png</code></figcaption>
+      </figure>
+      <figure class="art social">
+        <img class="only-night" src="assets/rfs-social-org-dark-1280x640.png" alt="The RFS org social card: RFS, the tagline and the tool list" width="1280" height="640" loading="lazy">
+        <img class="only-day" src="assets/rfs-social-org-light-1280x640.png" alt="The RFS org social card: RFS, the tagline and the tool list" width="1280" height="640" loading="lazy">
+        <figcaption><b>Org social card</b> The link preview for the org and its site. <code class="path">brand/social/rfs-social-org-dark-1280x640.png</code></figcaption>
+      </figure>
+      <figure class="art header">
+        <img class="only-night" src="assets/rfs-header-dark-1500x500.png" alt="The RFS header: RFS beside Real tools. No filler." width="1500" height="500" loading="lazy">
+        <img class="only-day" src="assets/rfs-header-light-1500x500.png" alt="The RFS header: RFS beside Real tools. No filler." width="1500" height="500" loading="lazy">
+        <figcaption><b>X, Mastodon and Bluesky header</b> One centred line, clear of the avatar and the phone crop. <code class="path">brand/social/rfs-header-dark-1500x500.png</code></figcaption>
+      </figure>
+    </div>
+
+    <div class="scroll-x">
+    <table class="where">
+      <caption class="sr-only">Where the other assets go</caption>
+      <thead><tr><th scope="col">Need</th><th scope="col">File</th></tr></thead>
+      <tbody>
+        <tr><th scope="row">Favicons and icons at 48 px or less</th><td><code>brand/mark/rfs-mark-small-{dark,light}.svg</code>, PNGs at 16, 32 and 48</td></tr>
+        <tr><th scope="row">App icons, larger marks</th><td><code>brand/mark/rfs-mark-dark-*.png</code>. iOS home screen: <code>brand/web/apple-touch-icon.png</code>, full bleed</td></tr>
+        <tr><th scope="row">A website</th><td>Copy <code>brand/web/*</code> to the site root and paste <code>brand/web/head.html</code> into <code>&lt;head&gt;</code></td></tr>
+        <tr><th scope="row">CSS variables</th><td><code>brand/tokens/rfs.css</code></td></tr>
+        <tr><th scope="row">A README header</th><td>None. The README starts with <code># repo-name</code>; the mark is on the cover (§7)</td></tr>
+        <tr><th scope="row">Print, stickers, etching</th><td><code>brand/mark/rfs-mark-mono-{white,ink}.svg</code></td></tr>
+      </tbody>
+    </table>
+    </div>
+  </div>
+</section>
+
+<!-- §7 -->
+<section id="covers" aria-labelledby="covers-h">
+  <div class="wrap">
+    <div class="sec">
+      <a class="no" href="https://github.com/Real-Fruit-Snacks/rfs-brand/blob/main/BRAND.md#7-repo-cover" aria-label="BRAND.md section 7">§7</a>
+      <h2 id="covers-h">Repo cover</h2>
+      <p class="lede">Every tool repo gets one cover: the image under the README one-liner, the docs site's <code>og:image</code> and the GitHub social preview, all from one <code>docs/assets/cover.toml</code> rendered by <code>tools/make-cover.py</code>. Don't draw covers by hand; change the tool and re-run it.</p>
+    </div>
+
+    <div class="source">
+      <figure class="src">
+        <pre><code>name        = <span class="str">"rfs-brand"</span>
+description = <span class="str">"RFS brand, profile art and repo templates."</span>
+bullets = [
+  <span class="str">"Colours, type and the Caps Tile mark"</span>,
+  <span class="str">"Cover and avatar generators"</span>,
+  <span class="str">"README template and settings checklist"</span>,
+  <span class="str">"Profile banner, social card and X header"</span>,
+]
+
+[panel]
+kind = <span class="str">"art"</span>
+file = <span class="str">"cover-art.svg"</span></code></pre>
+        <figcaption>In: this repo's <code>docs/assets/cover.toml</code></figcaption>
+      </figure>
+      <figure class="out">
+        <img class="only-night" src="assets/cover-dark.svg" alt="rfs-brand: a miniature repo cover, the Ember, Amber and Mint colour swatches, and IBM Plex Sans and Mono specimens" width="1200" height="560" loading="lazy">
+        <img class="only-day" src="assets/cover-light.svg" alt="rfs-brand: a miniature repo cover, the Ember, Amber and Mint colour swatches, and IBM Plex Sans and Mono specimens" width="1200" height="560" loading="lazy">
+        <figcaption>Out: <code>cover-{dark,light}.svg</code> and <code>.png</code> at 1200 × 560, and <code>social-{dark,light}.png</code> at 1280 × 640</figcaption>
+      </figure>
+    </div>
+
+    <h3 class="sub">Six repos, one layout</h3>
+    <p class="sub-p">A terminal panel by default. A tool with a UI draws itself, or shows a screenshot.</p>
+    <div class="covers">
+        <figure><a href="https://github.com/Real-Fruit-Snacks/screen-mark"><img class="only-night" src="https://raw.githubusercontent.com/Real-Fruit-Snacks/screen-mark/main/docs/assets/cover-dark.svg" alt="screen-mark cover" width="1200" height="560" loading="lazy"><img class="only-day" src="https://raw.githubusercontent.com/Real-Fruit-Snacks/screen-mark/main/docs/assets/cover-light.svg" alt="screen-mark cover" width="1200" height="560" loading="lazy"></a><figcaption>screen-mark</figcaption></figure>
+        <figure><a href="https://github.com/Real-Fruit-Snacks/certapi"><img class="only-night" src="https://raw.githubusercontent.com/Real-Fruit-Snacks/certapi/main/docs/assets/cover-dark.svg" alt="certapi cover" width="1200" height="560" loading="lazy"><img class="only-day" src="https://raw.githubusercontent.com/Real-Fruit-Snacks/certapi/main/docs/assets/cover-light.svg" alt="certapi cover" width="1200" height="560" loading="lazy"></a><figcaption>certapi</figcaption></figure>
+        <figure><a href="https://github.com/Real-Fruit-Snacks/carify"><img class="only-night" src="https://raw.githubusercontent.com/Real-Fruit-Snacks/carify/main/docs/assets/cover-dark.svg" alt="carify cover" width="1200" height="560" loading="lazy"><img class="only-day" src="https://raw.githubusercontent.com/Real-Fruit-Snacks/carify/main/docs/assets/cover-light.svg" alt="carify cover" width="1200" height="560" loading="lazy"></a><figcaption>carify</figcaption></figure>
+        <figure><a href="https://github.com/Real-Fruit-Snacks/port-sync"><img class="only-night" src="https://raw.githubusercontent.com/Real-Fruit-Snacks/port-sync/main/docs/assets/cover-dark.svg" alt="port-sync cover" width="1200" height="560" loading="lazy"><img class="only-day" src="https://raw.githubusercontent.com/Real-Fruit-Snacks/port-sync/main/docs/assets/cover-light.svg" alt="port-sync cover" width="1200" height="560" loading="lazy"></a><figcaption>port-sync</figcaption></figure>
+        <figure><a href="https://github.com/Real-Fruit-Snacks/identity-gen"><img class="only-night" src="https://raw.githubusercontent.com/Real-Fruit-Snacks/identity-gen/main/docs/assets/cover-dark.svg" alt="identity-gen cover" width="1200" height="560" loading="lazy"><img class="only-day" src="https://raw.githubusercontent.com/Real-Fruit-Snacks/identity-gen/main/docs/assets/cover-light.svg" alt="identity-gen cover" width="1200" height="560" loading="lazy"></a><figcaption>identity-gen</figcaption></figure>
+        <figure><a href="https://github.com/Real-Fruit-Snacks/amazon-order-sync"><img class="only-night" src="https://raw.githubusercontent.com/Real-Fruit-Snacks/amazon-order-sync/main/docs/assets/cover-dark.svg" alt="amazon-order-sync cover" width="1200" height="560" loading="lazy"><img class="only-day" src="https://raw.githubusercontent.com/Real-Fruit-Snacks/amazon-order-sync/main/docs/assets/cover-light.svg" alt="amazon-order-sync cover" width="1200" height="560" loading="lazy"></a><figcaption>amazon-order-sync</figcaption></figure>
+    </div>
+    <pre class="cmds"><code><span class="c"># from the folder that holds both clones</span>
 python3 rfs-brand/tools/make-cover.py my-repo/docs/assets/cover.toml   <span class="c"># cover + social preview</span>
 python3 rfs-brand/tools/make-org-art.py                                <span class="c"># profile banner, org card, X header</span>
 python3 rfs-brand/tools/make-avatar.py                                 <span class="c"># profile picture</span>
@@ -180,53 +481,137 @@ pip install fonttools resvg-py pillow</code></pre>
   </div>
 </section>
 
-<section id="banner">
+<!-- §8 -->
+<section id="motion" aria-labelledby="motion-h">
   <div class="wrap">
-    <p class="label">Profile art</p>
-    <h2>The profile banner</h2>
-    <img class="shot only-night" src="assets/rfs-banner-dark.svg" alt="RFS banner: Real tools. No filler., beside a terminal listing the tools" loading="lazy">
-    <img class="shot only-day" src="assets/rfs-banner-light.svg" alt="RFS banner: Real tools. No filler., beside a terminal listing the tools" loading="lazy">
-    <p class="mute" style="margin-top:12px">Drawn from <code>brand/org.toml</code>: add a tool there and re-run <code>make-org-art.py</code>.</p>
+    <div class="sec">
+      <a class="no" href="https://github.com/Real-Fruit-Snacks/rfs-brand/blob/main/BRAND.md#8-motion" aria-label="BRAND.md section 8">§8</a>
+      <h2 id="motion-h">Motion <span class="tag">new in 1.2.0</span></h2>
+      <p class="lede">Motion brings the brand's own parts to life; it never decorates. Both themes move the same way, and only Nightshift glows. There are four motions, and this page moves in those four ways and no others.</p>
+    </div>
+
+    <div class="tempo">
+      <figure class="curve">
+        <svg viewBox="-6 -6 112 112" role="img" aria-labelledby="curve-t">
+          <title id="curve-t">The ease curve, cubic-bezier(.2, .7, .2, 1): it rises steeply and lands softly</title>
+          <path class="c-grid" d="M0 0H100V100H0Z M0 50H100 M50 0V100"/>
+          <path class="c-handle" d="M0 100L20 30 M100 0L20 0"/>
+          <path class="c-line" d="M0 100C20 30 20 0 100 0"/>
+          <circle class="c-dot" cx="20" cy="30" r="1.8"/><circle class="c-dot" cx="20" cy="0" r="1.8"/>
+        </svg>
+        <figcaption><code>--rfs-ease</code> <span>cubic-bezier(.2, .7, .2, 1). Everything. Fast start, soft landing.</span></figcaption>
+      </figure>
+      <dl class="durs">
+        <div><dt><code>--rfs-dur-fast</code> <b>150ms</b></dt><dd><i style="--d:150"></i>Hover, press, focus.</dd></div>
+        <div><dt><code>--rfs-dur-base</code> <b>250ms</b></dt><dd><i style="--d:250"></i>State changes: toggles, menus, copy confirmations.</dd></div>
+        <div><dt><code>--rfs-dur-slow</code> <b>600ms</b></dt><dd><i style="--d:600"></i>Entrances and the theme switch.</dd></div>
+        <div><dt><code>--rfs-type-rate</code> <b>45ms</b></dt><dd><span class="per">per character</span>A terminal typing its command.</dd></div>
+      </dl>
+    </div>
+
+    <p class="rm-note">Reduced motion is on, so each specimen below is its finished still frame. That's the rule working.</p>
+    <div class="moves">
+      <div class="move">
+        <h3>The rule draws in</h3>
+        <p>Left to right, under a name or the wordmark. Once, on load.</p>
+        <div class="stage s-draw" id="m-draw" data-draw><span class="drawn">port-sync</span></div>
+        <button class="btn sm replay" type="button" data-replay="m-draw">Replay</button>
+      </div>
+      <div class="move">
+        <h3>A terminal types</h3>
+        <p>45 ms a character, then its output a line at a time. The cursor blinks twice, then stays.</p>
+        <div class="stage s-term">
+          <div class="term mini">
+            <pre class="lines" id="m-term" data-type="view"><span class="ln"><span class="p">$</span> <span class="t">./install.sh</span></span>
+<span class="ln s">ok   carify 1.1.0 installed</span>
+<span class="ln end"><span class="cursor"></span></span></pre>
+          </div>
+        </div>
+        <button class="btn sm replay" type="button" data-replay="m-term">Replay</button>
+      </div>
+      <div class="move">
+        <h3>The dot grid warms</h3>
+        <p>To Ember around the pointer, in Nightshift, for fine pointers only. Dayshift has no glow.</p>
+        <div class="stage s-warm" data-warm><i class="dots"></i><i class="warm"></i><span class="hint h-move">Move the pointer here</span><span class="hint h-day">Dayshift: no glow, by design</span><span class="hint h-touch">On touch screens the grid stays still</span></div>
+      </div>
+      <div class="move">
+        <h3>The theme sweeps in</h3>
+        <p>In a circle from the control that switched it, at 600 ms.</p>
+        <div class="stage s-sweep"><button class="btn" type="button" data-theme-toggle>Switch to <span data-next-theme>Dayshift</span></button></div>
+      </div>
+    </div>
+    <p class="limits">An entrance totals 1.2 s at most and never delays reading the headline. Nothing loops except the cursor's two blinks. Every motion sits inside <code>prefers-reduced-motion: no-preference</code>. No parallax, no scroll-jacking.</p>
   </div>
 </section>
 
-<section id="voice">
-  <div class="wrap two">
-    <div>
-      <p class="label">Voice</p>
-      <h2>Plain, specific, dry, honest</h2>
-      <p class="mute">No emoji, no exclamation marks, no "blazing", "powerful", "modern" or "seamless". First person singular for one maintainer. Sentence case everywhere.</p>
+<!-- §9 -->
+<section id="terminal" aria-labelledby="terminal-h">
+  <div class="wrap">
+    <div class="sec">
+      <a class="no" href="https://github.com/Real-Fruit-Snacks/rfs-brand/blob/main/BRAND.md#9-terminal-and-code" aria-label="BRAND.md section 9">§9</a>
+      <h2 id="terminal-h">Terminal and code <span class="tag">new in 1.2.0</span></h2>
+      <p class="lede">Terminals on covers, sites and docs use one palette, the same one <code>tools/make-cover.py</code> draws. In <code>cover.toml</code> a line's prefix picks its colour; the prefix isn't drawn, so the words must say what happened.</p>
     </div>
-    <table>
-      <tr><th>Trait</th><th>Test</th></tr>
-      <tr><td>Plain</td><td>Could a tired admin at 2 am act on it?</td></tr>
-      <tr><td>Specific</td><td>Is every adjective replaceable with a fact?</td></tr>
-      <tr><td>Dry</td><td>Humour lives in details, never in the headline.</td></tr>
-      <tr><td>Honest</td><td>Is the first limitation visible without scrolling?</td></tr>
-    </table>
+
+    <div class="palette">
+      <figure class="src">
+        <pre><code>[panel]
+kind  = <span class="str">"terminal"</span>
+title = <span class="str">"sh"</span>
+lines = [
+  <span class="str">"$ ./install.sh"</span>,
+  <span class="str">"ok carify 1.1.0 installed"</span>,
+  <span class="str">"! no ffmpeg on PATH"</span>,
+  <span class="str">"x port 51413 refused"</span>,   <span class="c"># x: new in 1.2.0</span>
+  <span class="str">"listening on 0.0.0.0:8080"</span>,
+]</code></pre>
+        <figcaption>Code blocks: <code>code-bg</code>, <code>text</code> for code, mute for comments, Amber for strings, and nothing else. Keywords stay in text.</figcaption>
+      </figure>
+      <figure class="rendered">
+        <div class="term">
+          <div class="bar" aria-hidden="true"><i></i><i></i><i></i><span>sh</span></div>
+          <pre class="lines"><span class="ln"><span class="p">$</span> ./install.sh</span>
+<span class="ln s">ok   carify 1.1.0 installed</span>
+<span class="ln a">warn no ffmpeg on PATH</span>
+<span class="ln f">fail port 51413 refused</span>
+<span class="ln o">listening on 0.0.0.0:8080</span></pre>
+        </div>
+        <ol class="legend" aria-label="What each line uses">
+          <li><b class="k-p">prompt</b> Ember, Mono 600; the command after it in <code>text</code></li>
+          <li><b class="k-s">success</b> Mint</li>
+          <li><b class="k-a">warning</b> Amber</li>
+          <li><b class="k-f">error</b> Raspberry</li>
+          <li><b class="k-o">other output</b> mute</li>
+        </ol>
+        <figcaption>On a site, keep <code>ok</code>, <code>warn</code> and <code>fail</code> visible. Mint and Raspberry never appear in code, only in output that reports a result.</figcaption>
+      </figure>
+    </div>
   </div>
 </section>
 
-<section id="templates">
-  <div class="wrap two">
-    <div>
-      <p class="label">Templates</p>
-      <h2>Starting a repo</h2>
+<section id="templates" aria-labelledby="templates-h">
+  <div class="wrap start">
+    <div class="start-head">
+      <h2 id="templates-h">Starting a repo</h2>
+      <p class="mute">The README order is fixed: one-liner, install, context, what's in it, tested on, known issues, configuration, license.</p>
     </div>
-    <ol class="steps">
-      <li>Copy <a href="https://github.com/Real-Fruit-Snacks/rfs-brand/blob/main/templates/repo/README.md"><code>templates/repo/README.md</code></a>: one-liner, cover, install, context, what's in it, tested on, known issues, configuration, license.</li>
+    <ol class="steps big">
+      <li>Copy <a href="https://github.com/Real-Fruit-Snacks/rfs-brand/blob/main/templates/repo/README.md"><code>templates/repo/README.md</code></a>, fill it in and delete the HTML comments.</li>
       <li>Work through <a href="https://github.com/Real-Fruit-Snacks/rfs-brand/blob/main/templates/repo/SETTINGS-CHECKLIST.md">the settings checklist</a>: description, topics, social preview, branch, releases.</li>
-      <li>Copy <code>templates/repo/cover.toml</code> to <code>docs/assets/</code>, fill it in and run <code>make-cover.py</code>.</li>
+      <li>Copy <code>templates/repo/cover.toml</code> to the repo's <code>docs/assets/</code>, fill it in and run <code>make-cover.py</code>. Commit the <code>cover-*</code> files and upload <code>social-dark.png</code> as the social preview.</li>
     </ol>
   </div>
 </section>
 
+</main>
+
 <footer>
   <div class="wrap">
-    <span>Tools MIT · Fonts OFL · The mark and name are not licensed for reuse · <a href="https://github.com/Real-Fruit-Snacks/rfs-brand">Source</a> · <a href="https://github.com/Real-Fruit-Snacks/rfs-brand/blob/main/CHANGELOG.md">Changelog</a> · <a href="https://github.com/Real-Fruit-Snacks/rfs-brand/blob/main/SECURITY.md">Security</a></span>
-    <span><a href="https://real-fruit-snacks.github.io/">RFS</a> · Real tools. No filler. · <a href="https://github.com/Real-Fruit-Snacks/rfs-brand/blob/main/BRAND.md">Brand</a></span>
+    <span>Tools MIT · Fonts OFL · The mark and name are not licensed for reuse · <a href="https://github.com/Real-Fruit-Snacks/rfs-brand">Source</a> · <a href="https://github.com/Real-Fruit-Snacks/rfs-brand/blob/main/CHANGELOG.md">Changelog</a></span>
+    <span><a href="https://real-fruit-snacks.github.io/">RFS</a> · Real tools. No filler. · Set in IBM Plex Sans and Plex Mono · <a href="https://github.com/Real-Fruit-Snacks/rfs-brand/blob/main/BRAND.md">Brand</a></span>
   </div>
 </footer>
+<p id="status" class="sr-only" role="status" aria-live="polite"></p>
 
 <script src="assets/site.js"></script>
 </body>

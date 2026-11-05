@@ -2,6 +2,12 @@
 
 Each release publishes `rfs-brand.zip` (everything below except `.github/` and `docs/`), `rfs.css` and `rfs.tokens.json`.
 
+## Unreleased
+
+- The site (docs/) is redesigned around the brand: the rfs-brand cover runs as the first screen, then BRAND.md §1–§9, with both themes' contrast measured on every surface and a demo of each §8 motion. It also links the manifest and app icons, and offers rfs.tokens.json as a download.
+- BRAND.md §5: the PowerShell example is `Update-Cert` (was `Rotate-Cert`, and Rotate is not an approved verb).
+- `templates/repo/cover.toml` documents the `x ` (Raspberry) terminal prefix.
+
 ## 1.2.0 (2026-11-04)
 
 - Dayshift text colours now pass WCAG AA (4.5:1) on `bg`, `surface` and `raised`, as BRAND.md §1 promises. Before, Amber failed on `bg` (4.46:1), and on `raised` all four failed: `mute` `#6B6F78` → `#666A73`, Ember `#C43F11` → `#C03B0A`, Amber `#9A6700` → `#925F00`, Mint `#167A4E` → `#15794D`. The light marks, lockups, banner, social card, header and this repo's cover use the new values. Nightshift is unchanged.

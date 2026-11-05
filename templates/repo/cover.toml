@@ -13,7 +13,9 @@ bullets = [
 ]
 
 # Default panel: a terminal. Lines starting "$ " are commands (Ember prompt),
-# "ok " is Mint, "! " is Amber, anything else is muted output. Max 12 lines,
+# "ok " is Mint, "! " is Amber, "x " is Raspberry (a failure), anything else is
+# muted output. The prefix is not drawn, so the words must say what happened
+# (BRAND.md section 9). Max 12 lines,
 # about 50 characters each. Show a real install and a real run; the raw URL
 # is too long for the panel, so shorten its host to "...".
 [panel]
