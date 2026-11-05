@@ -35,6 +35,7 @@ cover.toml:
     lines = ["$ ./install.sh",                         # "$ " command (Ember prompt)
              "ok carify 1.1.0 installed",             # "ok " Mint
              "! no ffmpeg on PATH",                   # "! " Amber
+             "x port 51413 refused",                  # "x " Raspberry (fault)
              "plain output"]                          # anything else: mute
 
     # or, for a drawing of the tool itself:
@@ -242,6 +243,8 @@ def panel_terminal(cfg, c):
             body, fill, fname, bx = ln[3:], c["mint"], "mono", x
         elif ln.startswith("! "):
             body, fill, fname, bx = ln[2:], c["amber"], "mono", x
+        elif ln.startswith("x "):
+            body, fill, fname, bx = ln[2:], c["fault"], "mono", x
         else:
             body, fill, fname, bx = ln, c["mute"], "mono", x
         if advance(fname, body, size) > maxw - (bx - x):

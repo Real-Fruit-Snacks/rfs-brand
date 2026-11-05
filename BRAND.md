@@ -9,24 +9,31 @@ This is the source of truth. If an asset in `brand/` disagrees with this file, t
 
 ## 1. Color — *Nightshift* / *Dayshift*
 
-Two themes. **Nightshift** (dark) is the default; **Dayshift** (light) is derived from it. The accent color is **Ember**. Same structure, same hues, values shifted until every accent passes WCAG AA (≥ 4.5:1) as text on its background.
+Two themes. **Nightshift** (dark) is the default; **Dayshift** (light) is derived from it. The accent color is **Ember**. Same structure, same hues, values shifted until every text color passes WCAG AA (≥ 4.5:1) on `bg`, `surface` and `raised` in both themes.
 
 | Token | Nightshift | Dayshift | Rule |
 |---|---|---|---|
 | `bg` | `#0C0D10` | `#F6F5F2` | Page. Never pure black or pure white. |
 | `surface` | `#13151A` | `#FFFFFF` | Cards, panels. One step up from bg. |
 | `raised` | `#1A1D24` | `#ECEAE4` | Inputs, chips, nested cards. |
-| `line` | `#262A33` | `#D6D3CB` | All borders. Borders replace shadows (Dayshift may add a 1px hairline shadow on cards). |
+| `line` | `#262A33` | `#D6D3CB` | Dividers and decorative borders. Borders replace shadows (Dayshift may add a 1px hairline shadow on cards). |
+| `line-strong` | `#636872` | `#89867F` | Inputs and any border that identifies a control. ≥ 3:1 against `bg`, `surface` and `raised` (WCAG 1.4.11), which `line` is not. |
 | `text` | `#E8E6E1` | `#1A1B1E` | Body. Never `#FFF` for body copy. |
-| `mute` | `#8A8F99` | `#6B6F78` | Secondary text, captions. |
-| `primary` · Ember | `#FF6A3D` | `#C43F11` | The brand. One per screen. Glow allowed in Nightshift only. |
-| `accent` · Amber | `#FFC247` | `#9A6700` | Warnings, second category, prompts. |
-| `signal` · Mint | `#3DDC97` | `#167A4E` | Success / running. Only ever means "OK". |
+| `mute` | `#8A8F99` | `#666A73` | Secondary text, captions. |
+| `primary` · Ember | `#FF6A3D` | `#C03B0A` | The brand. One per screen. Glow allowed in Nightshift only. |
+| `on-primary` | `#0C0D10` | `#FFFFFF` | Text and icons on Ember fills (buttons). Dark in Nightshift: white on Ember is only 2.9:1. |
+| `accent` · Amber | `#FFC247` | `#925F00` | Warnings, second category, prompts. |
+| `signal` · Mint | `#3DDC97` | `#15794D` | Success / running. Only ever means "OK". |
+| `fault` · Raspberry | `#F06292` | `#B0306A` | Errors and failures. Only ever means "failed". Raspberry, not red, so it can't be mistaken for Ember. |
 | `code-bg` | `#070809` | `#FFFFFF` | Code blocks follow the theme. Nightshift: one step darker than bg. Dayshift: surface white with ink text. |
 
 Machine-readable: `brand/tokens/rfs.css`, `brand/tokens/rfs.tokens.json`.
 
-**Don't:** use Mint decoratively · use Ember for errors (Ember is brand, not danger) · add a third accent · use gradients anywhere.
+**Status always has a word.** Mint, Amber and Raspberry are never the only signal: pair them with `ok`, `warn` or `fail` (or a line that says what happened). To red–green colour-blind readers Dayshift Ember and Amber look the same, and Mint and Raspberry come close; the word carries the meaning (WCAG 1.4.1). Mint and Raspberry are status colors, not accents.
+
+**Focus:** a 2px Ember outline with a 3px offset on every focusable element (≥ 4.9:1 against `bg` in both themes). Never remove it without a replacement that is at least as visible.
+
+**Don't:** use Mint or Raspberry decoratively · use Ember for errors (Ember is brand, not danger; errors are Raspberry) · add a third accent · use gradients anywhere.
 
 ## 2. Type
 
@@ -42,11 +49,15 @@ Machine-readable: `brand/tokens/rfs.css`, `brand/tokens/rfs.tokens.json`.
 | display | 48 / 1.05 | Sans 700 | −0.03em |
 | h1 | 32 / 1.1 | Sans 700 | −0.02em |
 | h2 | 22 / 1.2 | Sans 600 | −0.01em |
-| body | 15 / 1.6 | Sans 400 | 0 |
+| body | 16 / 1.6 | Sans 400 | 0 |
 | small | 13 / 1.5 | Sans 400 · mute | 0 |
 | label | 11 / 1 | Mono 500 · caps | +0.08em |
 | code | 13 / 1.7 | Mono 400 | 0 |
 | wordmark | — | Mono 600 | −0.05em |
+
+Sizes are for the web at 1×; covers and banners keep their own sizes (§7). Keep prose to 60–75 characters per line.
+
+**Space:** a 4px base. Steps `--rfs-space-1` to `--rfs-space-9` are 4, 8, 12, 16, 24, 32, 48, 64 and 96px. Use the steps, not one-off values: 8–12 inside a component, 16–24 between related blocks, 48–96 between sections.
 
 ## 3. Mark — *Caps Tile*
 
@@ -128,6 +139,44 @@ Every tool repo gets one cover. It is the image under the README one-liner, the 
 | Not on it | URLs, version numbers, star counts, screenshots of other people's software |
 
 Outputs: `cover-{dark,light}.svg` (README, via `<picture>`), `cover-{dark,light}.png` (site `og:image`, 1200×560), `social-{dark,light}.png` (upload `social-dark.png` in Settings → Social preview). All text is outlined, so nothing depends on installed fonts.
+
+## 8. Motion
+
+Motion brings the brand's own parts to life; it never decorates. Both themes move the same way, and only Nightshift glows.
+
+| Token | Value | Use |
+|---|---|---|
+| `--rfs-ease` | `cubic-bezier(.2, .7, .2, 1)` | Everything. Fast start, soft landing. |
+| `--rfs-dur-fast` | `150ms` | Hover, press, focus. |
+| `--rfs-dur-base` | `250ms` | State changes: toggles, menus, copy confirmations. |
+| `--rfs-dur-slow` | `600ms` | Entrances and the theme switch. |
+| `--rfs-type-rate` | `45ms` per character | A terminal typing its command. |
+
+The brand's motions (use these; don't invent others):
+
+- The Ember rule draws in, left to right, under a name or the wordmark. Once, on load.
+- A terminal types its command at `--rfs-type-rate`, then prints its output one line at a time, 100–200ms apart. The cursor blinks twice, then stays.
+- In Nightshift, the dot grid warms to Ember around the pointer (fine pointers only). Dayshift has no glow.
+- The theme switch sweeps the new theme in from the control, in a circle, at `--rfs-dur-slow`.
+
+An entrance totals 1.2s at most and never delays reading the headline. Nothing loops except the cursor's two blinks. Every motion sits inside `prefers-reduced-motion: no-preference`; with reduced motion the page is the finished still frame. No parallax, no scroll-jacking.
+
+## 9. Terminal and code
+
+Terminals on covers, sites and docs use one palette, the same one `tools/make-cover.py` draws:
+
+| Line | Color | Example |
+|---|---|---|
+| prompt | Ember, Mono 600 | `$` |
+| command after the prompt | `text` | `./install.sh` |
+| success | Mint | `carify 1.1.0 installed` |
+| warning | Amber | `no ffmpeg on PATH` |
+| error | Raspberry | `port 51413 refused` |
+| other output | `mute` | `listening on 0.0.0.0:8080` |
+
+In `cover.toml`, a line's prefix picks its color: `$ `, `ok `, `! `, `x ` or none. The prefix isn't drawn, so the words themselves must say what happened (§1): "installed", "refused", not just a colored line. On sites, keep `ok` / `warn` / `fail` visible or write the line the same way.
+
+Code blocks use `code-bg`, `text` for code, `mute` for comments and Amber for strings, and nothing else. Keywords stay in `text`. Mint and Raspberry never appear in code, only in output that reports a result.
 
 ---
 
