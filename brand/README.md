@@ -9,9 +9,10 @@ Themes **Nightshift** (dark, default) / **Dayshift** (light) · accent **Ember**
 | Org profile header | `../assets/rfs-banner-{dark,light}.svg` (PNG: `lockup/rfs-banner-*-1600.png`), from `tools/make-org-art.py` |
 | Org social card | `social/rfs-social-org-dark-1280x640.png` (from `tools/make-org-art.py`) |
 | X / Mastodon header | `social/rfs-header-dark-1500x500.png` (from `tools/make-org-art.py`) |
+| Favicons, icons at 48 px or less | `mark/rfs-mark-small-{dark,light}.svg` (PNGs at 16, 32, 48) |
 | Website | copy `web/*` to site root, paste `web/head.html` into `<head>` |
 | CSS variables | `tokens/rfs.css` |
 | Print / stickers / etching | `mark/rfs-mark-mono-{white,ink}.svg` |
 
-Rules: never rotate, outline, recolor, or add a gradient. Clear space = the tile's corner radius. Minimum 16 px.
+Rules: never rotate, outline, recolor, or add a gradient. Clear space = the tile's corner radius. Minimum 16 px; at 48 px or less use the small-size mark.
 All SVG text is outlined — no fonts needed to render. Fonts are only needed to *author* new material (IBM Plex, OFL).

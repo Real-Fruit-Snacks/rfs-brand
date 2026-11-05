@@ -56,6 +56,7 @@ Machine-readable: `brand/tokens/rfs.css`, `brand/tokens/rfs.tokens.json`.
 - Letters: 28 units, tracking −1.5, baseline at 43. Always white.
 - Rule: 36 × 4 units, radius 2, at y = 48. Ember (theme value).
 - Clear space: one corner radius on every side. Minimum size: 16 px.
+- Small sizes (favicons, icon files at 48 px or less): `brand/mark/rfs-mark-small-{dark,light}.svg`. Same tile, colors and rule; the letters are redrawn on the 16 px grid, because the master's blur into a grey bar at 16 px. Letters 16 × 24 units, 4-unit strokes and gaps, at x = 4 / 24 / 44, cap top 16, baseline 40. Rule 40 × 4 units, radius 2, at x = 12, y = 48. Stems and bars sit on multiples of 4, so they land on whole pixels at 16, 32 and 48 px.
 - Lockup: tile + wordmark, gap = 0.3 × tile side, wordmark cap-height ≈ 0.55 × tile side.
 - Single-color: tile becomes a 3-unit outline; letters and rule take the one color. For print, etching, stickers.
 
@@ -98,7 +99,8 @@ README order (fixed): one-liner → install → context → what's in it → tes
 | Need | File |
 |---|---|
 | GitHub org avatar, and any square or circular avatar (Discord, X, Mastodon) | `brand/social/rfs-avatar-dark-1024.png` (also 512, 256, SVG), from `tools/make-avatar.py`: the cover look (dot grid, Ember glow, full-width rule), full bleed, safe for a circle crop |
-| App icons, favicons, small marks | `brand/mark/rfs-mark-dark-*.png` (the Caps Tile) |
+| Favicons and icons at 48 px or less | `brand/mark/rfs-mark-small-dark-{16,32,48}.png` (the small-size Caps Tile, §3) |
+| App icons, larger marks | `brand/mark/rfs-mark-dark-*.png` (the Caps Tile). iOS home screen: `brand/web/apple-touch-icon.png`, full bleed from `rfs-mark-dark-square.svg` (iOS rounds the corners itself and shows transparent pixels as black) |
 | README header | None. The README starts with `# repo-name`; the org mark is on the cover (§7). Never put the lockup above the title. |
 | Org profile header | `assets/rfs-banner-{dark,light}.svg` (1200×400; PNG at `brand/lockup/rfs-banner-*-1600.png`), from `tools/make-org-art.py` and `brand/org.toml`: the cover layout with "RFS" for the name, the tagline for the description, and a terminal listing the tools. Place with `width="100%"` at the top of the README in `Real-Fruit-Snacks/Real-Fruit-Snacks` (the profile page); never box it. |
 | Org social card (links to the org, the site's `og:image`) | `brand/social/rfs-social-org-dark-1280x640.png`, from `tools/make-org-art.py`. This repo's own social preview is its cover, like any repo (`docs/assets/social-dark.png`) |
