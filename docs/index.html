@@ -64,35 +64,34 @@
 
 <main id="main">
 
-<!-- The first screen is this repo's cover (BRAND.md §7), at full size and running. -->
+<!-- The first screen is this repo's cover (BRAND.md §7, layout v2), drawn live in the page's theme:
+     the name, the rule, the README one-liner and the art panel from docs/assets/cover-art.svg. -->
 <div class="cover-hero" data-warm>
   <div class="field" aria-hidden="true"><i class="dots"></i><i class="warm"></i><i class="glow"></i></div>
   <div class="wrap cover-grid">
     <div class="cover-text">
       <h1 class="name"><span>rfs-brand</span></h1>
-      <p class="desc">RFS brand, profile art and repo templates.</p>
-      <ul class="facts">
-        <li>Colours, type and the Caps Tile mark</li>
-        <li>Cover and avatar generators</li>
-        <li>README template and settings checklist</li>
-        <li>Profile banner, social card and X header</li>
-      </ul>
+      <p class="desc">RFS brand, profile art and repo templates</p>
       <div class="cta">
         <a class="btn primary" href="https://github.com/Real-Fruit-Snacks/rfs-brand/releases/latest/download/rfs-brand.zip">Download rfs-brand.zip</a>
         <a class="read" href="https://github.com/Real-Fruit-Snacks/rfs-brand/blob/main/BRAND.md">Read BRAND.md, the source of truth</a>
       </div>
     </div>
-    <div class="term cover-term">
-      <div class="bar" aria-hidden="true"><i></i><i></i><i></i><span>pwsh</span></div>
-      <pre class="lines" id="hero-term" data-type="load"><span class="ln"><span class="p">$</span> <span class="t">python3 tools/make-cover.py docs/assets/cover.toml</span></span>
-<span class="ln o">wrote …/docs/assets/cover-dark.svg</span>
-<span class="ln o">wrote …/docs/assets/cover-light.svg</span>
-<span class="ln o">wrote …/docs/assets/cover-dark.png</span>
-<span class="ln o">wrote …/docs/assets/cover-light.png</span>
-<span class="ln o">wrote …/docs/assets/social-dark.png</span>
-<span class="ln o">wrote …/docs/assets/social-light.png</span>
-<span class="ln end"><span class="cursor"></span></span></pre>
-      <script>if (matchMedia('(prefers-reduced-motion: no-preference)').matches) document.getElementById('hero-term').classList.add('booting');</script>
+    <div class="kit-panel">
+      <div class="kp">
+        <svg class="kp-tile" viewBox="0 0 64 64" role="img" aria-label="The Caps Tile"><rect class="k-tile" width="64" height="64" rx="14"/><path fill="#fff" d="M14.207 43.0H10.539V23.456H17.959Q20.815 23.456 22.327 25.08Q23.839 26.704 23.839 29.503Q23.839 31.66 22.845 33.13Q21.851 34.6 20.003 34.992L24.175 43.0H20.144L16.419 35.412H14.207ZM17.203 32.556Q18.687 32.556 19.331 31.954Q19.976 31.352 19.976 30.036V28.972Q19.976 27.656 19.331 27.054Q18.687 26.451 17.203 26.451H14.207V32.556Z M25.924 43.0V23.456H38.692V26.48H29.592V31.576H37.796V34.6H29.592V43.0Z M47.076 43.336Q44.556 43.336 42.778 42.468Q41.0 41.6 39.879 40.172L42.092 37.876Q43.184 39.136 44.458 39.738Q45.732 40.34 47.188 40.34Q48.867 40.34 49.763 39.584Q50.66 38.828 50.66 37.4Q50.66 36.224 49.988 35.622Q49.316 35.019 47.72 34.768L45.647 34.432Q42.932 33.956 41.784 32.458Q40.635 30.96 40.635 28.916Q40.635 26.116 42.455 24.618Q44.275 23.12 47.495 23.12Q49.792 23.12 51.458 23.848Q53.123 24.576 54.132 25.836L51.976 28.131Q51.192 27.208 50.099 26.662Q49.007 26.116 47.524 26.116Q44.332 26.116 44.332 28.747Q44.332 29.868 45.004 30.456Q45.676 31.044 47.3 31.323L49.344 31.688Q51.891 32.164 53.123 33.564Q54.355 34.964 54.355 37.147Q54.355 38.519 53.879 39.653Q53.403 40.788 52.48 41.614Q51.556 42.44 50.197 42.888Q48.839 43.336 47.076 43.336Z"/><rect class="k-rule" x="14" y="48" width="36" height="4" rx="2"/></svg>
+        <div class="kp-type">
+          <p class="kp-spec"><span class="aa sans" aria-hidden="true">Aa</span><span class="fam">Plex Sans</span></p>
+          <p class="kp-spec"><span class="aa mono" aria-hidden="true">Aa</span><span class="fam">Plex Mono</span></p>
+          <p class="kp-tag">Real tools. No filler.</p>
+        </div>
+        <ul class="kp-jobs" aria-label="The four colours with a job">
+          <li><i style="background: var(--rfs-primary)"></i><b>Ember</b><code><span class="v-n">#FF6A3D</span><span class="v-d">#C03B0A</span></code></li>
+          <li><i style="background: var(--rfs-accent)"></i><b>Amber</b><code><span class="v-n">#FFC247</span><span class="v-d">#925F00</span></code></li>
+          <li><i style="background: var(--rfs-signal)"></i><b>Mint</b><code><span class="v-n">#3DDC97</span><span class="v-d">#15794D</span></code></li>
+          <li><i style="background: var(--rfs-fault)"></i><b>Raspberry</b><code><span class="v-n">#F06292</span><span class="v-d">#B0306A</span></code></li>
+        </ul>
+      </div>
     </div>
   </div>
 </div>

@@ -50,28 +50,50 @@ header.site nav.sections .ext + .ext { margin-left: 0; }
 @media (prefers-reduced-motion: reduce) { .warm { display: none; } }
 
 .cover-hero > .wrap { width: 100%; }
-.cover-grid { display: grid; grid-template-columns: minmax(0, 1.08fr) minmax(0, 1fr); gap: var(--rfs-space-8); align-items: center; }
-.cover-text { min-width: 0; }
-h1.name { font-family: var(--rfs-font-mono); font-weight: 600; font-size: var(--h-name); line-height: 1; letter-spacing: var(--ls-wordmark);
+/* The cover's columns: a 480px text column and a 528px panel, 48px apart (make-cover.py, layout v2). */
+.cover-grid { display: grid; grid-template-columns: minmax(0, 480fr) minmax(0, 528fr); gap: var(--rfs-space-8); align-items: center; }
+.cover-text { min-width: 0; container-type: inline-size; }
+/* As large as the column allows, like the cover: "rfs-brand" is 4.95em wide in Plex Mono at -0.05em. */
+h1.name { font-family: var(--rfs-font-mono); font-weight: 600; font-size: min(var(--h-name), 20cqi); line-height: 1; letter-spacing: var(--ls-wordmark);
   display: inline-block; margin: 0; text-wrap: nowrap; }
 h1.name::after { content: ""; display: block; height: max(5px, .07em); margin: .2em .035em 0 .045em; border-radius: 99px; background: var(--rfs-primary); transform-origin: left; }
 @media (prefers-reduced-motion: no-preference) { h1.name::after { animation: rfs-draw var(--rfs-dur-slow) var(--rfs-ease) 150ms both; } }
-.cover-text .desc { font-size: clamp(22px, 19px + .75vw, 28px); font-weight: 600; letter-spacing: -0.01em; line-height: 1.3; max-width: 19em; margin: var(--rfs-space-6) 0 0; }
-.facts { list-style: none; margin: var(--rfs-space-5) 0 0; padding: 0; color: var(--rfs-mute); }
-.facts li { position: relative; padding-left: var(--rfs-space-5); line-height: 1.5; margin: var(--rfs-space-2) 0; }
-.facts li::before { content: ""; position: absolute; left: 0; top: .62em; width: 6px; height: 6px; border-radius: 1px; background: var(--rfs-primary); }
+/* The README one-liner: Plex Sans 600 30/38, two even lines, no full stop (BRAND.md §7). */
+.cover-text .desc { font-size: clamp(22px, 19px + .75vw, 30px); font-weight: 600; letter-spacing: -0.01em; line-height: 1.27; max-width: 16em; text-wrap: balance; margin: var(--rfs-space-6) 0 0; }
 .cta { display: flex; flex-wrap: wrap; align-items: center; gap: var(--rfs-space-4) var(--rfs-space-5); margin-top: var(--rfs-space-7); }
 .cta .btn.primary { min-height: 48px; padding: 0 var(--rfs-space-5); font-size: 13px; }
 .cta .read { font-size: 15px; }
-.cover-term { min-width: 0; }
-.cover-term pre { min-height: calc(26px * 8 + 2 * var(--rfs-space-5)); }
-.lines.booting .ln { visibility: hidden; animation: rfs-unhide 0s 4s forwards; }   /* if site.js never runs, show everything after 4s */
-@keyframes rfs-unhide { to { visibility: visible; } }
+
+/* The art panel (docs/assets/cover-art.svg), in HTML. --u is one unit of the cover's 528px panel,
+   so the tile, specimens and swatches keep the cover's proportions at any width. */
+.kit-panel { min-width: 0; container-type: inline-size; background: var(--rfs-surface); border: 1px solid var(--rfs-line); border-radius: var(--r-card);
+  box-shadow: var(--card-shadow), var(--glow-shadow); }
+.kp { --u: calc(100cqi / 528); display: grid; grid-template-columns: calc(176 * var(--u)) minmax(0, 1fr); column-gap: calc(34 * var(--u));
+  padding: calc(32 * var(--u)); padding-bottom: calc(36 * var(--u)); }
+.kp-tile { display: block; width: 100%; height: auto; }
+.kp-type { display: grid; grid-template-columns: max-content max-content; column-gap: calc(26 * var(--u)); align-content: center; }
+.kp-spec { display: grid; margin: 0; }
+.kp-spec .aa { font-size: calc(96 * var(--u)); font-weight: 600; line-height: .9; color: var(--rfs-text); }
+.kp-spec .aa.sans { font-family: var(--rfs-font-sans); }
+.kp-spec .aa.mono { font-family: var(--rfs-font-mono); letter-spacing: -0.05em; }
+.kp-spec .fam { font-family: var(--rfs-font-mono); font-size: max(12px, calc(16 * var(--u))); line-height: 1.4; color: var(--rfs-mute); margin-top: calc(12 * var(--u)); }
+.kp-tag { grid-column: 1 / -1; margin: calc(20 * var(--u)) 0 0; font-size: max(14px, calc(22 * var(--u))); font-weight: 600; line-height: 1.25; }
+.kp-jobs { grid-column: 1 / -1; list-style: none; margin: calc(28 * var(--u)) 0 0; padding: calc(27 * var(--u)) 0 0; border-top: 1.5px solid var(--rfs-line);
+  display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: calc(16 * var(--u)); }
+.kp-jobs li { min-width: 0; }
+.kp-jobs i { display: block; aspect-ratio: 104 / 96; border-radius: max(4px, calc(8 * var(--u))); }
+.kp-jobs b { display: block; font-size: max(13px, calc(20 * var(--u))); font-weight: 600; line-height: 1.2; margin-top: calc(22 * var(--u)); white-space: nowrap; }
+.kp-jobs code { display: block; background: none; border: 0; padding: 0; margin-top: calc(6 * var(--u)); font-size: max(12px, calc(14 * var(--u))); color: var(--rfs-mute); }
+/* each swatch's value in the live theme */
+.v-d { display: none; }
+:root[data-theme="dayshift"] .v-n { display: none; } :root[data-theme="dayshift"] .v-d { display: inline; }
+@media (prefers-color-scheme: light) { :root:not([data-theme="nightshift"]) .v-n { display: none; } :root:not([data-theme="nightshift"]) .v-d { display: inline; } }
+
 .term pre.lines { white-space: normal; }
 @media (max-width: 900px) {
   .cover-hero { min-height: 0; padding: var(--rfs-space-7) 0 var(--rfs-space-8); }
   .cover-grid { grid-template-columns: minmax(0, 1fr); gap: var(--rfs-space-7); }
-  .cover-term { max-width: 600px; }
+  .kit-panel { max-width: 600px; }
 }
 @media (max-width: 560px) {
   .cover-hero { padding-top: var(--rfs-space-6); }
@@ -79,7 +101,6 @@ h1.name::after { content: ""; display: block; height: max(5px, .07em); margin: .
   .cta .btn.primary { width: 100%; justify-content: center; }
   .term pre { padding: var(--rfs-space-4); font-size: 13px; line-height: 22px; }
   .term .ln { min-height: 22px; }
-  .cover-term pre { min-height: 0; }
 }
 
 /* ---------- sections: the BRAND.md number hangs in the margin ---------- */
