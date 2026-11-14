@@ -8,10 +8,10 @@ tagline = "Real tools. No filler."
 # words. At most 7 rows; name <= 18 chars, lang <= 4, what <= 24.
 tools = [
   ["screen-mark",        "rust",   "capture and annotate"],
-  ["port-sync",          "pwsh",   "qBittorrent + Proton"],
+  ["port-sync",          "rust",   "qBittorrent + Proton"],
   ["carify",             "sh",     "video for Uconnect"],
   ["certapi",            "c#",     "mTLS via the cert store"],
   ["identity-gen",       "html",   "throwaway identities"],
-  ["amazon-order-sync",  "node",   "orders to Markdown"],
+  ["amazon-order-sync",  "rust",   "orders to Markdown"],
   ["powershell-toolbox", "pwsh",   "standalone scripts"],
 ]
