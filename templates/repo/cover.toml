@@ -49,7 +49,7 @@ tone  = "mint"                 # Mint means it worked: the status line says so
 #    line isn't reworded, pick a shorter one. Show a run, not the install line:
 #    that's in the README and too long for the panel. The command types on load
 #    (45 ms a character) and the whole cover's motion must end by 3.5 s, which
-#    leaves room for a command of about 30 characters. agent-toolkit is the
+#    leaves room for a command of about 30 characters. pwn-broker is the
 #    reference.
 # [panel]
 # kind  = "terminal"           # the default kind
