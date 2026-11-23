@@ -114,6 +114,7 @@ README order (fixed): one-liner → install → context → what's in it → tes
 | CLI | One binary per repo, named after the repo. Subcommands are verbs. | `port-sync check` |
 | Install line | One canonical form per platform, first thing in the README, from the repo's raw URL (until rfs.sh exists). | `irm https://raw.githubusercontent.com/Real-Fruit-Snacks/<repo>/main/install.ps1 \| iex` · `curl -fsSL https://raw.githubusercontent.com/Real-Fruit-Snacks/<repo>/main/install.sh \| sh` |
 | Releases | SemVer, tag `vX.Y.Z`, title = tag. No codenames. | `v1.4.0` |
+| Release exceptions | `pwn-shop`: `<package>-v<upstream>-<build>`, plus `index`. `pwn-playbooks`: `vYYYY.MM.DD`, with `.1`, `.2` for same-day revisions. Title = tag in both. | Documented in each README |
 | Retiring | Replace README with `Superseded by [repo](link).` then archive. Never delete, never rename history. | — |
 | The org | `Real-Fruit-Snacks` in URLs. **RFS** everywhere else. Never "Real Fruit Snacks", never lowercase `rfs`. | — |
 

@@ -378,6 +378,7 @@
         <tr><th scope="row">CLI</th><td>One binary per repo, named after the repo. Subcommands are verbs.</td><td><code>port-sync check</code></td></tr>
         <tr><th scope="row">Install line</th><td>One canonical form per platform, first thing in the README, from the repo's raw URL until rfs.sh exists.</td><td><code>irm https://raw.githubusercontent.com/Real-Fruit-Snacks/&lt;repo&gt;/main/install.ps1 | iex</code></td></tr>
         <tr><th scope="row">Releases</th><td>SemVer, tag <code>vX.Y.Z</code>, title = tag. No codenames.</td><td><code>v1.4.0</code></td></tr>
+        <tr><th scope="row">Release exceptions</th><td><code>pwn-shop</code>: <code>&lt;package&gt;-v&lt;upstream&gt;-&lt;build&gt;</code>, plus <code>index</code>. <code>pwn-playbooks</code>: <code>vYYYY.MM.DD</code>, with <code>.1</code>, <code>.2</code> for same-day revisions. Title = tag in both.</td><td>Documented in each README</td></tr>
         <tr><th scope="row">Retiring</th><td>Replace the README with <code>Superseded by [repo](link).</code> then archive. Never delete, never rename history.</td><td class="mute">—</td></tr>
         <tr><th scope="row">The org</th><td><code>Real-Fruit-Snacks</code> in URLs, <strong>RFS</strong> everywhere else. Never “Real Fruit Snacks”, never lowercase <code>rfs</code>.</td><td class="mute">—</td></tr>
       </tbody>
