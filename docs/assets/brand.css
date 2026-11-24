@@ -55,7 +55,6 @@
   --header-h: 4rem;
   --wash-steel: rgba(31, 84, 122, 0.44);
   --wash-beacon: rgba(240, 110, 43, 0.36);
-  --shadow-card: 0 22px 48px -28px rgba(0, 0, 0, 0.72);
   --mark-beacon-bg: color-mix(in oklab, var(--rfs-beacon) 24%, transparent);
   --mark-steel-bg: color-mix(in oklab, var(--rfs-steel) 32%, transparent);
 }
@@ -66,7 +65,6 @@
 ) {
   --wash-steel: rgba(31, 84, 122, 0.11);
   --wash-beacon: rgba(240, 110, 43, 0.11);
-  --shadow-card: 0 18px 40px -28px rgba(0, 0, 0, 0.18);
   --mark-beacon-bg: color-mix(in oklab, var(--rfs-beacon) 18%, transparent);
   --mark-steel-bg: color-mix(in oklab, var(--rfs-steel) 15%, transparent);
 }
@@ -79,6 +77,7 @@
 
 html {
   height: 100%;
+  overflow: hidden;
   background: var(--rfs-bg);
   color: var(--rfs-text);
   font-family: var(--rfs-font-sans);
@@ -213,7 +212,9 @@ p code, li code, td code, dd code, figcaption code {
   scrollbar-width: none;
 }
 
-.section-nav::-webkit-scrollbar { display: none; }
+@supports not (scrollbar-width: none) {
+  .section-nav::-webkit-scrollbar { display: none; }
+}
 
 .section-nav a {
   flex: none;
@@ -395,7 +396,6 @@ p code, li code, td code, dd code, figcaption code {
   border-radius: 12px;
   border: 1px solid var(--rfs-line-strong);
   background: var(--rfs-surface);
-  box-shadow: var(--shadow-card);
   overflow: hidden;
   display: grid;
 }
@@ -1739,7 +1739,6 @@ h3 {
   color: #f4f5f8;
   overflow: hidden;
   display: grid;
-  box-shadow: var(--shadow-card);
 }
 
 .bp-top-beam {
@@ -1819,8 +1818,7 @@ h3 {
   position: relative;
   padding: 0.85rem 0.95rem 0.65rem;
   background:
-    radial-gradient(62% 72% at 24% 86%, rgba(31, 84, 122, 0.22), transparent 72%),
-    radial-gradient(50% 65% at 72% 92%, rgba(240, 110, 43, 0.14), transparent 70%),
+    linear-gradient(125deg in oklab, rgba(31, 84, 122, 0.24) 0%, rgba(16, 40, 58, 0.12) 48%, rgba(240, 110, 43, 0.16) 100%),
     #050507;
 }
 
@@ -2696,10 +2694,10 @@ h3 {
 }
 
 #motion-tactile {
-  transition: transform 150ms var(--rfs-ease), filter 150ms var(--rfs-ease), box-shadow 150ms var(--rfs-ease);
+  transition: transform 150ms var(--rfs-ease), filter 150ms var(--rfs-ease);
 }
-#motion-tactile.sim-hover { transform: translateY(-3px); filter: brightness(1.1); box-shadow: 0 8px 18px rgba(0, 0, 0, 0.35); }
-#motion-tactile.sim-press { transform: translateY(1px) scale(0.97); filter: brightness(0.94); box-shadow: none; }
+#motion-tactile.sim-hover { transform: translateY(-2px); filter: brightness(1.08); }
+#motion-tactile.sim-press { transform: translateY(1px) scale(0.97); filter: brightness(0.94); }
 #motion-tactile.sim-focus { outline: 2px solid var(--rfs-focus); outline-offset: 3px; }
 
 .toast-stage {
