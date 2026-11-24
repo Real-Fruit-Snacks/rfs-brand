@@ -1,6 +1,17 @@
 # Changelog
 
-Each release publishes `rfs-brand.zip` (everything below except `.github/` and `docs/`), `rfs.css` and `rfs.tokens.json`.
+Each release publishes `rfs-brand.zip` (everything below except `.github/` and `docs/`), `rfs.css`, `rfs-components.css`, `rfs.tokens.json`, `rfs-icons.svg`, and `BRAND-RULES.md`.
+
+## 2.0.0 (2026-11-23)
+
+Complete Cyclorama Dawn — **Steel & Beacon Orange** identity overhaul (`LX 263 Beacon Horizon` matte cyclorama dark default `#050507`, `LX 512 Alabaster Day` light `#F5F7F9`).
+
+- **Typography:** Migrated to self-hosted variable **Big Shoulders Stencil** (`700–900`, display), **Albert Sans** (`400–700`, UI/prose), and **Azeret Mono** (`400–600`, code/CLI/telemetry) across web pages and outlined SVG generators (zero external CDN calls).
+- **Color & Contrast:** Calibrated every text token ≥ 4.84:1 and every control border (`--rfs-line-strong`) ≥ 3.11:1 across all four surfaces in both modes; locked all Steel→Beacon gradients to Cartesian `in oklab` interpolation; added `--rfs-on-fault`, syntax roles (`--rfs-syn-*`), z-index scale, breakpoints, `prefers-reduced-transparency`, `prefers-contrast: more`, `forced-colors`, and `@media print`.
+- **Marks, Org Art & Repo Covers:** Unified all dark marks, favicons, lockups, and avatar onto the matte `#050507` + lower Steel→Beacon wash + white `RFS` + bar tile; added 3 SVG art tiers (Static Standard, Animated One-Shot `rfs-banner-*-animated.svg`, Ambient Showcase `board-{dark,light}.svg` 11-channel DMX Console); updated `make-cover.py` to word-only `REAL-FRUIT-SNACKS` cover signatures, recessed `flow` patch bays, and zero-traffic-light Cyclorama terminals.
+- **Drop-In Component Kit (`brand/tokens/rfs-components.css`):** Shipped reusable buttons (including `.rfs-btn-fault`), `D · Terminal Token` badges & filter chips, wrapped-by-default code blocks (`.rfs-code-scroll` opt-in), `.rfs-shell` below-header scrollbars, branded native `<dialog class="rfs-dialog">` confirmation modals (zero native `alert()`/`confirm()`/`prompt()`), non-blocking `.rfs-toast-region` notifications, viewport-aware `.rfs-popover-panel` action menus, `popover="hint"` `.rfs-tooltip`, `.rfs-tabs`, native `<details>` `.rfs-accordion`, `base-select` `.rfs-select`, `.rfs-switch`, native `<progress>`, UI states, cards, KV lists, and skeletons.
+- **60-Icon Precision Silkscreen Library (`tools/make-icons.py`):** Added 60 monochrome `24×24` (`1.75px` `square`/`miter`) SVGs in `brand/icons/`, symbol sprite `rfs-icons.svg`, manifest `icons.json`, and an interactive searchable browser in `docs/`.
+- **Agent Contract, Native/TUI & CI Linter:** Added `brand/BRAND-RULES.md`, expanded `templates/repo/` (`AGENTS.md`, `SECURITY.md`, GitHub issue/PR templates), documented Windows/Rust/Python TUI presets, and added `tools/verify-brand.py` to enforce sync and brand invariants in CI.
 
 ## 1.4.0 (2026-11-05)
 

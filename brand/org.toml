@@ -1,17 +1,17 @@
-# Org art: the profile banner, the org social preview and the X/Mastodon header.
+# Org art: profile banner, org social preview and social header.
 # Render with:  python3 tools/make-org-art.py
-# List the maintained tools; update it when one is added, renamed or archived.
+# List representative active public tools; update when one is added, renamed or archived.
 
-tagline = "Real tools. No filler."
+tagline = "Built local-first."
 
 # Shown in the terminal panel as `gh repo list` output: name, language, a few
 # words. At most 7 rows; name <= 18 chars, lang <= 4, what <= 24.
 tools = [
-  ["screen-mark",        "rust",   "capture and annotate"],
-  ["port-sync",          "rust",   "qBittorrent + Proton"],
-  ["carify",             "sh",     "video for Uconnect"],
-  ["certapi",            "c#",     "mTLS via the cert store"],
-  ["identity-gen",       "html",   "throwaway identities"],
-  ["amazon-order-sync",  "rust",   "orders to Markdown"],
-  ["powershell-toolbox", "pwsh",   "standalone scripts"],
+  ["screen-mark",        "rust", "capture and annotate"],
+  ["port-sync",          "rust", "qBittorrent + Proton"],
+  ["carify",             "sh",   "video for Uconnect"],
+  ["certapi",            "c#",   "mTLS via the cert store"],
+  ["identity-gen",       "html", "throwaway identities"],
+  ["pwn-broker",         "py",   "HTB boxes in order"],
+  ["open-file",          "ts",   "offline chess trainer"],
 ]

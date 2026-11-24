@@ -1,18 +1,12 @@
-# RFS brand assets
+# `brand/`
 
-Themes **Nightshift** (dark, default) / **Dayshift** (light) · accent **Ember** · type **IBM Plex Sans / Plex Mono** · mark **Caps Tile** · tagline *Real tools. No filler.*
+Derived Cyclorama Dawn (`Steel & Beacon Orange`) brand assets generated from [`../BRAND.md`](../BRAND.md) and [`tokens/rfs.tokens.json`](tokens/rfs.tokens.json).
 
-| Need | Use |
-|---|---|
-| GitHub org avatar, circular avatars (Discord, X, Mastodon) | `social/rfs-avatar-dark-1024.png` (from `tools/make-avatar.py`) |
-| README header | None; the RFS mark is on the repo cover (BRAND.md §7) |
-| Org profile header | `../assets/rfs-banner-{dark,light}.svg` (PNG: `lockup/rfs-banner-*-1600.png`), from `tools/make-org-art.py` |
-| Org social card | `social/rfs-social-org-dark-1280x640.png` (from `tools/make-org-art.py`) |
-| X / Mastodon header | `social/rfs-header-dark-1500x500.png` (from `tools/make-org-art.py`) |
-| Favicons, icons at 48 px or less | `mark/rfs-mark-small-{dark,light}.svg` (PNGs at 16, 32, 48) |
-| Website | copy `web/*` to site root, paste `web/head.html` into `<head>` |
-| CSS variables | `tokens/rfs.css` |
-| Print / stickers / etching | `mark/rfs-mark-mono-{white,ink}.svg` |
-
-Rules: never rotate, outline, recolor, or add a gradient. Clear space = the tile's corner radius. Minimum 16 px; at 48 px or less use the small-size mark.
-All SVG text is outlined — no fonts needed to render. Fonts are only needed to *author* new material (IBM Plex, OFL).
+- `tokens/` — `rfs.css`, `rfs-components.css`, and `rfs.tokens.json` (source tokens & drop-in component stylesheet)
+- `BRAND-RULES.md` — concise 1-page machine-readable brand contract ready to drop into any repo's `AGENTS.md`
+- `mark/` — RFS Cyclorama Monogram Tile in dark, light, square, small, and monochrome variants (SVG + PNG)
+- `icons/` — 60 Cyclorama Precision Silkscreen SVGs (`<name>.svg`), all-in-one symbol sprite (`rfs-icons.svg`), and manifest (`icons.json`)
+- `lockup/` — horizontal and stacked lockups plus 1600px profile banner PNGs
+- `social/` — 1024px profile avatars, 1280x640 org social previews, and 1500x500 social headers
+- `web/` — ready-to-copy favicons, `favicon.ico`, Apple touch icon, PWA maskable icon, `manifest.webmanifest`, and `head.html`
+- `org.toml` — tagline and featured public tool list rendered by `tools/make-org-art.py`

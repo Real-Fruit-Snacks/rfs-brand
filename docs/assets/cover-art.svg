@@ -1,20 +1,89 @@
-<!-- rfs-brand cover panel (layout v2): what the kit is. 528x448, origin = panel top-left.
-     Rendered by tools/make-cover.py; colours are {tokens}. The Caps Tile is the master,
-     brand/mark/rfs-mark-dark.svg, at 176px; the swatches are the four colours with a job
-     (BRAND.md section 1); the specimens are the two type families (section 2). -->
+<!-- rfs-brand cover panel (528x448): Cyclorama Dawn v2.0 Calibration Plate. -->
 <rect width="528" height="448" fill="{surface}"/>
-<g transform="translate(32 32) scale(2.7500)"><rect x="0" y="0" width="64" height="64" rx="14.0" fill="{tile}"/><path d="M14.207 43.0H10.539V23.456H17.959Q20.815 23.456 22.327 25.08Q23.839 26.704 23.839 29.503Q23.839 31.66 22.845 33.13Q21.851 34.6 20.003 34.992L24.175 43.0H20.144L16.419 35.412H14.207ZM17.203 32.556Q18.687 32.556 19.331 31.954Q19.976 31.352 19.976 30.036V28.972Q19.976 27.656 19.331 27.054Q18.687 26.451 17.203 26.451H14.207V32.556Z M25.924 43.0V23.456H38.692V26.48H29.592V31.576H37.796V34.6H29.592V43.0Z M47.076 43.336Q44.556 43.336 42.778 42.468Q41.0 41.6 39.879 40.172L42.092 37.876Q43.184 39.136 44.458 39.738Q45.732 40.34 47.188 40.34Q48.867 40.34 49.763 39.584Q50.66 38.828 50.66 37.4Q50.66 36.224 49.988 35.622Q49.316 35.019 47.72 34.768L45.647 34.432Q42.932 33.956 41.784 32.458Q40.635 30.96 40.635 28.916Q40.635 26.116 42.455 24.618Q44.275 23.12 47.495 23.12Q49.792 23.12 51.458 23.848Q53.123 24.576 54.132 25.836L51.976 28.131Q51.192 27.208 50.099 26.662Q49.007 26.116 47.524 26.116Q44.332 26.116 44.332 28.747Q44.332 29.868 45.004 30.456Q45.676 31.044 47.3 31.323L49.344 31.688Q51.891 32.164 53.123 33.564Q54.355 34.964 54.355 37.147Q54.355 38.519 53.879 39.653Q53.403 40.788 52.48 41.614Q51.556 42.44 50.197 42.888Q48.839 43.336 47.076 43.336Z" fill="{tile-fg}"/><rect x="14.0" y="48.0" width="36.0" height="4.0" rx="2.0" fill="{ember}"/></g>
-<rfs-text font="sans-semibold" size="96" x="242" y="128" fill="{text}">Aa</rfs-text>
-<rfs-text font="mono-semibold" size="96" x="382" y="128" ls="-4.8" fill="{text}">Aa</rfs-text>
-<rfs-text font="mono" size="16" x="244" y="162" fill="{mute}">Plex Sans</rfs-text>
-<rfs-text font="mono" size="16" x="386" y="162" fill="{mute}">Plex Mono</rfs-text>
-<rfs-text font="sans-semibold" size="22" x="244" y="204" fill="{text}">Real tools. No filler.</rfs-text>
-<rect x="32" y="234" width="464" height="1.5" fill="{line}"/>
-<rect x="32" y="262" width="104" height="96" rx="8" fill="{ember}"/>
-<rfs-text font="sans-semibold" size="20" x="32" y="392" fill="{text}">Ember</rfs-text>
-<rect x="152" y="262" width="104" height="96" rx="8" fill="{amber}"/>
-<rfs-text font="sans-semibold" size="20" x="152" y="392" fill="{text}">Amber</rfs-text>
-<rect x="272" y="262" width="104" height="96" rx="8" fill="{mint}"/>
-<rfs-text font="sans-semibold" size="20" x="272" y="392" fill="{text}">Mint</rfs-text>
-<rect x="392" y="262" width="104" height="96" rx="8" fill="{fault}"/>
-<rfs-text font="sans-semibold" size="20" x="392" y="392" fill="{text}">Raspberry</rfs-text>
+<rect width="528" height="3" fill="url(#rfs-rule)"/>
+
+<!-- Header bar -->
+<rect y="3" width="528" height="39" fill="{surface}"/>
+<rect y="42" width="528" height="1" fill="{line}"/>
+<rect x="18" y="11" width="98" height="22" rx="4" fill="{code-bg}" stroke="{line}"/>
+<rfs-text font="mono-semibold" size="11.5" x="26" y="25.8" fill="{steel-ink}">[spec]</rfs-text>
+<rfs-text font="mono-semibold" size="11.5" x="77" y="25.8" fill="{text}">v2.0</rfs-text>
+<rfs-text font="mono" size="10.5" x="510" y="25.5" ls="1.1" anchor="end" fill="{mute}">LX 263 · BEACON HORIZON</rfs-text>
+
+<!-- Blueprint drafting stage -->
+<rect y="43" width="528" height="203" fill="{stage}"/>
+<rect y="43" width="528" height="203" fill="url(#panel-grid)"/>
+<rect y="246" width="528" height="1" fill="{line}"/>
+
+<!-- Left: RFS monogram inside crisp 90-degree optical registration brackets -->
+<g fill="none" stroke-width="1.6">
+  <path d="M16 69 V55 H30" stroke="{steel-ink}"/>
+  <path d="M138 55 H152 V69" stroke="{steel-ink}"/>
+  <path d="M16 177 V191 H30" stroke="{beacon-ink}"/>
+  <path d="M138 191 H152 V177" stroke="{beacon-ink}"/>
+</g>
+<rect x="24" y="63" width="120" height="120" rx="26.25" fill="#050507"/>
+<rect x="24" y="63" width="120" height="120" rx="26.25" fill="url(#cyc-h)" opacity="0.78" mask="url(#rfs-tile-m)"/>
+<rect x="25.1" y="64.1" width="117.8" height="117.8" rx="25.15" fill="none" stroke="rgba(255,255,255,0.22)" stroke-width="2"/>
+<rfs-text font="display" size="58.2" x="83.6" y="137.4" ls="2.9" anchor="middle" fill="#F4F5F8">RFS</rfs-text>
+<rect x="42.4" y="147.8" width="83.2" height="7.1" rx="3.55" fill="url(#rfs-tile-rule)"/>
+<rfs-text font="mono" size="11" x="84" y="216" ls="0.9" anchor="middle" fill="{mute}">64u · rx 14</rfs-text>
+
+<!-- Right top: 3-cell framed typography matrix -->
+<rect x="168" y="57" width="108" height="106" rx="7" fill="{code-bg}" stroke="{line}"/>
+<rfs-text font="display" size="49" x="222" y="119" ls="2.2" anchor="middle" fill="{text}">AA</rfs-text>
+<rfs-text font="mono" size="10.5" x="222" y="147" anchor="middle" fill="{mute}">Stencil 800</rfs-text>
+
+<rect x="284" y="57" width="108" height="106" rx="7" fill="{code-bg}" stroke="{line}"/>
+<rfs-text font="sans-semibold" size="46" x="338" y="119" anchor="middle" fill="{text}">Aa</rfs-text>
+<rfs-text font="mono" size="10.5" x="338" y="147" anchor="middle" fill="{mute}">Albert 600</rfs-text>
+
+<rect x="400" y="57" width="108" height="106" rx="7" fill="{code-bg}" stroke="{line}"/>
+<rfs-text font="mono-semibold" size="42" x="454" y="117" anchor="middle" fill="{text}">01</rfs-text>
+<rfs-text font="mono" size="10.5" x="454" y="147" anchor="middle" fill="{mute}">Azeret 500</rfs-text>
+
+<!-- Right bottom: Tagline + system spec bar -->
+<rect x="168" y="175" width="340" height="52" rx="7" fill="{code-bg}" stroke="{line}"/>
+<rfs-text font="sans-semibold" size="17.5" x="184" y="207" fill="{text}">Built local-first.</rfs-text>
+<rfs-text font="mono-semibold" size="10.5" x="492" y="206" ls="0.8" anchor="end" fill="{steel-ink}">60 ICONS · WCAG AA</rfs-text>
+
+<!-- Roscolux Gel Swatch Cards (4-column calibrated strip) -->
+<!-- Steel -->
+<rect x="20" y="260" width="114" height="118" rx="8" fill="{code-bg}" stroke="{line}"/>
+<rect x="21" y="261" width="112" height="52" rx="7" fill="#1F547A"/>
+<rect x="21" y="305" width="112" height="8" fill="#1F547A"/>
+<rfs-text font="sans-semibold" size="14.5" x="31" y="338" fill="{text}">Steel</rfs-text>
+<rfs-text font="mono-semibold" size="11" x="123" y="338" anchor="end" fill="{steel-ink}">[i]</rfs-text>
+<rfs-text font="mono" size="10.5" x="31" y="360" fill="{mute}">#74B8E8</rfs-text>
+
+<!-- Beacon -->
+<rect x="144.6" y="260" width="114" height="118" rx="8" fill="{code-bg}" stroke="{line}"/>
+<rect x="145.6" y="261" width="112" height="52" rx="7" fill="#F06E2B"/>
+<rect x="145.6" y="305" width="112" height="8" fill="#F06E2B"/>
+<rfs-text font="sans-semibold" size="14.5" x="155.6" y="338" fill="{text}">Beacon</rfs-text>
+<rfs-text font="mono-semibold" size="11.5" x="247.6" y="338" anchor="end" fill="{beacon-ink}">$</rfs-text>
+<rfs-text font="mono" size="10.5" x="155.6" y="360" fill="{mute}">#FF9254</rfs-text>
+
+<!-- Mint -->
+<rect x="269.3" y="260" width="114" height="118" rx="8" fill="{code-bg}" stroke="{line}"/>
+<rect x="270.3" y="261" width="112" height="52" rx="7" fill="#3DDC97"/>
+<rect x="270.3" y="305" width="112" height="8" fill="#3DDC97"/>
+<rfs-text font="sans-semibold" size="14.5" x="280.3" y="338" fill="{text}">Mint</rfs-text>
+<rfs-text font="mono-semibold" size="10.5" x="372.3" y="338" anchor="end" fill="{mint}">[ok]</rfs-text>
+<rfs-text font="mono" size="10.5" x="280.3" y="360" fill="{mute}">#3DDC97</rfs-text>
+
+<!-- Amber -->
+<rect x="394" y="260" width="114" height="118" rx="8" fill="{code-bg}" stroke="{line}"/>
+<rect x="395" y="261" width="112" height="52" rx="7" fill="#FFC247"/>
+<rect x="395" y="305" width="112" height="8" fill="#FFC247"/>
+<rfs-text font="sans-semibold" size="14.5" x="405" y="338" fill="{text}">Amber</rfs-text>
+<rfs-text font="mono-semibold" size="11" x="497" y="338" anchor="end" fill="{amber}">[!]</rfs-text>
+<rfs-text font="mono" size="10.5" x="405" y="360" fill="{mute}">#FFC247</rfs-text>
+
+<!-- Bottom LX 001..512 Spectrum Ruler -->
+<rect x="20" y="396" width="488" height="7" rx="3.5" fill="url(#spec-spectrum)"/>
+<rfs-text font="mono-semibold" size="10.5" x="20" y="426" fill="{mute}">LX 001</rfs-text>
+<rfs-text font="mono-semibold" size="10.5" x="142" y="426" anchor="middle" fill="{mute}">LX 127</rfs-text>
+<rfs-text font="mono-semibold" size="10.5" x="264" y="426" anchor="middle" fill="{beacon-ink}">LX 263</rfs-text>
+<rfs-text font="mono-semibold" size="10.5" x="386" y="426" anchor="middle" fill="{mute}">LX 389</rfs-text>
+<rfs-text font="mono-semibold" size="10.5" x="508" y="426" anchor="end" fill="{mute}">LX 512</rfs-text>

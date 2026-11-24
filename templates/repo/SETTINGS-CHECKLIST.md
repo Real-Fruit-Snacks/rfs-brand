@@ -1,14 +1,13 @@
-# Per-repo settings checklist (Settings → General)
+# Per-repo settings checklist (Settings -> General)
 
-Run through this once per repo; it's what makes sixteen repos look like one org.
+Run through this once per public repository so every active tool matches the Real-Fruit-Snacks brand system.
 
-- [ ] **Description** — identical to the README's first line. ≤ 60 chars, sentence case, no period, no emoji.
-- [ ] **Website** — leave blank unless the repo has docs that aren't the README.
-- [ ] **Topics** (max 6) — at least one language tag and one domain tag:
-      languages: `powershell` · `python` · `go` · `shell`
-      domains:   `self-hosted` · `windows` · `networking` · `certificates` · `automation`
-- [ ] **Cover + social preview** — fill in `docs/assets/cover.toml` (template: `templates/repo/cover.toml`), run `python3 ../rfs-brand/tools/make-cover.py docs/assets/cover.toml`, commit the `cover-*` files, upload `docs/assets/social-dark.png` (1280×640). Re-run whenever the description changes.
-- [ ] **Releases** — tag `vX.Y.Z`, release title = the tag, no codename. Notes: what changed, what broke, nothing else.
-      Exceptions: `pwn-shop` uses `<package>-v<upstream>-<build>` (plus `index`); `pwn-playbooks` uses `vYYYY.MM.DD`, with `.1`, `.2` for same-day revisions. Their release titles still match the tags; see each repo's README.
-- [ ] **Archived repos** — README body replaced with one line: `Superseded by [repo](link).` Then archive. Never delete.
+- [ ] **Description** — identical to README line 1. <= 60 chars, sentence case, no period, no emoji.
+- [ ] **Website** — project page URL if published, otherwise blank.
+- [ ] **Topics** (max 6) — at least one language tag and one domain tag (`rust`, `python`, `powershell`, `csharp`, `typescript`, `local-first`, `windows`, `kali`, `networking`, `cli`).
+- [ ] **Cover + social preview** — fill in `docs/assets/cover.toml`, run `python3 ../rfs-brand/tools/make-cover.py docs/assets/cover.toml`, commit `cover-*`, and upload `docs/assets/social-dark.png` (1280x640).
+- [ ] **Brand contract & templates** — copy `templates/repo/AGENTS.md` (with `BRAND-RULES.md`), `SECURITY.md`, and `.github/` issue/PR templates. For web UIs, load `rfs.css`, `rfs-components.css`, and `rfs-icons.svg`.
+- [ ] **Catalog sync** — add or update the entry in `Real-Fruit-Snacks.github.io/tools.json` and `Real-Fruit-Snacks/art/make-board.py`.
+- [ ] **Releases** — SemVer tag `vX.Y.Z`, release title equals tag, direct binaries/archives when applicable.
+- [ ] **Retiring** — archive on GitHub (read-only) and move the repo into `retired` in `tools.json`.
 - [ ] **Default branch** — `main`.

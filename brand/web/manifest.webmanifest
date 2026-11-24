@@ -1,5 +1,5 @@
 {
-  "name": "RFS",
+  "name": "Real-Fruit-Snacks",
   "short_name": "RFS",
   "icons": [
     {
@@ -19,6 +19,6 @@
       "purpose": "maskable"
     }
   ],
-  "theme_color": "#0c0d10",
-  "background_color": "#0c0d10"
+  "theme_color": "#050507",
+  "background_color": "#050507"
 }

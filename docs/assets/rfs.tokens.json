@@ -1,0 +1,231 @@
+{
+  "meta": {
+    "name": "Real-Fruit-Snacks — Cyclorama Dawn",
+    "short": "RFS",
+    "palette": "Steel & Beacon Orange",
+    "tagline": "Built local-first.",
+    "world": "stagecraft-theater-lighting-cyclorama-dawn",
+    "version": "2.0.0"
+  },
+  "color": {
+    "dark": {
+      "bg": "#050507",
+      "rail": "#070709",
+      "surface": "#0C0C10",
+      "raised": "#14141A",
+      "line": "#27272E",
+      "line-strong": "#62646D",
+      "text": "#F4F5F8",
+      "mute": "#B3B5C0",
+      "steel": "#1F547A",
+      "steel-fill": "#18496B",
+      "steel-ink": "#74B8E8",
+      "beacon": "#F06E2B",
+      "beacon-wash": "#CC5016",
+      "beacon-ink": "#FF9254",
+      "primary": "#F06E2B",
+      "primary-hover": "#FF8442",
+      "primary-press": "#FFA06B",
+      "on-primary": "#050507",
+      "on-steel": "#FFFFFF",
+      "accent": "#FFC247",
+      "signal": "#3DDC97",
+      "fault": "#F06292",
+      "on-fault": "#050507",
+      "code-bg": "#08080B",
+      "focus": "#FF9254"
+    },
+    "light": {
+      "bg": "#F5F7F9",
+      "rail": "#EAEEF2",
+      "surface": "#FFFFFF",
+      "raised": "#E3E8EE",
+      "line": "#CFD5DC",
+      "line-strong": "#6E7682",
+      "text": "#0D1016",
+      "mute": "#474D59",
+      "steel": "#1F547A",
+      "steel-fill": "#18496B",
+      "steel-ink": "#164669",
+      "beacon": "#F06E2B",
+      "beacon-wash": "#CC5016",
+      "beacon-ink": "#AD3D0A",
+      "primary": "#AD3D0A",
+      "primary-hover": "#943207",
+      "primary-press": "#7B2905",
+      "on-primary": "#FFFFFF",
+      "on-steel": "#FFFFFF",
+      "accent": "#885800",
+      "signal": "#127247",
+      "fault": "#B0306A",
+      "on-fault": "#FFFFFF",
+      "code-bg": "#EEF2F5",
+      "focus": "#AD3D0A"
+    },
+    "nightshift": {
+      "bg": "#050507",
+      "rail": "#070709",
+      "surface": "#0C0C10",
+      "raised": "#14141A",
+      "line": "#27272E",
+      "line-strong": "#62646D",
+      "text": "#F4F5F8",
+      "mute": "#B3B5C0",
+      "steel": "#1F547A",
+      "steel-fill": "#18496B",
+      "steel-ink": "#74B8E8",
+      "beacon": "#F06E2B",
+      "beacon-wash": "#CC5016",
+      "beacon-ink": "#FF9254",
+      "primary": "#F06E2B",
+      "primary-hover": "#FF8442",
+      "primary-press": "#FFA06B",
+      "on-primary": "#050507",
+      "on-steel": "#FFFFFF",
+      "accent": "#FFC247",
+      "signal": "#3DDC97",
+      "fault": "#F06292",
+      "on-fault": "#050507",
+      "code-bg": "#08080B",
+      "focus": "#FF9254"
+    },
+    "dayshift": {
+      "bg": "#F5F7F9",
+      "rail": "#EAEEF2",
+      "surface": "#FFFFFF",
+      "raised": "#E3E8EE",
+      "line": "#CFD5DC",
+      "line-strong": "#6E7682",
+      "text": "#0D1016",
+      "mute": "#474D59",
+      "steel": "#1F547A",
+      "steel-fill": "#18496B",
+      "steel-ink": "#164669",
+      "beacon": "#F06E2B",
+      "beacon-wash": "#CC5016",
+      "beacon-ink": "#AD3D0A",
+      "primary": "#AD3D0A",
+      "primary-hover": "#943207",
+      "primary-press": "#7B2905",
+      "on-primary": "#FFFFFF",
+      "on-steel": "#FFFFFF",
+      "accent": "#885800",
+      "signal": "#127247",
+      "fault": "#B0306A",
+      "on-fault": "#FFFFFF",
+      "code-bg": "#EEF2F5",
+      "focus": "#AD3D0A"
+    }
+  },
+  "cyclorama": [
+    { "cue": 0, "lx": "001", "name": "Blackout", "mode": "dark", "stops": ["#06070A", "#090B10", "#131922"] },
+    { "cue": 1, "lx": "127", "name": "Glacial Steel", "mode": "dark", "stops": ["#070A0E", "#133954", "#1F547A"] },
+    { "cue": 2, "lx": "263", "name": "Beacon Horizon", "mode": "dark", "stops": ["#07090D", "#1E5078", "#F06E2B"] },
+    { "cue": 3, "lx": "389", "name": "Maritime Flame", "mode": "dark", "stops": ["#0B0707", "#7A2A0A", "#CC5016"] },
+    { "cue": 4, "lx": "455", "name": "Warm Frost", "mode": "light", "stops": ["#FDF8F5", "#F0E6DE", "#DCE5ED"] },
+    { "cue": 5, "lx": "512", "name": "Alabaster Day", "mode": "light", "stops": ["#F5F7F9", "#F0F4F8", "#FDF5F0"] }
+  ],
+  "font": {
+    "display": "\"Big Shoulders Stencil\", \"Arial Narrow\", sans-serif",
+    "sans": "\"Albert Sans\", system-ui, -apple-system, sans-serif",
+    "mono": "\"Azeret Mono\", ui-monospace, \"Cascadia Code\", Consolas, monospace"
+  },
+  "type": {
+    "display": [72, 0.96, 800, 0.055],
+    "headline": [48, 1.0, 700, 0.055],
+    "title": [26, 1.05, 700, 0.055],
+    "body": [16, 1.55, 400, 0],
+    "small": [14, 1.5, 400, 0],
+    "label": [12.5, 1.2, 600, 0.08],
+    "code": [13.5, 1.6, 400, 0],
+    "wordmark": [null, 0.92, 800, 0.055]
+  },
+  "space": {
+    "1": 4,
+    "2": 8,
+    "3": 12,
+    "4": 16,
+    "5": 24,
+    "6": 32,
+    "7": 48,
+    "8": 64,
+    "9": 96
+  },
+  "radius": {
+    "tile": "0.219em (14/64)",
+    "sm": "6px",
+    "card": "10px",
+    "chip": "6px"
+  },
+  "motion": {
+    "ease": "cubic-bezier(0.16, 1, 0.3, 1)",
+    "ease-in-out": "cubic-bezier(0.65, 0, 0.35, 1)",
+    "ease-exit": "cubic-bezier(0.7, 0, 0.84, 0)",
+    "ease-linear": "linear",
+    "dur-fast": "150ms",
+    "dur-base": "250ms",
+    "dur-slow": "520ms",
+    "type-rate": "45ms"
+  },
+  "code": {
+    "white-space": "pre-wrap",
+    "overflow-wrap": "anywhere",
+    "word-break": "normal",
+    "tab-size": 2,
+    "scroll-opt-in": ".rfs-code-scroll"
+  },
+  "syntax": {
+    "keyword": "steel-ink",
+    "function": "beacon-ink",
+    "string": "accent",
+    "number": "signal",
+    "comment": "mute",
+    "diff-add": "signal",
+    "diff-del": "fault"
+  },
+  "icon": {
+    "count": 60,
+    "grid": 24,
+    "stroke-width": "1.75px",
+    "sizes": [16, 20, 24, 32],
+    "linecap": "square",
+    "linejoin": "miter",
+    "fill": "none",
+    "sprite": "brand/icons/rfs-icons.svg"
+  },
+  "cli": {
+    "ok": { "tag": "[ok]", "ansi16": "green", "dark": "#3DDC97", "light": "#127247" },
+    "warn": { "tag": "[!]", "ansi16": "yellow", "dark": "#FFC247", "light": "#885800" },
+    "fail": { "tag": "[x]", "ansi16": "magenta", "dark": "#F06292", "light": "#B0306A" },
+    "prompt": { "tag": "$", "ansi16": "bright-red", "dark": "#FF9254", "light": "#AD3D0A" },
+    "info": { "tag": "[i]", "ansi16": "cyan", "dark": "#74B8E8", "light": "#164669" },
+    "no-color-env": "NO_COLOR",
+    "exit-codes": { "ok": 0, "runtime-error": 1, "usage-error": 2 }
+  },
+  "z-index": {
+    "base": 0,
+    "sticky": 20,
+    "nav": 40,
+    "popover": 60,
+    "modal": 80,
+    "toast": 100
+  },
+  "breakpoints": {
+    "sm": "36em",
+    "md": "56em",
+    "lg": "72em"
+  },
+  "ux-contracts": {
+    "scrollbar-placement": "below-header-app-shell-only",
+    "native-browser-dialogs": "forbidden (never use alert, confirm, or prompt)",
+    "destructive-confirmation": "required branded native <dialog> with autofocus on Cancel and .rfs-btn-fault confirm"
+  },
+  "theme": {
+    "default": "dark",
+    "names": {
+      "dark": "Beacon Horizon (LX 263)",
+      "light": "Alabaster Day (LX 512)"
+    },
+    "palette": "Steel & Beacon Orange"
+  }
+}
