@@ -22,7 +22,7 @@ ROOT = os.path.dirname(HERE)
 USE_COLOR = sys.stdout.isatty() and not os.environ.get("NO_COLOR") and os.environ.get("TERM") != "dumb"
 C_OK = "\033[38;2;61;220;151m" if USE_COLOR else ""
 C_WARN = "\033[38;2;255;194;71m" if USE_COLOR else ""
-C_FAIL = "\033[38;2;240;98;146m" if USE_COLOR else ""
+C_FAIL = "\033[38;2;255;92;108m" if USE_COLOR else ""
 C_INFO = "\033[38;2;116;184;232m" if USE_COLOR else ""
 C_RST = "\033[0m" if USE_COLOR else ""
 

@@ -5,7 +5,7 @@
     "palette": "Steel & Beacon Orange",
     "tagline": "Built local-first.",
     "world": "stagecraft-theater-lighting-cyclorama-dawn",
-    "version": "2.0.0"
+    "version": "2.1.0"
   },
   "color": {
     "dark": {
@@ -30,8 +30,10 @@
       "on-steel": "#FFFFFF",
       "accent": "#FFC247",
       "signal": "#3DDC97",
-      "fault": "#F06292",
-      "on-fault": "#050507",
+      "fault": "#FF5C6C",
+      "fault-fill": "#C92438",
+      "fault-fill-hover": "#E02E44",
+      "on-fault": "#FFFFFF",
       "code-bg": "#08080B",
       "focus": "#FF9254"
     },
@@ -57,7 +59,9 @@
       "on-steel": "#FFFFFF",
       "accent": "#885800",
       "signal": "#127247",
-      "fault": "#B0306A",
+      "fault": "#B91C2E",
+      "fault-fill": "#B91C2E",
+      "fault-fill-hover": "#991525",
       "on-fault": "#FFFFFF",
       "code-bg": "#EEF2F5",
       "focus": "#AD3D0A"
@@ -84,8 +88,10 @@
       "on-steel": "#FFFFFF",
       "accent": "#FFC247",
       "signal": "#3DDC97",
-      "fault": "#F06292",
-      "on-fault": "#050507",
+      "fault": "#FF5C6C",
+      "fault-fill": "#C92438",
+      "fault-fill-hover": "#E02E44",
+      "on-fault": "#FFFFFF",
       "code-bg": "#08080B",
       "focus": "#FF9254"
     },
@@ -111,7 +117,9 @@
       "on-steel": "#FFFFFF",
       "accent": "#885800",
       "signal": "#127247",
-      "fault": "#B0306A",
+      "fault": "#B91C2E",
+      "fault-fill": "#B91C2E",
+      "fault-fill-hover": "#991525",
       "on-fault": "#FFFFFF",
       "code-bg": "#EEF2F5",
       "focus": "#AD3D0A"
@@ -196,7 +204,7 @@
   "cli": {
     "ok": { "tag": "[ok]", "ansi16": "green", "dark": "#3DDC97", "light": "#127247" },
     "warn": { "tag": "[!]", "ansi16": "yellow", "dark": "#FFC247", "light": "#885800" },
-    "fail": { "tag": "[x]", "ansi16": "magenta", "dark": "#F06292", "light": "#B0306A" },
+    "fail": { "tag": "[x]", "ansi16": "red", "dark": "#FF5C6C", "light": "#B91C2E" },
     "prompt": { "tag": "$", "ansi16": "bright-red", "dark": "#FF9254", "light": "#AD3D0A" },
     "info": { "tag": "[i]", "ansi16": "cyan", "dark": "#74B8E8", "light": "#164669" },
     "no-color-env": "NO_COLOR",

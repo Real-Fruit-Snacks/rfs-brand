@@ -67,9 +67,21 @@
 }
 
 .rfs-btn-fault {
-  background: var(--rfs-fault);
-  border-color: var(--rfs-fault);
+  background: var(--rfs-fault-fill);
+  border-color: var(--rfs-fault-fill);
   color: var(--rfs-on-fault);
+}
+
+.rfs-btn-fault-soft {
+  background: color-mix(in oklab, var(--rfs-fault-fill) 18%, var(--rfs-surface));
+  border-color: color-mix(in oklab, var(--rfs-fault) 52%, var(--rfs-line));
+  color: var(--rfs-fault);
+}
+
+.rfs-btn-fault-outline {
+  background: transparent;
+  border-color: var(--rfs-fault);
+  color: var(--rfs-fault);
 }
 
 .rfs-btn-outline {
@@ -89,7 +101,9 @@
   .rfs-btn-horizon:not(:disabled):hover { filter: brightness(1.07); }
   .rfs-btn-beacon:not(:disabled):hover { background: var(--rfs-primary-hover); border-color: var(--rfs-primary-hover); }
   .rfs-btn-steel:not(:disabled):hover { filter: brightness(1.1); }
-  .rfs-btn-fault:not(:disabled):hover { filter: brightness(1.08); }
+  .rfs-btn-fault:not(:disabled):hover { background: var(--rfs-fault-fill-hover); border-color: var(--rfs-fault-fill-hover); }
+  .rfs-btn-fault-soft:not(:disabled):hover { background: color-mix(in oklab, var(--rfs-fault-fill) 26%, var(--rfs-surface)); border-color: var(--rfs-fault); }
+  .rfs-btn-fault-outline:not(:disabled):hover { background: color-mix(in oklab, var(--rfs-fault-fill) 16%, transparent); }
   .rfs-btn-outline:not(:disabled):hover { border-color: var(--rfs-beacon-ink); }
   .rfs-btn-ghost:not(:disabled):hover { background: var(--rfs-raised); }
 }
@@ -681,7 +695,7 @@ dialog.rfs-dialog.is-destructive .rfs-dialog-bar {
 .rfs-toast.is-fail {
   --toast-accent: var(--rfs-fault);
   --toast-border: color-mix(in oklab, var(--rfs-fault) 54%, var(--rfs-line));
-  --toast-bg: color-mix(in oklab, var(--rfs-fault) 16%, var(--rfs-surface));
+  --toast-bg: color-mix(in oklab, var(--rfs-fault-fill) 18%, var(--rfs-surface));
 }
 
 .rfs-toast.is-info {

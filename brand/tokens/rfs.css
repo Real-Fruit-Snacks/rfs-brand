@@ -32,8 +32,10 @@
   --rfs-on-primary-dark: #050507;
   --rfs-accent-dark: #ffc247;
   --rfs-signal-dark: #3ddc97;
-  --rfs-fault-dark: #f06292;
-  --rfs-on-fault-dark: #050507;
+  --rfs-fault-dark: #ff5c6c;
+  --rfs-fault-fill-dark: #c92438;
+  --rfs-fault-fill-hover-dark: #e02e44;
+  --rfs-on-fault-dark: #ffffff;
   --rfs-code-bg-dark: #08080b;
   --rfs-focus-dark: #ff9254;
 
@@ -54,7 +56,9 @@
   --rfs-on-primary-light: #ffffff;
   --rfs-accent-light: #885800;
   --rfs-signal-light: #127247;
-  --rfs-fault-light: #b0306a;
+  --rfs-fault-light: #b91c2e;
+  --rfs-fault-fill-light: #b91c2e;
+  --rfs-fault-fill-hover-light: #991525;
   --rfs-on-fault-light: #ffffff;
   --rfs-code-bg-light: #eef2f5;
   --rfs-focus-light: #ad3d0a;
@@ -77,6 +81,8 @@
   --rfs-accent: var(--rfs-accent-dark);
   --rfs-signal: var(--rfs-signal-dark);
   --rfs-fault: var(--rfs-fault-dark);
+  --rfs-fault-fill: var(--rfs-fault-fill-dark);
+  --rfs-fault-fill-hover: var(--rfs-fault-fill-hover-dark);
   --rfs-on-fault: var(--rfs-on-fault-dark);
   --rfs-code-bg: var(--rfs-code-bg-dark);
   --rfs-focus: var(--rfs-focus-dark);
@@ -180,6 +186,8 @@
   --rfs-accent: var(--rfs-accent-dark);
   --rfs-signal: var(--rfs-signal-dark);
   --rfs-fault: var(--rfs-fault-dark);
+  --rfs-fault-fill: var(--rfs-fault-fill-dark);
+  --rfs-fault-fill-hover: var(--rfs-fault-fill-hover-dark);
   --rfs-on-fault: var(--rfs-on-fault-dark);
   --rfs-code-bg: var(--rfs-code-bg-dark);
   --rfs-focus: var(--rfs-focus-dark);
@@ -209,6 +217,8 @@
   --rfs-accent: var(--rfs-accent-light);
   --rfs-signal: var(--rfs-signal-light);
   --rfs-fault: var(--rfs-fault-light);
+  --rfs-fault-fill: var(--rfs-fault-fill-light);
+  --rfs-fault-fill-hover: var(--rfs-fault-fill-hover-light);
   --rfs-on-fault: var(--rfs-on-fault-light);
   --rfs-code-bg: var(--rfs-code-bg-light);
   --rfs-focus: var(--rfs-focus-light);
@@ -229,6 +239,8 @@
     --rfs-primary: Highlight;
     --rfs-on-primary: HighlightText;
     --rfs-fault: Highlight;
+    --rfs-fault-fill: Highlight;
+    --rfs-fault-fill-hover: Highlight;
     --rfs-on-fault: HighlightText;
     --rfs-code-bg: Canvas;
     --rfs-focus: Highlight;

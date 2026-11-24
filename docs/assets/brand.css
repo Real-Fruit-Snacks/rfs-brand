@@ -1150,7 +1150,7 @@ h3 {
   --p-beacon: #ff9254;
   --p-accent: #ffc247;
   --p-signal: #3ddc97;
-  --p-fault: #f06292;
+  --p-fault: #ff5c6c;
 }
 
 .pane-light {
@@ -1167,7 +1167,7 @@ h3 {
   --p-beacon: #ad3d0a;
   --p-accent: #885800;
   --p-signal: #127247;
-  --p-fault: #b0306a;
+  --p-fault: #b91c2e;
 }
 
 .pane-dark figcaption,

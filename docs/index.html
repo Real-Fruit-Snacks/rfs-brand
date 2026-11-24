@@ -77,7 +77,7 @@
     <div class="hero-band">
       <div class="wrap hero-grid">
         <div>
-          <p class="eyebrow">Real-Fruit-Snacks · Cyclorama Dawn v2.0</p>
+          <p class="eyebrow">Real-Fruit-Snacks · Cyclorama Dawn v2.1</p>
           <h1 class="hero-title" id="main-heading" tabindex="-1">RFS-BRAND</h1>
           <div class="hero-rule" aria-hidden="true"></div>
           <p class="hero-lede">The complete visual, typographic, editorial, and motion system for Real-Fruit-Snacks: matte cyclorama black and Alabaster Day light mode, Glacial Steel sweeping into Maritime Beacon Orange, every highlight and underline rule, interactive control states, and deterministic generators for every repo.</p>
@@ -91,7 +91,7 @@
         <div class="specimen-card" aria-label="Live brand kit specimen">
           <div class="spec-top-beam" aria-hidden="true"></div>
           <div class="spec-bar">
-            <span class="rfs-badge b-beacon"><span class="k">[spec]</span> v2.0</span>
+            <span class="rfs-badge b-beacon"><span class="k">[spec]</span> v2.1</span>
             <span class="spec-bar-cue">
               <span class="only-dark">LX 263 · BEACON HORIZON</span>
               <span class="only-light">LX 512 · ALABASTER DAY</span>
@@ -268,13 +268,13 @@
           </ul>
 
           <aside class="release-box" aria-labelledby="release-h">
-            <h3 id="release-h">New in v2.0.0 — Cyclorama Dawn</h3>
-            <p class="release-meta">Steel &amp; Beacon Orange · November 2026</p>
+            <h3 id="release-h">New in v2.1.0 — Signal Crimson</h3>
+            <p class="release-meta">Cyclorama Dawn · Steel &amp; Beacon Orange · November 2026</p>
             <ul>
-              <li>Replaced Ember-on-slate with neutral matte cyclorama black (<code>#050507</code>) and Alabaster Day (<code>#F5F7F9</code>) bridged by Glacial Steel and Maritime Beacon Orange.</li>
-              <li>Adopted self-hosted variable <strong>Big Shoulders Stencil</strong>, <strong>Albert Sans</strong>, and <strong>Azeret Mono</strong> across all web pages and outlined SVG generators.</li>
+              <li>Replaced Raspberry fault colors with calibrated <strong>Signal Crimson</strong> (<code>#FF5C6C</code> dark / <code>#B91C2E</code> light ink; <code>#C92438</code> / <code>#B91C2E</code> destructive fills with white text).</li>
+              <li>Added <code>--rfs-fault-fill</code>, <code>--rfs-fault-fill-hover</code>, <code>.rfs-btn-fault-soft</code>, and <code>.rfs-btn-fault-outline</code> button variants to <code>rfs-components.css</code>.</li>
               <li>Calibrated every text token ≥ 4.84:1 and every control border ≥ 3.11:1 across all four surfaces in both modes, plus Cartesian <code>in oklab</code> gradient interpolation.</li>
-              <li>Shipped drop-in <code>rfs-components.css</code>, <code>BRAND-RULES.md</code> agent contract, wrapped-by-default code blocks, <code>NO_COLOR</code> CLI grammar, stroke icons, and UI states.</li>
+              <li>Self-hosted variable <strong>Big Shoulders Stencil</strong>, <strong>Albert Sans</strong>, and <strong>Azeret Mono</strong>, 60 colorable icons, <code>BRAND-RULES.md</code>, and CLI <code>NO_COLOR</code> presets.</li>
             </ul>
             <a class="rfs-link-prose" href="https://github.com/Real-Fruit-Snacks/rfs-brand/blob/main/CHANGELOG.md">Read full CHANGELOG.md</a>
           </aside>
@@ -394,10 +394,16 @@
                 <td>Success status (<code>ok</code>). Never used decoratively; always paired with explicit text.</td>
               </tr>
               <tr>
-                <th scope="row"><code>--rfs-fault</code> (Raspberry)</th>
-                <td><button class="swatch-btn" type="button" data-copy-value="#F06292"><span class="swatch-dot" style="background:#F06292"></span><span class="swatch-val">#F06292</span></button></td>
-                <td><button class="swatch-btn" type="button" data-copy-value="#B0306A"><span class="swatch-dot" style="background:#B0306A"></span><span class="swatch-val">#B0306A</span></button></td>
-                <td>Errors and failures (<code>x</code> / <code>fail</code>). Deliberately distinct from Beacon Orange.</td>
+                <th scope="row"><code>--rfs-fault</code> (Signal Crimson)</th>
+                <td><button class="swatch-btn" type="button" data-copy-value="#FF5C6C"><span class="swatch-dot" style="background:#FF5C6C"></span><span class="swatch-val">#FF5C6C</span></button></td>
+                <td><button class="swatch-btn" type="button" data-copy-value="#B91C2E"><span class="swatch-dot" style="background:#B91C2E"></span><span class="swatch-val">#B91C2E</span></button></td>
+                <td>Error/failure ink (<code>[x]</code> / <code>fail</code>), borders, and diff deletions. Cool-leaning crimson distinct from Beacon Orange.</td>
+              </tr>
+              <tr>
+                <th scope="row"><code>--rfs-fault-fill</code></th>
+                <td><button class="swatch-btn" type="button" data-copy-value="#C92438"><span class="swatch-dot" style="background:#C92438"></span><span class="swatch-val">#C92438</span></button></td>
+                <td><button class="swatch-btn" type="button" data-copy-value="#B91C2E"><span class="swatch-dot" style="background:#B91C2E"></span><span class="swatch-val">#B91C2E</span></button></td>
+                <td>Solid destructive button fill with <code>#FFFFFF</code> text (5.54:1 dark / 6.43:1 light; hover <code>#E02E44</code> / <code>#991525</code>).</td>
               </tr>
             </tbody>
           </table>
@@ -420,11 +426,11 @@
                   <tr class="cx-beacon"><th scope="row">beacon-ink</th><td><b>Aa</b>9.20</td><td><b>Aa</b>8.82</td><td><b>Aa</b>8.29</td><td><b>Aa</b>9.04</td></tr>
                   <tr class="cx-accent"><th scope="row">Amber</th><td><b>Aa</b>12.66</td><td><b>Aa</b>12.14</td><td><b>Aa</b>11.41</td><td><b>Aa</b>12.44</td></tr>
                   <tr class="cx-signal"><th scope="row">Mint</th><td><b>Aa</b>11.52</td><td><b>Aa</b>11.05</td><td><b>Aa</b>10.38</td><td><b>Aa</b>11.32</td></tr>
-                  <tr class="cx-fault"><th scope="row">Raspberry</th><td><b>Aa</b>6.66</td><td><b>Aa</b>6.38</td><td><b>Aa</b>6.00</td><td><b>Aa</b>6.54</td></tr>
+                  <tr class="cx-fault"><th scope="row">Signal Crimson</th><td><b>Aa</b>6.79</td><td><b>Aa</b>6.51</td><td><b>Aa</b>6.11</td><td><b>Aa</b>6.67</td></tr>
                   <tr class="cx-border"><th scope="row">line-strong</th><td><i></i>3.46</td><td><i></i>3.31</td><td><i></i>3.11</td><td><i></i>3.39</td></tr>
                 </tbody>
               </table>
-              <p class="pane-foot">Fills: <code>#050507</code> on solid Beacon <code>#F06E2B</code> = <strong>6.76:1</strong> (hover 8.37, press 10.17). <code>#FFFFFF</code> on Horizon CTA (<code>#18496B → #BD4811</code>) = <strong>9.53 → 5.12:1</strong>.</p>
+              <p class="pane-foot">Fills: <code>#050507</code> on Beacon <code>#F06E2B</code> = <strong>6.76:1</strong>. <code>#FFFFFF</code> on Horizon CTA = <strong>9.53 → 5.12:1</strong>; on Crimson fill <code>#C92438</code> = <strong>5.54:1</strong>.</p>
             </figure>
 
             <figure class="pane-light">
@@ -440,11 +446,11 @@
                   <tr class="cx-beacon"><th scope="row">beacon-ink</th><td><b>Aa</b>5.67</td><td><b>Aa</b>6.09</td><td><b>Aa</b>4.94</td><td><b>Aa</b>5.41</td></tr>
                   <tr class="cx-accent"><th scope="row">Amber</th><td><b>Aa</b>5.68</td><td><b>Aa</b>6.10</td><td><b>Aa</b>4.95</td><td><b>Aa</b>5.42</td></tr>
                   <tr class="cx-signal"><th scope="row">Mint</th><td><b>Aa</b>5.55</td><td><b>Aa</b>5.96</td><td><b>Aa</b>4.84</td><td><b>Aa</b>5.29</td></tr>
-                  <tr class="cx-fault"><th scope="row">Raspberry</th><td><b>Aa</b>5.62</td><td><b>Aa</b>6.04</td><td><b>Aa</b>4.90</td><td><b>Aa</b>5.37</td></tr>
+                  <tr class="cx-fault"><th scope="row">Signal Crimson</th><td><b>Aa</b>5.98</td><td><b>Aa</b>6.43</td><td><b>Aa</b>5.21</td><td><b>Aa</b>5.71</td></tr>
                   <tr class="cx-border"><th scope="row">line-strong</th><td><i></i>4.27</td><td><i></i>4.59</td><td><i></i>3.72</td><td><i></i>4.08</td></tr>
                 </tbody>
               </table>
-              <p class="pane-foot">Fills: <code>#FFFFFF</code> on solid Beacon <code>#AD3D0A</code> = <strong>6.09:1</strong> (hover 7.72, press 9.72). <code>#FFFFFF</code> on Steel fill <code>#18496B</code> = <strong>9.53:1</strong>.</p>
+              <p class="pane-foot">Fills: <code>#FFFFFF</code> on Beacon <code>#AD3D0A</code> = <strong>6.09:1</strong>, Steel <code>#18496B</code> = <strong>9.53:1</strong>, and Crimson <code>#B91C2E</code> = <strong>6.43:1</strong>.</p>
             </figure>
           </div>
         </div>
@@ -655,14 +661,16 @@
               <button class="btn btn-beacon" type="button">Solid Beacon</button>
               <button class="btn btn-steel" type="button">Solid Steel</button>
               <button class="rfs-btn rfs-btn-fault" type="button" command="show-modal" commandfor="rfs-confirm-delete-demo">Delete…</button>
+              <button class="rfs-btn rfs-btn-fault-soft" type="button">Revoke</button>
+              <button class="rfs-btn rfs-btn-fault-outline" type="button">Remove</button>
               <button class="btn btn-outline" type="button">Secondary Outline</button>
               <button class="btn btn-ghost" type="button">Ghost Action</button>
               <button class="btn btn-outline" type="button" disabled>Disabled</button>
             </div>
             <div class="btn-rack" aria-label="Interactive filter chips demo">
-              <button class="rfs-chip" type="button" data-demo-pill aria-pressed="true"><span class="k">[all]</span> 11</button>
+              <button class="rfs-chip" type="button" data-demo-pill aria-pressed="true"><span class="k">[all]</span> 12</button>
               <button class="rfs-chip" type="button" data-demo-pill aria-pressed="false"><span class="k">[rust]</span> 3</button>
-              <button class="rfs-chip" type="button" data-demo-pill aria-pressed="false"><span class="k">[kali]</span> 3</button>
+              <button class="rfs-chip" type="button" data-demo-pill aria-pressed="false"><span class="k">[kali]</span> 4</button>
               <button class="rfs-chip" type="button" data-demo-pill aria-pressed="false"><span class="k">[win]</span> 6</button>
             </div>
             <div class="btn-rack">
@@ -678,7 +686,7 @@
             <div class="field-group">
               <label for="demo-repo-input">Repository slug (lowercase letters &amp; hyphens; try typing spaces or caps)</label>
               <input class="rfs-input" id="demo-repo-input" type="text" pattern="[a-z0-9]+(-[a-z0-9]+)*" value="port-sync" required aria-describedby="demo-repo-hint">
-              <span id="demo-repo-hint" style="font-size:.8rem;color:var(--rfs-mute)">Uses <code>:user-valid</code> (Mint) and <code>:user-invalid</code> (Raspberry) so untouched inputs never shout errors on load.</span>
+              <span id="demo-repo-hint" style="font-size:.8rem;color:var(--rfs-mute)">Uses <code>:user-valid</code> (Mint) and <code>:user-invalid</code> (Signal Crimson) so untouched inputs never shout errors on load.</span>
             </div>
             <div class="field-group">
               <label for="demo-cue-select">Default lighting cue (<code>appearance: base-select</code>)</label>
@@ -1624,7 +1632,7 @@
               <li><b style="color:var(--rfs-beacon-ink)">$ prompt</b> Beacon Ink, Azeret Mono 600; command in <code>--rfs-text</code></li>
               <li><b style="color:var(--rfs-signal)">ok success</b> Mint — always paired with a clear success phrase</li>
               <li><b style="color:var(--rfs-accent)">warn warning</b> Amber — non-fatal caveat or fallback</li>
-              <li><b style="color:var(--rfs-fault)">fail error</b> Raspberry — distinct from Beacon Orange</li>
+              <li><b style="color:var(--rfs-fault)">fail error</b> Signal Crimson — distinct from Beacon Orange</li>
               <li><b style="color:var(--rfs-mute)">output</b> Muted neutral copy</li>
               <li><b style="color:var(--rfs-steel-ink)">wrap</b> Default on every <code>&lt;pre&gt;</code> via <code>rfs.css</code> (opt out with <code>.rfs-code-scroll</code>)</li>
             </ul>
@@ -1908,7 +1916,7 @@
                 <tbody>
                   <tr><th scope="row"><code>[ok]</code></th><td><code>#3DDC97</code> / <code>#127247</code></td><td>Green (32)</td><td><code>[ok]</code></td></tr>
                   <tr><th scope="row"><code>[!]</code></th><td><code>#FFC247</code> / <code>#885800</code></td><td>Yellow (33)</td><td><code>[!]</code></td></tr>
-                  <tr><th scope="row"><code>[x]</code></th><td><code>#F06292</code> / <code>#B0306A</code></td><td>Magenta (35)</td><td><code>[x]</code></td></tr>
+                  <tr><th scope="row"><code>[x]</code></th><td><code>#FF5C6C</code> / <code>#B91C2E</code></td><td>Red (31)</td><td><code>[x]</code></td></tr>
                   <tr><th scope="row"><code>[i]</code></th><td><code>#74B8E8</code> / <code>#164669</code></td><td>Cyan (36)</td><td><code>[i]</code></td></tr>
                   <tr><th scope="row"><code>$</code></th><td><code>#FF9254</code> / <code>#AD3D0A</code></td><td>Bright Red (91)</td><td><code>$</code></td></tr>
                 </tbody>
@@ -2118,7 +2126,7 @@
 <span class="rfs-tok-kw">const</span> INFO:   <span class="rfs-tok-kw">RgbColor</span> = <span class="rfs-tok-fn">RgbColor</span>(<span class="rfs-tok-num">116</span>, <span class="rfs-tok-num">184</span>, <span class="rfs-tok-num">232</span>); <span class="rfs-tok-com">// [i]  #74B8E8</span>
 <span class="rfs-tok-kw">const</span> OK:     <span class="rfs-tok-kw">RgbColor</span> = <span class="rfs-tok-fn">RgbColor</span>(<span class="rfs-tok-num">61</span>,  <span class="rfs-tok-num">220</span>, <span class="rfs-tok-num">151</span>); <span class="rfs-tok-com">// [ok] #3DDC97</span>
 <span class="rfs-tok-kw">const</span> WARN:   <span class="rfs-tok-kw">RgbColor</span> = <span class="rfs-tok-fn">RgbColor</span>(<span class="rfs-tok-num">255</span>, <span class="rfs-tok-num">194</span>, <span class="rfs-tok-num">71</span>);  <span class="rfs-tok-com">// [!]  #FFC247</span>
-<span class="rfs-tok-kw">const</span> FAIL:   <span class="rfs-tok-kw">RgbColor</span> = <span class="rfs-tok-fn">RgbColor</span>(<span class="rfs-tok-num">240</span>, <span class="rfs-tok-num">98</span>,  <span class="rfs-tok-num">146</span>); <span class="rfs-tok-com">// [x]  #F06292</span></code></pre>
+<span class="rfs-tok-kw">const</span> FAIL:   <span class="rfs-tok-kw">RgbColor</span> = <span class="rfs-tok-fn">RgbColor</span>(<span class="rfs-tok-num">255</span>, <span class="rfs-tok-num">92</span>,  <span class="rfs-tok-num">108</span>); <span class="rfs-tok-com">// [x]  #FF5C6C</span></code></pre>
                   </div>
                 </div>
 
@@ -2137,7 +2145,7 @@
 RFS_THEME = <span class="rfs-tok-fn">Theme</span>({
     <span class="rfs-tok-str">"prompt"</span>: <span class="rfs-tok-str">"bold #FF9254"</span>, <span class="rfs-tok-str">"info"</span>: <span class="rfs-tok-str">"bold #74B8E8"</span>,
     <span class="rfs-tok-str">"ok"</span>:     <span class="rfs-tok-str">"bold #3DDC97"</span>, <span class="rfs-tok-str">"warn"</span>: <span class="rfs-tok-str">"bold #FFC247"</span>,
-    <span class="rfs-tok-str">"fail"</span>:   <span class="rfs-tok-str">"bold #F06292"</span>, <span class="rfs-tok-str">"mute"</span>: <span class="rfs-tok-str">"#B3B5C0"</span>,
+    <span class="rfs-tok-str">"fail"</span>:   <span class="rfs-tok-str">"bold #FF5C6C"</span>, <span class="rfs-tok-str">"mute"</span>: <span class="rfs-tok-str">"#B3B5C0"</span>,
 })
 console = <span class="rfs-tok-fn">Console</span>(theme=RFS_THEME) <span class="rfs-tok-com"># honors NO_COLOR automatically</span></code></pre>
                   </div>
@@ -2181,7 +2189,7 @@ console = <span class="rfs-tok-fn">Console</span>(theme=RFS_THEME) <span class="
 
   <footer class="site-footer">
     <div class="wrap footer-inner">
-      <span>Real-Fruit-Snacks · Cyclorama Dawn v2.0 (Steel &amp; Beacon Orange) · Tools MIT · Fonts SIL OFL</span>
+      <span>Real-Fruit-Snacks · Cyclorama Dawn v2.1 (Steel &amp; Beacon Orange) · Tools MIT · Fonts SIL OFL</span>
       <span>
         <a class="rfs-link-prose" href="https://real-fruit-snacks.github.io/">Catalog</a> ·
         <a class="rfs-link-prose" href="https://rfs.tools/">rfs.tools</a> ·

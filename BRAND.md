@@ -31,7 +31,8 @@ Two canonical modes built on a neutral matte cyclorama ground (**Blackout `#0505
 | `on-primary` | `#050507` | `#FFFFFF` | Foreground on solid `primary` fills (≥ 7.5:1 dark / ≥ 6.7:1 light). |
 | `accent` · Amber | `#FFC247` | `#885800` | Terminal warnings (`!`), highlights, secondary tags. |
 | `signal` · Mint | `#3DDC97` | `#127247` | Terminal success (`ok`). Only ever means "succeeded". |
-| `fault` · Raspberry | `#F06292` | `#B0306A` | Terminal errors (`x`). Distinct from Beacon Orange. |
+| `fault` · Signal Crimson | `#FF5C6C` | `#B91C2E` | Error/failure ink (`x`), borders, `[fail]` tags, diff deletions. Distinct from Beacon Orange (`26°` separation). |
+| `fault-fill` | `#C92438` | `#B91C2E` | Destructive button fill (`#FFFFFF` text ≥ 5.54:1 dark / ≥ 6.43:1 light; hover `#E02E44` / `#991525`). |
 | `code-bg` | `#08080B` | `#EEF2F5` | Terminal and code block surface. |
 
 Machine-readable tokens & drop-in kit: [`brand/tokens/rfs.css`](brand/tokens/rfs.css), [`brand/tokens/rfs-components.css`](brand/tokens/rfs-components.css), [`brand/tokens/rfs.tokens.json`](brand/tokens/rfs.tokens.json), and [`brand/BRAND-RULES.md`](brand/BRAND-RULES.md).
@@ -49,7 +50,7 @@ Full web surfaces (`real-fruit-snacks.github.io`) support six lighting cues driv
 
 ### Color Rules
 
-- **Status always carries words.** Mint (`ok`), Amber (`warn`), and Raspberry (`fail`) never stand alone without explicit text (WCAG 1.4.1).
+- **Status always carries words.** Mint (`ok`), Amber (`warn`), and Signal Crimson (`fail`) never stand alone without explicit text (WCAG 1.4.1).
 - **Focus indicator:** 2px solid `focus` (`#FF9254` dark / `#AD3D0A` light) with 3px `outline-offset` on `:focus-visible`.
 - **Horizon wash, never neon glow.** Use clean multi-stop linear washes sweeping Steel (`#18496B` / `#1F547A`) into Beacon Orange (`#CC5016` / `#F06E2B`). Do not add radial neon halos or blue-tinted drop shadows on cards.
 - **Forced Colors Mode:** Always provide `@media (forced-colors: active)` system color fallbacks (`Canvas`, `CanvasText`, `Highlight`, `LinkText`, `GrayText`).
@@ -186,7 +187,7 @@ Every active tool repository generates its README cover (`1200×560`, 12px radiu
 | `$ ` | `beacon-ink` + `text` | `#FF9254` / `#F4F5F8` | `#AD3D0A` / `#0D1016` | Shell prompt and command |
 | `ok ` | `signal` (Mint) | `#3DDC97` | `#127247` | Success (pair with a word stating what succeeded) |
 | `! ` | `accent` (Amber) | `#FFC247` | `#885800` | Warning |
-| `x ` | `fault` (Raspberry) | `#F06292` | `#B0306A` | Failure |
+| `x ` | `fault` (Signal Crimson) | `#FF5C6C` | `#B91C2E` | Failure |
 | *(none)* | `mute` | `#B3B5C0` | `#474D59` | Standard output |
 
 ---
@@ -213,7 +214,7 @@ Every Real-Fruit-Snacks CLI speaks the same plain, scannable console grammar—m
 |---|---|---|---|---|---|
 | `[ok]` | `signal` | `#3DDC97` | `#127247` | Green (`32`) | `[ok]` plain text |
 | `[!]` | `accent` | `#FFC247` | `#885800` | Yellow (`33`) | `[!]` plain text |
-| `[x]` | `fault` | `#F06292` | `#B0306A` | Magenta (`35`) | `[x]` plain text |
+| `[x]` | `fault` | `#FF5C6C` | `#B91C2E` | Red (`31`) | `[x]` plain text |
 | `[i]` | `steel-ink` | `#74B8E8` | `#164669` | Cyan (`36`) | `[i]` plain text |
 | `$` | `beacon-ink` | `#FF9254` | `#AD3D0A` | Bright Red (`91`) | `$` plain text |
 
@@ -227,11 +228,11 @@ Every Real-Fruit-Snacks CLI speaks the same plain, scannable console grammar—m
 - **Component Kit (`brand/tokens/rfs-components.css`):** Load directly after `rfs.css` for standardized `.rfs-btn*` (including `.rfs-btn-fault` for destructive confirmations), `.rfs-badge` (`D · Terminal Token`), `.rfs-shell` / `.rfs-scroll-region`, `.rfs-dialog`, `.rfs-link-*`, `.rfs-mark-*`, `.rfs-kbd`, `.rfs-callout`, `.rfs-input`, `.rfs-progress`, and `.rfs-state-box`.
 - **Scrollbar Placement (App-Shell Rule):** The vertical scrollbar must **never** extend to the top of the screen alongside a top header or navigation bar. Use `.rfs-shell` (`height: 100dvh; overflow: hidden; display: flex; flex-direction: column`) with the header in `.rfs-shell-header` and all scrollable content inside `.rfs-scroll-region` (`flex: 1; min-height: 0; overflow-y: auto`) so the scrollbar begins cleanly at the header's bottom hairline. Style scrollbars with `scrollbar-width: thin` and `scrollbar-color: var(--rfs-sb-thumb) var(--rfs-sb-track)` (≥ 3:1 thumb contrast, high-contrast override under `prefers-contrast: more`, WebKit fallback inside `@supports not (scrollbar-color: auto)`, and `overflow: visible` reset in `@media print`).
 - **Zero Native Browser Modals or Popups:** Never use `window.alert()`, `window.confirm()`, or `window.prompt()` in any RFS web app or tool. All dialogs must be branded Cyclorama Dawn HTML `<dialog class="rfs-dialog">` modals opened via `command="show-modal"` / `showModal()` (with `overscroll-behavior: contain` on both `dialog:modal` and `dialog::backdrop`, `overflow: hidden` on `::backdrop`, and `@starting-style` + `transition-behavior: allow-discrete` transitions).
-- **Destructive Action Confirmation:** Whenever a user triggers a destructive or irreversible action (deleting a file/record/item, clearing local data, resetting config, overwriting exports), prompt them with a branded `<dialog class="rfs-dialog is-destructive">` asking if they are sure—naming the exact item affected, stating whether it can be undone, placing `autofocus` on the safe **Cancel** button, and styling the confirm action with `.rfs-btn-fault` (Raspberry).
+- **Destructive Action Confirmation:** Whenever a user triggers a destructive or irreversible action (deleting a file/record/item, clearing local data, resetting config, overwriting exports), prompt them with a branded `<dialog class="rfs-dialog is-destructive">` asking if they are sure—naming the exact item affected, stating whether it can be undone, placing `autofocus` on the safe **Cancel** button, and styling the confirm action with `.rfs-btn-fault` (Signal Crimson).
 - **Standard UI States:**
   - **Empty (`.rfs-state-box.is-empty`):** Dashed `line-strong` border, `[empty]` Steel Terminal Token, plain explanation of what is missing, and one direct next action.
   - **Loading (`.rfs-progress`):** Real semantic `<progress>` paired with `<label>`. Styled with Steel→Beacon fill (`--rfs-horizon-rule`), separate `::-webkit-progress-value` and `::-moz-progress-bar` rules, and a `10s` reduced-motion cadence on `:indeterminate` (never `animation: none`, which collapses fill width in Chromium).
-  - **Error (`.rfs-state-box.is-error`):** Subtle Raspberry border mix, `[x]` Fault Terminal Token, plain failure cause, and an immediate recovery action.
+  - **Error (`.rfs-state-box.is-error`):** Subtle Signal Crimson border mix, `[x]` Fault Terminal Token, plain failure cause, and an immediate recovery action.
 - **Z-Index Layer Scale:** `--rfs-z-base: 0`, `--rfs-z-sticky: 20`, `--rfs-z-nav: 40`, `--rfs-z-popover: 60`, `--rfs-z-modal: 80`, `--rfs-z-toast: 100`. Never invent arbitrary values like `9999`.
 - **Breakpoints:** `--rfs-bp-sm: 36em` (`576px`), `--rfs-bp-md: 56em` (`896px`), `--rfs-bp-lg: 72em` (`1152px`).
 - **Reduced Transparency & Print:** `rfs.css` automatically disables glass `backdrop-filter` under `@media (prefers-reduced-transparency: reduce)` (falling back to solid `--rfs-rail`) and forces clean `#FFFFFF` paper ground, `#0D1016` ink, and `break-inside: avoid` blocks under `@media print`.
@@ -248,18 +249,18 @@ Non-web tools (Rust desktop utilities, C# Windows apps, PowerShell & Python/Kali
   - Enable dark titlebars via `DWMWA_USE_IMMERSIVE_DARK_MODE` (`20`) and set `DWMWA_CAPTION_COLOR` (`35`) to `0x00070505` (BGR for `#050507`) in dark mode or `0x00F2EEEA` (`#EAEEF2`) in light mode.
   - Package multi-size `.ico` executables (`16`, `32`, `48`, `256px`) directly from `brand/mark/rfs-mark-dark.png` / `brand/web/favicon.ico` (never rasterize blurry stretched icons).
 - **Rust Terminal Palette (`anstyle` / Truecolor ANSI):**
-  - Prompt `$`: `RgbColor(255, 146, 84)` (`#FF9254`) · Info `[i]`: `RgbColor(116, 184, 232)` (`#74B8E8`) · OK `[ok]`: `RgbColor(61, 220, 151)` (`#3DDC97`) · Warn `[!]`: `RgbColor(255, 194, 71)` (`#FFC247`) · Fail `[x]`: `RgbColor(240, 98, 146)` (`#F06292`) · Mute: `RgbColor(179, 181, 192)` (`#B3B5C0`). Strip ANSI whenever `NO_COLOR` is set or `!stdout.is_terminal()`.
+  - Prompt `$`: `RgbColor(255, 146, 84)` (`#FF9254`) · Info `[i]`: `RgbColor(116, 184, 232)` (`#74B8E8`) · OK `[ok]`: `RgbColor(61, 220, 151)` (`#3DDC97`) · Warn `[!]`: `RgbColor(255, 194, 71)` (`#FFC247`) · Fail `[x]`: `RgbColor(255, 92, 108)` (`#FF5C6C`) · Mute: `RgbColor(179, 181, 192)` (`#B3B5C0`). Strip ANSI whenever `NO_COLOR` is set or `!stdout.is_terminal()`.
 - **Python TUI (`rich.theme.Theme`):**
   ```python
   from rich.theme import Theme
   RFS_THEME = Theme({
       "prompt": "bold #FF9254", "info": "bold #74B8E8",
       "ok": "bold #3DDC97", "warn": "bold #FFC247",
-      "fail": "bold #F06292", "mute": "#B3B5C0",
+      "fail": "bold #FF5C6C", "mute": "#B3B5C0",
   })
   ```
-- **Automated Brand Verification (`tools/verify-brand.py`):** Run before every release (and in `.github/workflows/release.yml`) to check JSON validity, byte-sync across `brand/` and `docs/assets/`, zero `in oklch` gradients, zero `window.alert/confirm/prompt`, `CHANGELOG.md` version coverage, and 11-tool parity across `tools.json`, `make-board.py`, and `org.toml`.
+- **Automated Brand Verification (`tools/verify-brand.py`):** Run before every release (and in `.github/workflows/release.yml`) to check JSON validity, byte-sync across `brand/` and `docs/assets/`, zero `in oklch` gradients, zero `window.alert/confirm/prompt`, `CHANGELOG.md` version coverage, and active-tool parity across `tools.json`, `make-board.py`, and `_repo-covers`.
 
 ---
 
-*Cyclorama Dawn — Steel & Beacon Orange (`v2.0`). Edit this guide and `brand/tokens/rfs.tokens.json` first; regenerate derived assets second.*
+*Cyclorama Dawn — Steel & Beacon Orange (`v2.1`). Edit this guide and `brand/tokens/rfs.tokens.json` first; regenerate derived assets second.*

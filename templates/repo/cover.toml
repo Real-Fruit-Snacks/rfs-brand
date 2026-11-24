@@ -7,7 +7,7 @@
 name        = "repo-name"
 description = "What it does, for whom"   # README line 1, no trailing period
 
-# Terminal/status prefixes: "$ " Beacon prompt, "ok " Mint, "! " Amber, "x " Raspberry.
+# Terminal/status prefixes: "$ " Beacon prompt, "ok " Mint, "! " Amber, "x " Signal Crimson.
 # 1. flow: input -> tool -> output
 [panel]
 kind   = "flow"

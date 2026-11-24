@@ -2,6 +2,16 @@
 
 Each release publishes `rfs-brand.zip` (everything below except `.github/` and `docs/`), `rfs.css`, `rfs-components.css`, `rfs.tokens.json`, `rfs-icons.svg`, and `BRAND-RULES.md`.
 
+## 2.1.0 (2026-11-24)
+
+Replaced the Raspberry fault/error palette (`#F06292` / `#B0306A`) with **Signal Crimson** across tokens, components, CLI presets, and docs—introducing a dedicated destructive button fill role mirroring `--rfs-steel-fill`.
+
+- **Signal Crimson Fault Tokens (`rfs.css`, `rfs.tokens.json`):**
+  - Dark (`LX 263`): `--rfs-fault` `#FF5C6C` (≥ 6.11:1 across all four dark surfaces), `--rfs-fault-fill` `#C92438` (5.54:1 with `#FFFFFF`), `--rfs-fault-fill-hover` `#E02E44` (4.52:1), `--rfs-on-fault` `#FFFFFF`.
+  - Light (`LX 512`): `--rfs-fault` / `--rfs-fault-fill` `#B91C2E` (≥ 5.21:1 text, 6.43:1 with `#FFFFFF`), `--rfs-fault-fill-hover` `#991525` (8.44:1), `--rfs-on-fault` `#FFFFFF`.
+- **Destructive Button Variants (`rfs-components.css`):** Updated `.rfs-btn-fault` to use `--rfs-fault-fill` / `--rfs-fault-fill-hover` with white text, added `.rfs-btn-fault-soft` and `.rfs-btn-fault-outline`, and updated `.rfs-toast.is-fail` tinting.
+- **CLI & TUI Standards:** Updated `[x]` fail truecolor to `#FF5C6C` / `#B91C2E` (`RgbColor(255, 92, 108)`) and ANSI-16 fallback to Red (`31`).
+
 ## 2.0.0 (2026-11-23)
 
 Complete Cyclorama Dawn — **Steel & Beacon Orange** identity overhaul (`LX 263 Beacon Horizon` matte cyclorama dark default `#050507`, `LX 512 Alabaster Day` light `#F5F7F9`).
