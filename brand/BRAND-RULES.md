@@ -48,3 +48,7 @@ Source of truth: `rfs-brand/BRAND.md` · Tokens: `rfs.css` + `rfs-components.css
 - **Z-index scale:** `base: 0`, `sticky: 20`, `nav: 40`, `popover: 60`, `modal: 80`, `toast: 100`.
 - **Breakpoints:** `sm: 36em` (576px), `md: 56em` (896px), `lg: 72em` (1152px).
 - **Media contracts:** Keep UI animations enabled by default; honor `prefers-reduced-transparency: reduce` (disable blur/glass), `forced-colors: active` (system color tokens), and `@media print` (clean `#FFFFFF` ground, `#0D1016` ink, wrapped code).
+
+## 7. README & Documentation
+- **Ultra-minimal `README.md` (40–60 lines):** Keep every repo README scannable as a landing page: `# repo-name`, `≤ 60`-char one-liner (no period), adaptive `<picture>` cover (`docs/assets/cover-{dark,light}.svg`), shortest install/run snippet, 3–5 concise bullets, `## Documentation` links, and `## License`.
+- **Overflow lives in `docs/*.md` (never GitHub Wiki):** Put full CLI flag tables, configuration references, architecture notes, tested matrices, known issues, troubleshooting, and dev/build instructions in versioned Markdown under `docs/` (`docs/USAGE.md`, `docs/CONFIGURATION.md`, `docs/DEVELOPMENT.md`, etc.). Coexists cleanly with GitHub Pages (`docs/.nojekyll`, `docs/index.html`, `docs/assets/`). Disable the GitHub Wiki tab in repo settings.

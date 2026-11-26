@@ -121,6 +121,7 @@ Voice: **Plain**, **Specific**, **Dry**, **Honest**. No emoji, no hype words ("b
 | CLI | One binary per repo, named after the repo | `port-sync` |
 | Releases | SemVer `vX.Y.Z`, release title equals tag, no codenames | `v1.4.0` |
 | Retiring | Archive on GitHub, mark read-only, move into `retired` in `tools.json` | `forge-framework` |
+| Deep docs | Versioned Markdown in `docs/*.md` (keep `README.md` 40–60 lines) | `docs/USAGE.md` |
 | Account / Org | `Real-Fruit-Snacks` in URLs; **RFS** in marks and compact badges | `Real-Fruit-Snacks` |
 
 ---
@@ -260,6 +261,23 @@ Non-web tools (Rust desktop utilities, C# Windows apps, PowerShell & Python/Kali
   })
   ```
 - **Automated Brand Verification (`tools/verify-brand.py`):** Run before every release (and in `.github/workflows/release.yml`) to check JSON validity, byte-sync across `brand/` and `docs/assets/`, zero `in oklch` gradients, zero `window.alert/confirm/prompt`, `CHANGELOG.md` version coverage, and active-tool parity across `tools.json`, `make-board.py`, and `_repo-covers`.
+
+---
+
+## 14. README & Documentation Standard
+
+Every public repository keeps its `README.md` ultra-minimal (**40–60 lines target**) and moves deeper reference material into versioned in-repo Markdown files under `docs/`.
+
+- **What stays in `README.md` (fixed order, 40–60 lines):**
+  1. Title (`# repo-name`) and one-line summary (`≤ 60` chars, sentence case, no period, matching the GitHub repo description).
+  2. Adaptive cover (`<picture>` referencing `docs/assets/cover-dark.svg` and `docs/assets/cover-light.svg`).
+  3. Shortest real install or run snippet (one concise fenced block).
+  4. **3–5 concise bullets** describing what the tool does, what goes in, and what comes out locally.
+  5. `## Documentation` with direct relative links to `docs/*.md` (and the live project page if published).
+  6. `## License` (short license line).
+- **What moves to `docs/*.md`:** Complete CLI flag tables, configuration schemas, architecture notes, examples, tested-platform matrices, known limitations, troubleshooting, and development/build-from-source guides. Prefer clean uppercase filenames such as `docs/USAGE.md`, `docs/CONFIGURATION.md`, `docs/ARCHITECTURE.md`, `docs/TROUBLESHOOTING.md`, and `docs/DEVELOPMENT.md`.
+- **Coexistence with GitHub Pages:** Repositories that publish GitHub Pages from `docs/` keep `docs/.nojekyll`, `docs/index.html`, and `docs/assets/` alongside `docs/*.md`. GitHub renders Markdown natively in the repository view while `.nojekyll` leaves `.md` files untouched on Pages.
+- **No GitHub Wiki:** Disable the separate GitHub Wiki tab in repository settings (`Settings -> General -> Features -> Wikis`). Keeping all documentation inside `docs/` keeps it local-first in `git clone`, versioned with release tags, reviewable in pull requests, and verifiable by CI link checks.
 
 ---
 

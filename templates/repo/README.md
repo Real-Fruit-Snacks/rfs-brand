@@ -1,7 +1,9 @@
 <!--
-  RFS REPO README — TEMPLATE
+  RFS REPO README — ULTRA-MINIMAL TEMPLATE (40–60 lines target, BRAND.md §14)
   Section order is fixed. Delete empty sections; never reorder or rename.
   Voice: Plain · Specific · Dry · Honest. No emoji, no hype words, no exclamation marks.
+  Move detailed CLI references, config schemas, examples, tested matrices, known issues,
+  troubleshooting, and build guides into versioned Markdown under docs/ (e.g. docs/USAGE.md).
   Delete all HTML comments before committing.
   No RFS lockup above the title: the org mark lives on the cover (BRAND.md §7).
 -->
@@ -29,28 +31,18 @@ git clone https://github.com/Real-Fruit-Snacks/repo-name.git
 ```
 
 <!--
-  Two or three sentences: what problem it solves locally, what goes in, what comes out.
+  3–5 short, specific bullets: what goes in, what comes out locally, key platform notes.
 -->
-Why this tool exists, what goes in, and what comes out on your machine.
+- **Local-first:** Runs directly on your machine with zero accounts or telemetry.
+- **Input -> Output:** Plainly state what goes in and what comes out.
+- **Platforms:** State tested OS/runtime versions plainly.
 
-## What's in it
+## Documentation
 
-| Command / File | Does |
-|---|---|
-| `repo-name run` | One line, present tense, no period |
-
-## Tested on
-
-- OS version · runtime version
-- *Not* tested: platform — no blanket promises
-
-## Known issues
-
-- First platform constraint or limitation plainly stated (#1)
-
-## Configuration
-
-<!-- Include only if configuration exists. Prefer sensible local defaults. -->
+<!-- Link only the docs/*.md files this repo actually ships (and live site if published). -->
+- [Usage & CLI reference](docs/USAGE.md)
+- [Configuration](docs/CONFIGURATION.md)
+- [Development & testing](docs/DEVELOPMENT.md)
 
 ## License
 
