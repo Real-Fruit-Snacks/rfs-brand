@@ -1213,10 +1213,12 @@
         <div class="art-grid">
           <figure class="art-card">
             <div class="avatar-pair">
-              <img src="assets/rfs-avatar-dark-512.png" alt="RFS square profile avatar" width="256" height="256" loading="lazy">
-              <img class="avatar-circle" src="assets/rfs-avatar-dark-512.png" alt="RFS profile avatar circular crop preview" width="256" height="256" loading="lazy">
+              <img class="only-dark" src="assets/rfs-avatar-dark-512.png" alt="RFS dark square profile avatar" width="256" height="256" loading="lazy">
+              <img class="only-light" src="assets/rfs-avatar-light-512.png" alt="RFS light square profile avatar" width="256" height="256" loading="lazy">
+              <img class="avatar-circle only-dark" src="assets/rfs-avatar-dark-512.png" alt="RFS dark profile avatar circular crop preview" width="256" height="256" loading="lazy">
+              <img class="avatar-circle only-light" src="assets/rfs-avatar-light-512.png" alt="RFS light profile avatar circular crop preview" width="256" height="256" loading="lazy">
             </div>
-            <figcaption><span class="rfs-badge b-steel card-std-tag"><span class="k">[static]</span></span> <strong>Profile Avatar (1024px):</strong> full-bleed square, safe inside circular crops. <code>brand/social/rfs-avatar-dark-1024.png</code></figcaption>
+            <figcaption><span class="rfs-badge b-steel card-std-tag"><span class="k">[static]</span></span> <strong>Profile Avatar (1024px):</strong> full-bleed square, safe inside circular crops. <code>brand/social/rfs-avatar-{dark,light}-*.png</code></figcaption>
           </figure>
 
           <figure class="art-card">
@@ -1856,15 +1858,25 @@
                 <text x="392" y="76" fill="var(--rfs-text)" font-family="Albert Sans, sans-serif" font-size="14" font-weight="600">Verified Artifact</text>
               </svg>
             </figure>
-            <div class="rfs-code-card">
+            <div class="rfs-code-card only-dark">
               <div class="rfs-code-head">
-                <span class="rfs-badge b-steel"><span class="k">[mermaid]</span></span>
+                <span class="rfs-badge b-steel"><span class="k">[mermaid · dark]</span></span>
                 <span class="copy-wrap">
-                  <button class="copy-btn" type="button" command="--copy" commandfor="cmd-mermaid" aria-label="Copy Cyclorama Dawn Mermaid theme header">Copy</button>
+                  <button class="copy-btn" type="button" command="--copy" commandfor="cmd-mermaid" aria-label="Copy Cyclorama Dawn Dark Mermaid theme header">Copy</button>
                   <span class="copy-tip" role="status"></span>
                 </span>
               </div>
               <pre class="rfs-code-block"><code id="cmd-mermaid"><span class="rfs-tok-fn">%%{init:</span> {<span class="rfs-tok-kw">'theme'</span>:<span class="rfs-tok-str">'base'</span>,<span class="rfs-tok-kw">'themeVariables'</span>:{<span class="rfs-tok-kw">'background'</span>:<span class="rfs-tok-str">'#050507'</span>,<span class="rfs-tok-kw">'primaryColor'</span>:<span class="rfs-tok-str">'#0C0C10'</span>,<span class="rfs-tok-kw">'primaryTextColor'</span>:<span class="rfs-tok-str">'#F4F5F8'</span>,<span class="rfs-tok-kw">'primaryBorderColor'</span>:<span class="rfs-tok-str">'#74B8E8'</span>,<span class="rfs-tok-kw">'lineColor'</span>:<span class="rfs-tok-str">'#F06E2B'</span>,<span class="rfs-tok-kw">'secondaryColor'</span>:<span class="rfs-tok-str">'#14141A'</span>,<span class="rfs-tok-kw">'tertiaryColor'</span>:<span class="rfs-tok-str">'#08080B'</span>,<span class="rfs-tok-kw">'fontFamily'</span>:<span class="rfs-tok-str">'Albert Sans'</span>}}<span class="rfs-tok-fn">}%%</span></code></pre>
+            </div>
+            <div class="rfs-code-card only-light">
+              <div class="rfs-code-head">
+                <span class="rfs-badge b-steel"><span class="k">[mermaid · light]</span></span>
+                <span class="copy-wrap">
+                  <button class="copy-btn" type="button" command="--copy" commandfor="cmd-mermaid-light" aria-label="Copy Cyclorama Dawn Light Mermaid theme header">Copy</button>
+                  <span class="copy-tip" role="status"></span>
+                </span>
+              </div>
+              <pre class="rfs-code-block"><code id="cmd-mermaid-light"><span class="rfs-tok-fn">%%{init:</span> {<span class="rfs-tok-kw">'theme'</span>:<span class="rfs-tok-str">'base'</span>,<span class="rfs-tok-kw">'themeVariables'</span>:{<span class="rfs-tok-kw">'background'</span>:<span class="rfs-tok-str">'#F5F7F9'</span>,<span class="rfs-tok-kw">'primaryColor'</span>:<span class="rfs-tok-str">'#FFFFFF'</span>,<span class="rfs-tok-kw">'primaryTextColor'</span>:<span class="rfs-tok-str">'#0D1016'</span>,<span class="rfs-tok-kw">'primaryBorderColor'</span>:<span class="rfs-tok-str">'#164669'</span>,<span class="rfs-tok-kw">'lineColor'</span>:<span class="rfs-tok-str">'#AD3D0A'</span>,<span class="rfs-tok-kw">'secondaryColor'</span>:<span class="rfs-tok-str">'#EAEEF2'</span>,<span class="rfs-tok-kw">'tertiaryColor'</span>:<span class="rfs-tok-str">'#EEF2F5'</span>,<span class="rfs-tok-kw">'fontFamily'</span>:<span class="rfs-tok-str">'Albert Sans'</span>}}<span class="rfs-tok-fn">}%%</span></code></pre>
             </div>
           </div>
         </div>
@@ -2205,7 +2217,7 @@ console = <span class="rfs-tok-fn">Console</span>(theme=RFS_THEME) <span class="
 <span class="rfs-tok-kw">- Chrome &amp; Scrollbars:</span> Zero fake macOS traffic lights; word-only cover signatures; scrollbars stay strictly below top headers (<span class="rfs-tok-num">.rfs-shell</span> + <span class="rfs-tok-num">.rfs-scroll-region</span>).
 <span class="rfs-tok-kw">- Modals &amp; Toasts:</span> NEVER use native <span class="rfs-tok-del">alert()/confirm()/prompt()</span>. Prompt destructive actions with <span class="rfs-tok-num">&lt;dialog class="rfs-dialog is-destructive"&gt;</span> (<span class="rfs-tok-num">autofocus</span> on Cancel, <span class="rfs-tok-num">.rfs-btn-fault</span> confirm). Tint toasts by semantic status (<span class="rfs-tok-num">is-ok/warn/fail/info</span>).
 <span class="rfs-tok-kw">- Drop-in CSS &amp; CLI:</span> Load <span class="rfs-tok-str">rfs.css</span> then <span class="rfs-tok-str">rfs-components.css</span>. CLI respects <span class="rfs-tok-num">NO_COLOR</span> + exit codes <span class="rfs-tok-num">0/1/2</span>.
-<span class="rfs-tok-kw">- README &amp; Docs (§14):</span> Keep <span class="rfs-tok-str">README.md</span> ultra-minimal (<span class="rfs-tok-num">40–60</span> lines); move full usage, config, architecture, and dev guides into versioned <span class="rfs-tok-str">docs/*.md</span> (disable GitHub Wiki).</code></pre>
+<span class="rfs-tok-kw">- README &amp; Docs (BRAND.md §14):</span> Keep <span class="rfs-tok-str">README.md</span> ultra-minimal (<span class="rfs-tok-num">40–60</span> lines); move full usage, config, architecture, and dev guides into versioned <span class="rfs-tok-str">docs/*.md</span> (disable GitHub Wiki).</code></pre>
           </div>
         </div>
       </div>

@@ -101,6 +101,15 @@ THEMES = {
         "mint-border": "rgba(61,220,151,0.44)",
         "mint-tint": "rgba(61,220,151,0.12)",
         "panel-shadow": "rgba(0,0,0,0.62)",
+        "lx-code": "LX 263",
+        "lx-title": "LX 263 · BEACON HORIZON",
+        "tile-bg": "#050507",
+        "tile-wash-op": "0.78",
+        "tile-stroke": "rgba(255,255,255,0.22)",
+        "tile-ink": "#F4F5F8",
+        "tile-rule-id": "rfs-tile-rule",
+        "lx263-ink": "#FF9254",
+        "lx512-ink": "#B3B5C0",
     },
     "light": {
         "tile": "#FFFFFF",
@@ -125,6 +134,15 @@ THEMES = {
         "mint-border": "rgba(18,114,71,0.40)",
         "mint-tint": "rgba(18,114,71,0.08)",
         "panel-shadow": "rgba(13,16,22,0.14)",
+        "lx-code": "LX 512",
+        "lx-title": "LX 512 · ALABASTER DAY",
+        "tile-bg": "#FFFFFF",
+        "tile-wash-op": "0.36",
+        "tile-stroke": "#CFD5DC",
+        "tile-ink": "#0D1016",
+        "tile-rule-id": "rfs-rule",
+        "lx263-ink": "#474D59",
+        "lx512-ink": "#AD3D0A",
     },
 }
 
@@ -462,8 +480,6 @@ def panel_art(cfg, c, base):
             a.get("anchor", "start"),
         )
 
-    src = RFS_TEXT.sub(rt, src)
-
     def tok(m):
         k = m.group(1)
         if k not in c:
@@ -471,6 +487,7 @@ def panel_art(cfg, c, base):
         return c[k]
 
     src = re.sub(r"\{([a-z][a-z0-9-]*)\}", tok, src)
+    src = RFS_TEXT.sub(rt, src)
     clipped, _, top = src.partition("<rfs-unclip/>")
     return clipped.strip(), top.strip()
 

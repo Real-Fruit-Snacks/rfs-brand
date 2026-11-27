@@ -8,7 +8,7 @@
 <rect x="18" y="11" width="98" height="22" rx="4" fill="{code-bg}" stroke="{line}"/>
 <rfs-text font="mono-semibold" size="11.5" x="26" y="25.8" fill="{steel-ink}">[spec]</rfs-text>
 <rfs-text font="mono-semibold" size="11.5" x="77" y="25.8" fill="{text}">v2.1</rfs-text>
-<rfs-text font="mono" size="10.5" x="510" y="25.5" ls="1.1" anchor="end" fill="{mute}">LX 263 · LX 512</rfs-text>
+<rfs-text font="mono" size="10.5" x="510" y="25.5" ls="1.1" anchor="end" fill="{mute}">{lx-title}</rfs-text>
 
 <!-- Blueprint drafting stage -->
 <rect y="43" width="528" height="203" fill="{stage}"/>
@@ -22,11 +22,11 @@
   <path d="M16 177 V191 H30" stroke="{beacon-ink}"/>
   <path d="M138 191 H152 V177" stroke="{beacon-ink}"/>
 </g>
-<rect x="24" y="63" width="120" height="120" rx="26.25" fill="#050507"/>
-<rect x="24" y="63" width="120" height="120" rx="26.25" fill="url(#cyc-h)" opacity="0.78" mask="url(#rfs-tile-m)"/>
-<rect x="25.1" y="64.1" width="117.8" height="117.8" rx="25.15" fill="none" stroke="rgba(255,255,255,0.22)" stroke-width="2"/>
-<rfs-text font="display" size="58.2" x="83.6" y="137.4" ls="2.9" anchor="middle" fill="#F4F5F8">RFS</rfs-text>
-<rect x="42.4" y="147.8" width="83.2" height="7.1" rx="3.55" fill="url(#rfs-tile-rule)"/>
+<rect x="24" y="63" width="120" height="120" rx="26.25" fill="{tile-bg}"/>
+<rect x="24" y="63" width="120" height="120" rx="26.25" fill="url(#cyc-h)" opacity="{tile-wash-op}" mask="url(#rfs-tile-m)"/>
+<rect x="25.1" y="64.1" width="117.8" height="117.8" rx="25.15" fill="none" stroke="{tile-stroke}" stroke-width="2"/>
+<rfs-text font="display" size="58.2" x="83.6" y="137.4" ls="2.9" anchor="middle" fill="{tile-ink}">RFS</rfs-text>
+<rect x="42.4" y="147.8" width="83.2" height="7.1" rx="3.55" fill="url(#{tile-rule-id})"/>
 <rfs-text font="mono" size="11" x="84" y="216" ls="0.9" anchor="middle" fill="{mute}">64u · rx 14</rfs-text>
 
 <!-- Right top: 3-cell framed typography matrix -->
@@ -50,40 +50,40 @@
 <!-- Roscolux Gel Swatch Cards (4-column calibrated strip) -->
 <!-- Steel -->
 <rect x="20" y="260" width="114" height="118" rx="8" fill="{code-bg}" stroke="{line}"/>
-<rect x="21" y="261" width="112" height="52" rx="7" fill="#1F547A"/>
-<rect x="21" y="305" width="112" height="8" fill="#1F547A"/>
+<rect x="21" y="261" width="112" height="52" rx="7" fill="{steel-fill}"/>
+<rect x="21" y="305" width="112" height="8" fill="{steel-fill}"/>
 <rfs-text font="sans-semibold" size="14.5" x="31" y="338" fill="{text}">Steel</rfs-text>
 <rfs-text font="mono-semibold" size="11" x="123" y="338" anchor="end" fill="{steel-ink}">[i]</rfs-text>
-<rfs-text font="mono" size="10.5" x="31" y="360" fill="{mute}">#74B8E8</rfs-text>
+<rfs-text font="mono" size="10.5" x="31" y="360" fill="{mute}">{steel-ink}</rfs-text>
 
 <!-- Beacon -->
 <rect x="144.6" y="260" width="114" height="118" rx="8" fill="{code-bg}" stroke="{line}"/>
-<rect x="145.6" y="261" width="112" height="52" rx="7" fill="#F06E2B"/>
-<rect x="145.6" y="305" width="112" height="8" fill="#F06E2B"/>
+<rect x="145.6" y="261" width="112" height="52" rx="7" fill="{beacon}"/>
+<rect x="145.6" y="305" width="112" height="8" fill="{beacon}"/>
 <rfs-text font="sans-semibold" size="14.5" x="155.6" y="338" fill="{text}">Beacon</rfs-text>
 <rfs-text font="mono-semibold" size="11.5" x="247.6" y="338" anchor="end" fill="{beacon-ink}">$</rfs-text>
-<rfs-text font="mono" size="10.5" x="155.6" y="360" fill="{mute}">#FF9254</rfs-text>
+<rfs-text font="mono" size="10.5" x="155.6" y="360" fill="{mute}">{beacon-ink}</rfs-text>
 
 <!-- Mint -->
 <rect x="269.3" y="260" width="114" height="118" rx="8" fill="{code-bg}" stroke="{line}"/>
-<rect x="270.3" y="261" width="112" height="52" rx="7" fill="#3DDC97"/>
-<rect x="270.3" y="305" width="112" height="8" fill="#3DDC97"/>
+<rect x="270.3" y="261" width="112" height="52" rx="7" fill="{mint}"/>
+<rect x="270.3" y="305" width="112" height="8" fill="{mint}"/>
 <rfs-text font="sans-semibold" size="14.5" x="280.3" y="338" fill="{text}">Mint</rfs-text>
 <rfs-text font="mono-semibold" size="10.5" x="372.3" y="338" anchor="end" fill="{mint}">[ok]</rfs-text>
-<rfs-text font="mono" size="10.5" x="280.3" y="360" fill="{mute}">#3DDC97</rfs-text>
+<rfs-text font="mono" size="10.5" x="280.3" y="360" fill="{mute}">{mint}</rfs-text>
 
 <!-- Amber -->
 <rect x="394" y="260" width="114" height="118" rx="8" fill="{code-bg}" stroke="{line}"/>
-<rect x="395" y="261" width="112" height="52" rx="7" fill="#FFC247"/>
-<rect x="395" y="305" width="112" height="8" fill="#FFC247"/>
+<rect x="395" y="261" width="112" height="52" rx="7" fill="{amber}"/>
+<rect x="395" y="305" width="112" height="8" fill="{amber}"/>
 <rfs-text font="sans-semibold" size="14.5" x="405" y="338" fill="{text}">Amber</rfs-text>
 <rfs-text font="mono-semibold" size="11" x="497" y="338" anchor="end" fill="{amber}">[!]</rfs-text>
-<rfs-text font="mono" size="10.5" x="405" y="360" fill="{mute}">#FFC247</rfs-text>
+<rfs-text font="mono" size="10.5" x="405" y="360" fill="{mute}">{amber}</rfs-text>
 
 <!-- Bottom LX 001..512 Spectrum Ruler -->
 <rect x="20" y="396" width="488" height="7" rx="3.5" fill="url(#spec-spectrum)"/>
 <rfs-text font="mono-semibold" size="10.5" x="20" y="426" fill="{mute}">LX 001</rfs-text>
 <rfs-text font="mono-semibold" size="10.5" x="142" y="426" anchor="middle" fill="{mute}">LX 127</rfs-text>
-<rfs-text font="mono-semibold" size="10.5" x="264" y="426" anchor="middle" fill="{beacon-ink}">LX 263</rfs-text>
+<rfs-text font="mono-semibold" size="10.5" x="264" y="426" anchor="middle" fill="{lx263-ink}">LX 263</rfs-text>
 <rfs-text font="mono-semibold" size="10.5" x="386" y="426" anchor="middle" fill="{mute}">LX 389</rfs-text>
-<rfs-text font="mono-semibold" size="10.5" x="508" y="426" anchor="end" fill="{mute}">LX 512</rfs-text>
+<rfs-text font="mono-semibold" size="10.5" x="508" y="426" anchor="end" fill="{lx512-ink}">LX 512</rfs-text>
