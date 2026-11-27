@@ -17,7 +17,7 @@ paired with monumental Big Shoulders Stencil RFS typography—zero fake terminal
 Static standard ships zero <style> keyframes; animated one-shot wraps all CSS @keyframes
 inside @media (prefers-reduced-motion: no-preference) and settles onto the exact static frame.
 """
-import importlib.util, os, tomllib
+import importlib.util, os, shutil, tomllib
 from xml.sax.saxutils import escape
 
 HERE = os.path.dirname(os.path.abspath(__file__))
@@ -197,7 +197,7 @@ def text_block(c, tagline, x, cy, size, animated=False):
         word
         + T("sans-semibold", tagline, x, t_base, tsz, c["text"])
         + T("mono", "REAL-FRUIT-SNACKS  ·  RFS.TOOLS", x, o_base, 12.5, c["steel-ink"], 1.1)
-        + T("mono", "12 OPEN-SOURCE TOOLS  ·  ZERO ACCOUNTS", x, s_base, 11.0, c["mute"], 0.9)
+        + T("mono", "17 OPEN-SOURCE TOOLS  ·  ZERO ACCOUNTS", x, s_base, 11.0, c["mute"], 0.9)
     )
     return f'<g transform="translate(0 {cy - (top + bottom) / 2:.1f})">{g}</g>'
 
@@ -315,6 +315,11 @@ def main():
         write(f"brand/social/rfs-social-org-{theme}.svg", s)
         png(f"brand/social/rfs-social-org-{theme}-1280x640.png", s)
         png(f"brand/social/rfs-header-{theme}-1500x500.png", header(c, cfg, theme))
+        for fname in (f"rfs-social-org-{theme}-1280x640.png", f"rfs-header-{theme}-1500x500.png"):
+            src = os.path.join(ROOT, "brand", "social", fname)
+            dst = os.path.join(ROOT, "docs", "assets", fname)
+            shutil.copy2(src, dst)
+            out.append(dst)
 
     for p in out:
         print("wrote", os.path.relpath(p, ROOT))

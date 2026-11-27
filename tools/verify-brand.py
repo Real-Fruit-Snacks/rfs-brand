@@ -106,6 +106,10 @@ def main():
         ("assets/rfs-mark-light.svg", "docs/assets/rfs-mark-light.svg"),
         ("assets/rfs-lockup-dark.svg", "docs/assets/rfs-lockup-dark.svg"),
         ("assets/rfs-lockup-light.svg", "docs/assets/rfs-lockup-light.svg"),
+        ("brand/social/rfs-social-org-dark-1280x640.png", "docs/assets/rfs-social-org-dark-1280x640.png"),
+        ("brand/social/rfs-social-org-light-1280x640.png", "docs/assets/rfs-social-org-light-1280x640.png"),
+        ("brand/social/rfs-header-dark-1500x500.png", "docs/assets/rfs-header-dark-1500x500.png"),
+        ("brand/social/rfs-header-light-1500x500.png", "docs/assets/rfs-header-light-1500x500.png"),
     ]
     drift = []
     for src_rel, dst_rel in sync_pairs:
@@ -170,17 +174,18 @@ def main():
             tj_repos = [t["repo"] for t in json.load(open(tools_json, encoding="utf-8"))["tools"]]
             board_src = open(board_py, encoding="utf-8").read()
             missing_board = [r for r in tj_repos if f'"{r}"' not in board_src]
+            cover_root = covers_dir if os.path.isdir(covers_dir) else args.workspace
+            cover_label = "_repo-covers" if os.path.isdir(covers_dir) else "sibling repos"
             missing_covers = [
                 r for r in tj_repos
-                if os.path.isdir(covers_dir)
-                and not os.path.exists(os.path.join(covers_dir, r, "docs", "assets", "cover-dark.svg"))
+                if not os.path.exists(os.path.join(cover_root, r, "docs", "assets", "cover-dark.svg"))
             ]
             if missing_board:
                 log_fail(f"make-board.py missing tools: {missing_board}", errors)
-            elif missing_covers:
-                log_fail(f"_repo-covers missing covers: {missing_covers}", errors)
-            else:
-                log_ok(f"{len(tj_repos)}-tool parity verified across tools.json, make-board.py, and _repo-covers ({len(tj_repos)} tools)")
+            if missing_covers:
+                log_fail(f"{cover_label} missing covers: {missing_covers}", errors)
+            if not missing_board and not missing_covers:
+                log_ok(f"{len(tj_repos)}-tool parity verified across tools.json, make-board.py, and {cover_label} ({len(tj_repos)} tools)")
 
     if errors:
         log_info(f"verification finished with {len(errors)} failure(s)")

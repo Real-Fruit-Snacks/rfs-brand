@@ -346,7 +346,7 @@
       if (boardBadge) {
         boardBadge.innerHTML = boardPaused
           ? '<span class="k">[paused]</span> static base frame'
-          : '<span class="k">[ambient]</span> 35.2s cycle';
+          : '<span class="k">[ambient]</span> 54.4s cycle';
         boardBadge.classList.toggle("b-ok", !boardPaused);
         boardBadge.classList.toggle("b-steel", boardPaused);
       }

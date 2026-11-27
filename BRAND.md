@@ -120,7 +120,7 @@ Voice: **Plain**, **Specific**, **Dry**, **Honest**. No emoji, no hype words ("b
 | Topics | Max 6; ≥ 1 language tag + ≥ 1 domain tag | `rust` `networking` `windows` |
 | CLI | One binary per repo, named after the repo | `port-sync` |
 | Releases | SemVer `vX.Y.Z`, release title equals tag, no codenames | `v1.4.0` |
-| Retiring | Archive on GitHub, mark read-only, move into `retired` in `tools.json` | `forge-framework` |
+| Retiring | Archive on GitHub, mark read-only, move into `retired` in `tools.json` | `archive-example` |
 | Deep docs | Versioned Markdown in `docs/*.md` (keep `README.md` 40–60 lines) | `docs/USAGE.md` |
 | Account / Org | `Real-Fruit-Snacks` in URLs; **RFS** in marks and compact badges | `Real-Fruit-Snacks` |
 
@@ -134,7 +134,7 @@ Org artwork is governed by **three explicit art standards** rather than treating
 |---|---|---|---|---|
 | **Static Standard** | `rfs-banner-{dark,light}.svg`, `rfs-banner-*-1600.png`, `rfs-social-org-*-1280x640.png`, `rfs-header-*-1500x500.png`, `rfs-avatar-*-1024.png`, `brand/mark/*` | **0ms / None** (zero `<style>` keyframes) | Outlined `<path>` glyphs only; full legibility at `400px` thumbnail width; deterministic `resvg` PNG export | Open Graph previews, social headers, profile avatars, print/stickers, link cards, reduced-motion fallbacks |
 | **Animated One-Shot** | `assets/rfs-banner-{dark,light}-animated.svg`, `<repo>/docs/assets/cover-{dark,light}.svg` | **≤ 1.4s** banners (`1.22s` DMX fader bring-up), **≤ 3.5s** typed covers; **plays once** (`fill-mode: both`, zero infinite loop) | Pure inline CSS `@keyframes` inside `@media (prefers-reduced-motion: no-preference)`; compositor `transform` / `opacity` + single `pathLength` curve draw; zero JS or SMIL (GitHub `camo` safe) | Org & repo README heroes, live documentation headers |
-| **Ambient Showcase** | `Real-Fruit-Snacks/assets/board-{dark,light}.svg` | **3.2s dwell / item** (`35.2s` full 11-tool cycle); `step-end` index changes, **0 flashes/sec** | Reserved strictly for multi-item data showcases; base SVG attributes leave `#01` completely readable (`opacity="0"` on wipe masks); web embeds running `> 5s` must expose a keyboard-accessible **Pause / Play** control (WCAG 2.2.2) | GitHub profile README cue board, interactive brand manual preview |
+| **Ambient Showcase** | `Real-Fruit-Snacks/assets/board-{dark,light}.svg` | **3.2s dwell / item** (`54.4s` full 17-tool cycle); `step-end` index changes, **0 flashes/sec** | Reserved strictly for multi-item data showcases; base SVG attributes leave `#01` completely readable (`opacity="0"` on wipe masks); web embeds running `> 5s` must expose a keyboard-accessible **Pause / Play** control (WCAG 2.2.2) | GitHub profile README cue board, interactive brand manual preview |
 
 | Need | File | Generator |
 |---|---|---|
@@ -244,7 +244,7 @@ Every Real-Fruit-Snacks CLI speaks the same plain, scannable console grammar—m
 
 ## 13. Native Desktop & TUI Mapping
 
-Non-web tools (Rust desktop utilities, C# Windows apps, PowerShell & Python/Kali CLIs) inherit the exact same **Cyclorama Dawn** tokens:
+Non-web tools (Rust & Go CLIs, C# Windows apps, PowerShell & Python/Kali CLIs) inherit the exact same **Cyclorama Dawn** tokens:
 
 - **Windows Window Chrome & Icons:**
   - Enable dark titlebars via `DWMWA_USE_IMMERSIVE_DARK_MODE` (`20`) and set `DWMWA_CAPTION_COLOR` (`35`) to `0x00070505` (BGR for `#050507`) in dark mode or `0x00F2EEEA` (`#EAEEF2`) in light mode.
