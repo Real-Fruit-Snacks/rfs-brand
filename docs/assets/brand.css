@@ -3301,3 +3301,440 @@ h3 {
   min-width: 0;
   max-width: 100%;
 }
+
+/* ---- Expandable Component HTML Disclosures (modern-web-guidance accordion) ---- */
+.code-disclosure {
+  margin-top: 0.35rem;
+  border-top: 1px solid var(--rfs-line);
+  padding-top: 0.6rem;
+}
+
+.code-disclosure > summary {
+  list-style: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.25rem 0.45rem;
+  margin-inline-start: -0.45rem;
+  border-radius: 4px;
+  font: 600 0.74rem/1.2 var(--rfs-font-mono);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--rfs-steel-ink);
+  cursor: pointer;
+}
+
+.code-disclosure > summary::-webkit-details-marker {
+  display: none;
+}
+
+.code-disclosure > summary::before {
+  content: "";
+  display: inline-block;
+  inline-size: 0.65rem;
+  block-size: 0.65rem;
+  flex: none;
+  border-inline-end: 1.75px solid currentColor;
+  border-block-end: 1.75px solid currentColor;
+  transform: translateY(-1px) rotate(-45deg);
+}
+
+.code-disclosure[open] > summary::before {
+  transform: translateY(-2px) rotate(45deg);
+}
+
+@media (hover: hover) {
+  .code-disclosure > summary:hover {
+    color: var(--rfs-beacon-ink);
+    background: var(--rfs-code-bg);
+  }
+}
+
+.code-disclosure::details-content {
+  interpolate-size: allow-keywords;
+  overflow: clip;
+  contain: layout;
+}
+
+.code-disclosure:not([open])::details-content {
+  block-size: 0;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .code-disclosure > summary::before {
+    transition: transform var(--rfs-dur-fast) var(--rfs-ease);
+  }
+  .code-disclosure::details-content {
+    transition: block-size var(--rfs-dur-base) var(--rfs-ease),
+                content-visibility var(--rfs-dur-base) allow-discrete,
+                display var(--rfs-dur-base) allow-discrete;
+  }
+}
+
+.code-disclosure-body {
+  padding-top: 0.65rem;
+}
+
+/* ---- §01 Data Visualization Palette & Telemetry Preview ---- */
+.viz-wrap {
+  margin-top: 2.25rem;
+  display: grid;
+  gap: 1.15rem;
+}
+
+.viz-grid {
+  display: grid;
+  gap: 1.25rem;
+  min-width: 0;
+  grid-template-columns: minmax(0, 1fr);
+}
+
+@media (min-width: 56em) {
+  .viz-grid {
+    grid-template-columns: minmax(0, 1.05fr) minmax(0, 1.15fr);
+    align-items: start;
+  }
+}
+
+.viz-swatches {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.6rem;
+}
+
+@media (min-width: 36em) {
+  .viz-swatches {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+.viz-chip {
+  appearance: none;
+  display: grid;
+  gap: 0.3rem;
+  padding: 0.6rem 0.7rem;
+  border-radius: var(--rfs-radius-sm);
+  border: 1px solid var(--rfs-line);
+  background: var(--rfs-surface);
+  color: var(--rfs-text);
+  text-align: start;
+  cursor: pointer;
+  min-width: 0;
+  transition: border-color var(--rfs-dur-fast) var(--rfs-ease);
+}
+
+@media (hover: hover) {
+  .viz-chip:hover {
+    border-color: var(--rfs-beacon-ink);
+  }
+}
+
+.viz-chip-bar {
+  display: block;
+  height: 6px;
+  border-radius: 3px;
+}
+
+.viz-chip-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 0.35rem;
+  font-size: 0.78rem;
+}
+
+.viz-chip-top b {
+  font-weight: 600;
+}
+
+.viz-chip-top em {
+  font-style: normal;
+  font: 600 0.68rem/1 var(--rfs-font-mono);
+  color: var(--rfs-mute);
+}
+
+.viz-chip code {
+  border: 0;
+  padding: 0;
+  background: transparent;
+  font-size: 0.72rem;
+  color: var(--rfs-mute);
+}
+
+.viz-chart-card {
+  margin: 0;
+  padding: 1.05rem 1.15rem;
+  border-radius: var(--rfs-radius-md);
+  border: 1px solid var(--rfs-line);
+  background: var(--rfs-surface);
+  min-width: 0;
+}
+
+.viz-chart-card svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.viz-chart-card figcaption {
+  margin-top: 0.65rem;
+  font-size: 0.8rem;
+  color: var(--rfs-mute);
+}
+
+/* ---- §06 Visual Do vs. Don't & Anti-Patterns Gallery ---- */
+.dodont-wrap {
+  margin-top: 2.25rem;
+}
+
+.dodont-grid {
+  margin-top: 1rem;
+  display: grid;
+  gap: 1.15rem;
+  grid-template-columns: minmax(0, 1fr);
+}
+
+@media (min-width: 56em) {
+  .dodont-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+.dodont-pair {
+  padding: 1rem;
+  border-radius: var(--rfs-radius-md);
+  border: 1px solid var(--rfs-line);
+  background: var(--rfs-surface);
+  display: grid;
+  gap: 0.8rem;
+  min-width: 0;
+}
+
+.dodont-pair-head {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 0.4rem;
+}
+
+.dodont-pair-head h4 {
+  margin: 0;
+  font-family: var(--rfs-font-display);
+  font-size: 1.25rem;
+  letter-spacing: 0.055em;
+  text-transform: uppercase;
+}
+
+.dodont-cols {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.7rem;
+}
+
+@media (max-width: 30em) {
+  .dodont-cols {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+.dodont-card {
+  margin: 0;
+  border-radius: var(--rfs-radius-sm);
+  border: 1px solid var(--rfs-line);
+  background: var(--rfs-bg);
+  overflow: hidden;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  min-width: 0;
+}
+
+.dodont-card.is-do {
+  border-top: 2.5px solid var(--rfs-signal);
+}
+
+.dodont-card.is-dont {
+  border-top: 2.5px solid var(--rfs-fault);
+}
+
+.dodont-tag {
+  padding: 0.42rem 0.65rem;
+  font: 700 0.7rem/1 var(--rfs-font-mono);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  border-bottom: 1px solid var(--rfs-line);
+}
+
+.dodont-card.is-do .dodont-tag { color: var(--rfs-signal); }
+.dodont-card.is-dont .dodont-tag { color: var(--rfs-fault); }
+
+.dodont-stage {
+  min-block-size: 5.5rem;
+  padding: 0.8rem;
+  display: grid;
+  place-items: center;
+  gap: 0.45rem;
+}
+
+.dodont-card figcaption {
+  padding: 0.55rem 0.65rem;
+  border-top: 1px solid var(--rfs-line);
+  font-size: 0.76rem;
+  line-height: 1.4;
+  color: var(--rfs-mute);
+}
+
+.bad-mark-stretch {
+  width: 78px;
+  height: 44px;
+  object-fit: fill;
+  filter: drop-shadow(0 0 8px rgba(240, 110, 43, 0.7));
+}
+
+.good-mark-clean {
+  width: 56px;
+  height: 56px;
+}
+
+.grad-sample-bar {
+  width: 100%;
+  height: 28px;
+  border-radius: 5px;
+  border: 1px solid var(--rfs-line);
+}
+
+.grad-sample-oklab {
+  background: linear-gradient(90deg var(--rfs-in-oklab), #18496b 0%, #1f547a 36%, #cc5016 74%, #f06e2b 100%);
+}
+
+/* Simulated polar oklch violet midpoint (literal in oklch forbidden by verify-brand.py) */
+.grad-sample-muddy {
+  background: linear-gradient(90deg, #18496b 0%, #86489e 50%, #f06e2b 100%);
+}
+
+.bad-mac-dots {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 0.28rem 0.55rem;
+  border-radius: 99px;
+  border: 1px solid rgba(168, 85, 247, 0.55);
+  background: rgba(168, 85, 247, 0.14);
+  font: 600 0.7rem/1 var(--rfs-font-sans);
+  color: var(--rfs-text);
+}
+
+.bad-mac-dots i {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.mini-shell-demo {
+  width: 100%;
+  max-width: 11.5rem;
+  border-radius: 5px;
+  border: 1px solid var(--rfs-line-strong);
+  background: var(--rfs-surface);
+  overflow: hidden;
+  font: 600 0.62rem/1 var(--rfs-font-mono);
+}
+
+.mini-shell-hdr {
+  padding: 0.3rem 0.45rem;
+  background: var(--rfs-rail);
+  border-bottom: 1px solid var(--rfs-line);
+  color: var(--rfs-mute);
+}
+
+.mini-shell-body {
+  position: relative;
+  height: 2.5rem;
+  padding: 0.35rem 0.45rem;
+  color: var(--rfs-text);
+}
+
+.mini-shell-sb {
+  position: absolute;
+  inset-inline-end: 3px;
+  width: 4px;
+  border-radius: 99px;
+  background: var(--rfs-steel-ink);
+}
+
+.mini-shell-demo.is-good .mini-shell-sb {
+  top: 4px;
+  height: 18px;
+}
+
+.mini-shell-demo.is-bad {
+  position: relative;
+}
+
+.mini-shell-demo.is-bad .mini-shell-sb {
+  top: 3px;
+  height: 26px;
+  background: var(--rfs-fault);
+}
+
+/* ---- §07 Voice Before/After Matrix ---- */
+.voice-avoid {
+  color: var(--rfs-mute);
+  text-decoration: line-through;
+  text-decoration-color: var(--rfs-fault);
+}
+
+.voice-use {
+  color: var(--rfs-text);
+  font-weight: 500;
+}
+
+/* ---- §13H Page Archetypes & Agent Skill Grid ---- */
+.arch-grid {
+  display: grid;
+  gap: 0.85rem;
+  grid-template-columns: minmax(0, 1fr);
+}
+
+@media (min-width: 44em) {
+  .arch-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 64em) {
+  .arch-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+.arch-card {
+  padding: 1rem 1.1rem;
+  border-radius: var(--rfs-radius-sm);
+  border: 1px solid var(--rfs-line);
+  background: var(--rfs-bg);
+  display: grid;
+  gap: 0.45rem;
+  align-content: start;
+  min-width: 0;
+}
+
+.arch-card h4 {
+  margin: 0;
+  font-family: var(--rfs-font-display);
+  font-size: 1.25rem;
+  letter-spacing: 0.055em;
+  text-transform: uppercase;
+}
+
+.arch-card p {
+  margin: 0;
+  font-size: 0.84rem;
+  color: var(--rfs-mute);
+}
+
+.arch-repos {
+  font: 500 0.74rem/1.35 var(--rfs-font-mono);
+  color: var(--rfs-steel-ink);
+}

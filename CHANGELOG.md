@@ -1,6 +1,16 @@
 # Changelog
 
-Each release publishes `rfs-brand.zip` (everything below except `.github/` and `docs/`), `rfs.css`, `rfs-components.css`, `rfs.tokens.json`, `rfs-icons.svg`, and `BRAND-RULES.md`.
+Each release publishes `rfs-brand.zip` (everything below except `.github/` and `docs/`), `rfs.css`, `rfs-components.css`, `rfs.tokens.json`, `rfs.dtcg.json`, `rfs-tailwind.css`, `rfs-tokens.ts`, `rfs-icons.svg`, and `BRAND-RULES.md`.
+
+## 2.2.0 (2026-11-27)
+
+Upgraded `rfs-brand` into an installable agent brand skill with standards-compliant token exports, portable cross-repo auditing, and expanded visual/editorial specimens on the living manual.
+
+- **Installable Agent Skill & `llms.txt`:** Added `skills/rfs-brand/SKILL.md` (`agentskills.io` / `npx skills add Real-Fruit-Snacks/rfs-brand` compatible) with 5 progressive-disclosure `references/` modules (`page-archetypes.md`, `web-ui-components.md`, `voice-and-docs.md`, `cli-tui-native.md`, `audit-rubric.md`), hosted `docs/llms.txt`, and rewrote `docs/DESIGN.md` to eliminate legacy `v2.0` drift.
+- **W3C DTCG, Tailwind v4 & TypeScript Exports (`tools/make-tokens.py`):** Added deterministic generation of `brand/tokens/rfs.dtcg.json` (W3C DTCG `$type`/`$value`/`$description`), `brand/tokens/rfs-tailwind.css` (theme-reactive Tailwind CSS v4 `@theme inline`), and `brand/tokens/rfs-tokens.ts` (`as const` typed exports), plus 6 ordered WCAG-AA data visualization tokens (`--rfs-viz-1` through `--rfs-viz-6`).
+- **Portable Repo Auditor (`tools/verify-brand.py --repo`):** Added `--repo <path>` and `--json` flags to audit any Real-Fruit-Snacks repository for README budget/summary, adaptive covers, `0.32` light wash, `prefers-reduced-motion`, explicit dark default, zero `in oklch`, zero native popups, zero external CDN fonts, zero `shields.io` badge walls, and zero private-repo leaks.
+- **Living Manual Visual Upgrades (`docs/index.html`, `brand.css`):** Added the 6-series Data Visualization palette + live chart specimen in `§01`, expandable `View HTML` `<details>` copy disclosures on component cards (`§04`, `§05`, `§13`), a 4-part Visual Do vs. Don't & Anti-Patterns gallery in `§06`, a Voice Before/After microcopy matrix in `§07`, and `§13 H` Page Archetypes & Repo Audit.
+- **Alabaster Light Parity:** Upgraded light marks (`0.36` wash), covers/banners/boards (`0.32` wash), theme-calibrated `rfs-brand` Light cover/avatar/Mermaid specimens, and mobile `390px` table wrapping.
 
 ## 2.1.0 (2026-11-24)
 

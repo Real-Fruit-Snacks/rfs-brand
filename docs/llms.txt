@@ -1,0 +1,39 @@
+# rfs-brand — Real-Fruit-Snacks Cyclorama Dawn Brand System (v2.2.0)
+
+> Authoritative design system, agent skill, drop-in CSS/Tailwind/DTCG/TypeScript tokens, 60-icon Precision Silkscreen library, and deterministic SVG cover/mark generators for Real-Fruit-Snacks (RFS). Tagline: "Built local-first." World: Cyclorama Dawn (Glacial Steel & Maritime Beacon Orange). Modes: LX 263 Beacon Horizon (dark default, `#050507`) and LX 512 Alabaster Day (light opt-in, `#F5F7F9`).
+
+## Core Invariants (Read First)
+
+- **Default Mode & Motion:** Dark `#050507` (`<meta name="color-scheme" content="dark">`) is the explicit default on every page; Light `#F5F7F9` is an opt-in user toggle. Keep browser animations and View Transitions enabled by default.
+- **Palette & Gradients:** Glacial Steel (`#1F547A` / `#18496B` fill / `#74B8E8` dark ink / `#164669` light ink) + Maritime Beacon Orange (`#F06E2B` / `#FF9254` dark ink / `#AD3D0A` light ink). Always use Cartesian `in oklab` gradients—never polar `in oklch`. Status carries explicit words: Mint `[ok]` (`#3DDC97` / `#127247`), Amber `[!]` (`#FFC247` / `#885800`), Signal Crimson `[x]` (`#FF5C6C` / `#B91C2E`, fill `#C92438` / `#B91C2E` with `#FFFFFF`).
+- **Typography:** Self-hosted variable WOFF2 only (zero external CDNs): `Big Shoulders Stencil` (700–900 display, uppercase, `+0.055em`), `Albert Sans` (400–700 UI/prose), `Azeret Mono` (400–600 code/CLI/slugs).
+- **UI Chrome:** `D · Terminal Token` 4px badges only (zero 99px pills, zero status dots, zero macOS traffic lights). Scrollbars start strictly below top headers (`.rfs-shell` + `.rfs-shell-header` + `.rfs-scroll-region`). Zero `window.alert/confirm/prompt`—use branded `<dialog class="rfs-dialog is-destructive">` with `autofocus` on Cancel and `.rfs-btn-fault` confirm.
+- **CLI & Docs:** `NO_COLOR`-safe bracketed prefixes (`[ok]`, `[!]`, `[x]`, `[i]`, `$`), exit codes `0/1/2`. Ultra-minimal `README.md` (40–60 lines, `<= 60`-char no-period summary, `<picture>` covers, zero emoji/hype/shields.io walls); full docs in `docs/*.md` (no Wiki).
+
+## Agent Skill & Contracts
+
+- [Agent Brand Rules (1-page contract)](https://real-fruit-snacks.github.io/rfs-brand/assets/BRAND-RULES.md): Concise rules block for `AGENTS.md` / `CLAUDE.md`.
+- [Installable Agent Skill (SKILL.md)](https://github.com/Real-Fruit-Snacks/rfs-brand/blob/main/skills/rfs-brand/SKILL.md): Open `agentskills.io` skill (`npx skills add Real-Fruit-Snacks/rfs-brand`).
+- [Page Archetypes Reference](https://github.com/Real-Fruit-Snacks/rfs-brand/blob/main/skills/rfs-brand/references/page-archetypes.md): 5 bespoke layout archetypes and decision tree.
+- [Web UI & Data Viz Reference](https://github.com/Real-Fruit-Snacks/rfs-brand/blob/main/skills/rfs-brand/references/web-ui-components.md): Copy-ready HTML patterns, `--rfs-viz-1..6` chart palette, Tailwind v4 & TS bridges.
+- [Voice, Copy & Docs Reference](https://github.com/Real-Fruit-Snacks/rfs-brand/blob/main/skills/rfs-brand/references/voice-and-docs.md): Before/After microcopy rewrites, README contract, screenshot/redaction rules.
+- [CLI, TUI & Native Reference](https://github.com/Real-Fruit-Snacks/rfs-brand/blob/main/skills/rfs-brand/references/cli-tui-native.md): `NO_COLOR`, Rust `anstyle`, Go ANSI, Python `rich`, Windows DWM titlebars.
+- [Audit Rubric Reference](https://github.com/Real-Fruit-Snacks/rfs-brand/blob/main/skills/rfs-brand/references/audit-rubric.md): CRITICAL/HIGH/MEDIUM review checklist and `verify-brand.py --repo` CLI usage.
+
+## Machine-Readable Tokens & Drop-In Kits
+
+- [CSS Custom Properties (`rfs.css`)](https://real-fruit-snacks.github.io/rfs-brand/assets/rfs.css): Full dark/light tokens, data-viz series, syntax roles, forced-colors, print, and `.rfs-shell` lock.
+- [Component Kit CSS (`rfs-components.css`)](https://real-fruit-snacks.github.io/rfs-brand/assets/rfs-components.css): Buttons, `D · Terminal Token` badges, dialogs, semantic toasts, popovers, tabs, accordions, states.
+- [Tailwind CSS v4 Bridge (`rfs-tailwind.css`)](https://real-fruit-snacks.github.io/rfs-brand/assets/rfs-tailwind.css): Theme-reactive `@theme inline` mapping for Tailwind CSS v4.
+- [W3C DTCG Tokens (`rfs.dtcg.json`)](https://real-fruit-snacks.github.io/rfs-brand/assets/rfs.dtcg.json): Standards-compliant `$type`/`$value`/`$description` tokens for Style Dictionary & Figma.
+- [TypeScript Tokens (`rfs-tokens.ts`)](https://real-fruit-snacks.github.io/rfs-brand/assets/rfs-tokens.ts): Typed `as const` exports for Vite/TS/Canvas/WebGL apps.
+- [Core JSON Tokens (`rfs.tokens.json`)](https://real-fruit-snacks.github.io/rfs-brand/assets/rfs.tokens.json): Source-of-truth JSON consumed by Python art generators.
+- [60-Icon SVG Sprite (`rfs-icons.svg`)](https://real-fruit-snacks.github.io/rfs-brand/assets/rfs-icons.svg): 24×24 `1.75px` `square`/`miter` stroke icons (`#rfs-i-<name>`).
+- [Icon Manifest (`icons.json`)](https://real-fruit-snacks.github.io/rfs-brand/assets/icons.json): Names, categories, and search tags for all 60 icons.
+
+## Canonical Guides & Verification
+
+- [Living Brand Manual](https://real-fruit-snacks.github.io/rfs-brand/): Interactive dual-theme specimen, contrast proofs, motion lab, icon browser, Do/Don't gallery.
+- [Authoritative Brand Guide (`BRAND.md`)](https://github.com/Real-Fruit-Snacks/rfs-brand/blob/main/BRAND.md): Full human-readable specification.
+- [Design System Spec (`docs/DESIGN.md`)](https://github.com/Real-Fruit-Snacks/rfs-brand/blob/main/docs/DESIGN.md): 9-section `DESIGN.md` with YAML frontmatter tokens.
+- [Brand Verifier (`tools/verify-brand.py`)](https://github.com/Real-Fruit-Snacks/rfs-brand/blob/main/tools/verify-brand.py): Run `python tools/verify-brand.py --repo <path>` to audit any RFS repo.

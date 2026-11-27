@@ -12,13 +12,14 @@ curl.exe -LO https://github.com/Real-Fruit-Snacks/rfs-brand/releases/latest/down
 ```
 
 - **Cyclorama Dawn identity:** Matte `#050507` dark default (`LX 263`) and `#F5F7F9` Alabaster Day light mode (`LX 512`) anchored by Glacial Steel and Maritime Beacon Orange.
-- **Drop-in kit (`brand/`):** CSS tokens (`rfs.css`), component kit (`rfs-components.css`), 60 monochrome icons (`rfs-icons.svg`), JSON tokens, marks, and `BRAND-RULES.md`.
-- **Deterministic generators (`tools/`):** Python scripts outlining self-hosted variable fonts for zero-dependency SVG covers, marks, icons, avatars, and org art.
+- **Drop-in kit (`brand/`):** CSS tokens (`rfs.css`), component kit (`rfs-components.css`), W3C DTCG (`rfs.dtcg.json`), Tailwind v4 (`rfs-tailwind.css`), TypeScript (`rfs-tokens.ts`), 60 monochrome icons (`rfs-icons.svg`), and `BRAND-RULES.md`.
+- **Agent skill & auditor (`skills/rfs-brand/`, `tools/`):** Installable `SKILL.md` (`npx skills add Real-Fruit-Snacks/rfs-brand`), hosted `llms.txt`, deterministic SVG cover/mark generators, and `verify-brand.py --repo <path>`.
 - **Repo templates (`templates/repo/`):** Ultra-minimal README starter, `AGENTS.md`, `cover.toml`, `SECURITY.md`, GitHub templates, and repo settings checklist.
 
 ## Documentation
 
-- [Living brand manual](https://real-fruit-snacks.github.io/rfs-brand/)
+- [Living brand manual](https://real-fruit-snacks.github.io/rfs-brand/) · [`llms.txt`](https://real-fruit-snacks.github.io/rfs-brand/llms.txt)
+- [Installable Agent Skill](skills/rfs-brand/SKILL.md)
 - [Authoritative Brand Guide](BRAND.md)
 - [Agent Brand Rules](brand/BRAND-RULES.md)
 - [Kit Downloads, Generators & Repo Setup](docs/USAGE.md)

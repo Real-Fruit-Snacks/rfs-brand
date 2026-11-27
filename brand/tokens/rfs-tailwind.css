@@ -1,0 +1,74 @@
+/* RFS Cyclorama Dawn v2.2.0 — Tailwind CSS v4 @theme bridge.
+   Generated from brand/tokens/rfs.tokens.json by tools/make-tokens.py.
+   Import after `@import "tailwindcss";` and `rfs.css` so utilities stay theme-reactive across LX 263 Dark and LX 512 Light. */
+
+@theme inline {
+  /* Semantic & brand colors (resolve dynamically via rfs.css dark/light variables) */
+  --color-rfs-bg: var(--rfs-bg);
+  --color-rfs-rail: var(--rfs-rail);
+  --color-rfs-surface: var(--rfs-surface);
+  --color-rfs-raised: var(--rfs-raised);
+  --color-rfs-line: var(--rfs-line);
+  --color-rfs-line-strong: var(--rfs-line-strong);
+  --color-rfs-text: var(--rfs-text);
+  --color-rfs-mute: var(--rfs-mute);
+  --color-rfs-steel: var(--rfs-steel);
+  --color-rfs-steel-fill: var(--rfs-steel-fill);
+  --color-rfs-steel-ink: var(--rfs-steel-ink);
+  --color-rfs-beacon: var(--rfs-beacon);
+  --color-rfs-beacon-wash: var(--rfs-beacon-wash);
+  --color-rfs-beacon-ink: var(--rfs-beacon-ink);
+  --color-rfs-primary: var(--rfs-primary);
+  --color-rfs-primary-hover: var(--rfs-primary-hover);
+  --color-rfs-primary-press: var(--rfs-primary-press);
+  --color-rfs-on-primary: var(--rfs-on-primary);
+  --color-rfs-on-steel: var(--rfs-on-steel);
+  --color-rfs-accent: var(--rfs-accent);
+  --color-rfs-signal: var(--rfs-signal);
+  --color-rfs-fault: var(--rfs-fault);
+  --color-rfs-fault-fill: var(--rfs-fault-fill);
+  --color-rfs-fault-fill-hover: var(--rfs-fault-fill-hover);
+  --color-rfs-on-fault: var(--rfs-on-fault);
+  --color-rfs-code-bg: var(--rfs-code-bg);
+  --color-rfs-focus: var(--rfs-focus);
+
+  /* Ordered 6-series data visualization palette */
+  --color-rfs-viz-1: var(--rfs-viz-1);
+  --color-rfs-viz-2: var(--rfs-viz-2);
+  --color-rfs-viz-3: var(--rfs-viz-3);
+  --color-rfs-viz-4: var(--rfs-viz-4);
+  --color-rfs-viz-5: var(--rfs-viz-5);
+  --color-rfs-viz-6: var(--rfs-viz-6);
+
+  /* Self-hosted variable typography */
+  --font-display: var(--rfs-font-display);
+  --font-sans: var(--rfs-font-sans);
+  --font-mono: var(--rfs-font-mono);
+
+  /* 4px spacing grid */
+  --spacing-rfs-1: 4px;
+  --spacing-rfs-2: 8px;
+  --spacing-rfs-3: 12px;
+  --spacing-rfs-4: 16px;
+  --spacing-rfs-5: 24px;
+  --spacing-rfs-6: 32px;
+  --spacing-rfs-7: 48px;
+  --spacing-rfs-8: 64px;
+  --spacing-rfs-9: 96px;
+
+  /* Technical corner radii */
+  --radius-rfs-token: 4px;
+  --radius-rfs-sm: 6px;
+  --radius-rfs-md: 10px;
+
+  /* Motion curves */
+  --ease-rfs-ease: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-rfs-ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --ease-rfs-ease-exit: cubic-bezier(0.7, 0, 0.84, 0);
+  --ease-rfs-ease-linear: linear;
+
+  /* Breakpoints */
+  --breakpoint-rfs-sm: 36em;
+  --breakpoint-rfs-md: 56em;
+  --breakpoint-rfs-lg: 72em;
+}

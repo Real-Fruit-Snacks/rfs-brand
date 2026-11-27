@@ -35,7 +35,7 @@ Two canonical modes built on a neutral matte cyclorama ground (**Blackout `#0505
 | `fault-fill` | `#C92438` | `#B91C2E` | Destructive button fill (`#FFFFFF` text ≥ 5.54:1 dark / ≥ 6.43:1 light; hover `#E02E44` / `#991525`). |
 | `code-bg` | `#08080B` | `#EEF2F5` | Terminal and code block surface. |
 
-Machine-readable tokens & drop-in kit: [`brand/tokens/rfs.css`](brand/tokens/rfs.css), [`brand/tokens/rfs-components.css`](brand/tokens/rfs-components.css), [`brand/tokens/rfs.tokens.json`](brand/tokens/rfs.tokens.json), and [`brand/BRAND-RULES.md`](brand/BRAND-RULES.md).
+Machine-readable tokens, framework bridges & agent skill: [`brand/tokens/rfs.css`](brand/tokens/rfs.css), [`brand/tokens/rfs-components.css`](brand/tokens/rfs-components.css), [`brand/tokens/rfs.tokens.json`](brand/tokens/rfs.tokens.json), [`brand/tokens/rfs.dtcg.json`](brand/tokens/rfs.dtcg.json) (W3C DTCG), [`brand/tokens/rfs-tailwind.css`](brand/tokens/rfs-tailwind.css) (Tailwind v4 `@theme`), [`brand/tokens/rfs-tokens.ts`](brand/tokens/rfs-tokens.ts), [`brand/BRAND-RULES.md`](brand/BRAND-RULES.md), and [`skills/rfs-brand/SKILL.md`](skills/rfs-brand/SKILL.md).
 
 ### Six-Phase Cyclorama Scale (`LX 001` – `LX 512`)
 
@@ -149,7 +149,8 @@ Org artwork is governed by **three explicit art standards** rather than treating
 | GitHub profile cue board (ambient showcase) | `Real-Fruit-Snacks/assets/board-{dark,light}.svg` | `art/make-board.py` |
 | Per-repo README cover (one-shot SVG) & social PNG | `<repo>/docs/assets/cover-{dark,light}.{svg,png}`, `social-{dark,light}.png` | `tools/make-cover.py` |
 | CSS tokens, component kit & JSON | `brand/tokens/rfs.css`, `brand/tokens/rfs-components.css`, `brand/tokens/rfs.tokens.json` | Hand-maintained source |
-| Machine-readable agent brand contract | `brand/BRAND-RULES.md` | Hand-maintained source |
+| W3C DTCG, Tailwind v4 & TS token exports | `brand/tokens/rfs.dtcg.json`, `brand/tokens/rfs-tailwind.css`, `brand/tokens/rfs-tokens.ts` | `tools/make-tokens.py` |
+| Installable agent skill & `llms.txt` | `skills/rfs-brand/SKILL.md`, `skills/rfs-brand/references/*.md`, `docs/llms.txt`, `brand/BRAND-RULES.md` | Hand-maintained source |
 
 ---
 
@@ -278,7 +279,24 @@ Every public repository keeps its `README.md` ultra-minimal (**40–60 lines tar
 - **What moves to `docs/*.md`:** Complete CLI flag tables, configuration schemas, architecture notes, examples, tested-platform matrices, known limitations, troubleshooting, and development/build-from-source guides. Prefer clean uppercase filenames such as `docs/USAGE.md`, `docs/CONFIGURATION.md`, `docs/ARCHITECTURE.md`, `docs/TROUBLESHOOTING.md`, and `docs/DEVELOPMENT.md`.
 - **Coexistence with GitHub Pages:** Repositories that publish GitHub Pages from `docs/` keep `docs/.nojekyll`, `docs/index.html`, and `docs/assets/` alongside `docs/*.md`. GitHub renders Markdown natively in the repository view while `.nojekyll` leaves `.md` files untouched on Pages.
 - **No GitHub Wiki:** Disable the separate GitHub Wiki tab in repository settings (`Settings -> General -> Features -> Wikis`). Keeping all documentation inside `docs/` keeps it local-first in `git clone`, versioned with release tags, reviewable in pull requests, and verifiable by CI link checks.
+- **No `shields.io` Badge Walls:** Do not stack colorful third-party status badges under README titles; let the cover, one-liner, and GitHub Actions handle signal.
 
 ---
 
-*Cyclorama Dawn — Steel & Beacon Orange (`v2.1`). Edit this guide and `brand/tokens/rfs.tokens.json` first; regenerate derived assets second.*
+## 15. Data Visualization, Page Archetypes & Media Framing
+
+- **Ordered 6-Series Data Visualization Palette (`--rfs-viz-1` – `--rfs-viz-6`):** Derived directly from calibrated Cyclorama Dawn tokens so every chart series passes WCAG AA (≥ 5.8:1) in both modes with zero off-brand rainbow defaults:
+  1. `--rfs-viz-1` **Glacial Steel** (`#74B8E8` / `#164669`)
+  2. `--rfs-viz-2` **Maritime Beacon** (`#FF9254` / `#AD3D0A`)
+  3. `--rfs-viz-3` **Mint Signal** (`#3DDC97` / `#127247`)
+  4. `--rfs-viz-4` **Amber** (`#FFC247` / `#885800`)
+  5. `--rfs-viz-5` **Signal Crimson** (`#FF5C6C` / `#B91C2E`)
+  6. `--rfs-viz-6` **Stage Slate** (`#B3B5C0` / `#474D59`)
+  Pair series with direct text labels or distinct dash patterns (`tabular-nums` axes, `1px` `--rfs-viz-grid` hairlines, zero 3D effects or glows).
+- **Five Bespoke Page Archetypes:** Never clone one page template blindly across distinct tools. Pick the archetype matching the tool's workflow (full decision tree in [`skills/rfs-brand/references/page-archetypes.md`](skills/rfs-brand/references/page-archetypes.md)): **Interactive Proof Console**, **Safety Matrix & Protocol Spec**, **Topology & Signal Pipeline**, **Editorial Handbook & Ledger**, or **Full-Viewport Offline App**.
+- **Screenshots & Redaction:** Default to Dark (`LX 263`) captures (paired with Light `LX 512` for dual-theme apps), omit fake macOS traffic-light dots, and redact real usernames, private paths, live IPs, and tokens using lab-safe placeholders (`10.10.14.5`, `dc1`, `htb_forest`).
+- **Portable Repo Verification:** Run `python tools/verify-brand.py --repo <path> [--json]` against any Real-Fruit-Snacks repo to validate README length/summary, adaptive covers, `0.32` light wash, `prefers-reduced-motion`, dark default, zero `in oklch`, zero native popups, zero external CDN fonts, and zero private-repo leaks.
+
+---
+
+*Cyclorama Dawn — Steel & Beacon Orange (`v2.2`). Edit this guide and `brand/tokens/rfs.tokens.json` first; regenerate derived assets second.*

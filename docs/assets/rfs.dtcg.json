@@ -1,0 +1,470 @@
+{
+  "$schema": "https://tr.designtokens.org/format/",
+  "$description": "Real-Fruit-Snacks \u2014 Cyclorama Dawn (Steel & Beacon Orange, v2.2.0) \u2014 W3C Design Tokens Community Group (DTCG) export.",
+  "color": {
+    "$type": "color",
+    "dark": {
+      "$description": "Beacon Horizon (LX 263) \u2014 explicit dark default.",
+      "bg": {
+        "$value": "#050507",
+        "$description": "Primary page canvas (matte cyclorama black in dark; alabaster paper in light)."
+      },
+      "rail": {
+        "$value": "#070709",
+        "$description": "Navigation rail, table headers, and secondary structural chrome."
+      },
+      "surface": {
+        "$value": "#0C0C10",
+        "$description": "Primary cards, panels, proof desk, and terminal frames."
+      },
+      "raised": {
+        "$value": "#14141A",
+        "$description": "Nested inputs, chips, active rows, and elevated controls."
+      },
+      "line": {
+        "$value": "#27272E",
+        "$description": "1px structural hairlines and table dividers."
+      },
+      "line-strong": {
+        "$value": "#62646D",
+        "$description": "Interactive control borders (>= 3.11:1 against every surface)."
+      },
+      "text": {
+        "$value": "#F4F5F8",
+        "$description": "Primary display and body ink (>= 15.4:1 contrast)."
+      },
+      "mute": {
+        "$value": "#B3B5C0",
+        "$description": "Secondary copy, metadata, captions, and standard CLI output."
+      },
+      "steel": {
+        "$value": "#1F547A",
+        "$description": "Glacial Steel physical cyclorama wash pole."
+      },
+      "steel-fill": {
+        "$value": "#18496B",
+        "$description": "Solid Glacial Steel fill for buttons and active chips (white text >= 9.5:1)."
+      },
+      "steel-ink": {
+        "$value": "#74B8E8",
+        "$description": "Text-safe Glacial Steel for labels, kickers, cue numbers, and [i] tags."
+      },
+      "beacon": {
+        "$value": "#F06E2B",
+        "$description": "Maritime Beacon Orange physical cyclorama wash pole."
+      },
+      "beacon-wash": {
+        "$value": "#CC5016",
+        "$description": "Deep Maritime Beacon Orange wash stop for hero gradients."
+      },
+      "beacon-ink": {
+        "$value": "#FF9254",
+        "$description": "Text-safe Beacon Orange for links, active indicators, and focus rings."
+      },
+      "primary": {
+        "$value": "#F06E2B",
+        "$description": "Single-color primary brand accent."
+      },
+      "primary-hover": {
+        "$value": "#FF8442",
+        "$description": "Primary accent hover state (increased contrast against foreground)."
+      },
+      "primary-press": {
+        "$value": "#FFA06B",
+        "$description": "Primary accent pressed state (highest contrast against foreground)."
+      },
+      "on-primary": {
+        "$value": "#050507",
+        "$description": "Foreground text on solid primary fills."
+      },
+      "on-steel": {
+        "$value": "#FFFFFF",
+        "$description": "Foreground text on solid steel-fill surfaces."
+      },
+      "accent": {
+        "$value": "#FFC247",
+        "$description": "Amber warning ink ([!]) and syntax string literals."
+      },
+      "signal": {
+        "$value": "#3DDC97",
+        "$description": "Mint success ink ([ok]) and diff additions."
+      },
+      "fault": {
+        "$value": "#FF5C6C",
+        "$description": "Signal Crimson failure ink ([x]), error borders, and diff deletions."
+      },
+      "fault-fill": {
+        "$value": "#C92438",
+        "$description": "Solid Signal Crimson destructive button fill with white foreground."
+      },
+      "fault-fill-hover": {
+        "$value": "#E02E44",
+        "$description": "Hover state for Signal Crimson destructive fills."
+      },
+      "on-fault": {
+        "$value": "#FFFFFF",
+        "$description": "Foreground text on solid fault-fill surfaces."
+      },
+      "code-bg": {
+        "$value": "#08080B",
+        "$description": "Recessed terminal, command row, badge, and code-block surface."
+      },
+      "focus": {
+        "$value": "#FF9254",
+        "$description": "Keyboard :focus-visible outline ring (2px solid, 3px offset)."
+      }
+    },
+    "light": {
+      "$description": "Alabaster Day (LX 512) \u2014 opt-in light mode.",
+      "bg": {
+        "$value": "#F5F7F9",
+        "$description": "Primary page canvas (matte cyclorama black in dark; alabaster paper in light)."
+      },
+      "rail": {
+        "$value": "#EAEEF2",
+        "$description": "Navigation rail, table headers, and secondary structural chrome."
+      },
+      "surface": {
+        "$value": "#FFFFFF",
+        "$description": "Primary cards, panels, proof desk, and terminal frames."
+      },
+      "raised": {
+        "$value": "#E3E8EE",
+        "$description": "Nested inputs, chips, active rows, and elevated controls."
+      },
+      "line": {
+        "$value": "#CFD5DC",
+        "$description": "1px structural hairlines and table dividers."
+      },
+      "line-strong": {
+        "$value": "#6E7682",
+        "$description": "Interactive control borders (>= 3.11:1 against every surface)."
+      },
+      "text": {
+        "$value": "#0D1016",
+        "$description": "Primary display and body ink (>= 15.4:1 contrast)."
+      },
+      "mute": {
+        "$value": "#474D59",
+        "$description": "Secondary copy, metadata, captions, and standard CLI output."
+      },
+      "steel": {
+        "$value": "#1F547A",
+        "$description": "Glacial Steel physical cyclorama wash pole."
+      },
+      "steel-fill": {
+        "$value": "#18496B",
+        "$description": "Solid Glacial Steel fill for buttons and active chips (white text >= 9.5:1)."
+      },
+      "steel-ink": {
+        "$value": "#164669",
+        "$description": "Text-safe Glacial Steel for labels, kickers, cue numbers, and [i] tags."
+      },
+      "beacon": {
+        "$value": "#F06E2B",
+        "$description": "Maritime Beacon Orange physical cyclorama wash pole."
+      },
+      "beacon-wash": {
+        "$value": "#CC5016",
+        "$description": "Deep Maritime Beacon Orange wash stop for hero gradients."
+      },
+      "beacon-ink": {
+        "$value": "#AD3D0A",
+        "$description": "Text-safe Beacon Orange for links, active indicators, and focus rings."
+      },
+      "primary": {
+        "$value": "#AD3D0A",
+        "$description": "Single-color primary brand accent."
+      },
+      "primary-hover": {
+        "$value": "#943207",
+        "$description": "Primary accent hover state (increased contrast against foreground)."
+      },
+      "primary-press": {
+        "$value": "#7B2905",
+        "$description": "Primary accent pressed state (highest contrast against foreground)."
+      },
+      "on-primary": {
+        "$value": "#FFFFFF",
+        "$description": "Foreground text on solid primary fills."
+      },
+      "on-steel": {
+        "$value": "#FFFFFF",
+        "$description": "Foreground text on solid steel-fill surfaces."
+      },
+      "accent": {
+        "$value": "#885800",
+        "$description": "Amber warning ink ([!]) and syntax string literals."
+      },
+      "signal": {
+        "$value": "#127247",
+        "$description": "Mint success ink ([ok]) and diff additions."
+      },
+      "fault": {
+        "$value": "#B91C2E",
+        "$description": "Signal Crimson failure ink ([x]), error borders, and diff deletions."
+      },
+      "fault-fill": {
+        "$value": "#B91C2E",
+        "$description": "Solid Signal Crimson destructive button fill with white foreground."
+      },
+      "fault-fill-hover": {
+        "$value": "#991525",
+        "$description": "Hover state for Signal Crimson destructive fills."
+      },
+      "on-fault": {
+        "$value": "#FFFFFF",
+        "$description": "Foreground text on solid fault-fill surfaces."
+      },
+      "code-bg": {
+        "$value": "#EEF2F5",
+        "$description": "Recessed terminal, command row, badge, and code-block surface."
+      },
+      "focus": {
+        "$value": "#AD3D0A",
+        "$description": "Keyboard :focus-visible outline ring (2px solid, 3px offset)."
+      }
+    },
+    "dataviz": {
+      "$description": "Ordered 6-series categorical data visualization palette (WCAG AA >= 5.8:1 in both modes).",
+      "dark": {
+        "series-1": {
+          "$value": "#74B8E8",
+          "$description": "Series 1 \u2014 Glacial Steel (maps to --rfs-steel-ink)."
+        },
+        "series-2": {
+          "$value": "#FF9254",
+          "$description": "Series 2 \u2014 Maritime Beacon (maps to --rfs-beacon-ink)."
+        },
+        "series-3": {
+          "$value": "#3DDC97",
+          "$description": "Series 3 \u2014 Mint Signal (maps to --rfs-signal)."
+        },
+        "series-4": {
+          "$value": "#FFC247",
+          "$description": "Series 4 \u2014 Amber (maps to --rfs-accent)."
+        },
+        "series-5": {
+          "$value": "#FF5C6C",
+          "$description": "Series 5 \u2014 Signal Crimson (maps to --rfs-fault)."
+        },
+        "series-6": {
+          "$value": "#B3B5C0",
+          "$description": "Series 6 \u2014 Stage Slate (maps to --rfs-mute)."
+        }
+      },
+      "light": {
+        "series-1": {
+          "$value": "#164669",
+          "$description": "Series 1 \u2014 Glacial Steel (maps to --rfs-steel-ink)."
+        },
+        "series-2": {
+          "$value": "#AD3D0A",
+          "$description": "Series 2 \u2014 Maritime Beacon (maps to --rfs-beacon-ink)."
+        },
+        "series-3": {
+          "$value": "#127247",
+          "$description": "Series 3 \u2014 Mint Signal (maps to --rfs-signal)."
+        },
+        "series-4": {
+          "$value": "#885800",
+          "$description": "Series 4 \u2014 Amber (maps to --rfs-accent)."
+        },
+        "series-5": {
+          "$value": "#B91C2E",
+          "$description": "Series 5 \u2014 Signal Crimson (maps to --rfs-fault)."
+        },
+        "series-6": {
+          "$value": "#474D59",
+          "$description": "Series 6 \u2014 Stage Slate (maps to --rfs-mute)."
+        }
+      }
+    }
+  },
+  "fontFamily": {
+    "$type": "fontFamily",
+    "display": {
+      "$value": [
+        "Big Shoulders Stencil",
+        "Arial Narrow",
+        "sans-serif"
+      ],
+      "$description": "Self-hosted variable display stack."
+    },
+    "sans": {
+      "$value": [
+        "Albert Sans",
+        "system-ui",
+        "-apple-system",
+        "sans-serif"
+      ],
+      "$description": "Self-hosted variable sans stack."
+    },
+    "mono": {
+      "$value": [
+        "Azeret Mono",
+        "ui-monospace",
+        "Cascadia Code",
+        "Consolas",
+        "monospace"
+      ],
+      "$description": "Self-hosted variable mono stack."
+    }
+  },
+  "space": {
+    "$type": "dimension",
+    "1": {
+      "$value": "4px",
+      "$description": "4px base grid step 1."
+    },
+    "2": {
+      "$value": "8px",
+      "$description": "4px base grid step 2."
+    },
+    "3": {
+      "$value": "12px",
+      "$description": "4px base grid step 3."
+    },
+    "4": {
+      "$value": "16px",
+      "$description": "4px base grid step 4."
+    },
+    "5": {
+      "$value": "24px",
+      "$description": "4px base grid step 5."
+    },
+    "6": {
+      "$value": "32px",
+      "$description": "4px base grid step 6."
+    },
+    "7": {
+      "$value": "48px",
+      "$description": "4px base grid step 7."
+    },
+    "8": {
+      "$value": "64px",
+      "$description": "4px base grid step 8."
+    },
+    "9": {
+      "$value": "96px",
+      "$description": "4px base grid step 9."
+    }
+  },
+  "radius": {
+    "$type": "dimension",
+    "token": {
+      "$value": "4px",
+      "$description": "D \u00b7 Terminal Token badges, chips, and keycaps."
+    },
+    "sm": {
+      "$value": "6px",
+      "$description": "Buttons, inputs, and compact controls."
+    },
+    "md": {
+      "$value": "10px",
+      "$description": "Cards, panels, and structural frames."
+    }
+  },
+  "motion": {
+    "easing": {
+      "$type": "cubicBezier",
+      "ease": {
+        "$value": [
+          0.16,
+          1.0,
+          0.3,
+          1.0
+        ],
+        "$description": "Motion curve --rfs-ease."
+      },
+      "ease-in-out": {
+        "$value": [
+          0.65,
+          0.0,
+          0.35,
+          1.0
+        ],
+        "$description": "Motion curve --rfs-ease-in-out."
+      },
+      "ease-exit": {
+        "$value": [
+          0.7,
+          0.0,
+          0.84,
+          0.0
+        ],
+        "$description": "Motion curve --rfs-ease-exit."
+      },
+      "ease-linear": {
+        "$value": [
+          0,
+          0,
+          1,
+          1
+        ],
+        "$description": "Motion curve --rfs-ease-linear."
+      }
+    },
+    "duration": {
+      "$type": "duration",
+      "dur-fast": {
+        "$value": "150ms",
+        "$description": "Motion duration --rfs-dur-fast."
+      },
+      "dur-base": {
+        "$value": "250ms",
+        "$description": "Motion duration --rfs-dur-base."
+      },
+      "dur-slow": {
+        "$value": "520ms",
+        "$description": "Motion duration --rfs-dur-slow."
+      },
+      "type-rate": {
+        "$value": "45ms",
+        "$description": "Motion duration --rfs-type-rate."
+      }
+    }
+  },
+  "zIndex": {
+    "$type": "number",
+    "base": {
+      "$value": 0,
+      "$description": "Layer elevation --rfs-z-base."
+    },
+    "sticky": {
+      "$value": 20,
+      "$description": "Layer elevation --rfs-z-sticky."
+    },
+    "nav": {
+      "$value": 40,
+      "$description": "Layer elevation --rfs-z-nav."
+    },
+    "popover": {
+      "$value": 60,
+      "$description": "Layer elevation --rfs-z-popover."
+    },
+    "modal": {
+      "$value": 80,
+      "$description": "Layer elevation --rfs-z-modal."
+    },
+    "toast": {
+      "$value": 100,
+      "$description": "Layer elevation --rfs-z-toast."
+    }
+  },
+  "breakpoint": {
+    "$type": "dimension",
+    "sm": {
+      "$value": "36em",
+      "$description": "Responsive breakpoint --rfs-bp-sm."
+    },
+    "md": {
+      "$value": "56em",
+      "$description": "Responsive breakpoint --rfs-bp-md."
+    },
+    "lg": {
+      "$value": "72em",
+      "$description": "Responsive breakpoint --rfs-bp-lg."
+    }
+  }
+}

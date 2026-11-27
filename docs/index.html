@@ -77,13 +77,13 @@
     <div class="hero-band">
       <div class="wrap hero-grid">
         <div>
-          <p class="eyebrow">Real-Fruit-Snacks · Cyclorama Dawn v2.1</p>
+          <p class="eyebrow">Real-Fruit-Snacks · Cyclorama Dawn v2.2</p>
           <h1 class="hero-title" id="main-heading" tabindex="-1">RFS-BRAND</h1>
           <div class="hero-rule" aria-hidden="true"></div>
-          <p class="hero-lede">The complete visual, typographic, editorial, and motion system for Real-Fruit-Snacks: matte cyclorama black and Alabaster Day light mode, Glacial Steel sweeping into Maritime Beacon Orange, every highlight and underline rule, interactive control states, and deterministic generators for every repo.</p>
+          <p class="hero-lede">The complete visual, typographic, editorial, and motion system for Real-Fruit-Snacks: matte cyclorama black and Alabaster Day light mode, Glacial Steel sweeping into Maritime Beacon Orange, every highlight and underline rule, interactive control states, installable agent skill, and deterministic generators for every repo.</p>
           <div class="hero-actions">
             <a class="btn btn-horizon" href="https://github.com/Real-Fruit-Snacks/rfs-brand/releases/latest/download/rfs-brand.zip">Download rfs-brand.zip</a>
-            <a class="btn btn-outline" href="https://github.com/Real-Fruit-Snacks/rfs-brand/blob/main/BRAND.md">Read BRAND.md</a>
+            <a class="btn btn-outline" href="llms.txt">Read llms.txt</a>
             <a class="btn btn-ghost" href="https://real-fruit-snacks.github.io/">View 17-tool catalog</a>
           </div>
         </div>
@@ -91,7 +91,7 @@
         <div class="specimen-card" aria-label="Live brand kit specimen">
           <div class="spec-top-beam" aria-hidden="true"></div>
           <div class="spec-bar">
-            <span class="rfs-badge b-beacon"><span class="k">[spec]</span> v2.1</span>
+            <span class="rfs-badge b-beacon"><span class="k">[spec]</span> v2.2</span>
             <span class="spec-bar-cue">
               <span class="only-dark">LX 263 · BEACON HORIZON</span>
               <span class="only-light">LX 512 · ALABASTER DAY</span>
@@ -254,6 +254,34 @@
             </li>
             <li class="kit-item">
               <div class="kit-item-head">
+                <code>skills/rfs-brand/SKILL.md</code>
+                <span>Installable <code>agentskills.io</code> brand skill with 5 progressive-disclosure references + hosted <a class="rfs-link-prose" href="llms.txt"><code>llms.txt</code></a></span>
+              </div>
+              <div class="cmd-row">
+                <pre><code id="cmd-skill"><span class="rfs-tok-fn">npx</span> <span class="rfs-tok-kw">skills add</span> <span class="rfs-tok-str">Real-Fruit-Snacks/rfs-brand</span></code></pre>
+                <span class="copy-wrap">
+                  <button class="copy-btn" type="button" command="--copy" commandfor="cmd-skill">Copy<span class="visually-hidden"> npx skills add command</span></button>
+                  <span class="copy-tip" role="status"></span>
+                </span>
+              </div>
+            </li>
+            <li class="kit-item">
+              <div class="kit-item-head">
+                <code>rfs.dtcg.json</code> · <code>rfs-tailwind.css</code> · <code>rfs-tokens.ts</code>
+                <span>Standards-compliant W3C DTCG JSON, Tailwind CSS v4 <code>@theme</code> bridge, and typed TypeScript tokens</span>
+              </div>
+              <div class="cmd-row">
+                <pre><code id="cmd-exports"><span class="rfs-tok-fn">curl</span> <span class="rfs-tok-kw">-LO</span> <span class="rfs-tok-str">https://real-fruit-snacks.github.io/rfs-brand/assets/rfs.dtcg.json</span>
+<span class="rfs-tok-fn">curl</span> <span class="rfs-tok-kw">-LO</span> <span class="rfs-tok-str">https://real-fruit-snacks.github.io/rfs-brand/assets/rfs-tailwind.css</span>
+<span class="rfs-tok-fn">curl</span> <span class="rfs-tok-kw">-LO</span> <span class="rfs-tok-str">https://real-fruit-snacks.github.io/rfs-brand/assets/rfs-tokens.ts</span></code></pre>
+                <span class="copy-wrap">
+                  <button class="copy-btn" type="button" command="--copy" commandfor="cmd-exports">Copy<span class="visually-hidden"> curl commands for DTCG, Tailwind v4, and TypeScript tokens</span></button>
+                  <span class="copy-tip" role="status"></span>
+                </span>
+              </div>
+            </li>
+            <li class="kit-item">
+              <div class="kit-item-head">
                 <code>BRAND-RULES.md</code>
                 <span>Concise 1-page machine-readable brand contract ready to drop into any repo's <code>AGENTS.md</code></span>
               </div>
@@ -268,13 +296,13 @@
           </ul>
 
           <aside class="release-box" aria-labelledby="release-h">
-            <h3 id="release-h">New in v2.1.0 — Signal Crimson</h3>
+            <h3 id="release-h">New in v2.2.0 — Agent Skill &amp; Token Exports</h3>
             <p class="release-meta">Cyclorama Dawn · Steel &amp; Beacon Orange · November 2026</p>
             <ul>
-              <li>Replaced Raspberry fault colors with calibrated <strong>Signal Crimson</strong> (<code>#FF5C6C</code> dark / <code>#B91C2E</code> light ink; <code>#C92438</code> / <code>#B91C2E</code> destructive fills with white text).</li>
-              <li>Added <code>--rfs-fault-fill</code>, <code>--rfs-fault-fill-hover</code>, <code>.rfs-btn-fault-soft</code>, and <code>.rfs-btn-fault-outline</code> button variants to <code>rfs-components.css</code>.</li>
-              <li>Calibrated every text token ≥ 4.84:1 and every control border ≥ 3.11:1 across all four surfaces in both modes, plus Cartesian <code>in oklab</code> gradient interpolation.</li>
-              <li>Self-hosted variable <strong>Big Shoulders Stencil</strong>, <strong>Albert Sans</strong>, and <strong>Azeret Mono</strong>, 60 colorable icons, <code>BRAND-RULES.md</code>, and CLI <code>NO_COLOR</code> presets.</li>
+              <li>Packaged an installable <code>skills/rfs-brand/SKILL.md</code> (<code>agentskills.io</code> format with 5 progressive-disclosure references) plus hosted <a class="rfs-link-prose" href="llms.txt"><code>llms.txt</code></a> and a synced <code>v2.2.0</code> <code>docs/DESIGN.md</code>.</li>
+              <li>Added <code>tools/make-tokens.py</code> generating <strong>W3C DTCG</strong> (<code>rfs.dtcg.json</code>), <strong>Tailwind CSS v4</strong> <code>@theme</code> (<code>rfs-tailwind.css</code>), and typed <strong>TypeScript</strong> (<code>rfs-tokens.ts</code>) plus ordered 6-series data-viz tokens (<code>--rfs-viz-1..6</code>).</li>
+              <li>Added portable <code>verify-brand.py --repo &lt;path&gt; [--json]</code> auditing for any RFS repository alongside visual Do/Don't misuse specimens, Voice Before/After rewrites, Page Archetypes, and Copy HTML disclosures.</li>
+              <li>Upgraded Alabaster Light marks (<code>0.36</code> wash), covers/banners/boards (<code>0.32</code> wash), and theme-calibrated Light specimens across all 22 public repositories.</li>
             </ul>
             <a class="rfs-link-prose" href="https://github.com/Real-Fruit-Snacks/rfs-brand/blob/main/CHANGELOG.md">Read full CHANGELOG.md</a>
           </aside>
@@ -461,6 +489,89 @@
             Always interpolate Steel (<code>h ≈ 243°</code>) to Beacon Orange (<code>h ≈ 44°</code>) using Cartesian <code>in oklab</code>—never polar <code>in oklch</code>, which routes through magenta/pink at <code>360°</code> and produces an off-brand violet midpoint.
           </div>
         </div>
+
+        <div class="viz-wrap">
+          <div>
+            <h3>Data Visualization Palette (6 Ordered Series)</h3>
+            <p class="sec-lede">Derived directly from calibrated Cyclorama Dawn tokens (<code>--rfs-viz-1</code> through <code>--rfs-viz-6</code>). Every series passes WCAG AA (≥ 5.8:1) in both modes, uses direct text labels + tabular numerals (<code>tnum</code>), and avoids default rainbow chart palettes.</p>
+          </div>
+          <div class="viz-grid">
+            <div class="viz-swatches" role="group" aria-label="Ordered 6-series data visualization tokens — click to copy active hex">
+              <button type="button" class="viz-chip" data-spec-copy data-hex-dark="#74B8E8" data-hex-light="#164669">
+                <span class="viz-chip-bar" style="background:var(--rfs-viz-1)"></span>
+                <span class="viz-chip-top"><b>01 Steel</b><em>--rfs-viz-1</em></span>
+                <code class="spec-gel-hex"><span class="only-dark">#74B8E8</span><span class="only-light">#164669</span></code>
+              </button>
+              <button type="button" class="viz-chip" data-spec-copy data-hex-dark="#FF9254" data-hex-light="#AD3D0A">
+                <span class="viz-chip-bar" style="background:var(--rfs-viz-2)"></span>
+                <span class="viz-chip-top"><b>02 Beacon</b><em>--rfs-viz-2</em></span>
+                <code class="spec-gel-hex"><span class="only-dark">#FF9254</span><span class="only-light">#AD3D0A</span></code>
+              </button>
+              <button type="button" class="viz-chip" data-spec-copy data-hex-dark="#3DDC97" data-hex-light="#127247">
+                <span class="viz-chip-bar" style="background:var(--rfs-viz-3)"></span>
+                <span class="viz-chip-top"><b>03 Mint</b><em>--rfs-viz-3</em></span>
+                <code class="spec-gel-hex"><span class="only-dark">#3DDC97</span><span class="only-light">#127247</span></code>
+              </button>
+              <button type="button" class="viz-chip" data-spec-copy data-hex-dark="#FFC247" data-hex-light="#885800">
+                <span class="viz-chip-bar" style="background:var(--rfs-viz-4)"></span>
+                <span class="viz-chip-top"><b>04 Amber</b><em>--rfs-viz-4</em></span>
+                <code class="spec-gel-hex"><span class="only-dark">#FFC247</span><span class="only-light">#885800</span></code>
+              </button>
+              <button type="button" class="viz-chip" data-spec-copy data-hex-dark="#FF5C6C" data-hex-light="#B91C2E">
+                <span class="viz-chip-bar" style="background:var(--rfs-viz-5)"></span>
+                <span class="viz-chip-top"><b>05 Crimson</b><em>--rfs-viz-5</em></span>
+                <code class="spec-gel-hex"><span class="only-dark">#FF5C6C</span><span class="only-light">#B91C2E</span></code>
+              </button>
+              <button type="button" class="viz-chip" data-spec-copy data-hex-dark="#B3B5C0" data-hex-light="#474D59">
+                <span class="viz-chip-bar" style="background:var(--rfs-viz-6)"></span>
+                <span class="viz-chip-top"><b>06 Slate</b><em>--rfs-viz-6</em></span>
+                <code class="spec-gel-hex"><span class="only-dark">#B3B5C0</span><span class="only-light">#474D59</span></code>
+              </button>
+            </div>
+
+            <figure class="viz-chart-card">
+              <svg viewBox="0 0 460 156" role="img" aria-label="Sample Cyclorama Dawn bar chart showing six calibrated series with direct labels and hairline gridlines">
+                <g stroke="var(--rfs-viz-grid)" stroke-width="1">
+                  <line x1="42" y1="22" x2="444" y2="22"/>
+                  <line x1="42" y1="54" x2="444" y2="54"/>
+                  <line x1="42" y1="86" x2="444" y2="86"/>
+                  <line x1="42" y1="118" x2="444" y2="118" stroke="var(--rfs-line-strong)"/>
+                </g>
+                <g fill="var(--rfs-mute)" font-family="Azeret Mono, monospace" font-size="9.5" text-anchor="end">
+                  <text x="34" y="25">100</text>
+                  <text x="34" y="57">66</text>
+                  <text x="34" y="89">33</text>
+                  <text x="34" y="121">0</text>
+                </g>
+                <g>
+                  <rect x="58" y="34" width="38" height="84" rx="3" fill="var(--rfs-viz-1)"/>
+                  <rect x="122" y="48" width="38" height="70" rx="3" fill="var(--rfs-viz-2)"/>
+                  <rect x="186" y="26" width="38" height="92" rx="3" fill="var(--rfs-viz-3)"/>
+                  <rect x="250" y="62" width="38" height="56" rx="3" fill="var(--rfs-viz-4)"/>
+                  <rect x="314" y="88" width="38" height="30" rx="3" fill="var(--rfs-viz-5)"/>
+                  <rect x="378" y="72" width="38" height="46" rx="3" fill="var(--rfs-viz-6)"/>
+                </g>
+                <g fill="var(--rfs-text)" font-family="Azeret Mono, monospace" font-size="9.5" font-weight="600" text-anchor="middle">
+                  <text x="77" y="29">88</text>
+                  <text x="141" y="43">73</text>
+                  <text x="205" y="21">96</text>
+                  <text x="269" y="57">58</text>
+                  <text x="333" y="83">31</text>
+                  <text x="397" y="67">48</text>
+                </g>
+                <g fill="var(--rfs-mute)" font-family="Azeret Mono, monospace" font-size="9" text-anchor="middle">
+                  <text x="77" y="138">S1 · IN</text>
+                  <text x="141" y="138">S2 · ACT</text>
+                  <text x="205" y="138">S3 · OK</text>
+                  <text x="269" y="138">S4 · WRN</text>
+                  <text x="333" y="138">S5 · ERR</text>
+                  <text x="397" y="138">S6 · REF</text>
+                </g>
+              </svg>
+              <figcaption><strong>Chart discipline:</strong> pair every series with direct numeric labels and hairline <code>--rfs-viz-grid</code> rules—zero 3D shadows, zero neon glows, and zero unlabelled legend-only color coding.</figcaption>
+            </figure>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -627,6 +738,23 @@
               <div class="rfs-callout is-warn"><strong>Warn</strong> <code>ffmpeg</code> was not detected on <code>PATH</code>; transcoding will skip until installed.</div>
               <div class="rfs-callout is-fail"><strong>Fail</strong> Connection to <code>127.0.0.1:8080</code> refused—verify qBittorrent Web UI is enabled.</div>
             </div>
+            <details class="code-disclosure">
+              <summary>View HTML — Badges &amp; Callouts</summary>
+              <div class="code-disclosure-body">
+                <div class="rfs-code-card">
+                  <div class="rfs-code-head">
+                    <span class="rfs-badge b-steel"><span class="k">[html]</span></span>
+                    <span class="copy-wrap">
+                      <button class="copy-btn" type="button" command="--copy" commandfor="snip-callouts">Copy HTML<span class="visually-hidden"> for badges and callouts</span></button>
+                      <span class="copy-tip" role="status"></span>
+                    </span>
+                  </div>
+                  <pre class="rfs-code-block"><code id="snip-callouts">&lt;span class="rfs-badge b-ok"&gt;&lt;span class="k"&gt;[ok]&lt;/span&gt; synced&lt;/span&gt;
+&lt;div class="rfs-callout is-note"&gt;&lt;strong&gt;Note&lt;/strong&gt; Runs locally with zero cloud sync.&lt;/div&gt;
+&lt;div class="rfs-callout is-fail"&gt;&lt;strong&gt;Fail&lt;/strong&gt; Connection refused on 127.0.0.1:8080.&lt;/div&gt;</code></pre>
+                </div>
+              </div>
+            </details>
           </div>
 
           <div class="panel-card">
@@ -680,6 +808,24 @@
                 <span>Auto-sync forwarded port</span>
               </label>
             </div>
+            <details class="code-disclosure">
+              <summary>View HTML — Buttons, Chips &amp; Switch</summary>
+              <div class="code-disclosure-body">
+                <div class="rfs-code-card">
+                  <div class="rfs-code-head">
+                    <span class="rfs-badge b-steel"><span class="k">[html]</span></span>
+                    <span class="copy-wrap">
+                      <button class="copy-btn" type="button" command="--copy" commandfor="snip-buttons">Copy HTML<span class="visually-hidden"> for buttons, chips, and switch</span></button>
+                      <span class="copy-tip" role="status"></span>
+                    </span>
+                  </div>
+                  <pre class="rfs-code-block"><code id="snip-buttons">&lt;button class="rfs-btn rfs-btn-horizon" type="button"&gt;Horizon CTA&lt;/button&gt;
+&lt;button class="rfs-btn rfs-btn-fault" type="button" command="show-modal" commandfor="confirm-del"&gt;Delete…&lt;/button&gt;
+&lt;button class="rfs-chip" type="button" aria-pressed="true"&gt;&lt;span class="k"&gt;[rust]&lt;/span&gt; 5&lt;/button&gt;
+&lt;label class="rfs-switch-label"&gt;&lt;input class="rfs-switch" type="checkbox" switch checked&gt;&lt;span&gt;Auto-sync&lt;/span&gt;&lt;/label&gt;</code></pre>
+                </div>
+              </div>
+            </details>
           </div>
 
           <div class="panel-card">
@@ -704,6 +850,25 @@
               <label><input type="radio" name="demo-mode" checked> Dark (LX 263)</label>
               <label><input type="radio" name="demo-mode"> Light (LX 512)</label>
             </div>
+            <details class="code-disclosure">
+              <summary>View HTML — Inputs &amp; Base-Select</summary>
+              <div class="code-disclosure-body">
+                <div class="rfs-code-card">
+                  <div class="rfs-code-head">
+                    <span class="rfs-badge b-steel"><span class="k">[html]</span></span>
+                    <span class="copy-wrap">
+                      <button class="copy-btn" type="button" command="--copy" commandfor="snip-forms">Copy HTML<span class="visually-hidden"> for inputs and select</span></button>
+                      <span class="copy-tip" role="status"></span>
+                    </span>
+                  </div>
+                  <pre class="rfs-code-block"><code id="snip-forms">&lt;input class="rfs-input" type="text" pattern="[a-z0-9]+(-[a-z0-9]+)*" required&gt;
+&lt;select class="rfs-select" name="cue"&gt;
+  &lt;button&gt;&lt;selectedcontent&gt;&lt;/selectedcontent&gt;&lt;/button&gt;
+  &lt;option value="lx263" selected&gt;LX 263 — Beacon Horizon&lt;/option&gt;
+&lt;/select&gt;</code></pre>
+                </div>
+              </div>
+            </details>
           </div>
         </div>
 
@@ -1021,6 +1186,116 @@
             <figcaption><b>Stacked Lockup</b><span>rfs-lockup-stacked-dark.svg</span></figcaption>
           </figure>
         </div>
+
+        <div class="dodont-wrap">
+          <h3>Visual Do vs. Don't — Marks &amp; UI Anti-Patterns</h3>
+          <p class="sec-lede">Side-by-side specimens showing the most common brand regressions caught during audits—apply the <code>[ok]</code> left pattern and reject the <code>[x]</code> right anti-pattern.</p>
+          <div class="dodont-grid">
+            <div class="dodont-pair">
+              <div class="dodont-pair-head">
+                <h4>01 · Mark Geometry &amp; Wash</h4>
+                <span class="rfs-badge b-steel"><span class="k">[mark]</span> 1:1 · rx 14</span>
+              </div>
+              <div class="dodont-cols">
+                <figure class="dodont-card is-do">
+                  <span class="dodont-tag">[ok] Do</span>
+                  <div class="dodont-stage">
+                    <img class="good-mark-clean only-dark" src="assets/rfs-mark-dark.svg" alt="Proper 1:1 dark RFS mark" width="56" height="56">
+                    <img class="good-mark-clean only-light" src="assets/rfs-mark-light.svg" alt="Proper 1:1 light RFS mark" width="56" height="56">
+                  </div>
+                  <figcaption>Keep strict 1:1 ratio, <code>14u</code> clear space, and the built-in Steel→Beacon wash (<code>0.36</code> light).</figcaption>
+                </figure>
+                <figure class="dodont-card is-dont">
+                  <span class="dodont-tag">[x] Don't</span>
+                  <div class="dodont-stage">
+                    <img class="bad-mark-stretch only-dark" src="assets/rfs-mark-dark.svg" alt="Misused stretched RFS mark with orange glow" width="78" height="44">
+                    <img class="bad-mark-stretch only-light" src="assets/rfs-mark-light.svg" alt="Misused stretched light RFS mark with orange glow" width="78" height="44">
+                  </div>
+                  <figcaption>Never stretch aspect ratios, add neon outer drop-shadows, or strip the Alabaster wash to flat white.</figcaption>
+                </figure>
+              </div>
+            </div>
+
+            <div class="dodont-pair">
+              <div class="dodont-pair-head">
+                <h4>02 · Gradient Interpolation Space</h4>
+                <span class="rfs-badge b-beacon"><span class="k">[color]</span> in oklab</span>
+              </div>
+              <div class="dodont-cols">
+                <figure class="dodont-card is-do">
+                  <span class="dodont-tag">[ok] Do</span>
+                  <div class="dodont-stage">
+                    <div class="grad-sample-bar grad-sample-oklab" aria-hidden="true"></div>
+                    <code>in oklab</code>
+                  </div>
+                  <figcaption>Cartesian <code>in oklab</code> sweeps Steel into Beacon across a crisp neutral twilight midpoint.</figcaption>
+                </figure>
+                <figure class="dodont-card is-dont">
+                  <span class="dodont-tag">[x] Don't</span>
+                  <div class="dodont-stage">
+                    <div class="grad-sample-bar grad-sample-muddy" aria-hidden="true"></div>
+                    <code>polar oklch</code>
+                  </div>
+                  <figcaption>Polar hue interpolation routes across 360° through off-brand magenta/violet mud.</figcaption>
+                </figure>
+              </div>
+            </div>
+
+            <div class="dodont-pair">
+              <div class="dodont-pair-head">
+                <h4>03 · Badges &amp; Terminal Chrome</h4>
+                <span class="rfs-badge b-ok"><span class="k">[ui]</span> 4px token</span>
+              </div>
+              <div class="dodont-cols">
+                <figure class="dodont-card is-do">
+                  <span class="dodont-tag">[ok] Do</span>
+                  <div class="dodont-stage">
+                    <span class="rfs-badge b-ok"><span class="k">[ok]</span> synced</span>
+                    <span class="rfs-badge b-steel"><span class="k">[shell]</span> local</span>
+                  </div>
+                  <figcaption>Use <code>4px</code> <code>D · Terminal Token</code> badges and a <code>3px</code> horizon edge—zero fake OS chrome.</figcaption>
+                </figure>
+                <figure class="dodont-card is-dont">
+                  <span class="dodont-tag">[x] Don't</span>
+                  <div class="dodont-stage">
+                    <span class="bad-mac-dots"><i style="background:#ff5f56"></i><i style="background:#ffbd2e"></i><i style="background:#27c93f"></i> Glowing Pill</span>
+                  </div>
+                  <figcaption>Never draw macOS traffic-light dots, purple neon pills, or <code>99px</code> glassmorphic status capsules.</figcaption>
+                </figure>
+              </div>
+            </div>
+
+            <div class="dodont-pair">
+              <div class="dodont-pair-head">
+                <h4>04 · Scrollbar Shell &amp; Modals</h4>
+                <span class="rfs-badge b-fail"><span class="k">[ux]</span> app-shell</span>
+              </div>
+              <div class="dodont-cols">
+                <figure class="dodont-card is-do">
+                  <span class="dodont-tag">[ok] Do</span>
+                  <div class="dodont-stage">
+                    <div class="mini-shell-demo is-good" aria-hidden="true">
+                      <div class="mini-shell-hdr">.rfs-shell-header</div>
+                      <div class="mini-shell-body">.rfs-scroll-region<span class="mini-shell-sb"></span></div>
+                    </div>
+                  </div>
+                  <figcaption>Scrollbar starts cleanly below the header hairline; confirmations use branded <code>&lt;dialog&gt;</code>.</figcaption>
+                </figure>
+                <figure class="dodont-card is-dont">
+                  <span class="dodont-tag">[x] Don't</span>
+                  <div class="dodont-stage">
+                    <div class="mini-shell-demo is-bad" aria-hidden="true">
+                      <div class="mini-shell-hdr">sticky header</div>
+                      <div class="mini-shell-body">window scroll</div>
+                      <span class="mini-shell-sb"></span>
+                    </div>
+                  </div>
+                  <figcaption>Never let scrollbars cut through top nav chrome or call native <code>alert()</code>/<code>confirm()</code>.</figcaption>
+                </figure>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -1082,7 +1357,52 @@
         <div class="banned-bar">
           <strong>Banned copy:</strong>
           <s>blazing</s> <s>powerful</s> <s>modern</s> <s>seamless</s> <s>supercharge</s> <s>awesome</s> <s>Welcome!</s> <s>coming soon</s>
-          <span style="color:var(--rfs-mute)">— plus all emoji and exclamation marks in headlines.</span>
+          <span style="color:var(--rfs-mute)">— plus all emoji, <code>shields.io</code> rainbow badge walls, and exclamation marks in headlines.</span>
+        </div>
+
+        <div class="table-wrap" tabindex="0" role="region" aria-labelledby="voice-matrix-cap" style="margin-top:1.5rem">
+          <table class="data-table">
+            <caption id="voice-matrix-cap">Voice &amp; microcopy Before / After rewrites across engineering surfaces</caption>
+            <thead>
+              <tr>
+                <th scope="col">Surface</th>
+                <th scope="col">[x] Avoid</th>
+                <th scope="col">[ok] Use</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">README one-liner</th>
+                <td class="voice-avoid">A blazing-fast, modern Rust screenshot tool!</td>
+                <td class="voice-use">Screenshot capture and annotation in pure Rust</td>
+              </tr>
+              <tr>
+                <th scope="row">CLI error</th>
+                <td class="voice-avoid">Error: Something went wrong connecting.</td>
+                <td class="voice-use"><code>[x] qBittorrent refused 127.0.0.1:8080 — enable Web UI and retry</code></td>
+              </tr>
+              <tr>
+                <th scope="row">Empty state</th>
+                <td class="voice-avoid">Nothing here yet! Let's get started!</td>
+                <td class="voice-use"><code>[empty]</code> 0 targets staged — run <code>pwn-broker add &lt;ip&gt;</code>.</td>
+              </tr>
+              <tr>
+                <th scope="row">Destructive CTA</th>
+                <td class="voice-avoid">Are you sure? [Yes] [No]</td>
+                <td class="voice-use">Delete <code>forest.tar.gz</code>? <code>[Cancel]</code> <code>[Delete Archive]</code></td>
+              </tr>
+              <tr>
+                <th scope="row">Toast notice</th>
+                <td class="voice-avoid">Awesome! Copied successfully!</td>
+                <td class="voice-use"><code>[ok]</code> Copied git clone URL.</td>
+              </tr>
+              <tr>
+                <th scope="row">Release note</th>
+                <td class="voice-avoid">Supercharged performance and seamless UX improvements.</td>
+                <td class="voice-use">Reduced full-world redraw from 18 ms to 4 ms on 4K displays.</td>
+              </tr>
+            </tbody>
+          </table>
         </div>
       </div>
     </section>
@@ -1997,6 +2317,28 @@
               <div class="rfs-callout is-warn"><strong>@media print &amp; forced-colors</strong> Switches to <code>#FFFFFF</code> paper, <code>#0D1016</code> ink, and system tokens (<code>Canvas</code>, <code>Highlight</code>) automatically.</div>
             </div>
           </div>
+
+          <details class="code-disclosure">
+            <summary>View HTML — UI States &amp; Native Progress</summary>
+            <div class="code-disclosure-body">
+              <div class="rfs-code-card">
+                <div class="rfs-code-head">
+                  <span class="rfs-badge b-steel"><span class="k">[html]</span></span>
+                  <span class="copy-wrap">
+                    <button class="copy-btn" type="button" command="--copy" commandfor="snip-states">Copy HTML<span class="visually-hidden"> for UI states and progress</span></button>
+                    <span class="copy-tip" role="status"></span>
+                  </span>
+                </div>
+                <pre class="rfs-code-block"><code id="snip-states">&lt;div class="rfs-state-box is-empty"&gt;
+  &lt;span class="rfs-badge b-steel"&gt;&lt;span class="k"&gt;[empty]&lt;/span&gt; 0 items&lt;/span&gt;
+  &lt;p&gt;No cover.toml found yet.&lt;/p&gt;
+  &lt;a class="rfs-btn rfs-btn-outline rfs-btn-sm" href="#covers"&gt;Start from template&lt;/a&gt;
+&lt;/div&gt;
+&lt;label for="prog"&gt;Rasterizing (65%)&lt;/label&gt;
+&lt;progress id="prog" class="rfs-progress" value="65" max="100"&gt;&lt;/progress&gt;</code></pre>
+              </div>
+            </div>
+          </details>
         </div>
 
         <!-- 13E: Scrollbar Shell & Branded Confirmation Modals -->
@@ -2031,6 +2373,37 @@
               </div>
             </div>
           </div>
+
+          <details class="code-disclosure">
+            <summary>View HTML — App-Shell &amp; Destructive Dialog</summary>
+            <div class="code-disclosure-body">
+              <div class="rfs-code-card">
+                <div class="rfs-code-head">
+                  <span class="rfs-badge b-steel"><span class="k">[html]</span></span>
+                  <span class="copy-wrap">
+                    <button class="copy-btn" type="button" command="--copy" commandfor="snip-dialog">Copy HTML<span class="visually-hidden"> for app-shell and destructive dialog</span></button>
+                    <span class="copy-tip" role="status"></span>
+                  </span>
+                </div>
+                <pre class="rfs-code-block"><code id="snip-dialog">&lt;body class="rfs-shell"&gt;
+  &lt;header class="rfs-shell-header"&gt;…&lt;/header&gt;
+  &lt;div class="rfs-scroll-region" id="page-scroll"&gt;&lt;main&gt;…&lt;/main&gt;&lt;/div&gt;
+&lt;/body&gt;
+
+&lt;dialog id="confirm-del" class="rfs-dialog is-destructive" closedby="any" aria-labelledby="del-h"&gt;
+  &lt;div class="rfs-dialog-bar" aria-hidden="true"&gt;&lt;/div&gt;
+  &lt;form class="rfs-dialog-body" method="dialog"&gt;
+    &lt;span class="rfs-badge b-fail"&gt;&lt;span class="k"&gt;[!]&lt;/span&gt; destructive action&lt;/span&gt;
+    &lt;h1 class="rfs-dialog-title" id="del-h"&gt;Delete old-cover.toml?&lt;/h1&gt;
+    &lt;div class="rfs-dialog-actions"&gt;
+      &lt;button class="rfs-btn rfs-btn-outline" value="cancel" autofocus&gt;Cancel&lt;/button&gt;
+      &lt;button class="rfs-btn rfs-btn-fault" value="delete"&gt;Delete File&lt;/button&gt;
+    &lt;/div&gt;
+  &lt;/form&gt;
+&lt;/dialog&gt;</code></pre>
+              </div>
+            </div>
+          </details>
         </div>
 
         <!-- 13F: Drop-In App Primitives & Native/TUI Presets -->
@@ -2081,23 +2454,43 @@
             </div>
 
             <div style="display:grid;gap:1rem;min-width:0;align-content:start">
-              <div class="rfs-card">
-                <span class="rfs-badge b-steel"><span class="k">[details]</span> native accordion</span>
-                <div class="rfs-accordion">
-                  <details open>
-                    <summary>Why keep vertical scrollbars below the header?</summary>
-                    <div class="rfs-accordion-body">Confining scrolling to <code>.rfs-scroll-region</code> inside a <code>100dvh</code> shell keeps navigation chrome visually uninterrupted and stops scrollbar tracks from running up into the top edge.</div>
-                  </details>
-                  <details>
-                    <summary>When should I use a toast vs. a modal dialog?</summary>
-                    <div class="rfs-accordion-body">Use <code>popover="manual"</code> toasts for non-critical confirmations (saved, copied). Use native <code>&lt;dialog class="rfs-dialog is-destructive"&gt;</code> whenever an action deletes, clears, or overwrites user data.</div>
-                  </details>
-                  <details>
-                    <summary>Why omit headings inside &lt;summary&gt;?</summary>
-                    <div class="rfs-accordion-body">Screen readers expose <code>&lt;summary&gt;</code> as a button and flatten nested headings, so keeping plain text directly inside <code>&lt;summary&gt;</code> preserves clean accessibility semantics.</div>
-                  </details>
-                </div>
-              </div>
+                  <div class="rfs-card">
+                    <span class="rfs-badge b-steel"><span class="k">[details]</span> native accordion</span>
+                    <div class="rfs-accordion">
+                      <details open>
+                        <summary>Why keep vertical scrollbars below the header?</summary>
+                        <div class="rfs-accordion-body">Confining scrolling to <code>.rfs-scroll-region</code> inside a <code>100dvh</code> shell keeps navigation chrome visually uninterrupted and stops scrollbar tracks from running up into the top edge.</div>
+                      </details>
+                      <details>
+                        <summary>When should I use a toast vs. a modal dialog?</summary>
+                        <div class="rfs-accordion-body">Use <code>popover="manual"</code> toasts for non-critical confirmations (saved, copied). Use native <code>&lt;dialog class="rfs-dialog is-destructive"&gt;</code> whenever an action deletes, clears, or overwrites user data.</div>
+                      </details>
+                      <details>
+                        <summary>Why omit headings inside &lt;summary&gt;?</summary>
+                        <div class="rfs-accordion-body">Screen readers expose <code>&lt;summary&gt;</code> as a button and flatten nested headings, so keeping plain text directly inside <code>&lt;summary&gt;</code> preserves clean accessibility semantics.</div>
+                      </details>
+                    </div>
+                    <details class="code-disclosure">
+                      <summary>View HTML — Toast Region &amp; Native Accordion</summary>
+                      <div class="code-disclosure-body">
+                        <div class="rfs-code-card">
+                          <div class="rfs-code-head">
+                            <span class="rfs-badge b-steel"><span class="k">[html]</span></span>
+                            <span class="copy-wrap">
+                              <button class="copy-btn" type="button" command="--copy" commandfor="snip-accordion">Copy HTML<span class="visually-hidden"> for toast region and accordion</span></button>
+                              <span class="copy-tip" role="status"></span>
+                            </span>
+                          </div>
+                          <pre class="rfs-code-block"><code id="snip-accordion">&lt;div class="rfs-toast-region" popover="manual" role="region" aria-label="Notifications"&gt;
+  &lt;div class="rfs-toast is-ok"&gt;&lt;span class="rfs-badge b-ok"&gt;&lt;span class="k"&gt;[ok]&lt;/span&gt;&lt;/span&gt; Synced.&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="rfs-accordion"&gt;
+  &lt;details open&gt;&lt;summary&gt;Question&lt;/summary&gt;&lt;div class="rfs-accordion-body"&gt;Plain answer.&lt;/div&gt;&lt;/details&gt;
+&lt;/div&gt;</code></pre>
+                        </div>
+                      </div>
+                    </details>
+                  </div>
 
               <div class="rfs-card" id="native-tui-tabs">
                 <span class="rfs-badge b-ok"><span class="k">[native &amp; tui]</span> Windows · Rust · Go · Python</span>
@@ -2220,14 +2613,79 @@ console = <span class="rfs-tok-fn">Console</span>(theme=RFS_THEME) <span class="
 <span class="rfs-tok-kw">- README &amp; Docs (BRAND.md §14):</span> Keep <span class="rfs-tok-str">README.md</span> ultra-minimal (<span class="rfs-tok-num">40–60</span> lines); move full usage, config, architecture, and dev guides into versioned <span class="rfs-tok-str">docs/*.md</span> (disable GitHub Wiki).</code></pre>
           </div>
         </div>
+
+        <!-- 13H: Page Archetypes, Agent Skill & Portable Repo Audit -->
+        <div class="panel-card std-block">
+          <div class="std-head-row">
+            <div>
+              <h3>H. Page Archetypes, Agent Skill &amp; Portable Repo Audit</h3>
+              <p class="std-note">Pick one of five canonical RFS archetypes so every tool's GitHub Pages site fits its actual workflow instead of cloning a single template, then audit any repository with <code>verify-brand.py --repo</code>.</p>
+            </div>
+            <div class="icon-top-actions">
+              <a class="rfs-btn rfs-btn-outline rfs-btn-sm" href="llms.txt">llms.txt</a>
+              <a class="rfs-btn rfs-btn-outline rfs-btn-sm" href="assets/rfs.dtcg.json" download>rfs.dtcg.json</a>
+              <a class="rfs-btn rfs-btn-outline rfs-btn-sm" href="assets/rfs-tailwind.css" download>rfs-tailwind.css</a>
+              <a class="rfs-btn rfs-btn-outline rfs-btn-sm" href="assets/rfs-tokens.ts" download>rfs-tokens.ts</a>
+            </div>
+          </div>
+
+          <div class="arch-grid">
+            <article class="arch-card">
+              <span class="rfs-badge b-steel"><span class="k">[01]</span> Interactive Proof Console</span>
+              <h4>Live IN → OUT Deck</h4>
+              <p>Best for org hubs and single-purpose watchers with live signal traces or DMX channel selectors.</p>
+              <span class="arch-repos">rfs.tools · real-fruit-snacks.github.io · port-sync · screen-mark</span>
+            </article>
+            <article class="arch-card">
+              <span class="rfs-badge b-beacon"><span class="k">[02]</span> Safety Matrix &amp; Spec</span>
+              <h4>Protocol &amp; Guardrail Ledger</h4>
+              <p>Best when safety bounds, lockout thresholds, or explicit exit/status matrices are the core story.</p>
+              <span class="arch-repos">cred-spray · certapi</span>
+            </article>
+            <article class="arch-card">
+              <span class="rfs-badge b-ok"><span class="k">[03]</span> Topology Workbench</span>
+              <h4>Pipeline &amp; Mode Diagram</h4>
+              <p>Best for tools bridging hosts, shares, or media stages with interactive mode switchers and SVG topologies.</p>
+              <span class="arch-repos">shell-tunnel · ad-sweep · hash-bait · carify · amazon-order-sync</span>
+            </article>
+            <article class="arch-card">
+              <span class="rfs-badge b-warn"><span class="k">[04]</span> Editorial Handbook</span>
+              <h4>Command &amp; Playbook Reference</h4>
+              <p>Best for multi-command suites, recipe registries, and playbooks anchored by a 2-column TOC and 62ch prose.</p>
+              <span class="arch-repos">pwn-broker · pwn-playbooks · pwn-report · pwn-shop · powershell-toolbox</span>
+            </article>
+            <article class="arch-card">
+              <span class="rfs-badge b-steel"><span class="k">[05]</span> Full-Viewport Offline App</span>
+              <h4>100dvh Tool Workspace</h4>
+              <p>Skip the marketing hero and open directly into the offline app chrome inside <code>.rfs-shell</code>.</p>
+              <span class="arch-repos">open-file · one-billion-pixels · identity-gen</span>
+            </article>
+          </div>
+
+          <div class="rfs-code-card">
+            <div class="rfs-code-head">
+              <span class="rfs-badge b-ok"><span class="k">[shell · skill &amp; audit]</span></span>
+              <span class="copy-wrap">
+                <button class="copy-btn" type="button" command="--copy" commandfor="cmd-audit">Copy<span class="visually-hidden"> skill install and repo audit commands</span></button>
+                <span class="copy-tip" role="status"></span>
+              </span>
+            </div>
+            <pre class="rfs-code-block"><code id="cmd-audit"><span class="rfs-tok-com"># Install the RFS brand skill into Claude Code, Codex, Cursor, or Antigravity</span>
+<span class="rfs-tok-fn">npx</span> <span class="rfs-tok-kw">skills add</span> <span class="rfs-tok-str">Real-Fruit-Snacks/rfs-brand</span>
+
+<span class="rfs-tok-com"># Audit any Real-Fruit-Snacks repository against Cyclorama Dawn v2.2 invariants</span>
+<span class="rfs-tok-fn">python</span> <span class="rfs-tok-str">rfs-brand/tools/verify-brand.py</span> <span class="rfs-tok-kw">--repo</span> <span class="rfs-tok-str">../my-tool</span> <span class="rfs-tok-kw">--json</span></code></pre>
+          </div>
+        </div>
       </div>
     </section>
   </main>
 
   <footer class="site-footer">
     <div class="wrap footer-inner">
-      <span>Real-Fruit-Snacks · Cyclorama Dawn v2.1 (Steel &amp; Beacon Orange) · Tools MIT · Fonts SIL OFL</span>
+      <span>Real-Fruit-Snacks · Cyclorama Dawn v2.2 (Steel &amp; Beacon Orange) · Tools MIT · Fonts SIL OFL</span>
       <span>
+        <a class="rfs-link-prose" href="llms.txt">llms.txt</a> ·
         <a class="rfs-link-prose" href="https://real-fruit-snacks.github.io/">Catalog</a> ·
         <a class="rfs-link-prose" href="https://real-fruit-snacks.github.io/rfs-themes/">rfs-themes</a> ·
         <a class="rfs-link-prose" href="https://rfs.tools/">rfs.tools</a> ·

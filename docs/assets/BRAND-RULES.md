@@ -1,7 +1,7 @@
 # RFS Brand Rules — Cyclorama Dawn (Steel & Beacon Orange)
 
 Drop-in brand contract for any **Real-Fruit-Snacks** (**RFS**) repository, web UI, CLI, or agent instruction file (`AGENTS.md` / `CLAUDE.md`).  
-Source of truth: `rfs-brand/BRAND.md` · Tokens: `rfs.css` + `rfs-components.css` + `rfs.tokens.json`.
+Source of truth: `rfs-brand/BRAND.md` · Agent Skill: `skills/rfs-brand/SKILL.md` (`npx skills add Real-Fruit-Snacks/rfs-brand`) · `llms.txt`: `https://real-fruit-snacks.github.io/rfs-brand/llms.txt` · Tokens: `rfs.css`, `rfs-components.css`, `rfs.tokens.json`, `rfs.dtcg.json`, `rfs-tailwind.css`, `rfs-tokens.ts`.
 
 ## 1. Visual Identity & Color
 - **Modes & Motion (Default Rule):** Dark mode (**Beacon Horizon `LX 263`** on neutral matte `#050507`, zero blue-slate tint) is the **explicit default** on every RFS page (`<meta name="color-scheme" content="dark">`); Light (**Alabaster Day `LX 512`** on `#F5F7F9`) is an opt-in user toggle. Keep browser animations, motion transitions, and View Transitions **enabled by default**—never turn them off by default.
@@ -51,4 +51,4 @@ Source of truth: `rfs-brand/BRAND.md` · Tokens: `rfs.css` + `rfs-components.css
 
 ## 7. README & Documentation
 - **Ultra-minimal `README.md` (40–60 lines):** Keep every repo README scannable as a landing page: `# repo-name`, `≤ 60`-char one-liner (no period), adaptive `<picture>` cover (`docs/assets/cover-{dark,light}.svg`), shortest install/run snippet, 3–5 concise bullets, `## Documentation` links, and `## License`.
-- **Overflow lives in `docs/*.md` (never GitHub Wiki):** Put full CLI flag tables, configuration references, architecture notes, tested matrices, known issues, troubleshooting, and dev/build instructions in versioned Markdown under `docs/` (`docs/USAGE.md`, `docs/CONFIGURATION.md`, `docs/DEVELOPMENT.md`, etc.). Coexists cleanly with GitHub Pages (`docs/.nojekyll`, `docs/index.html`, `docs/assets/`). Disable the GitHub Wiki tab in repo settings.
+- **Overflow lives in `docs/*.md` (never GitHub Wiki):** Put full CLI flag tables, configuration references, architecture notes, tested matrices, known issues, troubleshooting, and dev/build instructions in versioned Markdown under `docs/` (`docs/USAGE.md`, `docs/CONFIGURATION.md`, `docs/DEVELOPMENT.md`, etc.). Coexists cleanly with GitHub Pages (`docs/.nojekyll`, `docs/index.html`, `docs/assets/`). Disable the GitHub Wiki tab in repo settings, omit `shields.io` badge walls, and audit repos with `python rfs-brand/tools/verify-brand.py --repo <path>`.
