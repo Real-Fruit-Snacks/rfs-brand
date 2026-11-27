@@ -120,12 +120,19 @@ def tile_svg(theme="dark", rx=14, size=64, small=False, mono=None, pad_scale=1.0
         glyph = mc.text_el("display", "RFS", cx, cy, draw_sz, "#F4F5F8", draw_ls)
         bar = f'<rect x="{32.0 - ink_w / 2.0:.2f}" y="{bar_y:.2f}" width="{ink_w:.2f}" height="{bar_h:.2f}" rx="{bar_h / 2.0:.2f}" fill="url(#rule-d)"/>'
     else:
-        stroke = f' stroke="{c["line"]}" stroke-width="1.5"' if rx > 0 else ""
         inset = 0.75 if rx > 0 else 0
-        bg_el = (
-            f'<rect x="{inset}" y="{inset}" width="{64 - 2 * inset}" height="{64 - 2 * inset}" '
-            f'rx="{max(0, rx - inset):g}" fill="#FFFFFF"{stroke}/>'
+        box = (
+            f'x="{inset}" y="{inset}" width="{64 - 2 * inset}" height="{64 - 2 * inset}" '
+            f'rx="{max(0, rx - inset):g}"'
         )
+        # Alabaster ground with the same lower Steel -> Beacon horizon wash as the dark
+        # master, at the light-mode strength of the brand site's floor wash (0.36).
+        bg_el = (
+            f'<rect {box} fill="#FFFFFF"/>'
+            f'<rect width="64" height="64" rx="{rx}" fill="url(#cyc-h)" opacity="0.36" mask="url(#cyc-m)"/>'
+        )
+        if rx > 0:
+            bg_el += f'<rect {box} fill="none" stroke="{c["line"]}" stroke-width="1.5"/>'
         glyph = mc.text_el("display", "RFS", cx, cy, draw_sz, c["text"], draw_ls)
         bar = f'<rect x="{32.0 - ink_w / 2.0:.2f}" y="{bar_y:.2f}" width="{ink_w:.2f}" height="{bar_h:.2f}" rx="{bar_h / 2.0:.2f}" fill="url(#rule-l)"/>'
     return (

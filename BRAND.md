@@ -89,7 +89,7 @@ Three self-hosted variable SIL OFL families (zero external CDN calls):
 `RFS` set in **Big Shoulders Stencil** ExtraBold (outlined vector paths, zero font dependency) above a Steel → Beacon Orange horizontal bar on a 64×64 rounded tile (`rx="14"`), optically centered as one unified group across every surface:
 
 - **Master / Dark (`rfs-mark-dark.svg`):** Matte `#050507` cyclorama ground with a rising lower-edge **Glacial Steel → Maritime Beacon Orange** horizon wash (`#133954 → #1F547A → #CC5016 → #F06E2B`), crisp `rgba(255,255,255,0.16)` hairline border, `#F4F5F8` stencil `RFS`, and a Steel→Beacon bar underneath—matching the 1024px profile avatar and every org banner.
-- **Light (`rfs-mark-light.svg`):** Crisp Alabaster `#FFFFFF` tile with 1.5px `#CFD5DC` hairline border, `#0D1016` stencil `RFS`, and the identical Steel→Beacon horizon bar underneath.
+- **Light (`rfs-mark-light.svg`):** Crisp Alabaster `#FFFFFF` tile with the same lower **Glacial Steel → Maritime Beacon Orange** horizon wash at the light-mode floor-wash strength (`opacity 0.36`), 1.5px `#CFD5DC` hairline border, `#0D1016` stencil `RFS`, and the identical Steel→Beacon horizon bar underneath.
 - **Full-bleed square (`rfs-mark-*-square.svg`):** Same geometry without rounded corners for iOS `apple-touch-icon` and maskable icons.
 - **Single-color (`rfs-mark-mono-{white,ink}.svg`):** 3.5-unit stroked tile + solid stencil `RFS` + monochrome bar for stickers, print, and etching.
 - **Lockups (`brand/lockup/`):** Horizontal and stacked lockups pairing the unified tile with `REAL-FRUIT-SNACKS` in Big Shoulders Stencil and a Steel→Beacon horizon bar.
