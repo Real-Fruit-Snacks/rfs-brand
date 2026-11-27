@@ -3402,7 +3402,7 @@ h3 {
   gap: 0.6rem;
 }
 
-@media (min-width: 36em) {
+@media (min-width: 36em) and (max-width: 55.99em) {
   .viz-swatches {
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
@@ -3445,12 +3445,14 @@ h3 {
 
 .viz-chip-top b {
   font-weight: 600;
+  white-space: nowrap;
 }
 
 .viz-chip-top em {
   font-style: normal;
   font: 600 0.68rem/1 var(--rfs-font-mono);
   color: var(--rfs-mute);
+  white-space: nowrap;
 }
 
 .viz-chip code {
