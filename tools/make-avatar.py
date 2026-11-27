@@ -41,7 +41,7 @@ def avatar(theme="dark"):
     rule_x = N / 2 - rule_w / 2
     rule_y = base + gap
 
-    wash_op = "0.72" if theme == "dark" else "0.18"
+    wash_op = "0.72" if theme == "dark" else "0.36"
     rule_start = "#74B8E8" if theme == "dark" else "#18496B"
     rule_mid = "#3B85B8" if theme == "dark" else "#1F547A"
     rule_end = "#F06E2B" if theme == "dark" else "#AD3D0A"

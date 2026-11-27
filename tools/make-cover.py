@@ -113,7 +113,7 @@ THEMES = {
         "scrim": "rgba(13,16,22,0.42)",
         "wash-steel": "#1F547A",
         "wash-beacon": "#F06E2B",
-        "wash-op": "0.14",
+        "wash-op": "0.32",
         "frame-stroke": "rgba(13,16,22,0.16)",
         "grid-stroke": "rgba(22,70,105,0.055)",
         "panel-grid": "rgba(22,70,105,0.055)",
@@ -622,14 +622,14 @@ class Motion:
         if not self.rules:
             return ""
         return (
-            "<style>"
+            "<style>@media (prefers-reduced-motion:no-preference){"
             "@keyframes rfs-draw-x{from{transform:scaleX(0)}}"
             "@keyframes rfs-draw-y{from{transform:scaleY(0)}}"
             "@keyframes rfs-hidden{from,to{opacity:0}}"
             "@keyframes rfs-shown{from,to{opacity:1}}"
             "@keyframes rfs-blink{0%{opacity:1}50%{opacity:0}}"
             + "".join(self.rules)
-            + "</style>"
+            + "}</style>"
         )
 
 
