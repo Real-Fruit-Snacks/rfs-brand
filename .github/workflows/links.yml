@@ -1,0 +1,33 @@
+name: links
+
+# Links in the brand manual, release docs, and live GitHub Pages site. Monthly too,
+# because external targets can move without this repository changing.
+on:
+  push:
+    branches: [main]
+    paths: ['README.md', 'BRAND.md', 'CHANGELOG.md', 'docs/*.md', 'docs/*.html', '.github/workflows/links.yml']
+  schedule:
+    - cron: '19 6 4 * *'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  lychee:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v5
+      # Check links to this repository's own files on main against the checkout to avoid
+      # transient github.com 503 responses and catch broken paths on the current commit.
+      - uses: lycheeverse/lychee-action@v2
+        with:
+          args: >-
+            --no-progress --max-retries 4 --retry-wait-time 10 --timeout 30
+            --accept 200,206,429 --exclude-all-private
+            --remap '^https://github\.com/Real-Fruit-Snacks/rfs-brand/blob/main/(.*)$ file://${{ github.workspace }}/$1'
+            README.md BRAND.md CHANGELOG.md 'docs/*.md' 'docs/*.html'
+          fail: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

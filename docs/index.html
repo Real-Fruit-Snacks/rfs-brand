@@ -6,7 +6,7 @@
   <meta name="color-scheme" content="dark">
   <script>
     try {
-      var saved = localStorage.getItem("color-scheme");
+      var saved = localStorage.getItem("rfs-theme") || localStorage.getItem("color-scheme");
       if (saved === "light" || saved === "dark") {
         document.querySelector('meta[name="color-scheme"]').content = saved;
       }
