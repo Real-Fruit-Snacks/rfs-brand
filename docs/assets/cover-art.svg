@@ -1,4 +1,4 @@
-<!-- rfs-brand cover panel (528x448): Cyclorama Dawn v2.1 Calibration Plate. -->
+<!-- rfs-brand cover panel (528x448): Cyclorama Dawn v2.3 Calibration Plate. -->
 <rect width="528" height="448" fill="{surface}"/>
 <rect width="528" height="3" fill="url(#rfs-rule)"/>
 
@@ -7,7 +7,7 @@
 <rect y="42" width="528" height="1" fill="{line}"/>
 <rect x="18" y="11" width="98" height="22" rx="4" fill="{code-bg}" stroke="{line}"/>
 <rfs-text font="mono-semibold" size="11.5" x="26" y="25.8" fill="{steel-ink}">[spec]</rfs-text>
-<rfs-text font="mono-semibold" size="11.5" x="77" y="25.8" fill="{text}">v2.2</rfs-text>
+<rfs-text font="mono-semibold" size="11.5" x="77" y="25.8" fill="{text}">v2.3</rfs-text>
 <rfs-text font="mono" size="10.5" x="510" y="25.5" ls="1.1" anchor="end" fill="{mute}">{lx-title}</rfs-text>
 
 <!-- Blueprint drafting stage -->

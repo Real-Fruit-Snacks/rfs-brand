@@ -101,8 +101,14 @@
   --rfs-ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
   --rfs-ease-exit: cubic-bezier(0.7, 0, 0.84, 0);
   --rfs-ease-linear: linear;
+  --rfs-ease-detent-fallback: cubic-bezier(0.22, 1.18, 0.36, 1);
+  /* Tight mechanical detent (3.5% seat settle, zero jelly bounce) with cubic-bezier fallback */
+  --rfs-ease-detent: cubic-bezier(0.22, 1.18, 0.36, 1);
+  --rfs-ease-detent: linear(0, 0.21 8%, 0.64 19%, 0.94 31%, 1.035 44%, 1.02 58%, 0.996 74%, 1);
   --rfs-dur-fast: 150ms;
   --rfs-dur-base: 250ms;
+  --rfs-dur-detent: 340ms;
+  --rfs-dur-jump: 360ms;
   --rfs-dur-slow: 520ms;
   --rfs-type-rate: 45ms;
 

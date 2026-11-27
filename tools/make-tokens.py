@@ -56,6 +56,20 @@ def parse_font_stack(value: str):
     return [part.strip().strip('"').strip("'") for part in value.split(",")]
 
 
+def build_easing_token(k: str, v: str) -> dict:
+    if v.startswith("linear("):
+        return {
+            "$type": "string",
+            "$value": v,
+            "$description": f"Physics-based mechanical detent curve --rfs-{k} (pair with --rfs-ease-detent-fallback).",
+        }
+    return {
+        "$type": "cubicBezier",
+        "$value": parse_bezier(v),
+        "$description": f"Motion curve --rfs-{k}.",
+    }
+
+
 def build_dtcg(data: dict) -> dict:
     meta = data["meta"]
     dtcg = {
@@ -126,9 +140,8 @@ def build_dtcg(data: dict) -> dict:
         },
         "motion": {
             "easing": {
-                "$type": "cubicBezier",
                 **{
-                    k: {"$value": parse_bezier(v), "$description": f"Motion curve --rfs-{k}."}
+                    k: build_easing_token(k, v)
                     for k, v in data["motion"].items()
                     if k.startswith("ease")
                 },
@@ -260,8 +273,8 @@ def main():
     write_synced("rfs-tailwind.css", tailwind)
     write_synced("rfs-tokens.ts", ts)
 
-    # Also keep rfs.css and rfs.tokens.json byte-synced into docs/assets/
-    for core in ("rfs.css", "rfs-components.css", "rfs.tokens.json"):
+    # Also keep core stylesheets, motion helper, and tokens JSON byte-synced into docs/assets/
+    for core in ("rfs.css", "rfs-components.css", "rfs-motion.js", "rfs.tokens.json"):
         shutil.copy2(os.path.join(TOKENS_DIR, core), os.path.join(DOCS_ASSETS, core))
         print(f"synced brand/tokens/{core} -> docs/assets/{core}")
 

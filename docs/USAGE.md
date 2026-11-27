@@ -22,6 +22,7 @@ Each GitHub release ships the full kit zip alongside the standalone CSS, DTCG/Ta
 | Full brand kit | https://github.com/Real-Fruit-Snacks/rfs-brand/releases/latest/download/rfs-brand.zip |
 | CSS variables | https://github.com/Real-Fruit-Snacks/rfs-brand/releases/latest/download/rfs.css |
 | Component kit CSS | https://github.com/Real-Fruit-Snacks/rfs-brand/releases/latest/download/rfs-components.css |
+| Motion controller JS | https://real-fruit-snacks.github.io/rfs-brand/assets/rfs-motion.js |
 | Icon sprite (60 SVGs) | https://github.com/Real-Fruit-Snacks/rfs-brand/releases/latest/download/rfs-icons.svg |
 | Design tokens (JSON) | https://github.com/Real-Fruit-Snacks/rfs-brand/releases/latest/download/rfs.tokens.json |
 | W3C DTCG tokens | https://real-fruit-snacks.github.io/rfs-brand/assets/rfs.dtcg.json |

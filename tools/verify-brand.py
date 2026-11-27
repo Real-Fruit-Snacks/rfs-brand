@@ -284,6 +284,7 @@ def verify_brand_kit(args, rep: Reporter):
     sync_pairs = [
         ("brand/tokens/rfs.css", "docs/assets/rfs.css"),
         ("brand/tokens/rfs-components.css", "docs/assets/rfs-components.css"),
+        ("brand/tokens/rfs-motion.js", "docs/assets/rfs-motion.js"),
         ("brand/tokens/rfs.tokens.json", "docs/assets/rfs.tokens.json"),
         ("brand/tokens/rfs.dtcg.json", "docs/assets/rfs.dtcg.json"),
         ("brand/tokens/rfs-tailwind.css", "docs/assets/rfs-tailwind.css"),

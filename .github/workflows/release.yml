@@ -32,11 +32,11 @@ jobs:
       - name: Build the kit
         run: |
           git archive --format=zip --prefix="rfs-brand-${GITHUB_REF_NAME}/" -o rfs-brand.zip "$GITHUB_REF_NAME"
-          cp brand/tokens/rfs.css brand/tokens/rfs-components.css brand/tokens/rfs.tokens.json brand/tokens/rfs.dtcg.json brand/tokens/rfs-tailwind.css brand/tokens/rfs-tokens.ts brand/icons/rfs-icons.svg brand/BRAND-RULES.md .
+          cp brand/tokens/rfs.css brand/tokens/rfs-components.css brand/tokens/rfs-motion.js brand/tokens/rfs.tokens.json brand/tokens/rfs.dtcg.json brand/tokens/rfs-tailwind.css brand/tokens/rfs-tokens.ts brand/icons/rfs-icons.svg brand/BRAND-RULES.md .
           unzip -l rfs-brand.zip | tail -1
       - name: Publish
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
           gh release create "$GITHUB_REF_NAME" --title "$GITHUB_REF_NAME" --notes-file notes.md \
-            rfs-brand.zip rfs.css rfs-components.css rfs.tokens.json rfs.dtcg.json rfs-tailwind.css rfs-tokens.ts rfs-icons.svg BRAND-RULES.md
+            rfs-brand.zip rfs.css rfs-components.css rfs-motion.js rfs.tokens.json rfs.dtcg.json rfs-tailwind.css rfs-tokens.ts rfs-icons.svg BRAND-RULES.md

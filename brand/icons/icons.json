@@ -4,7 +4,8 @@
     "grid": 24,
     "strokeWidth": 1.75,
     "linecap": "square",
-    "linejoin": "miter"
+    "linejoin": "miter",
+    "motionOptIn": ".rfs-icon-live"
   },
   "icons": [
     {
@@ -16,6 +17,7 @@
         "go",
         "direction"
       ],
+      "motion": "nudge-x",
       "inner": "<path d=\"M4 12h15\"/><path d=\"M13.5 6.5L19 12l-5.5 5.5\"/>"
     },
     {
@@ -27,6 +29,7 @@
         "return",
         "direction"
       ],
+      "motion": "nudge-left",
       "inner": "<path d=\"M20 12H5\"/><path d=\"M10.5 6.5L5 12l5.5 5.5\"/>"
     },
     {
@@ -38,6 +41,7 @@
         "link",
         "launch"
       ],
+      "motion": "nudge-ne",
       "inner": "<path d=\"M6.5 17.5L17.5 6.5\"/><path d=\"M9 6.5h8.5V15\"/>"
     },
     {
@@ -49,6 +53,7 @@
         "accordion",
         "more"
       ],
+      "motion": "nudge-y",
       "inner": "<path d=\"M6 9.5l6 6 6-6\"/>"
     },
     {
@@ -60,6 +65,7 @@
         "disclosure",
         "step"
       ],
+      "motion": "nudge-x",
       "inner": "<path d=\"M9.5 6l6 6-6 6\"/>"
     },
     {
@@ -71,6 +77,7 @@
         "drawer",
         "lines"
       ],
+      "motion": "seat",
       "inner": "<path d=\"M4 6.5h16\"/><path d=\"M4 12h16\"/><path d=\"M4 17.5h16\"/>"
     },
     {
@@ -82,6 +89,7 @@
         "cancel",
         "clear"
       ],
+      "motion": "detent-90",
       "inner": "<path d=\"M6 6l12 12\"/><path d=\"M18 6L6 18\"/>"
     },
     {
@@ -93,6 +101,7 @@
         "lookup",
         "magnifier"
       ],
+      "motion": "seat",
       "inner": "<circle cx=\"10.5\" cy=\"10.5\" r=\"6.5\"/><path d=\"M15.5 15.5L20 20\"/>"
     },
     {
@@ -104,6 +113,7 @@
         "query",
         "refine"
       ],
+      "motion": "drop",
       "inner": "<path d=\"M3.5 5h17l-6.5 7.5V19l-4-2v-4.5L3.5 5z\"/>"
     },
     {
@@ -116,7 +126,8 @@
         "console",
         "tune"
       ],
-      "inner": "<path d=\"M5 4v16\"/><path d=\"M12 4v16\"/><path d=\"M19 4v16\"/><rect x=\"3\" y=\"8\" width=\"4\" height=\"3.5\" fill=\"currentColor\" stroke=\"none\"/><rect x=\"10\" y=\"13.5\" width=\"4\" height=\"3.5\" fill=\"currentColor\" stroke=\"none\"/><rect x=\"17\" y=\"6.5\" width=\"4\" height=\"3.5\" fill=\"currentColor\" stroke=\"none\"/>"
+      "motion": "part-faders",
+      "inner": "<path d=\"M5 4v16\"/><path d=\"M12 4v16\"/><path d=\"M19 4v16\"/><rect class=\"rfs-p rfs-p-f1\" x=\"3\" y=\"8\" width=\"4\" height=\"3.5\" fill=\"currentColor\" stroke=\"none\"/><rect class=\"rfs-p rfs-p-f2\" x=\"10\" y=\"13.5\" width=\"4\" height=\"3.5\" fill=\"currentColor\" stroke=\"none\"/><rect class=\"rfs-p rfs-p-f3\" x=\"17\" y=\"6.5\" width=\"4\" height=\"3.5\" fill=\"currentColor\" stroke=\"none\"/>"
     },
     {
       "name": "plus",
@@ -127,6 +138,7 @@
         "create",
         "insert"
       ],
+      "motion": "detent-90",
       "inner": "<path d=\"M12 5v14\"/><path d=\"M5 12h14\"/>"
     },
     {
@@ -137,6 +149,7 @@
         "subtract",
         "collapse"
       ],
+      "motion": "seat",
       "inner": "<path d=\"M5 12h14\"/>"
     },
     {
@@ -148,6 +161,7 @@
         "rename",
         "modify"
       ],
+      "motion": "nudge-ne",
       "inner": "<path d=\"M4 20h4.5L19.5 9 15 4.5 4 15.5V20z\"/><path d=\"M12.5 7l4.5 4.5\"/>"
     },
     {
@@ -159,7 +173,8 @@
         "destroy",
         "confirm"
       ],
-      "inner": "<path d=\"M4 6.5h16\"/><path d=\"M9 6.5V4h6v2.5\"/><path d=\"M6.5 6.5l1 13.5h9l1-13.5\"/><path d=\"M10.25 10.5v6\"/><path d=\"M13.75 10.5v6\"/>"
+      "motion": "part-lid",
+      "inner": "<g class=\"rfs-p rfs-p-lid\"><path d=\"M4 6.5h16\"/><path d=\"M9 6.5V4h6v2.5\"/></g><g class=\"rfs-p rfs-p-bin\"><path d=\"M6.5 6.5l1 13.5h9l1-13.5\"/><path d=\"M10.25 10.5v6\"/><path d=\"M13.75 10.5v6\"/></g>"
     },
     {
       "name": "copy",
@@ -169,7 +184,9 @@
         "duplicate",
         "clone"
       ],
-      "inner": "<rect x=\"8.5\" y=\"8.5\" width=\"11.5\" height=\"11.5\" rx=\"1\"/><path d=\"M15.5 8.5V4.5A0.5 0.5 0 0 0 15 4H4.5A0.5 0.5 0 0 0 4 4.5V15a0.5 0.5 0 0 0 0.5 0.5h4\"/>"
+      "motion": "part-copy",
+      "inner": "<rect class=\"rfs-p rfs-p-front\" x=\"8.5\" y=\"8.5\" width=\"11.5\" height=\"11.5\" rx=\"1\"/><path class=\"rfs-p rfs-p-back\" d=\"M15.5 8.5V4.5A0.5 0.5 0 0 0 15 4H4.5A0.5 0.5 0 0 0 4 4.5V15a0.5 0.5 0 0 0 0.5 0.5h4\"/>",
+      "innerLive": "<rect class=\"rfs-p rfs-p-front\" x=\"8.5\" y=\"8.5\" width=\"11.5\" height=\"11.5\" rx=\"1\"/><path class=\"rfs-p rfs-p-back\" d=\"M15.5 8.5V4.5A0.5 0.5 0 0 0 15 4H4.5A0.5 0.5 0 0 0 4 4.5V15a0.5 0.5 0 0 0 0.5 0.5h4\"/><path class=\"rfs-p rfs-p-chk\" d=\"M4.5 12.5L9.5 17.5L19.5 6.5\"/>"
     },
     {
       "name": "check",
@@ -180,6 +197,7 @@
         "confirm",
         "valid"
       ],
+      "motion": "seat",
       "inner": "<path d=\"M4.5 12.5L9.5 17.5L19.5 6.5\"/>"
     },
     {
@@ -191,7 +209,8 @@
         "retry",
         "port-sync"
       ],
-      "inner": "<path d=\"M19.5 10A7.5 7.5 0 0 0 6.2 7.2L4.5 9\"/><path d=\"M4.5 4.5V9H9\"/><path d=\"M4.5 14A7.5 7.5 0 0 0 17.8 16.8L19.5 15\"/><path d=\"M19.5 19.5V15H15\"/>"
+      "motion": "part-spin",
+      "inner": "<g class=\"rfs-p rfs-p-spin\"><path d=\"M19.5 10A7.5 7.5 0 0 0 6.2 7.2L4.5 9\"/><path d=\"M4.5 4.5V9H9\"/><path d=\"M4.5 14A7.5 7.5 0 0 0 17.8 16.8L19.5 15\"/><path d=\"M19.5 19.5V15H15\"/></g>"
     },
     {
       "name": "download",
@@ -202,7 +221,8 @@
         "install",
         "fetch"
       ],
-      "inner": "<path d=\"M12 4v11\"/><path d=\"M7.5 10.5L12 15l4.5-4.5\"/><path d=\"M4 19.5h16\"/>"
+      "motion": "part-plunge",
+      "inner": "<g class=\"rfs-p rfs-p-arrow\"><path d=\"M12 4v11\"/><path d=\"M7.5 10.5L12 15l4.5-4.5\"/></g><path d=\"M4 19.5h16\"/>"
     },
     {
       "name": "upload",
@@ -213,6 +233,7 @@
         "publish",
         "send"
       ],
+      "motion": "lift",
       "inner": "<path d=\"M12 15.5V4.5\"/><path d=\"M7.5 9L12 4.5 16.5 9\"/><path d=\"M4 19.5h16\"/>"
     },
     {
@@ -223,6 +244,7 @@
         "forward",
         "distribute"
       ],
+      "motion": "nudge-ne",
       "inner": "<circle cx=\"17.5\" cy=\"5.5\" r=\"2.25\"/><circle cx=\"6.5\" cy=\"12\" r=\"2.25\"/><circle cx=\"17.5\" cy=\"18.5\" r=\"2.25\"/><path d=\"M8.5 10.8l7-4.1\"/><path d=\"M8.5 13.2l7 4.1\"/>"
     },
     {
@@ -234,6 +256,7 @@
         "markdown",
         "page"
       ],
+      "motion": "lift",
       "inner": "<path d=\"M5.5 3.5h8.5L18.5 8v12.5h-13V3.5z\"/><path d=\"M13.5 3.5V8.5h5\"/>"
     },
     {
@@ -246,6 +269,7 @@
         "json",
         "config"
       ],
+      "motion": "seat",
       "inner": "<path d=\"M4.5 3.5h9.5L19.5 9v11.5h-15V3.5z\"/><path d=\"M14 3.5V9h5.5\"/><path d=\"M10.25 13L8.25 15l2 2\"/><path d=\"M13.75 13l2 2-2 2\"/>"
     },
     {
@@ -257,6 +281,7 @@
         "path",
         "project"
       ],
+      "motion": "lift",
       "inner": "<path d=\"M3.5 5.5h6l2 2.5h9v11h-17V5.5z\"/>"
     },
     {
@@ -269,6 +294,7 @@
         "box",
         "bundle"
       ],
+      "motion": "drop",
       "inner": "<rect x=\"3.5\" y=\"4.5\" width=\"17\" height=\"4\"/><path d=\"M5 8.5v11h14v-11\"/><path d=\"M9.5 13h5\"/>"
     },
     {
@@ -281,7 +307,8 @@
         "pwsh",
         "zsh"
       ],
-      "inner": "<rect x=\"3\" y=\"4\" width=\"18\" height=\"16\" rx=\"1\"/><path d=\"M7 9.5l3 2.5-3 2.5\"/><path d=\"M12.5 14.5h4.5\"/>"
+      "motion": "part-prompt",
+      "inner": "<rect x=\"3\" y=\"4\" width=\"18\" height=\"16\" rx=\"1\"/><path class=\"rfs-p rfs-p-prompt\" d=\"M7 9.5l3 2.5-3 2.5\"/><path class=\"rfs-p rfs-p-cur\" d=\"M12.5 14.5h4.5\"/>"
     },
     {
       "name": "code",
@@ -292,6 +319,7 @@
         "html",
         "dev"
       ],
+      "motion": "seat",
       "inner": "<path d=\"M8 7.5L3.5 12 8 16.5\"/><path d=\"M16 7.5L20.5 12 16 16.5\"/><path d=\"M13.5 5.5l-3 13\"/>"
     },
     {
@@ -303,6 +331,7 @@
         "version",
         "vcs"
       ],
+      "motion": "nudge-ne",
       "inner": "<circle cx=\"7\" cy=\"6\" r=\"2.25\"/><circle cx=\"7\" cy=\"18\" r=\"2.25\"/><circle cx=\"17\" cy=\"9\" r=\"2.25\"/><path d=\"M7 8.5v7\"/><path d=\"M17 11.5v1a4.5 4.5 0 0 1-4.5 4.5H9.5\"/>"
     },
     {
@@ -314,6 +343,7 @@
         "changes",
         "plus-minus"
       ],
+      "motion": "seat",
       "inner": "<rect x=\"3.5\" y=\"3.5\" width=\"17\" height=\"17\" rx=\"1\"/><path d=\"M12 7.25v4.5\"/><path d=\"M9.75 9.5h4.5\"/><path d=\"M9.75 15.75h4.5\"/>"
     },
     {
@@ -325,6 +355,7 @@
         "pwn-shop",
         "artifact"
       ],
+      "motion": "drop",
       "inner": "<path d=\"M12 3L20 7.5v9L12 21 4 16.5v-9L12 3z\"/><path d=\"M4 7.5L12 12l8-4.5\"/><path d=\"M12 12v9\"/><path d=\"M8 5.25l8 4.5\"/>"
     },
     {
@@ -336,6 +367,7 @@
         "playbook",
         "guide"
       ],
+      "motion": "lift",
       "inner": "<path d=\"M3.5 5h6.5a2 2 0 0 1 2 2v12.5a1.5 1.5 0 0 0-1.5-1.5h-7V5z\"/><path d=\"M20.5 5H14a2 2 0 0 0-2 2v12.5a1.5 1.5 0 0 1 1.5-1.5h7V5z\"/>"
     },
     {
@@ -347,6 +379,7 @@
         "protect",
         "firewall"
       ],
+      "motion": "seat",
       "inner": "<path d=\"M12 3.25L19.5 6v6c0 4.6-3.1 7.7-7.5 9.25C7.6 19.7 4.5 16.6 4.5 12V6L12 3.25z\"/>"
     },
     {
@@ -358,7 +391,8 @@
         "signed",
         "trusted"
       ],
-      "inner": "<path d=\"M12 3.25L19.5 6v6c0 4.6-3.1 7.7-7.5 9.25C7.6 19.7 4.5 16.6 4.5 12V6L12 3.25z\"/><path d=\"M8.75 12.25l2.25 2.25 4.5-4.75\"/>"
+      "motion": "part-verify",
+      "inner": "<path class=\"rfs-p rfs-p-shield\" d=\"M12 3.25L19.5 6v6c0 4.6-3.1 7.7-7.5 9.25C7.6 19.7 4.5 16.6 4.5 12V6L12 3.25z\"/><path class=\"rfs-p rfs-p-mark\" d=\"M8.75 12.25l2.25 2.25 4.5-4.75\"/>"
     },
     {
       "name": "lock",
@@ -369,7 +403,8 @@
         "mtls",
         "secure"
       ],
-      "inner": "<rect x=\"5\" y=\"10.5\" width=\"14\" height=\"9.5\" rx=\"1\"/><path d=\"M8 10.5V7.5a4 4 0 0 1 8 0v3\"/><path d=\"M12 14v2.5\"/>"
+      "motion": "part-shackle",
+      "inner": "<path class=\"rfs-p rfs-p-shackle\" d=\"M8 10.5V7.5a4 4 0 0 1 8 0v3\"/><g class=\"rfs-p rfs-p-body\"><rect x=\"5\" y=\"10.5\" width=\"14\" height=\"9.5\" rx=\"1\"/><path d=\"M12 14v2.5\"/></g>"
     },
     {
       "name": "unlock",
@@ -379,6 +414,7 @@
         "public",
         "access"
       ],
+      "motion": "lift",
       "inner": "<rect x=\"5\" y=\"10.5\" width=\"14\" height=\"9.5\" rx=\"1\"/><path d=\"M8 10.5V7.5a4 4 0 0 1 7.7-1.5\"/><path d=\"M12 14v2.5\"/>"
     },
     {
@@ -390,6 +426,7 @@
         "credentials",
         "passphrase"
       ],
+      "motion": "nudge-x",
       "inner": "<circle cx=\"7.75\" cy=\"12\" r=\"3.75\"/><path d=\"M11.5 12H20.5\"/><path d=\"M17 12v3\"/><path d=\"M20 12v2.25\"/>"
     },
     {
@@ -401,6 +438,7 @@
         "store",
         "badge"
       ],
+      "motion": "seat",
       "inner": "<path d=\"M12 16.5H3.5V4.5h17v6.25\"/><path d=\"M7 8.5h7.5\"/><path d=\"M7 12h4\"/><circle cx=\"16.5\" cy=\"14\" r=\"2.75\"/><path d=\"M15 16.5V21l1.5-1.15L18 21v-4.5\"/>"
     },
     {
@@ -412,6 +450,7 @@
         "visible",
         "inspect"
       ],
+      "motion": "seat",
       "inner": "<path d=\"M2.5 12S6 6.25 12 6.25 21.5 12 21.5 12 18 17.75 12 17.75 2.5 12 2.5 12z\"/><circle cx=\"12\" cy=\"12\" r=\"2.75\"/>"
     },
     {
@@ -423,6 +462,7 @@
         "redact",
         "secret"
       ],
+      "motion": "shudder",
       "inner": "<path d=\"M3.5 3.5l17 17\"/><path d=\"M10.2 6.45A10 10 0 0 1 12 6.25C18 6.25 21.5 12 21.5 12a16.5 16.5 0 0 1-3.1 3.7\"/><path d=\"M6.4 8.2A16.5 16.5 0 0 0 2.5 12s3.5 5.75 9.5 5.75a10 10 0 0 0 3.7-.7\"/>"
     },
     {
@@ -435,6 +475,7 @@
         "native",
         "chip"
       ],
+      "motion": "seat",
       "inner": "<rect x=\"6.5\" y=\"6.5\" width=\"11\" height=\"11\"/><rect x=\"10\" y=\"10\" width=\"4\" height=\"4\"/><path d=\"M9 3.5v3M15 3.5v3M9 17.5v3M15 17.5v3M3.5 9h3M3.5 15h3M17.5 9h3M17.5 15h3\"/>"
     },
     {
@@ -446,7 +487,8 @@
         "preferences",
         "options"
       ],
-      "inner": "<circle cx=\"12\" cy=\"12\" r=\"3\"/><path d=\"M10.4 3.25h3.2l.55 2.1 1.65.7 1.85-1.05 2.25 2.25-1.05 1.85.7 1.65 2.1.55v3.2l-2.1.55-.7 1.65 1.05 1.85-2.25 2.25-1.85-1.05-1.65.7-.55 2.1h-3.2l-.55-2.1-1.65-.7-1.85 1.05-2.25-2.25 1.05-1.85-.7-1.65-2.1-.55v-3.2l2.1-.55.7-1.65-1.05-1.85 2.25-2.25 1.85 1.05 1.65-.7.55-2.1z\"/>"
+      "motion": "part-ratchet",
+      "inner": "<g class=\"rfs-p rfs-p-gear\"><circle cx=\"12\" cy=\"12\" r=\"3\"/><path d=\"M10.4 3.25h3.2l.55 2.1 1.65.7 1.85-1.05 2.25 2.25-1.05 1.85.7 1.65 2.1.55v3.2l-2.1.55-.7 1.65 1.05 1.85-2.25 2.25-1.85-1.05-1.65.7-.55 2.1h-3.2l-.55-2.1-1.65-.7-1.85 1.05-2.25-2.25 1.05-1.85-.7-1.65-2.1-.55v-3.2l2.1-.55.7-1.65-1.05-1.85 2.25-2.25 1.85 1.05 1.65-.7.55-2.1z\"/></g>"
     },
     {
       "name": "globe",
@@ -457,6 +499,7 @@
         "offline",
         "dns"
       ],
+      "motion": "detent-90",
       "inner": "<circle cx=\"12\" cy=\"12\" r=\"8.5\"/><ellipse cx=\"12\" cy=\"12\" rx=\"3.75\" ry=\"8.5\"/><path d=\"M3.75 12h16.5\"/>"
     },
     {
@@ -468,7 +511,8 @@
         "vpn",
         "port"
       ],
-      "inner": "<path d=\"M3.5 9a12.5 12.5 0 0 1 17 0\"/><path d=\"M6.8 12.5a8 8 0 0 1 10.4 0\"/><path d=\"M10.1 16a3.2 3.2 0 0 1 3.8 0\"/><rect x=\"11.15\" y=\"18.25\" width=\"1.7\" height=\"1.7\" fill=\"currentColor\" stroke=\"none\"/>"
+      "motion": "part-arcs",
+      "inner": "<path class=\"rfs-p rfs-p-w3\" d=\"M3.5 9a12.5 12.5 0 0 1 17 0\"/><path class=\"rfs-p rfs-p-w2\" d=\"M6.8 12.5a8 8 0 0 1 10.4 0\"/><path class=\"rfs-p rfs-p-w1\" d=\"M10.1 16a3.2 3.2 0 0 1 3.8 0\"/><rect x=\"11.15\" y=\"18.25\" width=\"1.7\" height=\"1.7\" fill=\"currentColor\" stroke=\"none\"/>"
     },
     {
       "name": "server",
@@ -479,6 +523,7 @@
         "host",
         "node"
       ],
+      "motion": "seat",
       "inner": "<rect x=\"3.5\" y=\"4\" width=\"17\" height=\"6.5\" rx=\"1\"/><rect x=\"3.5\" y=\"13.5\" width=\"17\" height=\"6.5\" rx=\"1\"/><rect x=\"6.25\" y=\"6.35\" width=\"1.8\" height=\"1.8\" fill=\"currentColor\" stroke=\"none\"/><rect x=\"6.25\" y=\"15.85\" width=\"1.8\" height=\"1.8\" fill=\"currentColor\" stroke=\"none\"/><path d=\"M11 7.25h6M11 16.75h6\"/>"
     },
     {
@@ -490,6 +535,7 @@
         "connect",
         "anchor"
       ],
+      "motion": "nudge-ne",
       "inner": "<path d=\"M9.5 14.5l5-5\"/><path d=\"M11.5 7.5l1.75-1.75a3.5 3.5 0 0 1 5 5L16.5 12.5\"/><path d=\"M12.5 16.5l-1.75 1.75a3.5 3.5 0 0 1-5-5L7.5 11.5\"/>"
     },
     {
@@ -501,7 +547,8 @@
         "crop",
         "crosshair"
       ],
-      "inner": "<path d=\"M4 8.5V4h4.5M15.5 4H20v4.5M20 15.5V20h-4.5M8.5 20H4v-4.5\"/><circle cx=\"12\" cy=\"12\" r=\"2.75\"/>"
+      "motion": "part-shutter",
+      "inner": "<path class=\"rfs-p rfs-p-frame\" d=\"M4 8.5V4h4.5M15.5 4H20v4.5M20 15.5V20h-4.5M8.5 20H4v-4.5\"/><circle class=\"rfs-p rfs-p-dot\" cx=\"12\" cy=\"12\" r=\"2.75\"/>"
     },
     {
       "name": "image",
@@ -513,6 +560,7 @@
         "cover",
         "artwork"
       ],
+      "motion": "seat",
       "inner": "<rect x=\"3.5\" y=\"4.5\" width=\"17\" height=\"15\" rx=\"1\"/><path d=\"M4 16.5l5-5 3.5 3.5 2.5-2.5 5 4\"/><circle cx=\"9\" cy=\"9\" r=\"1.25\"/>"
     },
     {
@@ -525,6 +573,7 @@
         "media",
         "encode"
       ],
+      "motion": "nudge-x",
       "inner": "<rect x=\"3\" y=\"6\" width=\"13\" height=\"12\" rx=\"1\"/><path d=\"M16 10l5-3v10l-5-3\"/>"
     },
     {
@@ -536,6 +585,7 @@
         "replay",
         "motion"
       ],
+      "motion": "nudge-x",
       "inner": "<path d=\"M7 5l12 7-12 7V5z\"/>"
     },
     {
@@ -547,6 +597,7 @@
         "wcag",
         "board"
       ],
+      "motion": "seat",
       "inner": "<rect x=\"6\" y=\"5\" width=\"4\" height=\"14\"/><rect x=\"14\" y=\"5\" width=\"4\" height=\"14\"/>"
     },
     {
@@ -558,6 +609,7 @@
         "sound",
         "speaker"
       ],
+      "motion": "seat",
       "inner": "<path d=\"M4 9.5h4l5-4.5v14l-5-4.5H4V9.5z\"/><path d=\"M16.5 9a4.5 4.5 0 0 1 0 6\"/><path d=\"M19.2 6.5a8 8 0 0 1 0 11\"/>"
     },
     {
@@ -569,6 +621,7 @@
         "synced",
         "pass"
       ],
+      "motion": "seat",
       "inner": "<circle cx=\"12\" cy=\"12\" r=\"8.5\"/><path d=\"M8.5 12.25l2.25 2.25 4.75-5\"/>"
     },
     {
@@ -580,6 +633,7 @@
         "caution",
         "destructive"
       ],
+      "motion": "shudder",
       "inner": "<path d=\"M12 4L21 19.5H3L12 4z\"/><path d=\"M12 10v4\"/><rect x=\"11.15\" y=\"16\" width=\"1.7\" height=\"1.7\" fill=\"currentColor\" stroke=\"none\"/>"
     },
     {
@@ -591,6 +645,7 @@
         "fault",
         "blocked"
       ],
+      "motion": "shudder",
       "inner": "<circle cx=\"12\" cy=\"12\" r=\"8.5\"/><path d=\"M9 9l6 6\"/><path d=\"M15 9l-6 6\"/>"
     },
     {
@@ -602,6 +657,7 @@
         "details",
         "stdout"
       ],
+      "motion": "seat",
       "inner": "<circle cx=\"12\" cy=\"12\" r=\"8.5\"/><path d=\"M12 11.25V16\"/><rect x=\"11.15\" y=\"7.75\" width=\"1.7\" height=\"1.7\" fill=\"currentColor\" stroke=\"none\"/>"
     },
     {
@@ -613,6 +669,7 @@
         "lx512",
         "alabaster"
       ],
+      "motion": "detent-90",
       "inner": "<circle cx=\"12\" cy=\"12\" r=\"4\"/><path d=\"M12 3v2M12 19v2M3 12h2M19 12h2M5.6 5.6l1.4 1.4M17 17l1.4 1.4M18.4 5.6L17 7M7 17l-1.4 1.4\"/>"
     },
     {
@@ -624,6 +681,7 @@
         "lx263",
         "blackout"
       ],
+      "motion": "seat",
       "inner": "<path d=\"M19.5 14.25A7.75 7.75 0 0 1 9.75 4.5a8 8 0 1 0 9.75 9.75z\"/>"
     },
     {
@@ -636,6 +694,7 @@
         "schedule",
         "interval"
       ],
+      "motion": "detent-90",
       "inner": "<circle cx=\"12\" cy=\"12\" r=\"8.5\"/><path d=\"M12 7.5V12l3.25 2\"/>"
     },
     {
@@ -647,6 +706,7 @@
         "release",
         "orders"
       ],
+      "motion": "drop",
       "inner": "<rect x=\"3.5\" y=\"5\" width=\"17\" height=\"15.5\" rx=\"1\"/><path d=\"M3.5 9.5h17\"/><path d=\"M8 3.25V6.5M16 3.25V6.5\"/>"
     },
     {
@@ -658,7 +718,8 @@
         "webhook",
         "status"
       ],
-      "inner": "<path d=\"M6 16.5V10a6 6 0 0 1 12 0v6.5L20 18.5H4l2-2z\"/><path d=\"M10 18.5a2 2 0 0 0 4 0\"/>"
+      "motion": "part-chime",
+      "inner": "<path class=\"rfs-p rfs-p-bell\" d=\"M6 16.5V10a6 6 0 0 1 12 0v6.5L20 18.5H4l2-2z\"/><path class=\"rfs-p rfs-p-clapper\" d=\"M10 18.5a2 2 0 0 0 4 0\"/>"
     },
     {
       "name": "pin",
@@ -669,6 +730,7 @@
         "bookmark",
         "lock"
       ],
+      "motion": "drop",
       "inner": "<path d=\"M8.5 4h7v2L14 7.75v3.5l2.75 2.75H7.25L10 11.25v-3.5L8.5 6V4z\"/><path d=\"M12 14v6.25\"/>"
     }
   ]

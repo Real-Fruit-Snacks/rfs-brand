@@ -1,4 +1,4 @@
-/* RFS Cyclorama Dawn v2.2.0 — Tailwind CSS v4 @theme bridge.
+/* RFS Cyclorama Dawn v2.3.0 — Tailwind CSS v4 @theme bridge.
    Generated from brand/tokens/rfs.tokens.json by tools/make-tokens.py.
    Import after `@import "tailwindcss";` and `rfs.css` so utilities stay theme-reactive across LX 263 Dark and LX 512 Light. */
 
@@ -66,6 +66,8 @@
   --ease-rfs-ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
   --ease-rfs-ease-exit: cubic-bezier(0.7, 0, 0.84, 0);
   --ease-rfs-ease-linear: linear;
+  --ease-rfs-ease-detent-fallback: cubic-bezier(0.22, 1.18, 0.36, 1);
+  --ease-rfs-ease-detent: linear(0, 0.21 8%, 0.64 19%, 0.94 31%, 1.035 44%, 1.02 58%, 0.996 74%, 1);
 
   /* Breakpoints */
   --breakpoint-rfs-sm: 36em;

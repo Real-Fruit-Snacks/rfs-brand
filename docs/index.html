@@ -31,9 +31,9 @@
   <link rel="preload" href="assets/fonts/big-shoulders-stencil-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="assets/fonts/albert-sans-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="assets/fonts/azeret-mono-latin.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="assets/rfs.css?v=2.2.0">
-  <link rel="stylesheet" href="assets/rfs-components.css?v=2.2.0">
-  <link rel="stylesheet" href="assets/brand.css?v=2.2.0a">
+  <link rel="stylesheet" href="assets/rfs.css?v=2.3.0">
+  <link rel="stylesheet" href="assets/rfs-components.css?v=2.3.0">
+  <link rel="stylesheet" href="assets/brand.css?v=2.3.0">
 </head>
 <body class="rfs-shell">
   <a class="skip-link visually-hidden" href="#main-heading">Skip to main content</a>
@@ -77,7 +77,7 @@
     <div class="hero-band">
       <div class="wrap hero-grid">
         <div>
-          <p class="eyebrow">Real-Fruit-Snacks · Cyclorama Dawn v2.2</p>
+          <p class="eyebrow">Real-Fruit-Snacks · Cyclorama Dawn v2.3</p>
           <h1 class="hero-title" id="main-heading" tabindex="-1">RFS-BRAND</h1>
           <div class="hero-rule" aria-hidden="true"></div>
           <p class="hero-lede">The complete visual, typographic, editorial, and motion system for Real-Fruit-Snacks: matte cyclorama black and Alabaster Day light mode, Glacial Steel sweeping into Maritime Beacon Orange, every highlight and underline rule, interactive control states, installable agent skill, and deterministic generators for every repo.</p>
@@ -91,7 +91,7 @@
         <div class="specimen-card" aria-label="Live brand kit specimen">
           <div class="spec-top-beam" aria-hidden="true"></div>
           <div class="spec-bar">
-            <span class="rfs-badge b-beacon"><span class="k">[spec]</span> v2.2</span>
+            <span class="rfs-badge b-beacon"><span class="k">[spec]</span> v2.3</span>
             <span class="spec-bar-cue">
               <span class="only-dark">LX 263 · BEACON HORIZON</span>
               <span class="only-light">LX 512 · ALABASTER DAY</span>
@@ -215,13 +215,14 @@
             </li>
             <li class="kit-item">
               <div class="kit-item-head">
-                <code>rfs-components.css</code>
-                <span>Drop-in component kit: buttons, <code>D · Terminal Token</code> badges, underlines, callouts, syntax roles, colorable icons, semantic toasts, dialogs, and UI state boxes</span>
+                <code>rfs-components.css</code> · <code>rfs-motion.js</code>
+                <span>Drop-in component kit + zero-dependency motion controller: custom animated checkboxes, switches, jumping radios, console faders, upgraded loaders, opt-in 60-icon click motion, dialogs, and semantic toasts</span>
               </div>
               <div class="cmd-row">
-                <pre><code id="cmd-components"><span class="rfs-tok-fn">curl</span> <span class="rfs-tok-kw">-LO</span> <span class="rfs-tok-str">https://github.com/Real-Fruit-Snacks/rfs-brand/releases/latest/download/rfs-components.css</span></code></pre>
+                <pre><code id="cmd-components"><span class="rfs-tok-fn">curl</span> <span class="rfs-tok-kw">-LO</span> <span class="rfs-tok-str">https://real-fruit-snacks.github.io/rfs-brand/assets/rfs-components.css</span>
+<span class="rfs-tok-fn">curl</span> <span class="rfs-tok-kw">-LO</span> <span class="rfs-tok-str">https://real-fruit-snacks.github.io/rfs-brand/assets/rfs-motion.js</span></code></pre>
                 <span class="copy-wrap">
-                  <button class="copy-btn" type="button" command="--copy" commandfor="cmd-components" aria-label="Copy curl command for rfs-components.css">Copy</button>
+                  <button class="copy-btn" type="button" command="--copy" commandfor="cmd-components" aria-label="Copy curl commands for rfs-components.css and rfs-motion.js">Copy</button>
                   <span class="copy-tip" role="status"></span>
                 </span>
               </div>
@@ -296,13 +297,13 @@
           </ul>
 
           <aside class="release-box" aria-labelledby="release-h">
-            <h3 id="release-h">New in v2.2.0 — Agent Skill &amp; Token Exports</h3>
+            <h3 id="release-h">New in v2.3.0 — Custom Controls, Icon Motion &amp; Hardware Loaders</h3>
             <p class="release-meta">Cyclorama Dawn · Steel &amp; Beacon Orange · November 2026</p>
             <ul>
-              <li>Packaged an installable <code>skills/rfs-brand/SKILL.md</code> (<code>agentskills.io</code> format with 5 progressive-disclosure references) plus hosted <a class="rfs-link-prose" href="llms.txt"><code>llms.txt</code></a> and a synced <code>v2.2.0</code> <code>docs/DESIGN.md</code>.</li>
-              <li>Added <code>tools/make-tokens.py</code> generating <strong>W3C DTCG</strong> (<code>rfs.dtcg.json</code>), <strong>Tailwind CSS v4</strong> <code>@theme</code> (<code>rfs-tailwind.css</code>), and typed <strong>TypeScript</strong> (<code>rfs-tokens.ts</code>) plus ordered 6-series data-viz tokens (<code>--rfs-viz-1..6</code>).</li>
-              <li>Added portable <code>verify-brand.py --repo &lt;path&gt; [--json]</code> auditing for any RFS repository alongside visual Do/Don't misuse specimens, Voice Before/After rewrites, Page Archetypes, and Copy HTML disclosures.</li>
-              <li>Upgraded Alabaster Light marks (<code>0.36</code> wash), covers/banners/boards (<code>0.32</code> wash), and theme-calibrated Light specimens across all 22 public repositories.</li>
+              <li>Added custom mechanical-detent (<code>--rfs-ease-detent</code>) hardware controls in <code>rfs-components.css</code> + <code>rfs-motion.js</code>: 3 checkbox styles, 3 switches, ballistic <strong>Jumping Radios</strong> (Reticle Jump &amp; Aperture Hop), Segmented Cue Bar, Copy-to-Check morph, Armed Latch, and Console Fader.</li>
+              <li>Replaced plain progress bars with 4 Cyclorama Dawn loaders: <strong>DMX Cue Meter</strong> (etched 10% ticks + Signal Mint 100% lock), <strong>Horizon Alive Trace</strong>, <strong>20-Cell LED Ladder</strong>, and native <strong>Precision Progress Ring</strong>.</li>
+              <li>Added an official opt-in motion taxonomy (<code>.rfs-icon-live</code> + <code>data-rfs-motion</code>) across all 60 Precision Silkscreen icons, including 12 multi-part click animations in <code>tools/make-icons.py</code> and <code>icons.json</code>.</li>
+              <li>Maintains 100% WCAG parity: native HTML controls, compositor-only animations, <code>forced-colors</code> borders, and calm <code>prefers-reduced-motion</code> fallbacks.</li>
             </ul>
             <a class="rfs-link-prose" href="https://github.com/Real-Fruit-Snacks/rfs-brand/blob/main/CHANGELOG.md">Read full CHANGELOG.md</a>
           </aside>
@@ -783,17 +784,28 @@
 
         <div class="controls-grid">
           <div class="panel-card">
-            <h3>Action Buttons &amp; Toggles</h3>
+            <h3>Action Buttons, Morphs &amp; Toggles</h3>
             <div class="btn-rack">
-              <button class="btn btn-horizon" type="button">Horizon CTA</button>
+              <button class="rfs-btn rfs-btn-horizon" type="button">Horizon Sweep</button>
               <button class="btn btn-beacon" type="button">Solid Beacon</button>
               <button class="btn btn-steel" type="button">Solid Steel</button>
               <button class="rfs-btn rfs-btn-fault" type="button" command="show-modal" commandfor="rfs-confirm-delete-demo">Delete…</button>
               <button class="rfs-btn rfs-btn-fault-soft" type="button">Revoke</button>
-              <button class="rfs-btn rfs-btn-fault-outline" type="button">Remove</button>
-              <button class="btn btn-outline" type="button">Secondary Outline</button>
-              <button class="btn btn-ghost" type="button">Ghost Action</button>
+              <button class="btn btn-outline" type="button">Outline</button>
               <button class="btn btn-outline" type="button" disabled>Disabled</button>
+            </div>
+            <div class="btn-rack" aria-label="Micro-interaction action buttons">
+              <span class="copy-wrap">
+                <button class="rfs-btn-copy-morph" type="button" command="--copy" commandfor="snip-buttons">
+                  <span class="rfs-copy-ico" aria-hidden="true">
+                    <svg class="ico-clip" viewBox="0 0 24 24"><rect x="8.5" y="8.5" width="11.5" height="11.5" rx="1"/><path d="M15.5 8.5V4.5A0.5 0.5 0 0 0 15 4H4.5A0.5 0.5 0 0 0 4 4.5V15a0.5 0.5 0 0 0 0.5 0.5h4"/></svg>
+                    <svg class="ico-check" viewBox="0 0 24 24"><path d="M4.5 12.5L9.5 17.5L19.5 6.5"/></svg>
+                  </span>
+                  <span>Copy Snippet</span>
+                </button>
+                <span class="copy-tip" role="status"></span>
+              </span>
+              <button class="rfs-btn-arm" type="button" data-rfs-arm data-arm-idle="Purge Cache" data-arm-confirm="[!] Confirm Purge" data-arm-done="[ok] Purged">Purge Cache</button>
             </div>
             <div class="btn-rack" aria-label="Interactive filter chips demo">
               <button class="rfs-chip" type="button" data-demo-pill aria-pressed="true"><span class="k">[all]</span> 17</button>
@@ -802,41 +814,50 @@
               <button class="rfs-chip" type="button" data-demo-pill aria-pressed="false"><span class="k">[kali]</span> 8</button>
               <button class="rfs-chip" type="button" data-demo-pill aria-pressed="false"><span class="k">[win]</span> 10</button>
             </div>
-            <div class="btn-rack">
+            <div class="switch-rack" aria-label="Custom switch variants">
               <label class="rfs-switch-label">
                 <input class="rfs-switch" id="demo-auto-sync" type="checkbox" switch checked>
-                <span>Auto-sync forwarded port</span>
+                <span>Cue Slide</span>
+              </label>
+              <label class="rfs-switch-label">
+                <input class="rfs-switch-breaker" type="checkbox" switch checked>
+                <span>Breaker Rocker</span>
+              </label>
+              <label class="rfs-switch-label">
+                <input class="rfs-switch-patch" type="checkbox" switch checked>
+                <span>Patch Shutter</span>
               </label>
             </div>
             <details class="code-disclosure">
-              <summary>View HTML — Buttons, Chips &amp; Switch</summary>
+              <summary>View HTML — Buttons, Morphs &amp; Switches</summary>
               <div class="code-disclosure-body">
                 <div class="rfs-code-card">
                   <div class="rfs-code-head">
                     <span class="rfs-badge b-steel"><span class="k">[html]</span></span>
                     <span class="copy-wrap">
-                      <button class="copy-btn" type="button" command="--copy" commandfor="snip-buttons">Copy HTML<span class="visually-hidden"> for buttons, chips, and switch</span></button>
+                      <button class="copy-btn" type="button" command="--copy" commandfor="snip-buttons">Copy HTML<span class="visually-hidden"> for buttons, chips, and switches</span></button>
                       <span class="copy-tip" role="status"></span>
                     </span>
                   </div>
-                  <pre class="rfs-code-block"><code id="snip-buttons">&lt;button class="rfs-btn rfs-btn-horizon" type="button"&gt;Horizon CTA&lt;/button&gt;
-&lt;button class="rfs-btn rfs-btn-fault" type="button" command="show-modal" commandfor="confirm-del"&gt;Delete…&lt;/button&gt;
-&lt;button class="rfs-chip" type="button" aria-pressed="true"&gt;&lt;span class="k"&gt;[rust]&lt;/span&gt; 5&lt;/button&gt;
-&lt;label class="rfs-switch-label"&gt;&lt;input class="rfs-switch" type="checkbox" switch checked&gt;&lt;span&gt;Auto-sync&lt;/span&gt;&lt;/label&gt;</code></pre>
+                  <pre class="rfs-code-block"><code id="snip-buttons">&lt;button class="rfs-btn rfs-btn-horizon" type="button"&gt;Horizon Sweep&lt;/button&gt;
+&lt;button class="rfs-btn-arm" type="button" data-rfs-arm data-arm-confirm="[!] Confirm"&gt;Purge Cache&lt;/button&gt;
+&lt;label class="rfs-switch-label"&gt;&lt;input class="rfs-switch" type="checkbox" switch checked&gt;&lt;span&gt;Cue Slide&lt;/span&gt;&lt;/label&gt;
+&lt;label class="rfs-switch-label"&gt;&lt;input class="rfs-switch-breaker" type="checkbox" switch checked&gt;&lt;span&gt;Breaker&lt;/span&gt;&lt;/label&gt;
+&lt;label class="rfs-switch-label"&gt;&lt;input class="rfs-switch-patch" type="checkbox" switch checked&gt;&lt;span&gt;Patch&lt;/span&gt;&lt;/label&gt;</code></pre>
                 </div>
               </div>
             </details>
           </div>
 
           <div class="panel-card">
-            <h3>Native Form Controls &amp; Validation</h3>
+            <h3>Checkboxes, Jumping Radios &amp; Fader</h3>
             <div class="field-group">
-              <label for="demo-repo-input">Repository slug (lowercase letters &amp; hyphens; try typing spaces or caps)</label>
+              <label for="demo-repo-input">Repository slug (<code>:user-valid</code> Mint / <code>:user-invalid</code> Crimson)</label>
               <input class="rfs-input" id="demo-repo-input" type="text" pattern="[a-z0-9]+(-[a-z0-9]+)*" value="port-sync" required aria-describedby="demo-repo-hint">
-              <span id="demo-repo-hint" style="font-size:.8rem;color:var(--rfs-mute)">Uses <code>:user-valid</code> (Mint) and <code>:user-invalid</code> (Signal Crimson) so untouched inputs never shout errors on load.</span>
+              <span id="demo-repo-hint" style="font-size:.8rem;color:var(--rfs-mute)">Native validation stays silent until interaction; select below uses <code>appearance: base-select</code>.</span>
             </div>
             <div class="field-group">
-              <label for="demo-cue-select">Default lighting cue (<code>appearance: base-select</code>)</label>
+              <label for="demo-cue-select">Default lighting cue</label>
               <select class="rfs-select" id="demo-cue-select" name="default-cue">
                 <button><selectedcontent></selectedcontent></button>
                 <option value="lx263" selected>LX 263 — Beacon Horizon (Dark default)</option>
@@ -844,32 +865,157 @@
                 <option value="lx512">LX 512 — Alabaster Day (Light)</option>
               </select>
             </div>
-            <div class="check-row">
-              <label><input type="checkbox" checked> Local-first mode</label>
-              <label><input type="checkbox"> Include archived repos</label>
-              <label><input type="radio" name="demo-mode" checked> Dark (LX 263)</label>
-              <label><input type="radio" name="demo-mode"> Light (LX 512)</label>
+            <div class="check-showcase">
+              <div class="check-showcase-row">
+                <label class="rfs-check-label"><input type="checkbox" class="rfs-check" data-indet-demo checked><span>Ink Draw</span></label>
+                <label class="rfs-check-label"><input type="checkbox" class="rfs-check-shutter" data-indet-demo checked><span>Shutter</span></label>
+                <label class="rfs-check-label"><input type="checkbox" class="rfs-check-token" data-indet-demo checked><span>Bracket</span></label>
+                <button type="button" class="rfs-chip" id="ctrl-indet-btn"><span class="k">[-]</span> Indeterminate</button>
+              </div>
+            </div>
+            <div class="jump-radio-showcase">
+              <div>
+                <span class="mini-kicker">Reticle Jump (<code>data-rfs-radio-jump="reticle"</code>)</span>
+                <div class="rfs-radio-group" data-rfs-radio-jump="reticle" role="radiogroup" aria-label="Reticle Jump preset">
+                  <label class="rfs-radio-label is-compact"><input type="radio" name="demo-ret" class="rfs-radio" checked><span>Low</span></label>
+                  <label class="rfs-radio-label is-compact"><input type="radio" name="demo-ret" class="rfs-radio"><span>Mid</span></label>
+                  <label class="rfs-radio-label is-compact"><input type="radio" name="demo-ret" class="rfs-radio"><span>Max</span></label>
+                </div>
+              </div>
+              <div>
+                <span class="mini-kicker">Aperture Hop (<code>data-rfs-radio-jump="aperture"</code>)</span>
+                <div class="rfs-radio-group" data-rfs-radio-jump="aperture" role="radiogroup" aria-label="Aperture Hop format">
+                  <label class="rfs-radio-label is-compact"><input type="radio" name="demo-ap" class="rfs-radio" checked><span>CSS</span></label>
+                  <label class="rfs-radio-label is-compact"><input type="radio" name="demo-ap" class="rfs-radio"><span>DTCG</span></label>
+                  <label class="rfs-radio-label is-compact"><input type="radio" name="demo-ap" class="rfs-radio"><span>TS</span></label>
+                </div>
+              </div>
+            </div>
+            <div class="fader-seg-row">
+              <div class="field-group">
+                <div class="fader-head">
+                  <label for="ctrl-fader-demo">Console Fader (<code>.rfs-fader</code>)</label>
+                  <span id="ctrl-fader-out" class="rfs-badge b-beacon"><span class="k">64%</span></span>
+                </div>
+                <input id="ctrl-fader-demo" class="rfs-fader" type="range" min="0" max="100" value="64" data-rfs-fader data-rfs-fader-out="ctrl-fader-out">
+              </div>
+              <div class="field-group">
+                <span class="mini-kicker">Cue Carriage (<code>data-rfs-segmented</code>)</span>
+                <div class="rfs-segmented" data-rfs-segmented role="radiogroup" aria-label="Lighting cue carriage">
+                  <div class="rfs-seg-indicator" aria-hidden="true"></div>
+                  <button type="button" role="radio" aria-checked="false">LX 00</button>
+                  <button type="button" role="radio" aria-checked="true">LX 263</button>
+                  <button type="button" role="radio" aria-checked="false">LX 512</button>
+                </div>
+              </div>
             </div>
             <details class="code-disclosure">
-              <summary>View HTML — Inputs &amp; Base-Select</summary>
+              <summary>View HTML — Checkboxes, Jumping Radios &amp; Fader</summary>
               <div class="code-disclosure-body">
                 <div class="rfs-code-card">
                   <div class="rfs-code-head">
                     <span class="rfs-badge b-steel"><span class="k">[html]</span></span>
                     <span class="copy-wrap">
-                      <button class="copy-btn" type="button" command="--copy" commandfor="snip-forms">Copy HTML<span class="visually-hidden"> for inputs and select</span></button>
+                      <button class="copy-btn" type="button" command="--copy" commandfor="snip-forms">Copy HTML<span class="visually-hidden"> for checkboxes, jumping radios, and fader</span></button>
                       <span class="copy-tip" role="status"></span>
                     </span>
                   </div>
-                  <pre class="rfs-code-block"><code id="snip-forms">&lt;input class="rfs-input" type="text" pattern="[a-z0-9]+(-[a-z0-9]+)*" required&gt;
-&lt;select class="rfs-select" name="cue"&gt;
-  &lt;button&gt;&lt;selectedcontent&gt;&lt;/selectedcontent&gt;&lt;/button&gt;
-  &lt;option value="lx263" selected&gt;LX 263 — Beacon Horizon&lt;/option&gt;
-&lt;/select&gt;</code></pre>
+                  <pre class="rfs-code-block"><code id="snip-forms">&lt;label class="rfs-check-label"&gt;&lt;input type="checkbox" class="rfs-check" checked&gt;&lt;span&gt;Ink Draw&lt;/span&gt;&lt;/label&gt;
+&lt;div class="rfs-radio-group" data-rfs-radio-jump="reticle" role="radiogroup"&gt;
+  &lt;label class="rfs-radio-label"&gt;&lt;input type="radio" name="g" class="rfs-radio" checked&gt;&lt;span&gt;Low&lt;/span&gt;&lt;/label&gt;
+  &lt;label class="rfs-radio-label"&gt;&lt;input type="radio" name="g" class="rfs-radio"&gt;&lt;span&gt;Max&lt;/span&gt;&lt;/label&gt;
+&lt;/div&gt;
+&lt;input class="rfs-fader" type="range" min="0" max="100" value="64" data-rfs-fader&gt;</code></pre>
                 </div>
               </div>
             </details>
           </div>
+        </div>
+
+        <!-- §05B: Upgraded Hardware Loading Bars & Precision Ring -->
+        <div class="panel-card loaders-workbench" style="margin-top:1.5rem">
+          <div class="std-head-row">
+            <div>
+              <h3>Hardware Loading Bars &amp; Precision Ring (4 Native <code>&lt;progress&gt;</code> Systems)</h3>
+              <p class="std-note">Built on semantic <code>&lt;progress&gt;</code> with <code>in oklab</code> Steel → Beacon channels, automatic Signal Mint <code>100%</code> completion lock, <code>forced-colors</code> protection, and gentle reduced-motion deceleration.</p>
+            </div>
+            <div class="loader-controls">
+              <div class="std-seg" role="group" aria-label="Loader preview mode">
+                <button type="button" class="curve-chip" id="ld-mode-det" aria-pressed="true"><span class="k">[det]</span> Determinate</button>
+                <button type="button" class="curve-chip" id="ld-mode-ind" aria-pressed="false"><span class="k">[auto]</span> Indeterminate</button>
+              </div>
+              <button type="button" class="rfs-btn rfs-btn-outline rfs-btn-sm" id="ld-sim-btn">Simulate 0→100%</button>
+              <label class="ld-scrub-wrap">
+                <span class="visually-hidden">Scrub progress value</span>
+                <input id="ld-scrub" class="rfs-fader ld-scrub-input" type="range" min="0" max="100" value="68" data-rfs-fader>
+                <span id="ld-scrub-out" class="rfs-badge b-beacon"><span class="k">68%</span></span>
+              </label>
+            </div>
+          </div>
+
+          <div class="loaders-grid">
+            <div class="loader-tile">
+              <div class="loader-tile-head">
+                <span class="rfs-badge b-beacon"><span class="k">[A]</span> DMX Cue Meter</span>
+                <span id="ld-dmx-val" class="loader-val">68%</span>
+              </div>
+              <div class="rfs-progress-dmx-shell">
+                <progress id="ld-dmx" class="rfs-progress-dmx" value="68" max="100" aria-label="DMX Cue Meter progress" aria-valuetext="68%"></progress>
+              </div>
+              <p class="loader-desc">Etched <code>10%</code> console tick dividers + hot leading needle + Signal Mint lock at <code>100%</code>.</p>
+            </div>
+
+            <div class="loader-tile">
+              <div class="loader-tile-head">
+                <span class="rfs-badge b-steel"><span class="k">[B]</span> Horizon Alive Trace</span>
+                <span id="ld-beam-val" class="loader-val">68%</span>
+              </div>
+              <progress id="ld-beam" class="rfs-progress" value="68" max="100" aria-label="Horizon Alive Trace progress" aria-valuetext="68%"></progress>
+              <p class="loader-desc">Subtle moving diagonal sheen proves a paused step is still alive; dual-rate racing indeterminate beam.</p>
+            </div>
+
+            <div class="loader-tile">
+              <div class="loader-tile-head">
+                <span class="rfs-badge b-ok"><span class="k">[C]</span> 20-Cell LED Ladder</span>
+                <span id="ld-led-val" class="loader-val">14 / 20</span>
+              </div>
+              <div id="ld-led" class="rfs-led-ladder" data-rfs-led-ladder data-rfs-led-value="68" role="progressbar" aria-label="Patch-Bay 20-cell LED progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="68"></div>
+              <p class="loader-desc">Discrete hardware cells with a pulsing active frontier—bridges CLI <code>████░░</code> bars to web UI.</p>
+            </div>
+
+            <div class="loader-tile">
+              <div class="loader-tile-head">
+                <span class="rfs-badge b-beacon"><span class="k">[D]</span> Precision Ring</span>
+                <span class="loader-val">Compact</span>
+              </div>
+              <div class="loader-ring-row">
+                <div class="rfs-ring-wrap">
+                  <progress id="ld-ring" class="rfs-progress-ring" value="68" max="100" aria-label="Precision Ring progress" aria-valuetext="68%"></progress>
+                  <span id="ld-ring-txt" class="rfs-ring-label" aria-hidden="true">68%</span>
+                </div>
+                <p class="loader-desc">Native <code>&lt;progress&gt;</code> + <code>@property</code> conic ring (determinate &amp; spinning arc); flips Signal Mint at <code>100%</code>.</p>
+              </div>
+            </div>
+          </div>
+
+          <details class="code-disclosure">
+            <summary>View HTML — DMX Cue Meter, LED Ladder &amp; Precision Ring</summary>
+            <div class="code-disclosure-body">
+              <div class="rfs-code-card">
+                <div class="rfs-code-head">
+                  <span class="rfs-badge b-steel"><span class="k">[html]</span></span>
+                  <span class="copy-wrap">
+                    <button class="copy-btn" type="button" command="--copy" commandfor="snip-loaders">Copy HTML<span class="visually-hidden"> for hardware loading bars and precision ring</span></button>
+                    <span class="copy-tip" role="status"></span>
+                  </span>
+                </div>
+                <pre class="rfs-code-block"><code id="snip-loaders">&lt;div class="rfs-progress-dmx-shell"&gt;&lt;progress class="rfs-progress-dmx" value="68" max="100" aria-label="Build"&gt;&lt;/progress&gt;&lt;/div&gt;
+&lt;progress class="rfs-progress" value="68" max="100" aria-label="Sync"&gt;&lt;/progress&gt;
+&lt;div class="rfs-led-ladder" data-rfs-led-ladder data-rfs-led-value="68" role="progressbar" aria-valuemin="0" aria-valuemax="100"&gt;&lt;/div&gt;
+&lt;div class="rfs-ring-wrap"&gt;&lt;progress class="rfs-progress-ring" value="68" max="100" aria-label="Ring"&gt;&lt;/progress&gt;&lt;span class="rfs-ring-label" aria-hidden="true"&gt;68%&lt;/span&gt;&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+          </details>
         </div>
 
         <div class="table-wrap" tabindex="0" role="region" aria-labelledby="states-cap" style="margin-top:1.5rem">
@@ -1656,15 +1802,16 @@
         <div class="tempo-grid">
           <div class="curve-card">
             <div class="dur-head">
-              <h3>Easing Curves (4 Presets)</h3>
+              <h3>Easing Curves (5 Presets)</h3>
               <div class="curve-actions">
                 <button class="btn btn-outline btn-sm" type="button" id="play-curve">Play Curve</button>
-                <button class="btn btn-outline btn-sm" type="button" id="play-curve-race">Race All 4</button>
+                <button class="btn btn-outline btn-sm" type="button" id="play-curve-race">Race All 5</button>
               </div>
             </div>
 
             <div class="curve-presets" role="group" aria-label="Select easing curve preset">
               <button type="button" class="curve-chip" data-curve-preset="expo" aria-pressed="true"><span class="k">[expo]</span> --rfs-ease</button>
+              <button type="button" class="curve-chip" data-curve-preset="detent" aria-pressed="false"><span class="k">[detent]</span> --rfs-ease-detent</button>
               <button type="button" class="curve-chip" data-curve-preset="inout" aria-pressed="false"><span class="k">[fade]</span> --rfs-ease-in-out</button>
               <button type="button" class="curve-chip" data-curve-preset="exit" aria-pressed="false"><span class="k">[exit]</span> --rfs-ease-exit</button>
               <button type="button" class="curve-chip" data-curve-preset="linear" aria-pressed="false"><span class="k">[dwell]</span> --rfs-ease-linear</button>
@@ -1690,10 +1837,14 @@
                 <p id="curve-formula" class="curve-formula">cubic-bezier(0.16, 1, 0.3, 1)</p>
                 <p id="curve-desc" class="curve-desc">Instant ignition, settled landing — entrances, DMX fader lifts, focus sweeps, and rule draws.</p>
 
-                <div class="curve-race-list" aria-label="Simultaneous 4-curve easing race">
+                <div class="curve-race-list" aria-label="Simultaneous 5-curve easing race">
                   <div class="curve-lane">
                     <span class="curve-lane-lbl">expo</span>
                     <div class="curve-lane-track"><span class="curve-lane-dot is-beacon" data-race-ease="cubic-bezier(0.16, 1, 0.3, 1)"></span></div>
+                  </div>
+                  <div class="curve-lane">
+                    <span class="curve-lane-lbl">detent</span>
+                    <div class="curve-lane-track"><span class="curve-lane-dot is-signal" data-race-ease="linear(0, 0.21 8%, 0.64 19%, 0.94 31%, 1.035 44%, 1.02 58%, 0.996 74%, 1)"></span></div>
                   </div>
                   <div class="curve-lane">
                     <span class="curve-lane-lbl">fade</span>
@@ -1725,6 +1876,10 @@
               <div class="dur-item">
                 <div class="dur-label"><span><code>--rfs-dur-base</code> · Toggles, cue crossfades, underline sweeps</span><strong>250 ms</strong></div>
                 <div class="dur-track"><div class="dur-bar" data-dur-ms="250"></div></div>
+              </div>
+              <div class="dur-item">
+                <div class="dur-label"><span><code>--rfs-dur-detent</code> / <code>jump</code> · Hardware switch seat &amp; ballistic radio jump</span><strong>340–360 ms</strong></div>
+                <div class="dur-track"><div class="dur-bar" data-dur-ms="350"></div></div>
               </div>
               <div class="dur-item">
                 <div class="dur-label"><span><code>--rfs-dur-slow</code> · Rule draws, proof beams, View Transition sweep</span><strong>520 ms</strong></div>
@@ -1996,10 +2151,16 @@
           </svg>
           <div class="std-head-row">
             <div>
-              <h3>A. Precision Silkscreen Icon Library (60 Icons)</h3>
-              <p class="std-note">Generated by <code>tools/make-icons.py</code> on a strict <code>24×24</code> optical grid: <code>fill="none"</code>, <code>stroke="currentColor"</code>, <code>stroke-width="1.75"</code>, industrial <code>square</code> caps &amp; <code>miter</code> joins. Recolor instantly via <code>.rfs-icon-*</code> or click any icon to copy standalone SVG.</p>
+              <h3>A. Precision Silkscreen Icon Library (60 Icons · Opt-In Motion)</h3>
+              <p class="std-note">Generated by <code>tools/make-icons.py</code> on a strict <code>24×24</code> optical grid (<code>1.75px</code> square/miter). Calm by default; add <code>.rfs-icon-live</code> + <code>data-rfs-motion</code> to opt into official hover/click choreography (12 multi-part silkscreen icons + 48 directional/detent verbs).</p>
             </div>
             <div class="icon-top-actions">
+              <div class="std-seg" role="group" aria-label="Icon click interaction mode">
+                <button type="button" class="curve-chip" data-icon-interact="copy" aria-pressed="true"><span class="k">[static]</span> Copy SVG</button>
+                <button type="button" class="curve-chip" data-icon-interact="motion" aria-pressed="false"><span class="k">[live]</span> Click Motion</button>
+              </div>
+              <button type="button" class="curve-chip" id="icon-motion-slow" aria-pressed="false"><span class="k">[0.25×]</span> Slow</button>
+              <button type="button" class="curve-chip" id="icon-motion-cascade"><span class="k">[play]</span> Cascade 12</button>
               <div class="std-seg" role="group" aria-label="Preview icon grid size">
                 <button type="button" class="curve-chip" data-icon-size="16" aria-pressed="false"><span class="k">[sm]</span> 16px</button>
                 <button type="button" class="curve-chip" data-icon-size="20" aria-pressed="false"><span class="k">[base]</span> 20px</button>
@@ -2036,66 +2197,66 @@
           </div>
 
           <div class="icon-grid" id="icon-specimen-grid" data-size="24" data-tone="text" role="region" aria-label="RFS 60-icon library">
-            <button type="button" class="icon-tile" data-icon-name="arrow-right" data-icon-cat="ui" data-icon-tags="next forward go direction" aria-label="Copy arrow-right SVG"><svg class="rfs-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h15"/><path d="M13.5 6.5L19 12l-5.5 5.5"/></svg><span class="icon-lbl">arrow-right</span></button>
-            <button type="button" class="icon-tile" data-icon-name="arrow-left" data-icon-cat="ui" data-icon-tags="back previous return direction" aria-label="Copy arrow-left SVG"><svg class="rfs-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 12H5"/><path d="M10.5 6.5L5 12l5.5 5.5"/></svg><span class="icon-lbl">arrow-left</span></button>
-            <button type="button" class="icon-tile" data-icon-name="arrow-up-right" data-icon-cat="ui" data-icon-tags="external open link launch" aria-label="Copy arrow-up-right SVG"><svg class="rfs-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M6.5 17.5L17.5 6.5"/><path d="M9 6.5h8.5V15"/></svg><span class="icon-lbl">arrow-up-right</span></button>
-            <button type="button" class="icon-tile" data-icon-name="chevron-down" data-icon-cat="ui" data-icon-tags="expand dropdown accordion more" aria-label="Copy chevron-down SVG"><svg class="rfs-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9.5l6 6 6-6"/></svg><span class="icon-lbl">chevron-down</span></button>
-            <button type="button" class="icon-tile" data-icon-name="chevron-right" data-icon-cat="ui" data-icon-tags="next breadcrumb disclosure step" aria-label="Copy chevron-right SVG"><svg class="rfs-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M9.5 6l6 6-6 6"/></svg><span class="icon-lbl">chevron-right</span></button>
-            <button type="button" class="icon-tile" data-icon-name="menu" data-icon-cat="ui" data-icon-tags="hamburger nav drawer lines" aria-label="Copy menu SVG"><svg class="rfs-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6.5h16"/><path d="M4 12h16"/><path d="M4 17.5h16"/></svg><span class="icon-lbl">menu</span></button>
-            <button type="button" class="icon-tile" data-icon-name="close" data-icon-cat="ui" data-icon-tags="x dismiss cancel clear" aria-label="Copy close SVG"><svg class="rfs-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12"/><path d="M18 6L6 18"/></svg><span class="icon-lbl">close</span></button>
-            <button type="button" class="icon-tile" data-icon-name="search" data-icon-cat="ui" data-icon-tags="find filter lookup magnifier" aria-label="Copy search SVG"><svg class="rfs-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5L20 20"/></svg><span class="icon-lbl">search</span></button>
-            <button type="button" class="icon-tile" data-icon-name="filter" data-icon-cat="ui" data-icon-tags="funnel sort query refine" aria-label="Copy filter SVG"><svg class="rfs-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M3.5 5h17l-6.5 7.5V19l-4-2v-4.5L3.5 5z"/></svg><span class="icon-lbl">filter</span></button>
-            <button type="button" class="icon-tile" data-icon-name="sliders" data-icon-cat="ui" data-icon-tags="dmx faders controls console tune" aria-label="Copy sliders SVG"><svg class="rfs-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4v16"/><path d="M12 4v16"/><path d="M19 4v16"/><rect x="3" y="8" width="4" height="3.5" fill="currentColor" stroke="none"/><rect x="10" y="13.5" width="4" height="3.5" fill="currentColor" stroke="none"/><rect x="17" y="6.5" width="4" height="3.5" fill="currentColor" stroke="none"/></svg><span class="icon-lbl">sliders</span></button>
-            <button type="button" class="icon-tile" data-icon-name="plus" data-icon-cat="actions" data-icon-tags="add new create insert" aria-label="Copy plus SVG"><svg class="rfs-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14"/><path d="M5 12h14"/></svg><span class="icon-lbl">plus</span></button>
-            <button type="button" class="icon-tile" data-icon-name="minus" data-icon-cat="actions" data-icon-tags="remove subtract collapse" aria-label="Copy minus SVG"><svg class="rfs-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"/></svg><span class="icon-lbl">minus</span></button>
-            <button type="button" class="icon-tile" data-icon-name="edit" data-icon-cat="actions" data-icon-tags="pencil write rename modify" aria-label="Copy edit SVG"><svg class="rfs-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20h4.5L19.5 9 15 4.5 4 15.5V20z"/><path d="M12.5 7l4.5 4.5"/></svg><span class="icon-lbl">edit</span></button>
-            <button type="button" class="icon-tile" data-icon-name="trash" data-icon-cat="actions" data-icon-tags="delete remove destroy confirm" aria-label="Copy trash SVG"><svg class="rfs-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6.5h16"/><path d="M9 6.5V4h6v2.5"/><path d="M6.5 6.5l1 13.5h9l1-13.5"/><path d="M10.25 10.5v6"/><path d="M13.75 10.5v6"/></svg><span class="icon-lbl">trash</span></button>
-            <button type="button" class="icon-tile" data-icon-name="copy" data-icon-cat="actions" data-icon-tags="clipboard duplicate clone" aria-label="Copy copy SVG"><svg class="rfs-icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="8.5" y="8.5" width="11.5" height="11.5" rx="1"/><path d="M15.5 8.5V4.5A0.5 0.5 0 0 0 15 4H4.5A0.5 0.5 0 0 0 4 4.5V15a0.5 0.5 0 0 0 0.5 0.5h4"/></svg><span class="icon-lbl">copy</span></button>
-            <button type="button" class="icon-tile" data-icon-name="check" data-icon-cat="actions" data-icon-tags="ok done confirm valid" aria-label="Copy check SVG"><svg class="rfs-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4.5 12.5L9.5 17.5L19.5 6.5"/></svg><span class="icon-lbl">check</span></button>
-            <button type="button" class="icon-tile" data-icon-name="refresh" data-icon-cat="actions" data-icon-tags="sync reload retry port-sync" aria-label="Copy refresh SVG"><svg class="rfs-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M19.5 10A7.5 7.5 0 0 0 6.2 7.2L4.5 9"/><path d="M4.5 4.5V9H9"/><path d="M4.5 14A7.5 7.5 0 0 0 17.8 16.8L19.5 15"/><path d="M19.5 19.5V15H15"/></svg><span class="icon-lbl">refresh</span></button>
-            <button type="button" class="icon-tile" data-icon-name="download" data-icon-cat="actions" data-icon-tags="save export install fetch" aria-label="Copy download SVG"><svg class="rfs-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v11"/><path d="M7.5 10.5L12 15l4.5-4.5"/><path d="M4 19.5h16"/></svg><span class="icon-lbl">download</span></button>
-            <button type="button" class="icon-tile" data-icon-name="upload" data-icon-cat="actions" data-icon-tags="import push publish send" aria-label="Copy upload SVG"><svg class="rfs-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 15.5V4.5"/><path d="M7.5 9L12 4.5 16.5 9"/><path d="M4 19.5h16"/></svg><span class="icon-lbl">upload</span></button>
-            <button type="button" class="icon-tile" data-icon-name="share" data-icon-cat="actions" data-icon-tags="export forward distribute" aria-label="Copy share SVG"><svg class="rfs-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="17.5" cy="5.5" r="2.25"/><circle cx="6.5" cy="12" r="2.25"/><circle cx="17.5" cy="18.5" r="2.25"/><path d="M8.5 10.8l7-4.1"/><path d="M8.5 13.2l7 4.1"/></svg><span class="icon-lbl">share</span></button>
-            <button type="button" class="icon-tile" data-icon-name="file" data-icon-cat="code" data-icon-tags="document note markdown page" aria-label="Copy file SVG"><svg class="rfs-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5.5 3.5h8.5L18.5 8v12.5h-13V3.5z"/><path d="M13.5 3.5V8.5h5"/></svg><span class="icon-lbl">file</span></button>
-            <button type="button" class="icon-tile" data-icon-name="file-code" data-icon-cat="code" data-icon-tags="source script toml json config" aria-label="Copy file-code SVG"><svg class="rfs-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4.5 3.5h9.5L19.5 9v11.5h-15V3.5z"/><path d="M14 3.5V9h5.5"/><path d="M10.25 13L8.25 15l2 2"/><path d="M13.75 13l2 2-2 2"/></svg><span class="icon-lbl">file-code</span></button>
-            <button type="button" class="icon-tile" data-icon-name="folder" data-icon-cat="code" data-icon-tags="directory workspace path project" aria-label="Copy folder SVG"><svg class="rfs-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M3.5 5.5h6l2 2.5h9v11h-17V5.5z"/></svg><span class="icon-lbl">folder</span></button>
-            <button type="button" class="icon-tile" data-icon-name="archive" data-icon-cat="code" data-icon-tags="zip tar retired box bundle" aria-label="Copy archive SVG"><svg class="rfs-icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="4.5" width="17" height="4"/><path d="M5 8.5v11h14v-11"/><path d="M9.5 13h5"/></svg><span class="icon-lbl">archive</span></button>
-            <button type="button" class="icon-tile" data-icon-name="terminal" data-icon-cat="code" data-icon-tags="cli shell console pwsh zsh" aria-label="Copy terminal SVG"><svg class="rfs-icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="1"/><path d="M7 9.5l3 2.5-3 2.5"/><path d="M12.5 14.5h4.5"/></svg><span class="icon-lbl">terminal</span></button>
-            <button type="button" class="icon-tile" data-icon-name="code" data-icon-cat="code" data-icon-tags="brackets syntax html dev" aria-label="Copy code SVG"><svg class="rfs-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 7.5L3.5 12 8 16.5"/><path d="M16 7.5L20.5 12 16 16.5"/><path d="M13.5 5.5l-3 13"/></svg><span class="icon-lbl">code</span></button>
-            <button type="button" class="icon-tile" data-icon-name="git-branch" data-icon-cat="code" data-icon-tags="repo branch version vcs" aria-label="Copy git-branch SVG"><svg class="rfs-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="7" cy="6" r="2.25"/><circle cx="7" cy="18" r="2.25"/><circle cx="17" cy="9" r="2.25"/><path d="M7 8.5v7"/><path d="M17 11.5v1a4.5 4.5 0 0 1-4.5 4.5H9.5"/></svg><span class="icon-lbl">git-branch</span></button>
-            <button type="button" class="icon-tile" data-icon-name="diff" data-icon-cat="code" data-icon-tags="compare patch changes plus-minus" aria-label="Copy diff SVG"><svg class="rfs-icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="3.5" width="17" height="17" rx="1"/><path d="M12 7.25v4.5"/><path d="M9.75 9.5h4.5"/><path d="M9.75 15.75h4.5"/></svg><span class="icon-lbl">diff</span></button>
-            <button type="button" class="icon-tile" data-icon-name="package" data-icon-cat="code" data-icon-tags="release crate pwn-shop artifact" aria-label="Copy package SVG"><svg class="rfs-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3L20 7.5v9L12 21 4 16.5v-9L12 3z"/><path d="M4 7.5L12 12l8-4.5"/><path d="M12 12v9"/><path d="M8 5.25l8 4.5"/></svg><span class="icon-lbl">package</span></button>
-            <button type="button" class="icon-tile" data-icon-name="book" data-icon-cat="code" data-icon-tags="docs manual playbook guide" aria-label="Copy book SVG"><svg class="rfs-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M3.5 5h6.5a2 2 0 0 1 2 2v12.5a1.5 1.5 0 0 0-1.5-1.5h-7V5z"/><path d="M20.5 5H14a2 2 0 0 0-2 2v12.5a1.5 1.5 0 0 1 1.5-1.5h7V5z"/></svg><span class="icon-lbl">book</span></button>
-            <button type="button" class="icon-tile" data-icon-name="shield" data-icon-cat="security" data-icon-tags="privacy local protect firewall" aria-label="Copy shield SVG"><svg class="rfs-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.25L19.5 6v6c0 4.6-3.1 7.7-7.5 9.25C7.6 19.7 4.5 16.6 4.5 12V6L12 3.25z"/></svg><span class="icon-lbl">shield</span></button>
-            <button type="button" class="icon-tile" data-icon-name="shield-check" data-icon-cat="security" data-icon-tags="verified sha256 signed trusted" aria-label="Copy shield-check SVG"><svg class="rfs-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.25L19.5 6v6c0 4.6-3.1 7.7-7.5 9.25C7.6 19.7 4.5 16.6 4.5 12V6L12 3.25z"/><path d="M8.75 12.25l2.25 2.25 4.5-4.75"/></svg><span class="icon-lbl">shield-check</span></button>
-            <button type="button" class="icon-tile" data-icon-name="lock" data-icon-cat="security" data-icon-tags="private encrypted mtls secure" aria-label="Copy lock SVG"><svg class="rfs-icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="10.5" width="14" height="9.5" rx="1"/><path d="M8 10.5V7.5a4 4 0 0 1 8 0v3"/><path d="M12 14v2.5"/></svg><span class="icon-lbl">lock</span></button>
-            <button type="button" class="icon-tile" data-icon-name="unlock" data-icon-cat="security" data-icon-tags="open public access" aria-label="Copy unlock SVG"><svg class="rfs-icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="10.5" width="14" height="9.5" rx="1"/><path d="M8 10.5V7.5a4 4 0 0 1 7.7-1.5"/><path d="M12 14v2.5"/></svg><span class="icon-lbl">unlock</span></button>
-            <button type="button" class="icon-tile" data-icon-name="key" data-icon-cat="security" data-icon-tags="token auth credentials passphrase" aria-label="Copy key SVG"><svg class="rfs-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="7.75" cy="12" r="3.75"/><path d="M11.5 12H20.5"/><path d="M17 12v3"/><path d="M20 12v2.25"/></svg><span class="icon-lbl">key</span></button>
-            <button type="button" class="icon-tile" data-icon-name="certificate" data-icon-cat="security" data-icon-tags="certapi x509 store badge" aria-label="Copy certificate SVG"><svg class="rfs-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 16.5H3.5V4.5h17v6.25"/><path d="M7 8.5h7.5"/><path d="M7 12h4"/><circle cx="16.5" cy="14" r="2.75"/><path d="M15 16.5V21l1.5-1.15L18 21v-4.5"/></svg><span class="icon-lbl">certificate</span></button>
-            <button type="button" class="icon-tile" data-icon-name="eye" data-icon-cat="security" data-icon-tags="view preview visible inspect" aria-label="Copy eye SVG"><svg class="rfs-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M2.5 12S6 6.25 12 6.25 21.5 12 21.5 12 18 17.75 12 17.75 2.5 12 2.5 12z"/><circle cx="12" cy="12" r="2.75"/></svg><span class="icon-lbl">eye</span></button>
-            <button type="button" class="icon-tile" data-icon-name="eye-off" data-icon-cat="security" data-icon-tags="hide mask redact secret" aria-label="Copy eye-off SVG"><svg class="rfs-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M3.5 3.5l17 17"/><path d="M10.2 6.45A10 10 0 0 1 12 6.25C18 6.25 21.5 12 21.5 12a16.5 16.5 0 0 1-3.1 3.7"/><path d="M6.4 8.2A16.5 16.5 0 0 0 2.5 12s3.5 5.75 9.5 5.75a10 10 0 0 0 3.7-.7"/></svg><span class="icon-lbl">eye-off</span></button>
-            <button type="button" class="icon-tile" data-icon-name="cpu" data-icon-cat="security" data-icon-tags="hardware local rust native chip" aria-label="Copy cpu SVG"><svg class="rfs-icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="6.5" y="6.5" width="11" height="11"/><rect x="10" y="10" width="4" height="4"/><path d="M9 3.5v3M15 3.5v3M9 17.5v3M15 17.5v3M3.5 9h3M3.5 15h3M17.5 9h3M17.5 15h3"/></svg><span class="icon-lbl">cpu</span></button>
-            <button type="button" class="icon-tile" data-icon-name="settings" data-icon-cat="security" data-icon-tags="gear config preferences options" aria-label="Copy settings SVG"><svg class="rfs-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M10.4 3.25h3.2l.55 2.1 1.65.7 1.85-1.05 2.25 2.25-1.05 1.85.7 1.65 2.1.55v3.2l-2.1.55-.7 1.65 1.05 1.85-2.25 2.25-1.85-1.05-1.65.7-.55 2.1h-3.2l-.55-2.1-1.65-.7-1.85 1.05-2.25-2.25 1.05-1.85-.7-1.65-2.1-.55v-3.2l2.1-.55.7-1.65-1.05-1.85 2.25-2.25 1.85 1.05 1.65-.7.55-2.1z"/></svg><span class="icon-lbl">settings</span></button>
-            <button type="button" class="icon-tile" data-icon-name="globe" data-icon-cat="tools" data-icon-tags="web browser offline dns" aria-label="Copy globe SVG"><svg class="rfs-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><ellipse cx="12" cy="12" rx="3.75" ry="8.5"/><path d="M3.75 12h16.5"/></svg><span class="icon-lbl">globe</span></button>
-            <button type="button" class="icon-tile" data-icon-name="wifi" data-icon-cat="tools" data-icon-tags="network signal vpn port" aria-label="Copy wifi SVG"><svg class="rfs-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M3.5 9a12.5 12.5 0 0 1 17 0"/><path d="M6.8 12.5a8 8 0 0 1 10.4 0"/><path d="M10.1 16a3.2 3.2 0 0 1 3.8 0"/><rect x="11.15" y="18.25" width="1.7" height="1.7" fill="currentColor" stroke="none"/></svg><span class="icon-lbl">wifi</span></button>
-            <button type="button" class="icon-tile" data-icon-name="server" data-icon-cat="tools" data-icon-tags="daemon localhost host node" aria-label="Copy server SVG"><svg class="rfs-icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="4" width="17" height="6.5" rx="1"/><rect x="3.5" y="13.5" width="17" height="6.5" rx="1"/><rect x="6.25" y="6.35" width="1.8" height="1.8" fill="currentColor" stroke="none"/><rect x="6.25" y="15.85" width="1.8" height="1.8" fill="currentColor" stroke="none"/><path d="M11 7.25h6M11 16.75h6"/></svg><span class="icon-lbl">server</span></button>
-            <button type="button" class="icon-tile" data-icon-name="link" data-icon-cat="tools" data-icon-tags="url chain connect anchor" aria-label="Copy link SVG"><svg class="rfs-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M9.5 14.5l5-5"/><path d="M11.5 7.5l1.75-1.75a3.5 3.5 0 0 1 5 5L16.5 12.5"/><path d="M12.5 16.5l-1.75 1.75a3.5 3.5 0 0 1-5-5L7.5 11.5"/></svg><span class="icon-lbl">link</span></button>
-            <button type="button" class="icon-tile" data-icon-name="capture" data-icon-cat="tools" data-icon-tags="screenshot screen-mark crop crosshair" aria-label="Copy capture SVG"><svg class="rfs-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 8.5V4h4.5M15.5 4H20v4.5M20 15.5V20h-4.5M8.5 20H4v-4.5"/><circle cx="12" cy="12" r="2.75"/></svg><span class="icon-lbl">capture</span></button>
-            <button type="button" class="icon-tile" data-icon-name="image" data-icon-cat="tools" data-icon-tags="png svg photo cover artwork" aria-label="Copy image SVG"><svg class="rfs-icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="4.5" width="17" height="15" rx="1"/><path d="M4 16.5l5-5 3.5 3.5 2.5-2.5 5 4"/><circle cx="9" cy="9" r="1.25"/></svg><span class="icon-lbl">image</span></button>
-            <button type="button" class="icon-tile" data-icon-name="video" data-icon-cat="tools" data-icon-tags="carify ffmpeg usb media encode" aria-label="Copy video SVG"><svg class="rfs-icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="6" width="13" height="12" rx="1"/><path d="M16 10l5-3v10l-5-3"/></svg><span class="icon-lbl">video</span></button>
-            <button type="button" class="icon-tile" data-icon-name="play" data-icon-cat="tools" data-icon-tags="start run replay motion" aria-label="Copy play SVG"><svg class="rfs-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 5l12 7-12 7V5z"/></svg><span class="icon-lbl">play</span></button>
-            <button type="button" class="icon-tile" data-icon-name="pause" data-icon-cat="tools" data-icon-tags="stop freeze wcag board" aria-label="Copy pause SVG"><svg class="rfs-icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="6" y="5" width="4" height="14"/><rect x="14" y="5" width="4" height="14"/></svg><span class="icon-lbl">pause</span></button>
-            <button type="button" class="icon-tile" data-icon-name="volume" data-icon-cat="tools" data-icon-tags="audio aac sound speaker" aria-label="Copy volume SVG"><svg class="rfs-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9.5h4l5-4.5v14l-5-4.5H4V9.5z"/><path d="M16.5 9a4.5 4.5 0 0 1 0 6"/><path d="M19.2 6.5a8 8 0 0 1 0 11"/></svg><span class="icon-lbl">volume</span></button>
-            <button type="button" class="icon-tile" data-icon-name="check-circle" data-icon-cat="status" data-icon-tags="ok success synced pass" aria-label="Copy check-circle SVG"><svg class="rfs-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="M8.5 12.25l2.25 2.25 4.75-5"/></svg><span class="icon-lbl">check-circle</span></button>
-            <button type="button" class="icon-tile" data-icon-name="alert-triangle" data-icon-cat="status" data-icon-tags="warn warning caution destructive" aria-label="Copy alert-triangle SVG"><svg class="rfs-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4L21 19.5H3L12 4z"/><path d="M12 10v4"/><rect x="11.15" y="16" width="1.7" height="1.7" fill="currentColor" stroke="none"/></svg><span class="icon-lbl">alert-triangle</span></button>
-            <button type="button" class="icon-tile" data-icon-name="x-circle" data-icon-cat="status" data-icon-tags="error fail fault blocked" aria-label="Copy x-circle SVG"><svg class="rfs-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="M9 9l6 6"/><path d="M15 9l-6 6"/></svg><span class="icon-lbl">x-circle</span></button>
-            <button type="button" class="icon-tile" data-icon-name="info" data-icon-cat="status" data-icon-tags="note help details stdout" aria-label="Copy info SVG"><svg class="rfs-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="M12 11.25V16"/><rect x="11.15" y="7.75" width="1.7" height="1.7" fill="currentColor" stroke="none"/></svg><span class="icon-lbl">info</span></button>
-            <button type="button" class="icon-tile" data-icon-name="sun" data-icon-cat="status" data-icon-tags="light day lx512 alabaster" aria-label="Copy sun SVG"><svg class="rfs-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 3v2M12 19v2M3 12h2M19 12h2M5.6 5.6l1.4 1.4M17 17l1.4 1.4M18.4 5.6L17 7M7 17l-1.4 1.4"/></svg><span class="icon-lbl">sun</span></button>
-            <button type="button" class="icon-tile" data-icon-name="moon" data-icon-cat="status" data-icon-tags="dark night lx263 blackout" aria-label="Copy moon SVG"><svg class="rfs-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M19.5 14.25A7.75 7.75 0 0 1 9.75 4.5a8 8 0 1 0 9.75 9.75z"/></svg><span class="icon-lbl">moon</span></button>
-            <button type="button" class="icon-tile" data-icon-name="clock" data-icon-cat="status" data-icon-tags="time timer dwell schedule interval" aria-label="Copy clock SVG"><svg class="rfs-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3.25 2"/></svg><span class="icon-lbl">clock</span></button>
-            <button type="button" class="icon-tile" data-icon-name="calendar" data-icon-cat="status" data-icon-tags="date changelog release orders" aria-label="Copy calendar SVG"><svg class="rfs-icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="5" width="17" height="15.5" rx="1"/><path d="M3.5 9.5h17"/><path d="M8 3.25V6.5M16 3.25V6.5"/></svg><span class="icon-lbl">calendar</span></button>
-            <button type="button" class="icon-tile" data-icon-name="bell" data-icon-cat="status" data-icon-tags="notify alert webhook status" aria-label="Copy bell SVG"><svg class="rfs-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 16.5V10a6 6 0 0 1 12 0v6.5L20 18.5H4l2-2z"/><path d="M10 18.5a2 2 0 0 0 4 0"/></svg><span class="icon-lbl">bell</span></button>
-            <button type="button" class="icon-tile" data-icon-name="pin" data-icon-cat="status" data-icon-tags="featured fixed bookmark lock" aria-label="Copy pin SVG"><svg class="rfs-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.5 4h7v2L14 7.75v3.5l2.75 2.75H7.25L10 11.25v-3.5L8.5 6V4z"/><path d="M12 14v6.25"/></svg><span class="icon-lbl">pin</span></button>
+            <button type="button" class="icon-tile" data-icon-name="arrow-right" data-icon-cat="ui" data-icon-tags="next forward go direction" data-rfs-motion="nudge-x" aria-label="Inspect or copy arrow-right SVG"><svg class="rfs-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h15"/><path d="M13.5 6.5L19 12l-5.5 5.5"/></svg><span class="icon-lbl">arrow-right</span><span class="icon-motion-tag">nudge-x</span></button>
+            <button type="button" class="icon-tile" data-icon-name="arrow-left" data-icon-cat="ui" data-icon-tags="back previous return direction" data-rfs-motion="nudge-left" aria-label="Inspect or copy arrow-left SVG"><svg class="rfs-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 12H5"/><path d="M10.5 6.5L5 12l5.5 5.5"/></svg><span class="icon-lbl">arrow-left</span><span class="icon-motion-tag">nudge-left</span></button>
+            <button type="button" class="icon-tile" data-icon-name="arrow-up-right" data-icon-cat="ui" data-icon-tags="external open link launch" data-rfs-motion="nudge-ne" aria-label="Inspect or copy arrow-up-right SVG"><svg class="rfs-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M6.5 17.5L17.5 6.5"/><path d="M9 6.5h8.5V15"/></svg><span class="icon-lbl">arrow-up-right</span><span class="icon-motion-tag">nudge-ne</span></button>
+            <button type="button" class="icon-tile" data-icon-name="chevron-down" data-icon-cat="ui" data-icon-tags="expand dropdown accordion more" data-rfs-motion="nudge-y" aria-label="Inspect or copy chevron-down SVG"><svg class="rfs-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9.5l6 6 6-6"/></svg><span class="icon-lbl">chevron-down</span><span class="icon-motion-tag">nudge-y</span></button>
+            <button type="button" class="icon-tile" data-icon-name="chevron-right" data-icon-cat="ui" data-icon-tags="next breadcrumb disclosure step" data-rfs-motion="nudge-x" aria-label="Inspect or copy chevron-right SVG"><svg class="rfs-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M9.5 6l6 6-6 6"/></svg><span class="icon-lbl">chevron-right</span><span class="icon-motion-tag">nudge-x</span></button>
+            <button type="button" class="icon-tile" data-icon-name="menu" data-icon-cat="ui" data-icon-tags="hamburger nav drawer lines" data-rfs-motion="seat" aria-label="Inspect or copy menu SVG"><svg class="rfs-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6.5h16"/><path d="M4 12h16"/><path d="M4 17.5h16"/></svg><span class="icon-lbl">menu</span><span class="icon-motion-tag">seat</span></button>
+            <button type="button" class="icon-tile" data-icon-name="close" data-icon-cat="ui" data-icon-tags="x dismiss cancel clear" data-rfs-motion="detent-90" aria-label="Inspect or copy close SVG"><svg class="rfs-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12"/><path d="M18 6L6 18"/></svg><span class="icon-lbl">close</span><span class="icon-motion-tag">detent-90</span></button>
+            <button type="button" class="icon-tile" data-icon-name="search" data-icon-cat="ui" data-icon-tags="find filter lookup magnifier" data-rfs-motion="seat" aria-label="Inspect or copy search SVG"><svg class="rfs-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5L20 20"/></svg><span class="icon-lbl">search</span><span class="icon-motion-tag">seat</span></button>
+            <button type="button" class="icon-tile" data-icon-name="filter" data-icon-cat="ui" data-icon-tags="funnel sort query refine" data-rfs-motion="drop" aria-label="Inspect or copy filter SVG"><svg class="rfs-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M3.5 5h17l-6.5 7.5V19l-4-2v-4.5L3.5 5z"/></svg><span class="icon-lbl">filter</span><span class="icon-motion-tag">drop</span></button>
+            <button type="button" class="icon-tile" data-icon-name="sliders" data-icon-cat="ui" data-icon-tags="dmx faders controls console tune" data-rfs-motion="part-faders" aria-label="Inspect or copy sliders SVG"><svg class="rfs-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4v16"/><path d="M12 4v16"/><path d="M19 4v16"/><rect class="rfs-p rfs-p-f1" x="3" y="8" width="4" height="3.5" fill="currentColor" stroke="none"/><rect class="rfs-p rfs-p-f2" x="10" y="13.5" width="4" height="3.5" fill="currentColor" stroke="none"/><rect class="rfs-p rfs-p-f3" x="17" y="6.5" width="4" height="3.5" fill="currentColor" stroke="none"/></svg><span class="icon-lbl">sliders</span><span class="icon-motion-tag">part-faders</span></button>
+            <button type="button" class="icon-tile" data-icon-name="plus" data-icon-cat="actions" data-icon-tags="add new create insert" data-rfs-motion="detent-90" aria-label="Inspect or copy plus SVG"><svg class="rfs-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14"/><path d="M5 12h14"/></svg><span class="icon-lbl">plus</span><span class="icon-motion-tag">detent-90</span></button>
+            <button type="button" class="icon-tile" data-icon-name="minus" data-icon-cat="actions" data-icon-tags="remove subtract collapse" data-rfs-motion="seat" aria-label="Inspect or copy minus SVG"><svg class="rfs-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"/></svg><span class="icon-lbl">minus</span><span class="icon-motion-tag">seat</span></button>
+            <button type="button" class="icon-tile" data-icon-name="edit" data-icon-cat="actions" data-icon-tags="pencil write rename modify" data-rfs-motion="nudge-ne" aria-label="Inspect or copy edit SVG"><svg class="rfs-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20h4.5L19.5 9 15 4.5 4 15.5V20z"/><path d="M12.5 7l4.5 4.5"/></svg><span class="icon-lbl">edit</span><span class="icon-motion-tag">nudge-ne</span></button>
+            <button type="button" class="icon-tile" data-icon-name="trash" data-icon-cat="actions" data-icon-tags="delete remove destroy confirm" data-rfs-motion="part-lid" aria-label="Inspect or copy trash SVG"><svg class="rfs-icon" viewBox="0 0 24 24" aria-hidden="true"><g class="rfs-p rfs-p-lid"><path d="M4 6.5h16"/><path d="M9 6.5V4h6v2.5"/></g><g class="rfs-p rfs-p-bin"><path d="M6.5 6.5l1 13.5h9l1-13.5"/><path d="M10.25 10.5v6"/><path d="M13.75 10.5v6"/></g></svg><span class="icon-lbl">trash</span><span class="icon-motion-tag">part-lid</span></button>
+            <button type="button" class="icon-tile" data-icon-name="copy" data-icon-cat="actions" data-icon-tags="clipboard duplicate clone" data-rfs-motion="part-copy" aria-label="Inspect or copy copy SVG"><svg class="rfs-icon" viewBox="0 0 24 24" aria-hidden="true"><rect class="rfs-p rfs-p-front" x="8.5" y="8.5" width="11.5" height="11.5" rx="1"/><path class="rfs-p rfs-p-back" d="M15.5 8.5V4.5A0.5 0.5 0 0 0 15 4H4.5A0.5 0.5 0 0 0 4 4.5V15a0.5 0.5 0 0 0 0.5 0.5h4"/><path class="rfs-p rfs-p-chk" d="M4.5 12.5L9.5 17.5L19.5 6.5"/></svg><span class="icon-lbl">copy</span><span class="icon-motion-tag">part-copy</span></button>
+            <button type="button" class="icon-tile" data-icon-name="check" data-icon-cat="actions" data-icon-tags="ok done confirm valid" data-rfs-motion="seat" aria-label="Inspect or copy check SVG"><svg class="rfs-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4.5 12.5L9.5 17.5L19.5 6.5"/></svg><span class="icon-lbl">check</span><span class="icon-motion-tag">seat</span></button>
+            <button type="button" class="icon-tile" data-icon-name="refresh" data-icon-cat="actions" data-icon-tags="sync reload retry port-sync" data-rfs-motion="part-spin" aria-label="Inspect or copy refresh SVG"><svg class="rfs-icon" viewBox="0 0 24 24" aria-hidden="true"><g class="rfs-p rfs-p-spin"><path d="M19.5 10A7.5 7.5 0 0 0 6.2 7.2L4.5 9"/><path d="M4.5 4.5V9H9"/><path d="M4.5 14A7.5 7.5 0 0 0 17.8 16.8L19.5 15"/><path d="M19.5 19.5V15H15"/></g></svg><span class="icon-lbl">refresh</span><span class="icon-motion-tag">part-spin</span></button>
+            <button type="button" class="icon-tile" data-icon-name="download" data-icon-cat="actions" data-icon-tags="save export install fetch" data-rfs-motion="part-plunge" aria-label="Inspect or copy download SVG"><svg class="rfs-icon" viewBox="0 0 24 24" aria-hidden="true"><g class="rfs-p rfs-p-arrow"><path d="M12 4v11"/><path d="M7.5 10.5L12 15l4.5-4.5"/></g><path d="M4 19.5h16"/></svg><span class="icon-lbl">download</span><span class="icon-motion-tag">part-plunge</span></button>
+            <button type="button" class="icon-tile" data-icon-name="upload" data-icon-cat="actions" data-icon-tags="import push publish send" data-rfs-motion="lift" aria-label="Inspect or copy upload SVG"><svg class="rfs-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 15.5V4.5"/><path d="M7.5 9L12 4.5 16.5 9"/><path d="M4 19.5h16"/></svg><span class="icon-lbl">upload</span><span class="icon-motion-tag">lift</span></button>
+            <button type="button" class="icon-tile" data-icon-name="share" data-icon-cat="actions" data-icon-tags="export forward distribute" data-rfs-motion="nudge-ne" aria-label="Inspect or copy share SVG"><svg class="rfs-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="17.5" cy="5.5" r="2.25"/><circle cx="6.5" cy="12" r="2.25"/><circle cx="17.5" cy="18.5" r="2.25"/><path d="M8.5 10.8l7-4.1"/><path d="M8.5 13.2l7 4.1"/></svg><span class="icon-lbl">share</span><span class="icon-motion-tag">nudge-ne</span></button>
+            <button type="button" class="icon-tile" data-icon-name="file" data-icon-cat="code" data-icon-tags="document note markdown page" data-rfs-motion="lift" aria-label="Inspect or copy file SVG"><svg class="rfs-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5.5 3.5h8.5L18.5 8v12.5h-13V3.5z"/><path d="M13.5 3.5V8.5h5"/></svg><span class="icon-lbl">file</span><span class="icon-motion-tag">lift</span></button>
+            <button type="button" class="icon-tile" data-icon-name="file-code" data-icon-cat="code" data-icon-tags="source script toml json config" data-rfs-motion="seat" aria-label="Inspect or copy file-code SVG"><svg class="rfs-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4.5 3.5h9.5L19.5 9v11.5h-15V3.5z"/><path d="M14 3.5V9h5.5"/><path d="M10.25 13L8.25 15l2 2"/><path d="M13.75 13l2 2-2 2"/></svg><span class="icon-lbl">file-code</span><span class="icon-motion-tag">seat</span></button>
+            <button type="button" class="icon-tile" data-icon-name="folder" data-icon-cat="code" data-icon-tags="directory workspace path project" data-rfs-motion="lift" aria-label="Inspect or copy folder SVG"><svg class="rfs-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M3.5 5.5h6l2 2.5h9v11h-17V5.5z"/></svg><span class="icon-lbl">folder</span><span class="icon-motion-tag">lift</span></button>
+            <button type="button" class="icon-tile" data-icon-name="archive" data-icon-cat="code" data-icon-tags="zip tar retired box bundle" data-rfs-motion="drop" aria-label="Inspect or copy archive SVG"><svg class="rfs-icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="4.5" width="17" height="4"/><path d="M5 8.5v11h14v-11"/><path d="M9.5 13h5"/></svg><span class="icon-lbl">archive</span><span class="icon-motion-tag">drop</span></button>
+            <button type="button" class="icon-tile" data-icon-name="terminal" data-icon-cat="code" data-icon-tags="cli shell console pwsh zsh" data-rfs-motion="part-prompt" aria-label="Inspect or copy terminal SVG"><svg class="rfs-icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="1"/><path class="rfs-p rfs-p-prompt" d="M7 9.5l3 2.5-3 2.5"/><path class="rfs-p rfs-p-cur" d="M12.5 14.5h4.5"/></svg><span class="icon-lbl">terminal</span><span class="icon-motion-tag">part-prompt</span></button>
+            <button type="button" class="icon-tile" data-icon-name="code" data-icon-cat="code" data-icon-tags="brackets syntax html dev" data-rfs-motion="seat" aria-label="Inspect or copy code SVG"><svg class="rfs-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 7.5L3.5 12 8 16.5"/><path d="M16 7.5L20.5 12 16 16.5"/><path d="M13.5 5.5l-3 13"/></svg><span class="icon-lbl">code</span><span class="icon-motion-tag">seat</span></button>
+            <button type="button" class="icon-tile" data-icon-name="git-branch" data-icon-cat="code" data-icon-tags="repo branch version vcs" data-rfs-motion="nudge-ne" aria-label="Inspect or copy git-branch SVG"><svg class="rfs-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="7" cy="6" r="2.25"/><circle cx="7" cy="18" r="2.25"/><circle cx="17" cy="9" r="2.25"/><path d="M7 8.5v7"/><path d="M17 11.5v1a4.5 4.5 0 0 1-4.5 4.5H9.5"/></svg><span class="icon-lbl">git-branch</span><span class="icon-motion-tag">nudge-ne</span></button>
+            <button type="button" class="icon-tile" data-icon-name="diff" data-icon-cat="code" data-icon-tags="compare patch changes plus-minus" data-rfs-motion="seat" aria-label="Inspect or copy diff SVG"><svg class="rfs-icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="3.5" width="17" height="17" rx="1"/><path d="M12 7.25v4.5"/><path d="M9.75 9.5h4.5"/><path d="M9.75 15.75h4.5"/></svg><span class="icon-lbl">diff</span><span class="icon-motion-tag">seat</span></button>
+            <button type="button" class="icon-tile" data-icon-name="package" data-icon-cat="code" data-icon-tags="release crate pwn-shop artifact" data-rfs-motion="drop" aria-label="Inspect or copy package SVG"><svg class="rfs-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3L20 7.5v9L12 21 4 16.5v-9L12 3z"/><path d="M4 7.5L12 12l8-4.5"/><path d="M12 12v9"/><path d="M8 5.25l8 4.5"/></svg><span class="icon-lbl">package</span><span class="icon-motion-tag">drop</span></button>
+            <button type="button" class="icon-tile" data-icon-name="book" data-icon-cat="code" data-icon-tags="docs manual playbook guide" data-rfs-motion="lift" aria-label="Inspect or copy book SVG"><svg class="rfs-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M3.5 5h6.5a2 2 0 0 1 2 2v12.5a1.5 1.5 0 0 0-1.5-1.5h-7V5z"/><path d="M20.5 5H14a2 2 0 0 0-2 2v12.5a1.5 1.5 0 0 1 1.5-1.5h7V5z"/></svg><span class="icon-lbl">book</span><span class="icon-motion-tag">lift</span></button>
+            <button type="button" class="icon-tile" data-icon-name="shield" data-icon-cat="security" data-icon-tags="privacy local protect firewall" data-rfs-motion="seat" aria-label="Inspect or copy shield SVG"><svg class="rfs-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.25L19.5 6v6c0 4.6-3.1 7.7-7.5 9.25C7.6 19.7 4.5 16.6 4.5 12V6L12 3.25z"/></svg><span class="icon-lbl">shield</span><span class="icon-motion-tag">seat</span></button>
+            <button type="button" class="icon-tile" data-icon-name="shield-check" data-icon-cat="security" data-icon-tags="verified sha256 signed trusted" data-rfs-motion="part-verify" aria-label="Inspect or copy shield-check SVG"><svg class="rfs-icon" viewBox="0 0 24 24" aria-hidden="true"><path class="rfs-p rfs-p-shield" d="M12 3.25L19.5 6v6c0 4.6-3.1 7.7-7.5 9.25C7.6 19.7 4.5 16.6 4.5 12V6L12 3.25z"/><path class="rfs-p rfs-p-mark" d="M8.75 12.25l2.25 2.25 4.5-4.75"/></svg><span class="icon-lbl">shield-check</span><span class="icon-motion-tag">part-verify</span></button>
+            <button type="button" class="icon-tile" data-icon-name="lock" data-icon-cat="security" data-icon-tags="private encrypted mtls secure" data-rfs-motion="part-shackle" aria-label="Inspect or copy lock SVG"><svg class="rfs-icon" viewBox="0 0 24 24" aria-hidden="true"><path class="rfs-p rfs-p-shackle" d="M8 10.5V7.5a4 4 0 0 1 8 0v3"/><g class="rfs-p rfs-p-body"><rect x="5" y="10.5" width="14" height="9.5" rx="1"/><path d="M12 14v2.5"/></g></svg><span class="icon-lbl">lock</span><span class="icon-motion-tag">part-shackle</span></button>
+            <button type="button" class="icon-tile" data-icon-name="unlock" data-icon-cat="security" data-icon-tags="open public access" data-rfs-motion="lift" aria-label="Inspect or copy unlock SVG"><svg class="rfs-icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="10.5" width="14" height="9.5" rx="1"/><path d="M8 10.5V7.5a4 4 0 0 1 7.7-1.5"/><path d="M12 14v2.5"/></svg><span class="icon-lbl">unlock</span><span class="icon-motion-tag">lift</span></button>
+            <button type="button" class="icon-tile" data-icon-name="key" data-icon-cat="security" data-icon-tags="token auth credentials passphrase" data-rfs-motion="nudge-x" aria-label="Inspect or copy key SVG"><svg class="rfs-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="7.75" cy="12" r="3.75"/><path d="M11.5 12H20.5"/><path d="M17 12v3"/><path d="M20 12v2.25"/></svg><span class="icon-lbl">key</span><span class="icon-motion-tag">nudge-x</span></button>
+            <button type="button" class="icon-tile" data-icon-name="certificate" data-icon-cat="security" data-icon-tags="certapi x509 store badge" data-rfs-motion="seat" aria-label="Inspect or copy certificate SVG"><svg class="rfs-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 16.5H3.5V4.5h17v6.25"/><path d="M7 8.5h7.5"/><path d="M7 12h4"/><circle cx="16.5" cy="14" r="2.75"/><path d="M15 16.5V21l1.5-1.15L18 21v-4.5"/></svg><span class="icon-lbl">certificate</span><span class="icon-motion-tag">seat</span></button>
+            <button type="button" class="icon-tile" data-icon-name="eye" data-icon-cat="security" data-icon-tags="view preview visible inspect" data-rfs-motion="seat" aria-label="Inspect or copy eye SVG"><svg class="rfs-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M2.5 12S6 6.25 12 6.25 21.5 12 21.5 12 18 17.75 12 17.75 2.5 12 2.5 12z"/><circle cx="12" cy="12" r="2.75"/></svg><span class="icon-lbl">eye</span><span class="icon-motion-tag">seat</span></button>
+            <button type="button" class="icon-tile" data-icon-name="eye-off" data-icon-cat="security" data-icon-tags="hide mask redact secret" data-rfs-motion="shudder" aria-label="Inspect or copy eye-off SVG"><svg class="rfs-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M3.5 3.5l17 17"/><path d="M10.2 6.45A10 10 0 0 1 12 6.25C18 6.25 21.5 12 21.5 12a16.5 16.5 0 0 1-3.1 3.7"/><path d="M6.4 8.2A16.5 16.5 0 0 0 2.5 12s3.5 5.75 9.5 5.75a10 10 0 0 0 3.7-.7"/></svg><span class="icon-lbl">eye-off</span><span class="icon-motion-tag">shudder</span></button>
+            <button type="button" class="icon-tile" data-icon-name="cpu" data-icon-cat="security" data-icon-tags="hardware local rust native chip" data-rfs-motion="seat" aria-label="Inspect or copy cpu SVG"><svg class="rfs-icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="6.5" y="6.5" width="11" height="11"/><rect x="10" y="10" width="4" height="4"/><path d="M9 3.5v3M15 3.5v3M9 17.5v3M15 17.5v3M3.5 9h3M3.5 15h3M17.5 9h3M17.5 15h3"/></svg><span class="icon-lbl">cpu</span><span class="icon-motion-tag">seat</span></button>
+            <button type="button" class="icon-tile" data-icon-name="settings" data-icon-cat="security" data-icon-tags="gear config preferences options" data-rfs-motion="part-ratchet" aria-label="Inspect or copy settings SVG"><svg class="rfs-icon" viewBox="0 0 24 24" aria-hidden="true"><g class="rfs-p rfs-p-gear"><circle cx="12" cy="12" r="3"/><path d="M10.4 3.25h3.2l.55 2.1 1.65.7 1.85-1.05 2.25 2.25-1.05 1.85.7 1.65 2.1.55v3.2l-2.1.55-.7 1.65 1.05 1.85-2.25 2.25-1.85-1.05-1.65.7-.55 2.1h-3.2l-.55-2.1-1.65-.7-1.85 1.05-2.25-2.25 1.05-1.85-.7-1.65-2.1-.55v-3.2l2.1-.55.7-1.65-1.05-1.85 2.25-2.25 1.85 1.05 1.65-.7.55-2.1z"/></g></svg><span class="icon-lbl">settings</span><span class="icon-motion-tag">part-ratchet</span></button>
+            <button type="button" class="icon-tile" data-icon-name="globe" data-icon-cat="tools" data-icon-tags="web browser offline dns" data-rfs-motion="detent-90" aria-label="Inspect or copy globe SVG"><svg class="rfs-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><ellipse cx="12" cy="12" rx="3.75" ry="8.5"/><path d="M3.75 12h16.5"/></svg><span class="icon-lbl">globe</span><span class="icon-motion-tag">detent-90</span></button>
+            <button type="button" class="icon-tile" data-icon-name="wifi" data-icon-cat="tools" data-icon-tags="network signal vpn port" data-rfs-motion="part-arcs" aria-label="Inspect or copy wifi SVG"><svg class="rfs-icon" viewBox="0 0 24 24" aria-hidden="true"><path class="rfs-p rfs-p-w3" d="M3.5 9a12.5 12.5 0 0 1 17 0"/><path class="rfs-p rfs-p-w2" d="M6.8 12.5a8 8 0 0 1 10.4 0"/><path class="rfs-p rfs-p-w1" d="M10.1 16a3.2 3.2 0 0 1 3.8 0"/><rect x="11.15" y="18.25" width="1.7" height="1.7" fill="currentColor" stroke="none"/></svg><span class="icon-lbl">wifi</span><span class="icon-motion-tag">part-arcs</span></button>
+            <button type="button" class="icon-tile" data-icon-name="server" data-icon-cat="tools" data-icon-tags="daemon localhost host node" data-rfs-motion="seat" aria-label="Inspect or copy server SVG"><svg class="rfs-icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="4" width="17" height="6.5" rx="1"/><rect x="3.5" y="13.5" width="17" height="6.5" rx="1"/><rect x="6.25" y="6.35" width="1.8" height="1.8" fill="currentColor" stroke="none"/><rect x="6.25" y="15.85" width="1.8" height="1.8" fill="currentColor" stroke="none"/><path d="M11 7.25h6M11 16.75h6"/></svg><span class="icon-lbl">server</span><span class="icon-motion-tag">seat</span></button>
+            <button type="button" class="icon-tile" data-icon-name="link" data-icon-cat="tools" data-icon-tags="url chain connect anchor" data-rfs-motion="nudge-ne" aria-label="Inspect or copy link SVG"><svg class="rfs-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M9.5 14.5l5-5"/><path d="M11.5 7.5l1.75-1.75a3.5 3.5 0 0 1 5 5L16.5 12.5"/><path d="M12.5 16.5l-1.75 1.75a3.5 3.5 0 0 1-5-5L7.5 11.5"/></svg><span class="icon-lbl">link</span><span class="icon-motion-tag">nudge-ne</span></button>
+            <button type="button" class="icon-tile" data-icon-name="capture" data-icon-cat="tools" data-icon-tags="screenshot screen-mark crop crosshair" data-rfs-motion="part-shutter" aria-label="Inspect or copy capture SVG"><svg class="rfs-icon" viewBox="0 0 24 24" aria-hidden="true"><path class="rfs-p rfs-p-frame" d="M4 8.5V4h4.5M15.5 4H20v4.5M20 15.5V20h-4.5M8.5 20H4v-4.5"/><circle class="rfs-p rfs-p-dot" cx="12" cy="12" r="2.75"/></svg><span class="icon-lbl">capture</span><span class="icon-motion-tag">part-shutter</span></button>
+            <button type="button" class="icon-tile" data-icon-name="image" data-icon-cat="tools" data-icon-tags="png svg photo cover artwork" data-rfs-motion="seat" aria-label="Inspect or copy image SVG"><svg class="rfs-icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="4.5" width="17" height="15" rx="1"/><path d="M4 16.5l5-5 3.5 3.5 2.5-2.5 5 4"/><circle cx="9" cy="9" r="1.25"/></svg><span class="icon-lbl">image</span><span class="icon-motion-tag">seat</span></button>
+            <button type="button" class="icon-tile" data-icon-name="video" data-icon-cat="tools" data-icon-tags="carify ffmpeg usb media encode" data-rfs-motion="nudge-x" aria-label="Inspect or copy video SVG"><svg class="rfs-icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="6" width="13" height="12" rx="1"/><path d="M16 10l5-3v10l-5-3"/></svg><span class="icon-lbl">video</span><span class="icon-motion-tag">nudge-x</span></button>
+            <button type="button" class="icon-tile" data-icon-name="play" data-icon-cat="tools" data-icon-tags="start run replay motion" data-rfs-motion="nudge-x" aria-label="Inspect or copy play SVG"><svg class="rfs-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 5l12 7-12 7V5z"/></svg><span class="icon-lbl">play</span><span class="icon-motion-tag">nudge-x</span></button>
+            <button type="button" class="icon-tile" data-icon-name="pause" data-icon-cat="tools" data-icon-tags="stop freeze wcag board" data-rfs-motion="seat" aria-label="Inspect or copy pause SVG"><svg class="rfs-icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="6" y="5" width="4" height="14"/><rect x="14" y="5" width="4" height="14"/></svg><span class="icon-lbl">pause</span><span class="icon-motion-tag">seat</span></button>
+            <button type="button" class="icon-tile" data-icon-name="volume" data-icon-cat="tools" data-icon-tags="audio aac sound speaker" data-rfs-motion="seat" aria-label="Inspect or copy volume SVG"><svg class="rfs-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9.5h4l5-4.5v14l-5-4.5H4V9.5z"/><path d="M16.5 9a4.5 4.5 0 0 1 0 6"/><path d="M19.2 6.5a8 8 0 0 1 0 11"/></svg><span class="icon-lbl">volume</span><span class="icon-motion-tag">seat</span></button>
+            <button type="button" class="icon-tile" data-icon-name="check-circle" data-icon-cat="status" data-icon-tags="ok success synced pass" data-rfs-motion="seat" aria-label="Inspect or copy check-circle SVG"><svg class="rfs-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="M8.5 12.25l2.25 2.25 4.75-5"/></svg><span class="icon-lbl">check-circle</span><span class="icon-motion-tag">seat</span></button>
+            <button type="button" class="icon-tile" data-icon-name="alert-triangle" data-icon-cat="status" data-icon-tags="warn warning caution destructive" data-rfs-motion="shudder" aria-label="Inspect or copy alert-triangle SVG"><svg class="rfs-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4L21 19.5H3L12 4z"/><path d="M12 10v4"/><rect x="11.15" y="16" width="1.7" height="1.7" fill="currentColor" stroke="none"/></svg><span class="icon-lbl">alert-triangle</span><span class="icon-motion-tag">shudder</span></button>
+            <button type="button" class="icon-tile" data-icon-name="x-circle" data-icon-cat="status" data-icon-tags="error fail fault blocked" data-rfs-motion="shudder" aria-label="Inspect or copy x-circle SVG"><svg class="rfs-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="M9 9l6 6"/><path d="M15 9l-6 6"/></svg><span class="icon-lbl">x-circle</span><span class="icon-motion-tag">shudder</span></button>
+            <button type="button" class="icon-tile" data-icon-name="info" data-icon-cat="status" data-icon-tags="note help details stdout" data-rfs-motion="seat" aria-label="Inspect or copy info SVG"><svg class="rfs-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="M12 11.25V16"/><rect x="11.15" y="7.75" width="1.7" height="1.7" fill="currentColor" stroke="none"/></svg><span class="icon-lbl">info</span><span class="icon-motion-tag">seat</span></button>
+            <button type="button" class="icon-tile" data-icon-name="sun" data-icon-cat="status" data-icon-tags="light day lx512 alabaster" data-rfs-motion="detent-90" aria-label="Inspect or copy sun SVG"><svg class="rfs-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 3v2M12 19v2M3 12h2M19 12h2M5.6 5.6l1.4 1.4M17 17l1.4 1.4M18.4 5.6L17 7M7 17l-1.4 1.4"/></svg><span class="icon-lbl">sun</span><span class="icon-motion-tag">detent-90</span></button>
+            <button type="button" class="icon-tile" data-icon-name="moon" data-icon-cat="status" data-icon-tags="dark night lx263 blackout" data-rfs-motion="seat" aria-label="Inspect or copy moon SVG"><svg class="rfs-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M19.5 14.25A7.75 7.75 0 0 1 9.75 4.5a8 8 0 1 0 9.75 9.75z"/></svg><span class="icon-lbl">moon</span><span class="icon-motion-tag">seat</span></button>
+            <button type="button" class="icon-tile" data-icon-name="clock" data-icon-cat="status" data-icon-tags="time timer dwell schedule interval" data-rfs-motion="detent-90" aria-label="Inspect or copy clock SVG"><svg class="rfs-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3.25 2"/></svg><span class="icon-lbl">clock</span><span class="icon-motion-tag">detent-90</span></button>
+            <button type="button" class="icon-tile" data-icon-name="calendar" data-icon-cat="status" data-icon-tags="date changelog release orders" data-rfs-motion="drop" aria-label="Inspect or copy calendar SVG"><svg class="rfs-icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="5" width="17" height="15.5" rx="1"/><path d="M3.5 9.5h17"/><path d="M8 3.25V6.5M16 3.25V6.5"/></svg><span class="icon-lbl">calendar</span><span class="icon-motion-tag">drop</span></button>
+            <button type="button" class="icon-tile" data-icon-name="bell" data-icon-cat="status" data-icon-tags="notify alert webhook status" data-rfs-motion="part-chime" aria-label="Inspect or copy bell SVG"><svg class="rfs-icon" viewBox="0 0 24 24" aria-hidden="true"><path class="rfs-p rfs-p-bell" d="M6 16.5V10a6 6 0 0 1 12 0v6.5L20 18.5H4l2-2z"/><path class="rfs-p rfs-p-clapper" d="M10 18.5a2 2 0 0 0 4 0"/></svg><span class="icon-lbl">bell</span><span class="icon-motion-tag">part-chime</span></button>
+            <button type="button" class="icon-tile" data-icon-name="pin" data-icon-cat="status" data-icon-tags="featured fixed bookmark lock" data-rfs-motion="drop" aria-label="Inspect or copy pin SVG"><svg class="rfs-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.5 4h7v2L14 7.75v3.5l2.75 2.75H7.25L10 11.25v-3.5L8.5 6V4z"/><path d="M12 14v6.25"/></svg><span class="icon-lbl">pin</span><span class="icon-motion-tag">drop</span></button>
           </div>
 
           <div class="rfs-state-box is-empty" id="icon-empty-state" hidden>
@@ -2277,12 +2438,14 @@
                 <button type="button" class="rfs-btn rfs-btn-ghost rfs-btn-sm" id="step-progress-btn">Step +25%</button>
               </div>
               <div class="prog-field">
-                <label for="std-prog-det">Rasterizing covers (<span id="std-prog-val">65</span>%)</label>
-                <progress id="std-prog-det" class="rfs-progress" value="65" max="100"></progress>
+                <label for="std-prog-det">DMX Cue Meter (<span id="std-prog-val">65</span>%)</label>
+                <div class="rfs-progress-dmx-shell">
+                  <progress id="std-prog-det" class="rfs-progress-dmx" value="65" max="100"></progress>
+                </div>
               </div>
-              <div class="prog-field">
-                <label for="std-prog-indet">Watching Proton VPN port file</label>
-                <progress id="std-prog-indet" class="rfs-progress"></progress>
+              <div class="prog-field" style="display:flex;align-items:center;gap:.75rem">
+                <progress id="std-prog-indet" class="rfs-progress-ring rfs-spinner" aria-label="Watching Proton VPN port file"></progress>
+                <span style="font-size:.82rem;color:var(--rfs-mute)">Dawn Ring spinner (slows to <code>6s</code> in reduced motion)</span>
               </div>
             </div>
 
@@ -2683,7 +2846,7 @@ console = <span class="rfs-tok-fn">Console</span>(theme=RFS_THEME) <span class="
 
   <footer class="site-footer">
     <div class="wrap footer-inner">
-      <span>Real-Fruit-Snacks · Cyclorama Dawn v2.2 (Steel &amp; Beacon Orange) · Tools MIT · Fonts SIL OFL</span>
+      <span>Real-Fruit-Snacks · Cyclorama Dawn v2.3 (Steel &amp; Beacon Orange) · Tools MIT · Fonts SIL OFL</span>
       <span>
         <a class="rfs-link-prose" href="llms.txt">llms.txt</a> ·
         <a class="rfs-link-prose" href="https://real-fruit-snacks.github.io/">Catalog</a> ·
@@ -2713,6 +2876,7 @@ console = <span class="rfs-tok-fn">Console</span>(theme=RFS_THEME) <span class="
   <div id="rfs-toast-stack" class="rfs-toast-region" popover="manual" role="region" aria-label="Notifications"></div>
 
   <p id="copy-status" class="visually-hidden" role="status" aria-live="polite"></p>
-  <script src="assets/brand.js?v=2.2.0"></script>
+  <script src="assets/rfs-motion.js?v=2.3.0"></script>
+  <script src="assets/brand.js?v=2.3.0"></script>
 </body>
 </html>

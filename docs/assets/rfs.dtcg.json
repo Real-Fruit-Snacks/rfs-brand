@@ -1,6 +1,6 @@
 {
   "$schema": "https://tr.designtokens.org/format/",
-  "$description": "Real-Fruit-Snacks \u2014 Cyclorama Dawn (Steel & Beacon Orange, v2.2.0) \u2014 W3C Design Tokens Community Group (DTCG) export.",
+  "$description": "Real-Fruit-Snacks \u2014 Cyclorama Dawn (Steel & Beacon Orange, v2.3.0) \u2014 W3C Design Tokens Community Group (DTCG) export.",
   "color": {
     "$type": "color",
     "dark": {
@@ -367,8 +367,8 @@
   },
   "motion": {
     "easing": {
-      "$type": "cubicBezier",
       "ease": {
+        "$type": "cubicBezier",
         "$value": [
           0.16,
           1.0,
@@ -378,6 +378,7 @@
         "$description": "Motion curve --rfs-ease."
       },
       "ease-in-out": {
+        "$type": "cubicBezier",
         "$value": [
           0.65,
           0.0,
@@ -387,6 +388,7 @@
         "$description": "Motion curve --rfs-ease-in-out."
       },
       "ease-exit": {
+        "$type": "cubicBezier",
         "$value": [
           0.7,
           0.0,
@@ -396,6 +398,7 @@
         "$description": "Motion curve --rfs-ease-exit."
       },
       "ease-linear": {
+        "$type": "cubicBezier",
         "$value": [
           0,
           0,
@@ -403,6 +406,21 @@
           1
         ],
         "$description": "Motion curve --rfs-ease-linear."
+      },
+      "ease-detent-fallback": {
+        "$type": "cubicBezier",
+        "$value": [
+          0.22,
+          1.18,
+          0.36,
+          1.0
+        ],
+        "$description": "Motion curve --rfs-ease-detent-fallback."
+      },
+      "ease-detent": {
+        "$type": "string",
+        "$value": "linear(0, 0.21 8%, 0.64 19%, 0.94 31%, 1.035 44%, 1.02 58%, 0.996 74%, 1)",
+        "$description": "Physics-based mechanical detent curve --rfs-ease-detent (pair with --rfs-ease-detent-fallback)."
       }
     },
     "duration": {
@@ -414,6 +432,14 @@
       "dur-base": {
         "$value": "250ms",
         "$description": "Motion duration --rfs-dur-base."
+      },
+      "dur-detent": {
+        "$value": "340ms",
+        "$description": "Motion duration --rfs-dur-detent."
+      },
+      "dur-jump": {
+        "$value": "360ms",
+        "$description": "Motion duration --rfs-dur-jump."
       },
       "dur-slow": {
         "$value": "520ms",

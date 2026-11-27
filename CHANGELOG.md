@@ -1,6 +1,18 @@
 # Changelog
 
-Each release publishes `rfs-brand.zip` (everything below except `.github/` and `docs/`), `rfs.css`, `rfs-components.css`, `rfs.tokens.json`, `rfs.dtcg.json`, `rfs-tailwind.css`, `rfs-tokens.ts`, `rfs-icons.svg`, and `BRAND-RULES.md`.
+Each release publishes `rfs-brand.zip` (everything below except `.github/` and `docs/`), `rfs.css`, `rfs-components.css`, `rfs-motion.js`, `rfs.tokens.json`, `rfs.dtcg.json`, `rfs-tailwind.css`, `rfs-tokens.ts`, `rfs-icons.svg`, and `BRAND-RULES.md`.
+
+## 2.3.0 (2026-11-27)
+
+Added custom mechanical-detent hardware control animations, an official opt-in motion taxonomy across all 60 Precision Silkscreen icons, and 4 upgraded Cyclorama Dawn loading bar systems.
+
+- **Mechanical Detent Token & Motion Controller (`rfs.css`, `rfs-components.css`, `rfs-motion.js`):** Added `--rfs-ease-detent` (`linear()` 3.5% seat settle with `cubic-bezier()` fallback), `--rfs-dur-detent` (`340ms`), and `--rfs-dur-jump` (`360ms`), plus a zero-dependency drop-in `rfs-motion.js` controller.
+- **Custom Animated Hardware Controls (`§05 Controls`):**
+  - Checkboxes: `.rfs-check` (Silkscreen Ink Draw), `.rfs-check-shutter` (Horizon Shutter Stamp), `.rfs-check-token` (`[x]` Bracket Latch), all supporting `:checked`, `:indeterminate`, and `44×44px` hit targets.
+  - Switches: `.rfs-switch` (Cyclorama Cue Slide with etched `0`/`I`), `.rfs-switch-breaker` (square `5px` hardware Breaker Rocker), and `.rfs-switch-patch` (monochrome-safe `ON`/`OFF` Patch Shutter) on semantic `<input type="checkbox" switch>`.
+  - Jumping Radios & Controls: `[data-rfs-radio-jump="reticle"]` (Reticle Jump ballistic arc + Steel lock), `[data-rfs-radio-jump="aperture"]` (Aperture Hop), `[data-rfs-segmented]` (Cue Carriage), `.rfs-btn-horizon` (Horizon Sweep), `.rfs-btn-copy-morph` (Copy-to-Check morph), `.rfs-btn-arm` (two-stage Armed Destructive Latch), and `.rfs-fader` (Console Fader).
+- **Upgraded Hardware Loading Bars & Precision Ring:** Replaced plain progress styling with 4 native `<progress>` / hardware systems—**DMX Cue Meter** (`.rfs-progress-dmx-shell` etched 10% ticks + leading needle + Signal Mint `100%` lock), **Horizon Alive Trace** (`.rfs-progress` moving sheen + racing indeterminate beam), **20-Cell LED Ladder** (`.rfs-led-ladder`), and **Precision Progress Ring / Dawn Ring** (`.rfs-progress-ring` / `.rfs-spinner` using `background-image` so `background-clip: border-area` stays hollow across determinate, `100%`, and indeterminate states).
+- **Opt-In 60-Icon Click Motion (`tools/make-icons.py`, `icons.json`, `§13A`):** Added canonical `motion` verbs for all 60 icons (calm by default; opt in with `.rfs-icon-live` + `data-rfs-motion` + `data-rfs-icon-click`), including 12 multi-part silkscreen icons (`trash`, `lock`, `bell`, `sliders`, `capture`, `download`, `copy`, `shield-check`, `refresh`, `wifi`, `terminal`, `settings`) and a live `[live] Click Motion` + `Cascade 12` mode in the brand manual icon browser.
 
 ## 2.2.0 (2026-11-27)
 

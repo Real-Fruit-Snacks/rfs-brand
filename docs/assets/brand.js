@@ -241,13 +241,121 @@
     typeInput.addEventListener("input", updateType);
   }
 
-  // ---- 6. §5 Interactive Filter Pills & §6 Mark Blueprint Mode Switcher ----
+  // ---- 6. §5 Interactive Controls, Indeterminate & 4-Loader Workbench + §6 Blueprint ----
   $$("[data-demo-pill]").forEach((pill) => {
     pill.addEventListener("click", () => {
       const pressed = pill.getAttribute("aria-pressed") === "true";
       pill.setAttribute("aria-pressed", String(!pressed));
     });
   });
+
+  const indetBtn = document.getElementById("ctrl-indet-btn");
+  if (indetBtn) {
+    let isIndet = false;
+    const indetBoxes = $$("[data-indet-demo]");
+    indetBtn.addEventListener("click", () => {
+      isIndet = !isIndet;
+      indetBtn.setAttribute("aria-pressed", String(isIndet));
+      indetBoxes.forEach((cb) => {
+        cb.indeterminate = isIndet;
+        if (!isIndet) cb.checked = true;
+      });
+    });
+  }
+
+  // §05B Hardware Loading Bars & Precision Ring interactive workbench
+  const ldDmx = document.getElementById("ld-dmx");
+  const ldBeam = document.getElementById("ld-beam");
+  const ldLed = document.getElementById("ld-led");
+  const ldRing = document.getElementById("ld-ring");
+  const ldRingTxt = document.getElementById("ld-ring-txt");
+  const ldScrub = document.getElementById("ld-scrub");
+  const ldScrubOut = document.getElementById("ld-scrub-out");
+  const ldDmxVal = document.getElementById("ld-dmx-val");
+  const ldBeamVal = document.getElementById("ld-beam-val");
+  const ldLedVal = document.getElementById("ld-led-val");
+  const ldDetBtn = document.getElementById("ld-mode-det");
+  const ldIndBtn = document.getElementById("ld-mode-ind");
+  const ldSimBtn = document.getElementById("ld-sim-btn");
+
+  if (ldDmx && ldBeam && ldLed && ldRing && ldScrub) {
+    let ldIndet = false;
+    let ldSimTimer = 0;
+
+    const renderAllLoaders = (val) => {
+      if (ldScrubOut) ldScrubOut.innerHTML = `<span class="k">${ldIndet ? "auto" : `${val}%`}</span>`;
+      if (ldIndet) {
+        [ldDmx, ldBeam, ldRing].forEach((el) => {
+          el.removeAttribute("value");
+          el.setAttribute("aria-valuetext", "Loading");
+        });
+        if (window.RFS && window.RFS.setLadder) window.RFS.setLadder(ldLed, null);
+        if (window.RFS && window.RFS.syncRing) window.RFS.syncRing(ldRing);
+        if (ldRingTxt) ldRingTxt.textContent = "…";
+        if (ldDmxVal) ldDmxVal.textContent = "[scan]";
+        if (ldBeamVal) ldBeamVal.textContent = "[busy]";
+        if (ldLedVal) ldLedVal.textContent = "LIVE";
+      } else {
+        const done = val >= 100;
+        const lit = Math.round((val / 100) * 20);
+        [ldDmx, ldBeam, ldRing].forEach((el) => {
+          el.setAttribute("value", String(val));
+          el.setAttribute("aria-valuetext", `${val}%`);
+        });
+        if (window.RFS && window.RFS.setLadder) window.RFS.setLadder(ldLed, val);
+        if (window.RFS && window.RFS.syncRing) window.RFS.syncRing(ldRing);
+        if (ldRingTxt) ldRingTxt.textContent = done ? "OK" : `${val}%`;
+        if (ldDmxVal) {
+          ldDmxVal.textContent = done ? "[ok] 100%" : `${val}%`;
+          ldDmxVal.style.color = done ? "var(--rfs-signal)" : "var(--rfs-beacon-ink)";
+        }
+        if (ldBeamVal) {
+          ldBeamVal.textContent = done ? "[ok] 100%" : `${val}%`;
+          ldBeamVal.style.color = done ? "var(--rfs-signal)" : "var(--rfs-steel-ink)";
+        }
+        if (ldLedVal) {
+          ldLedVal.textContent = done ? "[ok] 20/20" : `${lit} / 20`;
+          ldLedVal.style.color = done ? "var(--rfs-signal)" : "var(--rfs-text)";
+        }
+      }
+    };
+
+    const setLoaderMode = (indet) => {
+      clearInterval(ldSimTimer);
+      ldIndet = indet;
+      if (ldDetBtn) ldDetBtn.setAttribute("aria-pressed", String(!indet));
+      if (ldIndBtn) ldIndBtn.setAttribute("aria-pressed", String(indet));
+      ldScrub.disabled = indet;
+      renderAllLoaders(Number(ldScrub.value));
+    };
+
+    if (ldDetBtn) ldDetBtn.addEventListener("click", () => setLoaderMode(false));
+    if (ldIndBtn) ldIndBtn.addEventListener("click", () => setLoaderMode(true));
+    ldScrub.addEventListener("input", () => {
+      clearInterval(ldSimTimer);
+      if (ldIndet) setLoaderMode(false);
+      renderAllLoaders(Number(ldScrub.value));
+    });
+
+    if (ldSimBtn) {
+      ldSimBtn.addEventListener("click", () => {
+        clearInterval(ldSimTimer);
+        if (ldIndet) setLoaderMode(false);
+        let v = 0;
+        ldScrub.value = "0";
+        ldScrub.style.setProperty("--control-value", "0");
+        renderAllLoaders(0);
+        ldSimTimer = setInterval(() => {
+          v = Math.min(100, v + (v < 70 ? 6 : 4));
+          ldScrub.value = String(v);
+          ldScrub.style.setProperty("--control-value", String(v));
+          renderAllLoaders(v);
+          if (v >= 100) clearInterval(ldSimTimer);
+        }, 55);
+      });
+    }
+    renderAllLoaders(68);
+  }
 
   const markBp = document.getElementById("mark-blueprint");
   const markBpBtns = $$("[data-bp-mode-btn]");
@@ -374,6 +482,12 @@
       formula: "cubic-bezier(0.16, 1, 0.3, 1)",
       desc: "Instant ignition, settled landing — entrances, DMX fader lifts, focus sweeps, and rule draws.",
       pts: [0.16, 1.0, 0.3, 1.0],
+    },
+    detent: {
+      token: "--rfs-ease-detent",
+      formula: "linear(0, 0.21 8%, 0.64 19%, 0.94 31%, 1.035 44%, 1.02 58%, 0.996 74%, 1)",
+      desc: "3.5% mechanical hardware detent — switches, checkboxes, jumping radios, and icon ratchets (zero jelly bounce).",
+      pts: [0.22, 1.18, 0.36, 1.0],
     },
     inout: {
       token: "--rfs-ease-in-out",
@@ -645,11 +759,14 @@
   }
 
   // ---- 8. §13 System Standards Interactive Specimens ----
-  // 8a. 60-Icon Precision Silkscreen Browser (size, semantic color tone, category filter, search & click-to-copy SVG)
+  // 8a. 60-Icon Precision Silkscreen Browser (size, tone, category, search, static copy & opt-in live click motion)
   const iconGrid = document.getElementById("icon-specimen-grid");
   const iconSizeBtns = $$("[data-icon-size]");
   const iconToneBtns = $$("[data-icon-tone]");
   const iconCatBtns = $$("[data-icon-cat-filter]");
+  const iconInteractBtns = $$("[data-icon-interact]");
+  const iconSlowBtn = document.getElementById("icon-motion-slow");
+  const iconCascadeBtn = document.getElementById("icon-motion-cascade");
   const iconSearch = document.getElementById("icon-search");
   const iconStatus = document.getElementById("icon-copy-status");
   const iconEmpty = document.getElementById("icon-empty-state");
@@ -660,7 +777,9 @@
   if (iconGrid && iconTiles.length) {
     let activeCat = "all";
     let activeTone = iconGrid.dataset.tone || "text";
+    let activeInteract = "copy";
     let activeIconName = "terminal";
+    let activeMotionVerb = "part-prompt";
     let statusTimer = 0;
 
     const TONE_META = {
@@ -677,13 +796,24 @@
       if (!iconSpriteCode) return;
       const meta = TONE_META[activeTone] || TONE_META.text;
       const clsStr = `rfs-icon${meta.cls}`;
-      iconSpriteCode.innerHTML =
-        `<span class="rfs-tok-kw">&lt;svg</span> ` +
-        `<span class="rfs-tok-fn">class</span>=<span class="rfs-tok-str">"${clsStr}"</span> ` +
-        `<span class="rfs-tok-fn">aria-hidden</span>=<span class="rfs-tok-str">"true"</span>` +
-        `<span class="rfs-tok-kw">&gt;&lt;use</span> ` +
-        `<span class="rfs-tok-fn">href</span>=<span class="rfs-tok-str">"rfs-icons.svg#rfs-i-${activeIconName}"</span>` +
-        `<span class="rfs-tok-kw">/&gt;&lt;/svg&gt;</span>`;
+      if (activeInteract === "motion") {
+        iconSpriteCode.innerHTML =
+          `<span class="rfs-tok-kw">&lt;button</span> <span class="rfs-tok-fn">class</span>=<span class="rfs-tok-str">"rfs-btn rfs-icon-live"</span> ` +
+          `<span class="rfs-tok-fn">data-rfs-motion</span>=<span class="rfs-tok-str">"${activeMotionVerb}"</span> ` +
+          `<span class="rfs-tok-fn">data-rfs-icon-click</span><span class="rfs-tok-kw">&gt;&lt;svg</span> ` +
+          `<span class="rfs-tok-fn">class</span>=<span class="rfs-tok-str">"${clsStr}"</span> ` +
+          `<span class="rfs-tok-fn">aria-hidden</span>=<span class="rfs-tok-str">"true"</span>` +
+          `<span class="rfs-tok-kw">&gt;</span><span class="rfs-tok-com">&lt;!-- ${activeIconName}.svg --&gt;</span>` +
+          `<span class="rfs-tok-kw">&lt;/svg&gt;&lt;/button&gt;</span>`;
+      } else {
+        iconSpriteCode.innerHTML =
+          `<span class="rfs-tok-kw">&lt;svg</span> ` +
+          `<span class="rfs-tok-fn">class</span>=<span class="rfs-tok-str">"${clsStr}"</span> ` +
+          `<span class="rfs-tok-fn">aria-hidden</span>=<span class="rfs-tok-str">"true"</span>` +
+          `<span class="rfs-tok-kw">&gt;&lt;use</span> ` +
+          `<span class="rfs-tok-fn">href</span>=<span class="rfs-tok-str">"rfs-icons.svg#rfs-i-${activeIconName}"</span>` +
+          `<span class="rfs-tok-kw">/&gt;&lt;/svg&gt;</span>`;
+      }
     };
 
     const setStatus = (toneClass, key, text) => {
@@ -697,7 +827,7 @@
       let shown = 0;
       iconTiles.forEach((tile) => {
         const catOk = activeCat === "all" || tile.dataset.iconCat === activeCat;
-        const hay = `${tile.dataset.iconName} ${tile.dataset.iconCat} ${tile.dataset.iconTags}`.toLowerCase();
+        const hay = `${tile.dataset.iconName} ${tile.dataset.iconCat} ${tile.dataset.iconTags} ${tile.dataset.rfsMotion || ""}`.toLowerCase();
         const qOk = !q || hay.includes(q);
         const match = catOk && qOk;
         tile.hidden = !match;
@@ -705,8 +835,45 @@
       });
       if (iconEmpty) iconEmpty.hidden = shown > 0;
       clearTimeout(statusTimer);
-      setStatus("b-steel", `[${shown}/${iconTiles.length}]`, "click to copy SVG");
+      const hint = activeInteract === "motion" ? "click to test motion" : "click to copy SVG";
+      setStatus("b-steel", `[${shown}/${iconTiles.length}]`, hint);
     };
+
+    const setInteractMode = (mode) => {
+      activeInteract = mode === "motion" ? "motion" : "copy";
+      iconGrid.dataset.interact = activeInteract;
+      iconTiles.forEach((tile) => tile.classList.toggle("rfs-icon-live", activeInteract === "motion"));
+      iconInteractBtns.forEach((b) => b.setAttribute("aria-pressed", String(b.dataset.iconInteract === activeInteract)));
+      renderSpriteSnippet();
+      filterIcons();
+    };
+
+    iconInteractBtns.forEach((btn) => {
+      btn.addEventListener("click", () => setInteractMode(btn.dataset.iconInteract));
+    });
+
+    if (iconSlowBtn) {
+      iconSlowBtn.addEventListener("click", () => {
+        const slow = iconSlowBtn.getAttribute("aria-pressed") !== "true";
+        iconSlowBtn.setAttribute("aria-pressed", String(slow));
+        iconGrid.style.setProperty("--rfs-motion-speed", slow ? "3.5" : "1");
+        iconGrid.dataset.rfsMotionSpeed = slow ? "3.5" : "1";
+      });
+    }
+
+    if (iconCascadeBtn) {
+      iconCascadeBtn.addEventListener("click", () => {
+        if (activeInteract !== "motion") setInteractMode("motion");
+        const multiPart = iconTiles.filter((t) => !t.hidden && (t.dataset.rfsMotion || "").startsWith("part-"));
+        const targetList = multiPart.length ? multiPart : iconTiles.filter((t) => !t.hidden).slice(0, 12);
+        targetList.forEach((tile, i) => {
+          setTimeout(() => {
+            if (window.RFS && window.RFS.triggerIconMotion) window.RFS.triggerIconMotion(tile);
+          }, i * 85);
+        });
+        setStatus("b-beacon", "[live]", `cascaded ${targetList.length} icons`);
+      });
+    }
 
     iconSizeBtns.forEach((btn) => {
       btn.addEventListener("click", () => {
@@ -751,14 +918,24 @@
     iconTiles.forEach((tile) => {
       tile.addEventListener("click", async () => {
         const name = tile.dataset.iconName || "icon";
+        const verb = tile.dataset.rfsMotion || "seat";
         const svgEl = tile.querySelector("svg");
         if (!svgEl) return;
         activeIconName = name;
+        activeMotionVerb = verb;
         renderSpriteSnippet();
+
+        if (activeInteract === "motion") {
+          if (window.RFS && window.RFS.triggerIconMotion) window.RFS.triggerIconMotion(tile);
+          clearTimeout(statusTimer);
+          setStatus("b-beacon", `[${verb}]`, `${name} triggered`);
+          return;
+        }
+
         const meta = TONE_META[activeTone] || TONE_META.text;
         let strokeAttr = "currentColor";
         let defs = "";
-        let inner = svgEl.innerHTML;
+        let inner = svgEl.innerHTML.replace(/<path[^>]*rfs-p-chk[^>]*\/>/g, "").replace(/<path[^>]*rfs-p-chk[^>]*><\/path>/g, "");
         if (meta.cssVar === "horizon") {
           strokeAttr = "url(#rfs-icon-grad-horizon)";
           defs = '<defs><linearGradient id="rfs-icon-grad-horizon" gradientUnits="userSpaceOnUse" x1="2" y1="22" x2="22" y2="2"><stop offset="0%" stop-color="#74B8E8"/><stop offset="52%" stop-color="#1F547A"/><stop offset="100%" stop-color="#F06E2B"/></linearGradient></defs>';
@@ -776,7 +953,7 @@
           tile.classList.add("is-copied");
           clearTimeout(statusTimer);
           const suffix = activeTone === "text" ? "" : ` (${activeTone})`;
-          setStatus("b-ok", "[ok]", `copied ${name}.svg${suffix}`);
+          setStatus("b-ok", "[ok]", `copied ${name}.svg${suffix} · motion: ${verb}`);
           statusTimer = setTimeout(() => {
             tile.classList.remove("is-copied");
             filterIcons();

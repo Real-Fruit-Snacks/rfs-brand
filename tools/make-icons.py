@@ -95,9 +95,9 @@ ICONS = [
         "ui",
         ["dmx", "faders", "controls", "console", "tune"],
         '<path d="M5 4v16"/><path d="M12 4v16"/><path d="M19 4v16"/>'
-        '<rect x="3" y="8" width="4" height="3.5" fill="currentColor" stroke="none"/>'
-        '<rect x="10" y="13.5" width="4" height="3.5" fill="currentColor" stroke="none"/>'
-        '<rect x="17" y="6.5" width="4" height="3.5" fill="currentColor" stroke="none"/>',
+        '<rect class="rfs-p rfs-p-f1" x="3" y="8" width="4" height="3.5" fill="currentColor" stroke="none"/>'
+        '<rect class="rfs-p rfs-p-f2" x="10" y="13.5" width="4" height="3.5" fill="currentColor" stroke="none"/>'
+        '<rect class="rfs-p rfs-p-f3" x="17" y="6.5" width="4" height="3.5" fill="currentColor" stroke="none"/>',
     ),
 
     # ---- 2. Actions & Controls (10) ----
@@ -123,15 +123,15 @@ ICONS = [
         "trash",
         "actions",
         ["delete", "remove", "destroy", "confirm"],
-        '<path d="M4 6.5h16"/><path d="M9 6.5V4h6v2.5"/>'
-        '<path d="M6.5 6.5l1 13.5h9l1-13.5"/><path d="M10.25 10.5v6"/><path d="M13.75 10.5v6"/>',
+        '<g class="rfs-p rfs-p-lid"><path d="M4 6.5h16"/><path d="M9 6.5V4h6v2.5"/></g>'
+        '<g class="rfs-p rfs-p-bin"><path d="M6.5 6.5l1 13.5h9l1-13.5"/><path d="M10.25 10.5v6"/><path d="M13.75 10.5v6"/></g>',
     ),
     (
         "copy",
         "actions",
         ["clipboard", "duplicate", "clone"],
-        '<rect x="8.5" y="8.5" width="11.5" height="11.5" rx="1"/>'
-        '<path d="M15.5 8.5V4.5A0.5 0.5 0 0 0 15 4H4.5A0.5 0.5 0 0 0 4 4.5V15a0.5 0.5 0 0 0 0.5 0.5h4"/>',
+        '<rect class="rfs-p rfs-p-front" x="8.5" y="8.5" width="11.5" height="11.5" rx="1"/>'
+        '<path class="rfs-p rfs-p-back" d="M15.5 8.5V4.5A0.5 0.5 0 0 0 15 4H4.5A0.5 0.5 0 0 0 4 4.5V15a0.5 0.5 0 0 0 0.5 0.5h4"/>',
     ),
     (
         "check",
@@ -143,16 +143,17 @@ ICONS = [
         "refresh",
         "actions",
         ["sync", "reload", "retry", "port-sync"],
+        '<g class="rfs-p rfs-p-spin">'
         '<path d="M19.5 10A7.5 7.5 0 0 0 6.2 7.2L4.5 9"/>'
         '<path d="M4.5 4.5V9H9"/>'
         '<path d="M4.5 14A7.5 7.5 0 0 0 17.8 16.8L19.5 15"/>'
-        '<path d="M19.5 19.5V15H15"/>',
+        '<path d="M19.5 19.5V15H15"/></g>',
     ),
     (
         "download",
         "actions",
         ["save", "export", "install", "fetch"],
-        '<path d="M12 4v11"/><path d="M7.5 10.5L12 15l4.5-4.5"/><path d="M4 19.5h16"/>',
+        '<g class="rfs-p rfs-p-arrow"><path d="M12 4v11"/><path d="M7.5 10.5L12 15l4.5-4.5"/></g><path d="M4 19.5h16"/>',
     ),
     (
         "upload",
@@ -200,7 +201,7 @@ ICONS = [
         "code",
         ["cli", "shell", "console", "pwsh", "zsh"],
         '<rect x="3" y="4" width="18" height="16" rx="1"/>'
-        '<path d="M7 9.5l3 2.5-3 2.5"/><path d="M12.5 14.5h4.5"/>',
+        '<path class="rfs-p rfs-p-prompt" d="M7 9.5l3 2.5-3 2.5"/><path class="rfs-p rfs-p-cur" d="M12.5 14.5h4.5"/>',
     ),
     (
         "code",
@@ -248,15 +249,15 @@ ICONS = [
         "shield-check",
         "security",
         ["verified", "sha256", "signed", "trusted"],
-        '<path d="M12 3.25L19.5 6v6c0 4.6-3.1 7.7-7.5 9.25C7.6 19.7 4.5 16.6 4.5 12V6L12 3.25z"/>'
-        '<path d="M8.75 12.25l2.25 2.25 4.5-4.75"/>',
+        '<path class="rfs-p rfs-p-shield" d="M12 3.25L19.5 6v6c0 4.6-3.1 7.7-7.5 9.25C7.6 19.7 4.5 16.6 4.5 12V6L12 3.25z"/>'
+        '<path class="rfs-p rfs-p-mark" d="M8.75 12.25l2.25 2.25 4.5-4.75"/>',
     ),
     (
         "lock",
         "security",
         ["private", "encrypted", "mtls", "secure"],
-        '<rect x="5" y="10.5" width="14" height="9.5" rx="1"/>'
-        '<path d="M8 10.5V7.5a4 4 0 0 1 8 0v3"/><path d="M12 14v2.5"/>',
+        '<path class="rfs-p rfs-p-shackle" d="M8 10.5V7.5a4 4 0 0 1 8 0v3"/>'
+        '<g class="rfs-p rfs-p-body"><rect x="5" y="10.5" width="14" height="9.5" rx="1"/><path d="M12 14v2.5"/></g>',
     ),
     (
         "unlock",
@@ -307,8 +308,8 @@ ICONS = [
         "settings",
         "security",
         ["gear", "config", "preferences", "options"],
-        '<circle cx="12" cy="12" r="3"/>'
-        '<path d="M10.4 3.25h3.2l.55 2.1 1.65.7 1.85-1.05 2.25 2.25-1.05 1.85.7 1.65 2.1.55v3.2l-2.1.55-.7 1.65 1.05 1.85-2.25 2.25-1.85-1.05-1.65.7-.55 2.1h-3.2l-.55-2.1-1.65-.7-1.85 1.05-2.25-2.25 1.05-1.85-.7-1.65-2.1-.55v-3.2l2.1-.55.7-1.65-1.05-1.85 2.25-2.25 1.85 1.05 1.65-.7.55-2.1z"/>',
+        '<g class="rfs-p rfs-p-gear"><circle cx="12" cy="12" r="3"/>'
+        '<path d="M10.4 3.25h3.2l.55 2.1 1.65.7 1.85-1.05 2.25 2.25-1.05 1.85.7 1.65 2.1.55v3.2l-2.1.55-.7 1.65 1.05 1.85-2.25 2.25-1.85-1.05-1.65.7-.55 2.1h-3.2l-.55-2.1-1.65-.7-1.85 1.05-2.25-2.25 1.05-1.85-.7-1.65-2.1-.55v-3.2l2.1-.55.7-1.65-1.05-1.85 2.25-2.25 1.85 1.05 1.65-.7.55-2.1z"/></g>',
     ),
 
     # ---- 5. Network, Media & Tools (10) ----
@@ -323,9 +324,9 @@ ICONS = [
         "wifi",
         "tools",
         ["network", "signal", "vpn", "port"],
-        '<path d="M3.5 9a12.5 12.5 0 0 1 17 0"/>'
-        '<path d="M6.8 12.5a8 8 0 0 1 10.4 0"/>'
-        '<path d="M10.1 16a3.2 3.2 0 0 1 3.8 0"/>'
+        '<path class="rfs-p rfs-p-w3" d="M3.5 9a12.5 12.5 0 0 1 17 0"/>'
+        '<path class="rfs-p rfs-p-w2" d="M6.8 12.5a8 8 0 0 1 10.4 0"/>'
+        '<path class="rfs-p rfs-p-w1" d="M10.1 16a3.2 3.2 0 0 1 3.8 0"/>'
         '<rect x="11.15" y="18.25" width="1.7" height="1.7" fill="currentColor" stroke="none"/>',
     ),
     (
@@ -350,8 +351,8 @@ ICONS = [
         "capture",
         "tools",
         ["screenshot", "screen-mark", "crop", "crosshair"],
-        '<path d="M4 8.5V4h4.5M15.5 4H20v4.5M20 15.5V20h-4.5M8.5 20H4v-4.5"/>'
-        '<circle cx="12" cy="12" r="2.75"/>',
+        '<path class="rfs-p rfs-p-frame" d="M4 8.5V4h4.5M15.5 4H20v4.5M20 15.5V20h-4.5M8.5 20H4v-4.5"/>'
+        '<circle class="rfs-p rfs-p-dot" cx="12" cy="12" r="2.75"/>',
     ),
     (
         "image",
@@ -445,7 +446,8 @@ ICONS = [
         "bell",
         "status",
         ["notify", "alert", "webhook", "status"],
-        '<path d="M6 16.5V10a6 6 0 0 1 12 0v6.5L20 18.5H4l2-2z"/><path d="M10 18.5a2 2 0 0 0 4 0"/>',
+        '<path class="rfs-p rfs-p-bell" d="M6 16.5V10a6 6 0 0 1 12 0v6.5L20 18.5H4l2-2z"/>'
+        '<path class="rfs-p rfs-p-clapper" d="M10 18.5a2 2 0 0 0 4 0"/>',
     ),
     (
         "pin",
@@ -454,6 +456,72 @@ ICONS = [
         '<path d="M8.5 4h7v2L14 7.75v3.5l2.75 2.75H7.25L10 11.25v-3.5L8.5 6V4z"/><path d="M12 14v6.25"/>',
     ),
 ]
+
+
+# Official opt-in Cyclorama Dawn motion verb for every icon in the 60-icon kit.
+# Consumers opt in with `.rfs-icon-live` + `data-rfs-motion="<verb>"` + `data-rfs-icon-click`.
+ICON_MOTIONS = {
+    "arrow-right": "nudge-x",
+    "arrow-left": "nudge-left",
+    "arrow-up-right": "nudge-ne",
+    "chevron-down": "nudge-y",
+    "chevron-right": "nudge-x",
+    "menu": "seat",
+    "close": "detent-90",
+    "search": "seat",
+    "filter": "drop",
+    "sliders": "part-faders",
+    "plus": "detent-90",
+    "minus": "seat",
+    "edit": "nudge-ne",
+    "trash": "part-lid",
+    "copy": "part-copy",
+    "check": "seat",
+    "refresh": "part-spin",
+    "download": "part-plunge",
+    "upload": "lift",
+    "share": "nudge-ne",
+    "file": "lift",
+    "file-code": "seat",
+    "folder": "lift",
+    "archive": "drop",
+    "terminal": "part-prompt",
+    "code": "seat",
+    "git-branch": "nudge-ne",
+    "diff": "seat",
+    "package": "drop",
+    "book": "lift",
+    "shield": "seat",
+    "shield-check": "part-verify",
+    "lock": "part-shackle",
+    "unlock": "lift",
+    "key": "nudge-x",
+    "certificate": "seat",
+    "eye": "seat",
+    "eye-off": "shudder",
+    "cpu": "seat",
+    "settings": "part-ratchet",
+    "globe": "detent-90",
+    "wifi": "part-arcs",
+    "server": "seat",
+    "link": "nudge-ne",
+    "capture": "part-shutter",
+    "image": "seat",
+    "video": "nudge-x",
+    "play": "nudge-x",
+    "pause": "seat",
+    "volume": "seat",
+    "check-circle": "seat",
+    "alert-triangle": "shudder",
+    "x-circle": "shudder",
+    "info": "seat",
+    "sun": "detent-90",
+    "moon": "seat",
+    "clock": "detent-90",
+    "calendar": "drop",
+    "bell": "part-chime",
+    "pin": "drop",
+}
 
 
 def make_standalone_svg(inner):
@@ -553,7 +621,16 @@ def main():
         p = os.path.join(OUT_DIR, f"{name}.svg")
         with open(p, "w", encoding="utf-8", newline="\n") as fh:
             fh.write(make_standalone_svg(inner))
-        manifest.append({"name": name, "category": cat, "tags": tags, "inner": inner})
+        entry = {
+            "name": name,
+            "category": cat,
+            "tags": tags,
+            "motion": ICON_MOTIONS[name],
+            "inner": inner,
+        }
+        if name == "copy":
+            entry["innerLive"] = inner + '<path class="rfs-p rfs-p-chk" d="M4.5 12.5L9.5 17.5L19.5 6.5"/>'
+        manifest.append(entry)
 
     sprite_path = os.path.join(OUT_DIR, "rfs-icons.svg")
     with open(sprite_path, "w", encoding="utf-8", newline="\n") as fh:
@@ -569,6 +646,7 @@ def main():
                     "strokeWidth": 1.75,
                     "linecap": "square",
                     "linejoin": "miter",
+                    "motionOptIn": ".rfs-icon-live",
                 },
                 "icons": manifest,
             },
@@ -577,7 +655,13 @@ def main():
         )
         fh.write("\n")
 
-    print(f"wrote {len(ICONS)} icons + rfs-icons.svg + icons.json -> {OUT_DIR}")
+    docs_assets = os.path.join(ROOT, "docs", "assets")
+    if os.path.isdir(docs_assets):
+        import shutil
+        shutil.copy2(sprite_path, os.path.join(docs_assets, "rfs-icons.svg"))
+        shutil.copy2(json_path, os.path.join(docs_assets, "icons.json"))
+
+    print(f"wrote {len(ICONS)} icons + rfs-icons.svg + icons.json (synced to docs/assets) -> {OUT_DIR}")
     if args.preview:
         render_preview(args.preview)
 

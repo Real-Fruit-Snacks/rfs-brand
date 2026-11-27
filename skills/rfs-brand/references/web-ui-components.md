@@ -76,16 +76,30 @@ Load stylesheets in strict order: `rfs.css` first, `rfs-components.css` second, 
 </dialog>
 ```
 
-### Semantic UI States & Native `<progress>`
-```html
-<div class="rfs-state-box is-empty">
-  <span class="rfs-badge b-steel"><span class="k">[empty]</span> 0 items</span>
-  <p>No targets configured yet.</p>
-  <button class="rfs-btn rfs-btn-outline rfs-btn-sm" type="button">Add Target</button>
-</div>
+### Semantic UI States, Hardware Controls, Upgraded Loaders & Opt-In Icon Motion
+Load `<script src="assets/rfs-motion.js"></script>` to auto-wire jumping radios, faders, armed latches, LED ladders, progress rings, and clickable icons:
 
-<label for="job-prog">Hashing artifacts (65%)</label>
-<progress id="job-prog" class="rfs-progress" value="65" max="100"></progress>
+```html
+<!-- Custom checkboxes, switches & jumping radios -->
+<label class="rfs-check-label"><input type="checkbox" class="rfs-check" checked><span>Ink Draw</span></label>
+<label class="rfs-switch-label"><input type="checkbox" switch class="rfs-switch-breaker" checked><span>Breaker Rocker</span></label>
+<div class="rfs-radio-group" data-rfs-radio-jump="reticle" role="radiogroup" aria-label="Preset">
+  <label class="rfs-radio-label"><input type="radio" name="p" class="rfs-radio" checked><span>Low</span></label>
+  <label class="rfs-radio-label"><input type="radio" name="p" class="rfs-radio"><span>Max</span></label>
+</div>
+<input class="rfs-fader" type="range" min="0" max="100" value="64" data-rfs-fader>
+
+<!-- 4 upgraded loaders (DMX Cue Meter, Alive Trace, 20-Cell LED Ladder, Precision Ring) -->
+<div class="rfs-progress-dmx-shell"><progress class="rfs-progress-dmx" value="68" max="100" aria-label="Build"></progress></div>
+<progress class="rfs-progress" value="68" max="100" aria-label="Sync"></progress>
+<div class="rfs-led-ladder" data-rfs-led-ladder data-rfs-led-value="68" role="progressbar" aria-valuemin="0" aria-valuemax="100"></div>
+<div class="rfs-ring-wrap"><progress class="rfs-progress-ring" value="68" max="100" aria-label="Ring"></progress><span class="rfs-ring-label" aria-hidden="true">68%</span></div>
+
+<!-- Opt-in click motion on any of the 60 RFS Silkscreen icons (calm by default) -->
+<button class="rfs-btn rfs-btn-outline rfs-icon-live" type="button" data-rfs-motion="part-lid" data-rfs-icon-click>
+  <svg class="rfs-icon" viewBox="0 0 24 24" aria-hidden="true"><!-- brand/icons/trash.svg inner --></svg>
+  <span>Delete</span>
+</button>
 ```
 
 ## 3. Data Visualization Palette (`--rfs-viz-1` through `--rfs-viz-6`)

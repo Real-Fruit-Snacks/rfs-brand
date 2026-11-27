@@ -1,6 +1,6 @@
 ---
 name: Real-Fruit-Snacks — Cyclorama Dawn
-version: "2.2.0"
+version: "2.3.0"
 description: Brand-wide Cyclorama Dawn design system (Steel & Beacon Orange) with LX 263 Beacon Horizon dark default and LX 512 Alabaster Day light opt-in.
 world: "stagecraft-theater-lighting-cyclorama-dawn"
 default_theme: dark

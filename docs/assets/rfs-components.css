@@ -1,6 +1,26 @@
-/* RFS Cyclorama Dawn Drop-In Component Kit (load after rfs.css).
+/* RFS Cyclorama Dawn Drop-In Component Kit v2.3.0 (load after rfs.css).
    Provides reusable buttons, D · Terminal Token badges, underlines, highlights,
-   keycaps, callouts, inputs, syntax roles, stroke icons, native <progress>, and UI states. */
+   keycaps, callouts, inputs, syntax roles, stroke icons + opt-in icon motion,
+   animated hardware controls (checkboxes, switches, jumping radios, faders),
+   upgraded native <progress> loaders (DMX Cue Meter, Horizon Alive Trace,
+   20-Cell LED Ladder, Precision Ring & Dawn Ring), dialogs, toasts, and UI states. */
+
+/* Registered custom properties for smooth <progress> rings & indeterminate sweep arcs */
+@property --rfs-ring-val {
+  syntax: "<number>";
+  inherits: true;
+  initial-value: 0;
+}
+@property --rfs-arc-start {
+  syntax: "<angle>";
+  inherits: false;
+  initial-value: 0deg;
+}
+@property --rfs-arc-end {
+  syntax: "<angle>";
+  inherits: false;
+  initial-value: 148deg;
+}
 
 /* ---- Focus & Selection ---- */
 :where(a, button, input, select, textarea, summary, [tabindex]):focus-visible {
@@ -47,11 +67,140 @@
 }
 
 .rfs-btn-horizon {
+  position: relative;
   border: 0;
-  background-image: var(--rfs-horizon-gradient);
-  background-origin: border-box;
-  background-clip: border-box;
+  background: var(--rfs-steel-fill);
   color: #ffffff;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.rfs-btn-horizon::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background-image: linear-gradient(125deg var(--rfs-in-oklab), #18496b 0%, #1f547a 32%, #cc5016 68%, #f06e2b 100%);
+  transform: translateX(-18%) scaleX(1.36);
+  transform-origin: left;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .rfs-btn-horizon::before {
+    transition: transform var(--rfs-dur-base) var(--rfs-ease);
+  }
+}
+
+/* Copy-to-Check Silkscreen Morph button */
+.rfs-btn-copy-morph {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  min-block-size: 2.5rem;
+  padding: 0.48rem 0.9rem;
+  border-radius: var(--rfs-radius-sm);
+  border: 1px solid var(--rfs-line-strong);
+  background: var(--rfs-code-bg);
+  color: var(--rfs-text);
+  font: 600 0.78rem/1.2 var(--rfs-font-mono);
+  cursor: pointer;
+  transition: border-color var(--rfs-dur-fast) var(--rfs-ease), color var(--rfs-dur-fast) var(--rfs-ease);
+}
+
+.rfs-btn-copy-morph:is([data-copied], [data-copied="true"]) {
+  border-color: var(--rfs-signal);
+  color: var(--rfs-signal);
+}
+
+.rfs-copy-ico {
+  position: relative;
+  inline-size: 1rem;
+  block-size: 1rem;
+  flex: none;
+}
+
+.rfs-copy-ico svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.75;
+  stroke-linecap: square;
+  stroke-linejoin: miter;
+}
+
+.rfs-copy-ico .ico-check path {
+  stroke-dasharray: 24;
+  stroke-dashoffset: 24;
+}
+
+.rfs-btn-copy-morph:is([data-copied], [data-copied="true"]) .ico-clip {
+  opacity: 0;
+  transform: scale(0.7);
+}
+
+.rfs-btn-copy-morph:is([data-copied], [data-copied="true"]) .ico-check path {
+  stroke-dashoffset: 0;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .rfs-copy-ico .ico-clip {
+    transition: opacity var(--rfs-dur-fast) var(--rfs-ease), transform var(--rfs-dur-fast) var(--rfs-ease);
+  }
+  .rfs-copy-ico .ico-check path {
+    transition: stroke-dashoffset var(--rfs-dur-base) var(--rfs-ease);
+  }
+}
+
+/* Two-Stage Armed Destructive Latch (keyboard + pointer safe) */
+.rfs-btn-arm {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+  min-block-size: 2.5rem;
+  padding: 0.48rem 0.95rem;
+  border-radius: var(--rfs-radius-sm);
+  border: 1px solid var(--rfs-fault);
+  background: transparent;
+  color: var(--rfs-fault);
+  font: 600 0.78rem/1.2 var(--rfs-font-mono);
+  cursor: pointer;
+  overflow: hidden;
+  isolation: isolate;
+  transition: color var(--rfs-dur-fast) var(--rfs-ease), border-color var(--rfs-dur-fast) var(--rfs-ease);
+}
+
+.rfs-btn-arm::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: var(--rfs-fault-fill);
+  transform: scaleX(0);
+  transform-origin: left;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .rfs-btn-arm::before {
+    transition: transform var(--rfs-dur-base) var(--rfs-ease);
+  }
+}
+
+.rfs-btn-arm[data-armed="armed"] {
+  color: var(--rfs-on-fault);
+}
+
+.rfs-btn-arm[data-armed="armed"]::before {
+  transform: scaleX(1);
+}
+
+.rfs-btn-arm[data-armed="done"] {
+  border-color: var(--rfs-signal);
+  color: var(--rfs-signal);
 }
 
 .rfs-btn-beacon {
@@ -98,7 +247,8 @@
 
 @media (hover: hover) and (pointer: fine) {
   .rfs-btn:not(:disabled):hover { transform: translateY(-1px); }
-  .rfs-btn-horizon:not(:disabled):hover { filter: brightness(1.07); }
+  .rfs-btn-horizon:not(:disabled):hover::before { transform: translateX(0%) scaleX(1.36); }
+  .rfs-btn-horizon:not(:disabled):hover { filter: brightness(1.05); }
   .rfs-btn-beacon:not(:disabled):hover { background: var(--rfs-primary-hover); border-color: var(--rfs-primary-hover); }
   .rfs-btn-steel:not(:disabled):hover { filter: brightness(1.1); }
   .rfs-btn-fault:not(:disabled):hover { background: var(--rfs-fault-fill-hover); border-color: var(--rfs-fault-fill-hover); }
@@ -377,32 +527,49 @@
   fill: url(#rfs-icon-grad-horizon);
 }
 
-/* ---- Native <progress> Bar (determinate + indeterminate; WCAG & RTL safe) ---- */
+/* ---- Upgraded Native <progress> Loaders (Alive Trace, DMX Cue Meter, LED Ladder, Precision Ring & Dawn Ring) ---- */
+
+/* 1. Horizon Alive Trace (.rfs-progress) — determinate shimmer + dual-rate racing indeterminate + Mint 100% lock */
 .rfs-progress {
   appearance: none;
   border: 0 solid;
   display: block;
   width: 100%;
-  height: 8px;
+  height: 10px;
   overflow: clip;
   border-radius: 4px;
   background: var(--rfs-code-bg);
   box-shadow: inset 0 0 0 1px var(--rfs-line);
   container-type: inline-size;
-  --progress-bar-fill: var(--rfs-horizon-rule);
-  --progress-bar-indeterminate-size: 32%;
-  --progress-bar-indeterminate-animation-duration: 1.4s;
+  --rfs-prog-speed: var(--rfs-motion-speed, 1);
+  --progress-bar-fill:
+    linear-gradient(110deg, transparent 36%, rgba(255, 255, 255, 0.32) 50%, transparent 64%),
+    var(--rfs-horizon-rule);
+  --progress-bar-indeterminate-size: 36%;
+  --progress-bar-indeterminate-animation-duration: calc(1.6s * var(--rfs-prog-speed));
+}
+
+.rfs-progress:not(:indeterminate) {
+  --progress-bar-animation: rfs-beam-sheen calc(1.85s * var(--rfs-prog-speed)) linear infinite;
+}
+
+.rfs-progress[value="100"] {
+  --progress-bar-fill: var(--rfs-signal);
+  --progress-bar-animation: none;
 }
 
 .rfs-progress:indeterminate {
   --progress-bar-animation: var(
     --progress-bar-indeterminate-animation,
-    rfs-progress-slide var(--progress-bar-indeterminate-animation-duration) infinite linear
+    rfs-race-pos var(--progress-bar-indeterminate-animation-duration) cubic-bezier(0.35, 0, 0.25, 1) infinite,
+    rfs-race-len var(--progress-bar-indeterminate-animation-duration) ease-in-out infinite
   );
 }
 
-.rfs-progress:dir(rtl) {
-  --progress-bar-indeterminate-animation: rfs-progress-slide var(--progress-bar-indeterminate-animation-duration) infinite linear reverse;
+.rfs-progress:dir(rtl):indeterminate {
+  --progress-bar-indeterminate-animation:
+    rfs-race-pos var(--progress-bar-indeterminate-animation-duration) cubic-bezier(0.35, 0, 0.25, 1) infinite reverse,
+    rfs-race-len var(--progress-bar-indeterminate-animation-duration) ease-in-out infinite;
 }
 
 .rfs-progress::-webkit-progress-bar {
@@ -411,6 +578,7 @@
 
 .rfs-progress::-webkit-progress-value {
   background: var(--progress-bar-fill);
+  background-size: 220% 100%, 100% 100%;
   border-radius: 4px;
   transition: inline-size var(--rfs-dur-base) var(--rfs-ease);
   animation: var(--progress-bar-animation, revert-rule);
@@ -418,18 +586,274 @@
 
 .rfs-progress::-moz-progress-bar {
   background: var(--progress-bar-fill);
+  background-size: 220% 100%, 100% 100%;
   border-radius: 4px;
   transition: inline-size var(--rfs-dur-base) var(--rfs-ease);
   animation: var(--progress-bar-animation, revert-rule);
 }
 
+/* 2. DMX Cue Meter (.rfs-progress-dmx-shell > progress.rfs-progress-dmx) — etched 10% ticks + bright frontier needle */
+.rfs-progress-dmx-shell {
+  position: relative;
+  height: 14px;
+  border-radius: 4px;
+  border: 1px solid var(--rfs-line-strong);
+  background: var(--rfs-code-bg);
+  overflow: clip;
+  --rfs-dmx-tick: color-mix(in oklab, var(--rfs-bg) 68%, transparent);
+}
+
+.rfs-progress-dmx-shell::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 2;
+  background: repeating-linear-gradient(
+    90deg,
+    transparent 0,
+    transparent calc(10% - 1.5px),
+    var(--rfs-dmx-tick) calc(10% - 1.5px),
+    var(--rfs-dmx-tick) 10%
+  );
+}
+
+progress.rfs-progress-dmx {
+  appearance: none;
+  border: 0 solid;
+  display: block;
+  width: 100%;
+  height: 100%;
+  overflow: clip;
+  background: transparent;
+  container-type: inline-size;
+  --rfs-dmx-dur: calc(1.4s * var(--rfs-motion-speed, 1));
+  --rfs-dmx-fill:
+    linear-gradient(90deg, transparent calc(100% - 3px), #ffffff calc(100% - 3px)),
+    var(--rfs-horizon-rule);
+}
+
+progress.rfs-progress-dmx[value="100"] {
+  --rfs-dmx-fill: var(--rfs-signal);
+}
+
+progress.rfs-progress-dmx:indeterminate {
+  --rfs-dmx-anim: rfs-progress-slide var(--rfs-dmx-dur) cubic-bezier(0.45, 0, 0.55, 1) infinite;
+}
+
+progress.rfs-progress-dmx:dir(rtl):indeterminate {
+  --rfs-dmx-anim: rfs-progress-slide var(--rfs-dmx-dur) cubic-bezier(0.45, 0, 0.55, 1) infinite reverse;
+}
+
+progress.rfs-progress-dmx::-webkit-progress-bar {
+  background: transparent;
+}
+
+progress.rfs-progress-dmx::-webkit-progress-value {
+  background: var(--rfs-dmx-fill);
+  transition: inline-size var(--rfs-dur-base) var(--rfs-ease);
+  animation: var(--rfs-dmx-anim, revert-rule);
+}
+
+progress.rfs-progress-dmx::-moz-progress-bar {
+  background: var(--rfs-dmx-fill);
+  transition: inline-size var(--rfs-dur-base) var(--rfs-ease);
+  animation: var(--rfs-dmx-anim, revert-rule);
+}
+
+/* 3. Patch-Bay 20-Cell Hardware LED Ladder (.rfs-led-ladder) */
+.rfs-led-ladder {
+  display: grid;
+  grid-template-columns: repeat(var(--rfs-led-count, 20), minmax(0, 1fr));
+  gap: 2px;
+  padding: 3px;
+  height: 18px;
+  border-radius: 4px;
+  border: 1px solid var(--rfs-line-strong);
+  background: var(--rfs-code-bg);
+}
+
+.rfs-led-cell {
+  border-radius: 1.5px;
+  background: var(--rfs-line);
+  transition: background-color var(--rfs-dur-fast) var(--rfs-ease), opacity var(--rfs-dur-fast) var(--rfs-ease);
+}
+
+.rfs-led-cell.is-lit {
+  background: var(--cell-c, var(--rfs-beacon));
+}
+
+.rfs-led-cell.is-head {
+  background: var(--rfs-beacon-ink);
+  animation: rfs-led-pulse calc(680ms * var(--rfs-motion-speed, 1)) ease-in-out infinite alternate;
+}
+
+.rfs-led-ladder[data-done="true"] .rfs-led-cell.is-lit {
+  background: var(--rfs-signal);
+  animation: none;
+}
+
+.rfs-led-ladder[data-indet="true"] .rfs-led-cell {
+  animation: rfs-led-wave calc(1.3s * var(--rfs-motion-speed, 1)) linear infinite;
+  animation-delay: calc((var(--n, 19) - var(--i, 0)) * -55ms * var(--rfs-motion-speed, 1));
+}
+
+/* 4. Precision Progress Ring & Dawn Ring Spinner (native <progress>, background-image ONLY so border-area never resets) */
+.rfs-ring-wrap {
+  position: relative;
+  display: inline-grid;
+  place-items: center;
+  width: var(--rfs-ring-size, 48px);
+  height: var(--rfs-ring-size, 48px);
+  flex: none;
+}
+
+.rfs-ring-label {
+  position: absolute;
+  font: 600 0.72rem/1 var(--rfs-font-mono);
+  font-variant-numeric: tabular-nums;
+  color: var(--rfs-text);
+  pointer-events: none;
+}
+
+progress.rfs-progress-ring::-webkit-progress-bar {
+  display: none;
+  background: none;
+}
+
+progress.rfs-progress-ring::-webkit-progress-value {
+  display: none;
+  background: none;
+}
+
+progress.rfs-progress-ring::-moz-progress-bar {
+  display: none;
+  background: none;
+}
+
+progress.rfs-progress-ring {
+  --rfs-ring-size: 48px;
+  --rfs-ring-thickness: 4px;
+  --rfs-ring-fill: var(--rfs-beacon);
+  --rfs-ring-track: var(--rfs-line);
+  appearance: none;
+  border: 0 solid;
+  display: inline-block;
+  flex: none;
+  width: var(--rfs-ring-size);
+  height: var(--rfs-ring-size);
+  border-radius: 50%;
+  background-color: var(--rfs-ring-track);
+  background-repeat: no-repeat;
+  background-image: conic-gradient(
+    var(--rfs-steel-ink) 0%,
+    var(--rfs-ring-fill) calc(var(--rfs-ring-val) * 1%),
+    transparent 0
+  );
+  transition: --rfs-ring-val 0s var(--rfs-ease);
+}
+
+progress.rfs-progress-ring[value="100"] {
+  --rfs-ring-fill: var(--rfs-signal);
+  background-image: conic-gradient(var(--rfs-signal) 100%, transparent 0);
+}
+
+progress.rfs-progress-ring:indeterminate {
+  --_from: calc(90deg + var(--rfs-arc-start, 0deg));
+  --_to: calc(90deg + var(--rfs-arc-end, 148deg));
+  --rfs-spin-dur: calc(1.25s * var(--rfs-motion-speed, 1));
+  --rfs-arc-dur: calc(2.4s * var(--rfs-motion-speed, 1));
+  background-image: conic-gradient(
+    from var(--_from),
+    var(--rfs-steel-ink) 0deg,
+    var(--rfs-beacon) calc(var(--_to) - var(--_from)),
+    transparent 0
+  );
+  animation:
+    rfs-spin var(--rfs-spin-dur) linear infinite,
+    rfs-arc-sweep var(--rfs-arc-dur) ease-in-out infinite;
+}
+
+@supports (background-clip: border-area) {
+  progress.rfs-progress-ring,
+  progress.rfs-progress-ring:indeterminate,
+  progress.rfs-progress-ring[value="100"] {
+    background-clip: border-area;
+    border: var(--rfs-ring-thickness) solid transparent;
+    background-origin: border-box;
+  }
+}
+
+@supports not (background-clip: border-area) {
+  progress.rfs-progress-ring,
+  progress.rfs-progress-ring:indeterminate,
+  progress.rfs-progress-ring[value="100"] {
+    border: 0;
+    mask-image: radial-gradient(
+      farthest-side,
+      transparent calc(100% - var(--rfs-ring-thickness) - 0.5px),
+      black calc(100% - var(--rfs-ring-thickness) + 0.5px)
+    );
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  progress.rfs-progress-ring {
+    transition-duration: calc(280ms * var(--rfs-motion-speed, 1));
+  }
+}
+
+progress.rfs-spinner {
+  --rfs-ring-size: 32px;
+  --rfs-ring-thickness: 3.5px;
+}
+
 @keyframes rfs-progress-slide {
   from, to {
-    inline-size: var(--progress-bar-indeterminate-size);
+    inline-size: var(--progress-bar-indeterminate-size, 32%);
     margin-right: auto;
   }
   from { translate: -100%; }
   to { translate: 100cqi; }
+}
+
+@keyframes rfs-beam-sheen {
+  from { background-position: 180% 0, 0 0; }
+  to { background-position: -80% 0, 0 0; }
+}
+
+@keyframes rfs-race-pos {
+  from, to { margin-right: auto; }
+  from { translate: -100%; }
+  to { translate: 105cqi; }
+}
+
+@keyframes rfs-race-len {
+  0% { inline-size: 16%; }
+  45% { inline-size: 46%; }
+  100% { inline-size: 18%; }
+}
+
+@keyframes rfs-led-pulse {
+  from { opacity: 0.45; }
+  to { opacity: 1; }
+}
+
+@keyframes rfs-led-wave {
+  0%, 100% { background: var(--rfs-line); }
+  15% { background: var(--rfs-steel-ink); }
+  28% { background: var(--rfs-beacon); }
+  40% { background: var(--rfs-line); }
+}
+
+@keyframes rfs-spin {
+  to { rotate: 1turn; }
+}
+
+@keyframes rfs-arc-sweep {
+  0% { --rfs-arc-start: 0deg; --rfs-arc-end: 24deg; }
+  50% { --rfs-arc-start: 95deg; --rfs-arc-end: 340deg; }
+  100% { --rfs-arc-start: 360deg; --rfs-arc-end: 384deg; }
 }
 
 /* ---- Standard UI State Boxes (Empty / Loading / Error) ---- */
@@ -998,57 +1422,793 @@ dialog.rfs-dialog.is-destructive .rfs-dialog-bar {
   }
 }
 
-/* ---- Accessible Switch Control (<input type="checkbox" switch> + fallback styling) ---- */
-.rfs-switch-label {
+/* ---- Custom Animated Hardware Controls (Checkboxes, Switches, Jumping Radios, Segmented Bars, Console Fader) ---- */
+.rfs-check-label,
+.rfs-switch-label,
+.rfs-radio-label {
   display: inline-flex;
   align-items: center;
   gap: 0.65rem;
+  min-block-size: 44px;
   font-size: 0.88rem;
   font-weight: 500;
   color: var(--rfs-text);
   cursor: pointer;
+  user-select: none;
 }
 
-input[type="checkbox"].rfs-switch {
-  accent-color: var(--rfs-beacon);
-  margin: 0;
-  cursor: pointer;
+.rfs-radio-label.is-compact {
+  gap: 0.35rem;
+  font: 500 0.78rem/1 var(--rfs-font-mono);
 }
 
-input[type="checkbox"].rfs-switch[data-switch-fallback] {
+/* Checkboxes: 1. Silkscreen Ink Draw (.rfs-check), 2. Horizon Shutter (.rfs-check-shutter), 3. Bracket Latch (.rfs-check-token) */
+input[type="checkbox"].rfs-check {
+  --rfs-icon-check: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='3' stroke-linecap='square' stroke-linejoin='miter'%3E%3Cpolyline points='4.5 12.5 9.5 17.5 19.5 6.5'/%3E%3C/svg%3E");
+  --rfs-icon-dash: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='3.25' stroke-linecap='square'%3E%3Cline x1='5' y1='12' x2='19' y2='12'/%3E%3C/svg%3E");
   appearance: none;
   position: relative;
-  width: 2.55rem;
-  height: 1.4rem;
+  display: inline-grid;
+  place-content: center;
+  inline-size: 1.25rem;
+  block-size: 1.25rem;
   flex: none;
+  margin: 0;
+  border-radius: 4px;
+  border: 1.5px solid var(--rfs-line-strong);
+  background: var(--rfs-code-bg);
+  cursor: pointer;
+  transition: border-color var(--rfs-dur-fast) var(--rfs-ease), background-color var(--rfs-dur-fast) var(--rfs-ease);
+}
+
+input[type="checkbox"].rfs-check::before {
+  content: "";
+  inline-size: 0.82rem;
+  block-size: 0.82rem;
+  background-color: var(--rfs-on-primary);
+  mask: var(--cb-mask, var(--rfs-icon-check)) no-repeat center / contain;
+  clip-path: inset(0 100% 0 0);
+  opacity: 0;
+}
+
+input[type="checkbox"].rfs-check::after {
+  content: "";
+  position: absolute;
+  inset: -4px;
+  border-radius: 7px;
+  border: 1.5px solid var(--rfs-beacon-ink);
+  opacity: 0;
+  transform: scale(0.82);
+  pointer-events: none;
+}
+
+input[type="checkbox"].rfs-check:checked {
+  --cb-mask: var(--rfs-icon-check);
+  border-color: var(--rfs-primary);
+  background: var(--rfs-primary);
+}
+
+input[type="checkbox"].rfs-check:indeterminate {
+  --cb-mask: var(--rfs-icon-dash);
+  border-color: var(--rfs-steel-ink);
+  background: var(--rfs-steel-fill);
+}
+
+input[type="checkbox"].rfs-check:indeterminate::before {
+  background-color: #ffffff;
+}
+
+input[type="checkbox"].rfs-check:is(:checked, :indeterminate)::before {
+  clip-path: inset(0 0 0 0);
+  opacity: 1;
+}
+
+input[type="checkbox"].rfs-check-shutter {
+  --rfs-icon-check: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='3' stroke-linecap='square' stroke-linejoin='miter'%3E%3Cpolyline points='4.5 12.5 9.5 17.5 19.5 6.5'/%3E%3C/svg%3E");
+  --rfs-icon-dash: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='3.25' stroke-linecap='square'%3E%3Cline x1='5' y1='12' x2='19' y2='12'/%3E%3C/svg%3E");
+  appearance: none;
+  position: relative;
+  display: inline-grid;
+  place-content: center;
+  inline-size: 1.25rem;
+  block-size: 1.25rem;
+  flex: none;
+  margin: 0;
+  border-radius: 4px;
+  border: 1.5px solid var(--rfs-line-strong);
+  background: var(--rfs-code-bg);
+  overflow: hidden;
+  cursor: pointer;
+  transition: border-color var(--rfs-dur-fast) var(--rfs-ease);
+}
+
+input[type="checkbox"].rfs-check-shutter::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--rfs-horizon-gradient);
+  clip-path: inset(100% 0 0 0);
+}
+
+input[type="checkbox"].rfs-check-shutter::after {
+  content: "";
+  position: relative;
+  z-index: 1;
+  inline-size: 0.82rem;
+  block-size: 0.82rem;
+  background-color: #ffffff;
+  mask: var(--cb-mask, var(--rfs-icon-check)) no-repeat center / contain;
+  transform: scale(0);
+  opacity: 0;
+}
+
+input[type="checkbox"].rfs-check-shutter:checked {
+  --cb-mask: var(--rfs-icon-check);
+  border-color: var(--rfs-beacon-ink);
+}
+
+input[type="checkbox"].rfs-check-shutter:indeterminate {
+  --cb-mask: var(--rfs-icon-dash);
+  border-color: var(--rfs-steel-ink);
+}
+
+input[type="checkbox"].rfs-check-shutter:is(:checked, :indeterminate)::before {
+  clip-path: inset(0 0 0 0);
+}
+
+input[type="checkbox"].rfs-check-shutter:is(:checked, :indeterminate)::after {
+  transform: scale(1);
+  opacity: 1;
+}
+
+input[type="checkbox"].rfs-check-token {
+  appearance: none;
+  position: relative;
+  display: inline-grid;
+  place-content: center;
+  inline-size: 1.65rem;
+  block-size: 1.35rem;
+  flex: none;
+  margin: 0;
+  border-radius: 4px;
+  border: 1px solid var(--rfs-line);
+  background: var(--rfs-code-bg);
+  cursor: pointer;
+  transition: border-color var(--rfs-dur-fast) var(--rfs-ease);
+}
+
+input[type="checkbox"].rfs-check-token::before {
+  content: "[ ]";
+  font: 700 0.76rem/1 var(--rfs-font-mono);
+  letter-spacing: -0.04em;
+  color: var(--rfs-mute);
+}
+
+input[type="checkbox"].rfs-check-token:checked {
+  border-color: var(--rfs-signal);
+}
+
+input[type="checkbox"].rfs-check-token:checked::before {
+  content: "[x]";
+  color: var(--rfs-signal);
+}
+
+input[type="checkbox"].rfs-check-token:indeterminate {
+  border-color: var(--rfs-steel-ink);
+}
+
+input[type="checkbox"].rfs-check-token:indeterminate::before {
+  content: "[-]";
+  color: var(--rfs-steel-ink);
+}
+
+input[type="checkbox"]:is(.rfs-check, .rfs-check-shutter, .rfs-check-token):disabled {
+  cursor: not-allowed;
+  opacity: 0.48;
+}
+
+/* Switches (<input type="checkbox" switch>): 1. Cue Slide (.rfs-switch), 2. Breaker Rocker (.rfs-switch-breaker), 3. Patch Shutter (.rfs-switch-patch) */
+input[type="checkbox"].rfs-switch {
+  appearance: none;
+  position: relative;
+  inline-size: 2.85rem;
+  block-size: 1.5rem;
+  flex: none;
+  margin: 0;
   border-radius: 99px;
   border: 1.5px solid var(--rfs-line-strong);
   background: var(--rfs-code-bg);
-  transition: background-color var(--rfs-dur-fast) var(--rfs-ease),
-              border-color var(--rfs-dur-fast) var(--rfs-ease);
+  cursor: pointer;
+  transition: border-color var(--rfs-dur-base) var(--rfs-ease), background-color var(--rfs-dur-base) var(--rfs-ease);
 }
 
-input[type="checkbox"].rfs-switch[data-switch-fallback]::after {
+input[type="checkbox"].rfs-switch::before {
+  content: "0";
+  position: absolute;
+  inset-inline-end: 0.45rem;
+  inset-block-start: 50%;
+  transform: translateY(-50%);
+  font: 700 0.62rem/1 var(--rfs-font-mono);
+  color: var(--rfs-mute);
+  pointer-events: none;
+}
+
+input[type="checkbox"].rfs-switch:checked::before {
+  content: "I";
+  inset-inline-end: auto;
+  inset-inline-start: 0.5rem;
+  color: #ffffff;
+}
+
+input[type="checkbox"].rfs-switch::after {
   content: "";
   position: absolute;
-  top: 2px;
-  left: 2px;
-  width: calc(1.4rem - 7px);
-  height: calc(1.4rem - 7px);
-  border-radius: 50%;
+  inset-block-start: 2.5px;
+  inset-inline-start: 2.5px;
+  inline-size: 1rem;
+  block-size: 1rem;
+  border-radius: 99px;
   background: var(--rfs-mute);
-  transition: transform var(--rfs-dur-fast) var(--rfs-ease), background-color var(--rfs-dur-fast) var(--rfs-ease);
+  transform-origin: left center;
 }
 
-input[type="checkbox"].rfs-switch[data-switch-fallback]:checked {
+input[type="checkbox"].rfs-switch:checked {
+  border-color: var(--rfs-beacon-ink);
+  background: var(--rfs-horizon-gradient);
+}
+
+input[type="checkbox"].rfs-switch:checked::after {
+  transform: translateX(1.35rem);
+  background: #ffffff;
+}
+
+input[type="checkbox"].rfs-switch-breaker {
+  appearance: none;
+  position: relative;
+  inline-size: 2.85rem;
+  block-size: 1.5rem;
+  flex: none;
+  margin: 0;
+  border-radius: 5px;
+  border: 1.5px solid var(--rfs-line-strong);
+  background: var(--rfs-code-bg);
+  cursor: pointer;
+  transition: border-color var(--rfs-dur-fast) var(--rfs-ease);
+}
+
+input[type="checkbox"].rfs-switch-breaker::before {
+  content: "";
+  position: absolute;
+  inset: 3px;
+  border-radius: 2px;
+  background: linear-gradient(90deg var(--rfs-in-oklab), rgba(31, 84, 122, 0.25) 0%, transparent 50%, rgba(240, 110, 43, 0.25) 100%);
+  opacity: 0.45;
+  pointer-events: none;
+}
+
+input[type="checkbox"].rfs-switch-breaker::after {
+  content: "";
+  position: absolute;
+  inset-block-start: 2.5px;
+  inset-inline-start: 2.5px;
+  inline-size: 1.12rem;
+  block-size: 1rem;
+  border-radius: 3px;
+  border: 1px solid var(--rfs-line-strong);
+  background:
+    linear-gradient(90deg, transparent 42%, var(--rfs-steel-ink) 42%, var(--rfs-steel-ink) 58%, transparent 58%),
+    var(--rfs-raised);
+}
+
+input[type="checkbox"].rfs-switch-breaker:checked {
+  border-color: var(--rfs-beacon-ink);
+}
+
+input[type="checkbox"].rfs-switch-breaker:checked::before {
+  opacity: 1;
+}
+
+input[type="checkbox"].rfs-switch-breaker:checked::after {
+  transform: translateX(1.25rem);
+  border-color: var(--rfs-beacon-ink);
+  background:
+    linear-gradient(90deg, transparent 42%, var(--rfs-beacon) 42%, var(--rfs-beacon) 58%, transparent 58%),
+    var(--rfs-surface);
+}
+
+input[type="checkbox"].rfs-switch-patch {
+  appearance: none;
+  position: relative;
+  inline-size: 3.9rem;
+  block-size: 1.5rem;
+  flex: none;
+  margin: 0;
+  border-radius: 4px;
+  border: 1.5px solid var(--rfs-line-strong);
+  background: var(--rfs-code-bg);
+  cursor: pointer;
+  overflow: hidden;
+  transition: border-color var(--rfs-dur-fast) var(--rfs-ease);
+}
+
+input[type="checkbox"].rfs-switch-patch::before {
+  content: "ON   OFF";
+  white-space: pre;
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  font: 700 0.62rem/1 var(--rfs-font-mono);
+  letter-spacing: 0.04em;
+  color: var(--rfs-mute);
+}
+
+input[type="checkbox"].rfs-switch-patch::after {
+  content: "";
+  position: absolute;
+  inset-block: 2px;
+  inset-inline-start: 2px;
+  inline-size: 1.7rem;
+  border-radius: 2px;
+  background: var(--rfs-raised);
+  border: 1px solid var(--rfs-line-strong);
+}
+
+input[type="checkbox"].rfs-switch-patch:checked {
+  border-color: var(--rfs-signal);
+}
+
+input[type="checkbox"].rfs-switch-patch:checked::before {
+  color: var(--rfs-signal);
+}
+
+input[type="checkbox"].rfs-switch-patch:checked::after {
+  transform: translateX(1.75rem);
   background: var(--rfs-steel-fill);
   border-color: var(--rfs-steel-ink);
 }
 
-input[type="checkbox"].rfs-switch[data-switch-fallback]:checked::after {
-  transform: translateX(1.12rem);
-  background: #ffffff;
+/* Jumping Radios (.rfs-radio-group + .rfs-radio + .rfs-radio-flyer) & Segmented Cue Bar (.rfs-segmented) */
+.rfs-radio-group {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.45rem 0.9rem;
 }
+
+input[type="radio"].rfs-radio {
+  appearance: none;
+  position: relative;
+  display: inline-grid;
+  place-content: center;
+  inline-size: 1.25rem;
+  block-size: 1.25rem;
+  flex: none;
+  margin: 0;
+  border-radius: 50%;
+  border: 1.5px solid var(--rfs-line-strong);
+  background: var(--rfs-code-bg);
+  cursor: pointer;
+  transition: border-color var(--rfs-dur-fast) var(--rfs-ease);
+}
+
+input[type="radio"].rfs-radio:checked {
+  border-color: var(--rfs-beacon-ink);
+}
+
+/* Static in-place core when used outside [data-rfs-radio-jump] */
+.rfs-radio-group:not([data-rfs-radio-jump]) input[type="radio"].rfs-radio:checked::before {
+  content: "";
+  inline-size: 0.56rem;
+  block-size: 0.56rem;
+  border-radius: 50%;
+  border: 0.28rem solid var(--rfs-beacon-ink);
+}
+
+[data-rfs-radio-jump="reticle"] input[type="radio"].rfs-radio::after {
+  content: "";
+  position: absolute;
+  inset: -4px;
+  border-radius: 50%;
+  border: 1.5px solid var(--rfs-steel-ink);
+  opacity: 0;
+  transform: scale(1.45);
+  pointer-events: none;
+}
+
+.rfs-radio-flyer {
+  position: absolute;
+  left: 0;
+  top: 0;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 3;
+  will-change: transform;
+}
+
+.rfs-radio-flyer.is-reticle {
+  inline-size: 9px;
+  block-size: 9px;
+  border: 4.5px solid var(--rfs-beacon-ink);
+  background: transparent;
+}
+
+.rfs-radio-flyer.is-aperture {
+  inline-size: 14px;
+  block-size: 14px;
+  border: 4px solid var(--rfs-primary);
+  background: transparent;
+}
+
+.rfs-segmented {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(var(--rfs-seg-count, 3), minmax(0, 1fr));
+  padding: 3px;
+  border-radius: var(--rfs-radius-sm);
+  border: 1px solid var(--rfs-line);
+  background: var(--rfs-code-bg);
+  isolation: isolate;
+}
+
+.rfs-seg-indicator {
+  position: absolute;
+  inset-block: 3px;
+  inset-inline-start: 3px;
+  inline-size: calc((100% - 6px) / var(--rfs-seg-count, 3));
+  border-radius: 4px;
+  background: var(--rfs-raised);
+  border: 1px solid var(--rfs-line-strong);
+  border-bottom: 2px solid var(--rfs-beacon-ink);
+  z-index: 0;
+  pointer-events: none;
+  transform: translateX(calc(var(--rfs-seg-idx, 0) * 100%));
+}
+
+.rfs-segmented > button {
+  position: relative;
+  z-index: 1;
+  border: 0;
+  background: transparent;
+  color: var(--rfs-mute);
+  min-block-size: 2.25rem;
+  padding: 0.28rem 0.5rem;
+  font: 600 0.74rem/1 var(--rfs-font-mono);
+  cursor: pointer;
+  transition: color var(--rfs-dur-fast) var(--rfs-ease);
+}
+
+.rfs-segmented > button[aria-checked="true"] {
+  color: var(--rfs-text);
+}
+
+/* Console Fader Range Slider (.rfs-fader) — strictly separate WebKit & Firefox vendor blocks */
+input[type="range"].rfs-fader {
+  --slider-track-size: 6px;
+  --slider-thumb-w: 16px;
+  --slider-thumb-h: 24px;
+  --attr-min: 0;
+  --attr-max: 100;
+  --control-value: 64;
+  --slider-direction: to right;
+  --slider-progress: calc(
+    (var(--control-value) - var(--attr-min)) /
+    (var(--attr-max) - var(--attr-min)) * 100%
+  );
+  appearance: none;
+  inline-size: 100%;
+  block-size: 2.5rem;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  cursor: pointer;
+}
+
+input[type="range"].rfs-fader:dir(rtl) {
+  --slider-direction: to left;
+}
+
+input[type="range"].rfs-fader::-webkit-slider-runnable-track {
+  block-size: var(--slider-track-size);
+  border-radius: 3px;
+  border: 1px solid var(--rfs-line);
+  background: linear-gradient(
+    var(--slider-direction) var(--rfs-in-oklab),
+    var(--rfs-steel-ink) 0%,
+    var(--rfs-beacon) var(--slider-progress),
+    var(--rfs-code-bg) var(--slider-progress)
+  );
+}
+
+input[type="range"].rfs-fader::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  inline-size: var(--slider-thumb-w);
+  block-size: var(--slider-thumb-h);
+  margin-block-start: calc((var(--slider-track-size) - var(--slider-thumb-h)) / 2 - 1px);
+  border-radius: 3px;
+  border: 1.5px solid var(--rfs-beacon-ink);
+  background:
+    linear-gradient(90deg, transparent 42%, var(--rfs-beacon) 42%, var(--rfs-beacon) 58%, transparent 58%),
+    var(--rfs-surface);
+}
+
+input[type="range"].rfs-fader:active::-webkit-slider-thumb {
+  transform: scaleY(1.1);
+}
+
+input[type="range"].rfs-fader::-moz-range-track {
+  block-size: var(--slider-track-size);
+  border-radius: 3px;
+  border: 1px solid var(--rfs-line);
+  background: var(--rfs-code-bg);
+}
+
+input[type="range"].rfs-fader::-moz-range-progress {
+  block-size: var(--slider-track-size);
+  border-radius: 3px;
+  background: var(--rfs-horizon-rule);
+}
+
+input[type="range"].rfs-fader::-moz-range-thumb {
+  inline-size: var(--slider-thumb-w);
+  block-size: var(--slider-thumb-h);
+  border-radius: 3px;
+  border: 1.5px solid var(--rfs-beacon-ink);
+  background:
+    linear-gradient(90deg, transparent 42%, var(--rfs-beacon) 42%, var(--rfs-beacon) 58%, transparent 58%),
+    var(--rfs-surface);
+}
+
+/* ---- Opt-In Cyclorama Silkscreen Icon Motion Engine (.rfs-icon-live) ---- */
+.rfs-icon-live .rfs-icon {
+  overflow: visible;
+}
+
+.rfs-icon-live .rfs-p {
+  transform-box: view-box;
+  transform-origin: 12px 12px;
+}
+
+/* Static toggle states that remain clear even under reduced motion */
+.rfs-icon-live[data-rfs-motion="part-shackle"][data-rfs-toggled="true"] .rfs-p-shackle {
+  transform-origin: 8px 10.5px;
+  transform: translateY(-2.4px) rotate(-26deg);
+  stroke: var(--rfs-beacon-ink);
+}
+
+.rfs-icon-live[data-rfs-motion="part-copy"][data-rfs-toggled="true"] .rfs-p-front,
+.rfs-icon-live[data-rfs-motion="part-copy"][data-rfs-toggled="true"] .rfs-p-back {
+  opacity: 0;
+}
+
+.rfs-icon-live[data-rfs-motion="part-copy"] .rfs-p-chk {
+  opacity: 0;
+  stroke-dasharray: 24;
+  stroke-dashoffset: 24;
+}
+
+.rfs-icon-live[data-rfs-motion="part-copy"][data-rfs-toggled="true"] .rfs-p-chk {
+  opacity: 1;
+  stroke-dashoffset: 0;
+  stroke: var(--rfs-signal);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  /* Hardware control motion opt-in */
+  input[type="checkbox"].rfs-check::before {
+    transition: clip-path calc(260ms * var(--rfs-motion-speed, 1)) var(--rfs-ease), opacity var(--rfs-dur-fast) var(--rfs-ease);
+  }
+  input[type="checkbox"].rfs-check:checked::after {
+    animation: rfs-ring-ping calc(var(--rfs-dur-detent) * var(--rfs-motion-speed, 1)) var(--rfs-ease);
+  }
+  input[type="checkbox"].rfs-check-shutter::before {
+    transition: clip-path calc(var(--rfs-dur-base) * var(--rfs-motion-speed, 1)) var(--rfs-ease);
+  }
+  input[type="checkbox"].rfs-check-shutter::after {
+    transition: transform calc(var(--rfs-dur-detent) * var(--rfs-motion-speed, 1)) var(--rfs-ease-detent), opacity var(--rfs-dur-fast) var(--rfs-ease);
+  }
+  input[type="checkbox"].rfs-check-token:is(:checked, :indeterminate) {
+    animation: rfs-latch-pinch calc(var(--rfs-dur-base) * var(--rfs-motion-speed, 1)) var(--rfs-ease-detent);
+  }
+
+  input[type="checkbox"].rfs-switch::after {
+    transition: transform calc(var(--rfs-dur-detent) * var(--rfs-motion-speed, 1)) var(--rfs-ease-detent), background-color var(--rfs-dur-fast) var(--rfs-ease);
+  }
+  input[type="checkbox"].rfs-switch:checked::after {
+    transform-origin: right center;
+  }
+  input[type="checkbox"].rfs-switch:active::after {
+    transform: scaleX(1.22);
+  }
+  input[type="checkbox"].rfs-switch:checked:active::after {
+    transform: translateX(1.35rem) scaleX(1.22);
+  }
+  input[type="checkbox"].rfs-switch-breaker::after,
+  input[type="checkbox"].rfs-switch-patch::after {
+    transition: transform calc(var(--rfs-dur-detent) * var(--rfs-motion-speed, 1)) var(--rfs-ease-detent), border-color var(--rfs-dur-fast) var(--rfs-ease);
+  }
+
+  [data-rfs-radio-jump="reticle"] input[type="radio"].rfs-radio:checked::after {
+    animation: rfs-reticle-lock calc(var(--rfs-dur-detent) * var(--rfs-motion-speed, 1)) var(--rfs-ease) calc(220ms * var(--rfs-motion-speed, 1));
+  }
+
+  .rfs-seg-indicator {
+    transition: transform calc(var(--rfs-dur-detent) * var(--rfs-motion-speed, 1)) var(--rfs-ease-detent);
+  }
+
+  input[type="range"].rfs-fader::-webkit-slider-thumb {
+    transition: transform var(--rfs-dur-fast) var(--rfs-ease);
+  }
+
+  /* Icon motion opt-in (whole-icon verbs + 12 multi-part silkscreen icons) */
+  .rfs-icon-live .rfs-icon,
+  .rfs-icon-live .rfs-p {
+    transition:
+      transform calc(220ms * var(--rfs-motion-speed, 1)) var(--rfs-ease-detent),
+      opacity calc(180ms * var(--rfs-motion-speed, 1)) var(--rfs-ease),
+      stroke calc(160ms * var(--rfs-motion-speed, 1)) var(--rfs-ease);
+  }
+
+  /* Whole-icon verbs (works on <use> sprites & inline SVGs) */
+  .rfs-icon-live[data-rfs-motion="nudge-x"]:hover .rfs-icon { transform: translateX(3px); }
+  .rfs-icon-live[data-rfs-motion="nudge-x"].is-anim-a .rfs-icon { animation: rfs-ico-nudgex-a calc(300ms * var(--rfs-motion-speed, 1)) var(--rfs-ease-detent); }
+  .rfs-icon-live[data-rfs-motion="nudge-x"].is-anim-b .rfs-icon { animation: rfs-ico-nudgex-b calc(300ms * var(--rfs-motion-speed, 1)) var(--rfs-ease-detent); }
+
+  .rfs-icon-live[data-rfs-motion="nudge-left"]:hover .rfs-icon { transform: translateX(-3px); }
+  .rfs-icon-live[data-rfs-motion="nudge-left"].is-anim-a .rfs-icon { animation: rfs-ico-nudgel-a calc(300ms * var(--rfs-motion-speed, 1)) var(--rfs-ease-detent); }
+  .rfs-icon-live[data-rfs-motion="nudge-left"].is-anim-b .rfs-icon { animation: rfs-ico-nudgel-b calc(300ms * var(--rfs-motion-speed, 1)) var(--rfs-ease-detent); }
+
+  .rfs-icon-live[data-rfs-motion="nudge-ne"]:hover .rfs-icon { transform: translate(2.5px, -2.5px); }
+  .rfs-icon-live[data-rfs-motion="nudge-ne"].is-anim-a .rfs-icon { animation: rfs-ico-nudgene-a calc(320ms * var(--rfs-motion-speed, 1)) var(--rfs-ease-detent); }
+  .rfs-icon-live[data-rfs-motion="nudge-ne"].is-anim-b .rfs-icon { animation: rfs-ico-nudgene-b calc(320ms * var(--rfs-motion-speed, 1)) var(--rfs-ease-detent); }
+
+  .rfs-icon-live[data-rfs-motion="nudge-y"]:hover .rfs-icon { transform: translateY(2.5px); }
+  .rfs-icon-live[data-rfs-motion="nudge-y"].is-anim-a .rfs-icon { animation: rfs-ico-drop-a calc(340ms * var(--rfs-motion-speed, 1)) var(--rfs-ease-detent); }
+  .rfs-icon-live[data-rfs-motion="nudge-y"].is-anim-b .rfs-icon { animation: rfs-ico-drop-b calc(340ms * var(--rfs-motion-speed, 1)) var(--rfs-ease-detent); }
+
+  .rfs-icon-live[data-rfs-motion="lift"]:hover .rfs-icon { transform: translateY(-2.5px); }
+  .rfs-icon-live[data-rfs-motion="lift"].is-anim-a .rfs-icon { animation: rfs-ico-lift-a calc(360ms * var(--rfs-motion-speed, 1)) var(--rfs-ease-detent); }
+  .rfs-icon-live[data-rfs-motion="lift"].is-anim-b .rfs-icon { animation: rfs-ico-lift-b calc(360ms * var(--rfs-motion-speed, 1)) var(--rfs-ease-detent); }
+
+  .rfs-icon-live[data-rfs-motion="drop"]:hover .rfs-icon { transform: translateY(2.5px); }
+  .rfs-icon-live[data-rfs-motion="drop"].is-anim-a .rfs-icon { animation: rfs-ico-drop-a calc(360ms * var(--rfs-motion-speed, 1)) var(--rfs-ease-detent); }
+  .rfs-icon-live[data-rfs-motion="drop"].is-anim-b .rfs-icon { animation: rfs-ico-drop-b calc(360ms * var(--rfs-motion-speed, 1)) var(--rfs-ease-detent); }
+
+  .rfs-icon-live[data-rfs-motion="detent-90"]:hover .rfs-icon { transform: rotate(90deg); }
+  .rfs-icon-live[data-rfs-motion="detent-90"].is-anim-a .rfs-icon { animation: rfs-ico-rot90-a calc(340ms * var(--rfs-motion-speed, 1)) var(--rfs-ease-detent); }
+  .rfs-icon-live[data-rfs-motion="detent-90"].is-anim-b .rfs-icon { animation: rfs-ico-rot90-b calc(340ms * var(--rfs-motion-speed, 1)) var(--rfs-ease-detent); }
+
+  .rfs-icon-live[data-rfs-motion="shudder"].is-anim-a .rfs-icon { animation: rfs-ico-shudder-a calc(360ms * var(--rfs-motion-speed, 1)) var(--rfs-ease); }
+  .rfs-icon-live[data-rfs-motion="shudder"].is-anim-b .rfs-icon { animation: rfs-ico-shudder-b calc(360ms * var(--rfs-motion-speed, 1)) var(--rfs-ease); }
+
+  .rfs-icon-live[data-rfs-motion="seat"]:hover .rfs-icon { transform: scale(1.08); }
+  .rfs-icon-live[data-rfs-motion="seat"].is-anim-a .rfs-icon { animation: rfs-ico-seat-a calc(320ms * var(--rfs-motion-speed, 1)) var(--rfs-ease-detent); }
+  .rfs-icon-live[data-rfs-motion="seat"].is-anim-b .rfs-icon { animation: rfs-ico-seat-b calc(320ms * var(--rfs-motion-speed, 1)) var(--rfs-ease-detent); }
+
+  /* Multi-part silkscreen choreography (12 signature icons from make-icons.py) */
+  .rfs-icon-live[data-rfs-motion="part-lid"]:hover .rfs-p-lid { transform-origin: 18px 6.5px; transform: translateY(-1.5px) rotate(16deg); }
+  .rfs-icon-live[data-rfs-motion="part-lid"].is-anim-a .rfs-p-lid { transform-origin: 18px 6.5px; animation: rfs-ico-lid-a calc(460ms * var(--rfs-motion-speed, 1)) var(--rfs-ease); }
+  .rfs-icon-live[data-rfs-motion="part-lid"].is-anim-b .rfs-p-lid { transform-origin: 18px 6.5px; animation: rfs-ico-lid-b calc(460ms * var(--rfs-motion-speed, 1)) var(--rfs-ease); }
+  .rfs-icon-live[data-rfs-motion="part-lid"].is-anim-a .rfs-p-bin { transform-origin: 12px 19px; animation: rfs-ico-bin-a calc(460ms * var(--rfs-motion-speed, 1)) var(--rfs-ease); }
+  .rfs-icon-live[data-rfs-motion="part-lid"].is-anim-b .rfs-p-bin { transform-origin: 12px 19px; animation: rfs-ico-bin-b calc(460ms * var(--rfs-motion-speed, 1)) var(--rfs-ease); }
+
+  .rfs-icon-live[data-rfs-motion="part-shackle"] .rfs-p-shackle { transform-origin: 8px 10.5px; }
+  .rfs-icon-live[data-rfs-motion="part-shackle"].is-anim-a .rfs-p-body { animation: rfs-ico-seat-a calc(280ms * var(--rfs-motion-speed, 1)) var(--rfs-ease-detent); }
+  .rfs-icon-live[data-rfs-motion="part-shackle"].is-anim-b .rfs-p-body { animation: rfs-ico-seat-b calc(280ms * var(--rfs-motion-speed, 1)) var(--rfs-ease-detent); }
+
+  .rfs-icon-live[data-rfs-motion="part-chime"].is-anim-a .rfs-p-bell { transform-origin: 12px 4px; animation: rfs-ico-bell-a calc(540ms * var(--rfs-motion-speed, 1)) var(--rfs-ease); }
+  .rfs-icon-live[data-rfs-motion="part-chime"].is-anim-b .rfs-p-bell { transform-origin: 12px 4px; animation: rfs-ico-bell-b calc(540ms * var(--rfs-motion-speed, 1)) var(--rfs-ease); }
+  .rfs-icon-live[data-rfs-motion="part-chime"].is-anim-a .rfs-p-clapper { transform-origin: 12px 6px; animation: rfs-ico-clap-a calc(560ms * var(--rfs-motion-speed, 1)) var(--rfs-ease); }
+  .rfs-icon-live[data-rfs-motion="part-chime"].is-anim-b .rfs-p-clapper { transform-origin: 12px 6px; animation: rfs-ico-clap-b calc(560ms * var(--rfs-motion-speed, 1)) var(--rfs-ease); }
+
+  .rfs-icon-live[data-rfs-motion="part-faders"][data-rfs-cue="1"] .rfs-p-f1 { transform: translateY(5px); }
+  .rfs-icon-live[data-rfs-motion="part-faders"][data-rfs-cue="1"] .rfs-p-f2 { transform: translateY(-6px); fill: var(--rfs-beacon-ink); }
+  .rfs-icon-live[data-rfs-motion="part-faders"][data-rfs-cue="1"] .rfs-p-f3 { transform: translateY(6px); }
+  .rfs-icon-live[data-rfs-motion="part-faders"][data-rfs-cue="2"] .rfs-p-f1 { transform: translateY(-3px); fill: var(--rfs-steel-ink); }
+  .rfs-icon-live[data-rfs-motion="part-faders"][data-rfs-cue="2"] .rfs-p-f2 { transform: translateY(2px); }
+  .rfs-icon-live[data-rfs-motion="part-faders"][data-rfs-cue="2"] .rfs-p-f3 { transform: translateY(-1px); fill: var(--rfs-beacon-ink); }
+
+  .rfs-icon-live[data-rfs-motion="part-shutter"]:hover .rfs-p-frame { transform: scale(0.92); }
+  .rfs-icon-live[data-rfs-motion="part-shutter"].is-anim-a .rfs-p-frame { animation: rfs-ico-shutter-a calc(340ms * var(--rfs-motion-speed, 1)) var(--rfs-ease-detent); }
+  .rfs-icon-live[data-rfs-motion="part-shutter"].is-anim-b .rfs-p-frame { animation: rfs-ico-shutter-b calc(340ms * var(--rfs-motion-speed, 1)) var(--rfs-ease-detent); }
+  .rfs-icon-live[data-rfs-motion="part-shutter"].is-anim-a .rfs-p-dot { animation: rfs-ico-flash-a calc(340ms * var(--rfs-motion-speed, 1)) var(--rfs-ease); }
+  .rfs-icon-live[data-rfs-motion="part-shutter"].is-anim-b .rfs-p-dot { animation: rfs-ico-flash-b calc(340ms * var(--rfs-motion-speed, 1)) var(--rfs-ease); }
+
+  .rfs-icon-live[data-rfs-motion="part-plunge"]:hover .rfs-p-arrow { transform: translateY(1.8px); }
+  .rfs-icon-live[data-rfs-motion="part-plunge"].is-anim-a .rfs-p-arrow { animation: rfs-ico-drop-a calc(380ms * var(--rfs-motion-speed, 1)) var(--rfs-ease-detent); }
+  .rfs-icon-live[data-rfs-motion="part-plunge"].is-anim-b .rfs-p-arrow { animation: rfs-ico-drop-b calc(380ms * var(--rfs-motion-speed, 1)) var(--rfs-ease-detent); }
+
+  .rfs-icon-live[data-rfs-motion="part-copy"]:hover .rfs-p-front { transform: translate(1.2px, 1.2px); }
+  .rfs-icon-live[data-rfs-motion="part-copy"][data-rfs-toggled="true"] .rfs-p-front,
+  .rfs-icon-live[data-rfs-motion="part-copy"][data-rfs-toggled="true"] .rfs-p-back { transform: scale(0.7); }
+  .rfs-icon-live[data-rfs-motion="part-copy"][data-rfs-toggled="true"] .rfs-p-chk {
+    transition: stroke-dashoffset calc(300ms * var(--rfs-motion-speed, 1)) var(--rfs-ease), opacity var(--rfs-dur-fast);
+  }
+
+  .rfs-icon-live[data-rfs-motion="part-verify"] .rfs-p-mark { stroke-dasharray: 18; stroke-dashoffset: 0; }
+  .rfs-icon-live[data-rfs-motion="part-verify"].is-anim-a .rfs-p-mark { animation: rfs-ico-draw-a calc(420ms * var(--rfs-motion-speed, 1)) var(--rfs-ease); }
+  .rfs-icon-live[data-rfs-motion="part-verify"].is-anim-b .rfs-p-mark { animation: rfs-ico-draw-b calc(420ms * var(--rfs-motion-speed, 1)) var(--rfs-ease); }
+  .rfs-icon-live[data-rfs-motion="part-verify"].is-anim-a .rfs-p-shield { animation: rfs-ico-seat-a calc(320ms * var(--rfs-motion-speed, 1)) var(--rfs-ease-detent); }
+  .rfs-icon-live[data-rfs-motion="part-verify"].is-anim-b .rfs-p-shield { animation: rfs-ico-seat-b calc(320ms * var(--rfs-motion-speed, 1)) var(--rfs-ease-detent); }
+
+  .rfs-icon-live[data-rfs-motion="part-spin"]:hover .rfs-p-spin { transform: rotate(35deg); }
+  .rfs-icon-live[data-rfs-motion="part-spin"].is-anim-a .rfs-p-spin { animation: rfs-ico-spin-a calc(480ms * var(--rfs-motion-speed, 1)) var(--rfs-ease-detent); }
+  .rfs-icon-live[data-rfs-motion="part-spin"].is-anim-b .rfs-p-spin { animation: rfs-ico-spin-b calc(480ms * var(--rfs-motion-speed, 1)) var(--rfs-ease-detent); }
+
+  .rfs-icon-live[data-rfs-motion="part-arcs"].is-anim-a .rfs-p-w1 { animation: rfs-ico-arc-a calc(420ms * var(--rfs-motion-speed, 1)) var(--rfs-ease) 0ms; }
+  .rfs-icon-live[data-rfs-motion="part-arcs"].is-anim-a .rfs-p-w2 { animation: rfs-ico-arc-a calc(420ms * var(--rfs-motion-speed, 1)) var(--rfs-ease) calc(70ms * var(--rfs-motion-speed, 1)); }
+  .rfs-icon-live[data-rfs-motion="part-arcs"].is-anim-a .rfs-p-w3 { animation: rfs-ico-arc-a calc(420ms * var(--rfs-motion-speed, 1)) var(--rfs-ease) calc(140ms * var(--rfs-motion-speed, 1)); }
+  .rfs-icon-live[data-rfs-motion="part-arcs"].is-anim-b .rfs-p-w1 { animation: rfs-ico-arc-b calc(420ms * var(--rfs-motion-speed, 1)) var(--rfs-ease) 0ms; }
+  .rfs-icon-live[data-rfs-motion="part-arcs"].is-anim-b .rfs-p-w2 { animation: rfs-ico-arc-b calc(420ms * var(--rfs-motion-speed, 1)) var(--rfs-ease) calc(70ms * var(--rfs-motion-speed, 1)); }
+  .rfs-icon-live[data-rfs-motion="part-arcs"].is-anim-b .rfs-p-w3 { animation: rfs-ico-arc-b calc(420ms * var(--rfs-motion-speed, 1)) var(--rfs-ease) calc(140ms * var(--rfs-motion-speed, 1)); }
+
+  .rfs-icon-live[data-rfs-motion="part-prompt"]:hover .rfs-p-prompt { transform: translateX(1.4px); }
+  .rfs-icon-live[data-rfs-motion="part-prompt"].is-anim-a .rfs-p-prompt { animation: rfs-ico-nudgex-a calc(300ms * var(--rfs-motion-speed, 1)) var(--rfs-ease-detent); }
+  .rfs-icon-live[data-rfs-motion="part-prompt"].is-anim-b .rfs-p-prompt { animation: rfs-ico-nudgex-b calc(300ms * var(--rfs-motion-speed, 1)) var(--rfs-ease-detent); }
+  .rfs-icon-live[data-rfs-motion="part-prompt"].is-anim-a .rfs-p-cur { animation: rfs-ico-blink-a calc(460ms * var(--rfs-motion-speed, 1)) steps(2, start); }
+  .rfs-icon-live[data-rfs-motion="part-prompt"].is-anim-b .rfs-p-cur { animation: rfs-ico-blink-b calc(460ms * var(--rfs-motion-speed, 1)) steps(2, start); }
+
+  .rfs-icon-live[data-rfs-motion="part-ratchet"] .rfs-p-gear {
+    transform: rotate(var(--rfs-gear-deg, 0deg));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .rfs-progress { --progress-bar-indeterminate-animation-duration: 7s; }
+  .rfs-progress:not(:indeterminate) { --progress-bar-animation: none; }
+  progress.rfs-progress-dmx { --rfs-dmx-dur: 7s; }
+  progress.rfs-progress-ring:indeterminate {
+    animation: rfs-spin 6s linear infinite;
+    --rfs-arc-start: 0deg;
+    --rfs-arc-end: 148deg;
+  }
+  .rfs-led-ladder[data-indet="true"] .rfs-led-cell { animation-duration: 6s; }
+  .rfs-led-cell.is-head { animation: none; }
+}
+
+@keyframes rfs-ring-ping { 0%{opacity:0.75;transform:scale(0.84)} 100%{opacity:0;transform:scale(1.16)} }
+@keyframes rfs-latch-pinch { 0%{transform:scaleX(1)} 38%{transform:scaleX(0.86)} 100%{transform:scaleX(1)} }
+@keyframes rfs-reticle-lock { 0%{opacity:0.85;transform:scale(1.45)} 100%{opacity:0;transform:scale(0.95)} }
+@keyframes rfs-ico-nudgex-a { 0%{transform:translateX(0)} 42%{transform:translateX(3px)} 100%{transform:translateX(0)} }
+@keyframes rfs-ico-nudgex-b { 0%{transform:translateX(0)} 42%{transform:translateX(3px)} 100%{transform:translateX(0)} }
+@keyframes rfs-ico-nudgel-a { 0%{transform:translateX(0)} 42%{transform:translateX(-3px)} 100%{transform:translateX(0)} }
+@keyframes rfs-ico-nudgel-b { 0%{transform:translateX(0)} 42%{transform:translateX(-3px)} 100%{transform:translateX(0)} }
+@keyframes rfs-ico-nudgene-a { 0%{transform:translate(0,0)} 42%{transform:translate(2.5px,-2.5px)} 100%{transform:translate(0,0)} }
+@keyframes rfs-ico-nudgene-b { 0%{transform:translate(0,0)} 42%{transform:translate(2.5px,-2.5px)} 100%{transform:translate(0,0)} }
+@keyframes rfs-ico-drop-a { 0%{transform:translateY(0)} 42%{transform:translateY(3.2px)} 72%{transform:translateY(-1px)} 100%{transform:translateY(0)} }
+@keyframes rfs-ico-drop-b { 0%{transform:translateY(0)} 42%{transform:translateY(3.2px)} 72%{transform:translateY(-1px)} 100%{transform:translateY(0)} }
+@keyframes rfs-ico-lift-a { 0%{transform:translateY(0)} 42%{transform:translateY(-3.2px)} 72%{transform:translateY(1px)} 100%{transform:translateY(0)} }
+@keyframes rfs-ico-lift-b { 0%{transform:translateY(0)} 42%{transform:translateY(-3.2px)} 72%{transform:translateY(1px)} 100%{transform:translateY(0)} }
+@keyframes rfs-ico-rot90-a { 0%{transform:rotate(0deg)} 100%{transform:rotate(90deg)} }
+@keyframes rfs-ico-rot90-b { 0%{transform:rotate(0deg)} 100%{transform:rotate(90deg)} }
+@keyframes rfs-ico-shudder-a { 0%,100%{transform:translateX(0)} 24%{transform:translateX(-2.5px)} 52%{transform:translateX(2.2px)} 78%{transform:translateX(-1px)} }
+@keyframes rfs-ico-shudder-b { 0%,100%{transform:translateX(0)} 24%{transform:translateX(-2.5px)} 52%{transform:translateX(2.2px)} 78%{transform:translateX(-1px)} }
+@keyframes rfs-ico-seat-a { 0%{transform:scale(1)} 40%{transform:scale(0.91,1.07)} 74%{transform:scale(1.04,0.97)} 100%{transform:scale(1)} }
+@keyframes rfs-ico-seat-b { 0%{transform:scale(1)} 40%{transform:scale(0.91,1.07)} 74%{transform:scale(1.04,0.97)} 100%{transform:scale(1)} }
+@keyframes rfs-ico-lid-a { 0%{transform:translateY(0) rotate(0)} 38%{transform:translateY(-2.8px) rotate(28deg)} 76%{transform:translateY(0.6px) rotate(-4deg)} 100%{transform:translateY(0) rotate(0)} }
+@keyframes rfs-ico-lid-b { 0%{transform:translateY(0) rotate(0)} 38%{transform:translateY(-2.8px) rotate(28deg)} 76%{transform:translateY(0.6px) rotate(-4deg)} 100%{transform:translateY(0) rotate(0)} }
+@keyframes rfs-ico-bin-a { 0%,55%{transform:scaleY(1)} 75%{transform:scaleY(0.9)} 100%{transform:scaleY(1)} }
+@keyframes rfs-ico-bin-b { 0%,55%{transform:scaleY(1)} 75%{transform:scaleY(0.9)} 100%{transform:scaleY(1)} }
+@keyframes rfs-ico-bell-a { 0%{transform:rotate(0)} 22%{transform:rotate(17deg)} 46%{transform:rotate(-14deg)} 70%{transform:rotate(8deg)} 88%{transform:rotate(-3deg)} 100%{transform:rotate(0)} }
+@keyframes rfs-ico-bell-b { 0%{transform:rotate(0)} 22%{transform:rotate(17deg)} 46%{transform:rotate(-14deg)} 70%{transform:rotate(8deg)} 88%{transform:rotate(-3deg)} 100%{transform:rotate(0)} }
+@keyframes rfs-ico-clap-a { 0%{transform:translateX(0)} 28%{transform:translateX(-2px)} 54%{transform:translateX(1.8px)} 78%{transform:translateX(-0.8px)} 100%{transform:translateX(0)} }
+@keyframes rfs-ico-clap-b { 0%{transform:translateX(0)} 28%{transform:translateX(-2px)} 54%{transform:translateX(1.8px)} 78%{transform:translateX(-0.8px)} 100%{transform:translateX(0)} }
+@keyframes rfs-ico-shutter-a { 0%{transform:scale(1)} 36%{transform:scale(0.78)} 74%{transform:scale(1.06)} 100%{transform:scale(1)} }
+@keyframes rfs-ico-shutter-b { 0%{transform:scale(1)} 36%{transform:scale(0.78)} 74%{transform:scale(1.06)} 100%{transform:scale(1)} }
+@keyframes rfs-ico-flash-a { 0%,100%{transform:scale(1);stroke:currentColor} 40%{transform:scale(1.38);stroke:var(--rfs-beacon-ink)} }
+@keyframes rfs-ico-flash-b { 0%,100%{transform:scale(1);stroke:currentColor} 40%{transform:scale(1.38);stroke:var(--rfs-beacon-ink)} }
+@keyframes rfs-ico-draw-a { 0%{stroke-dashoffset:18;stroke:var(--rfs-signal)} 100%{stroke-dashoffset:0;stroke:var(--rfs-signal)} }
+@keyframes rfs-ico-draw-b { 0%{stroke-dashoffset:18;stroke:var(--rfs-signal)} 100%{stroke-dashoffset:0;stroke:var(--rfs-signal)} }
+@keyframes rfs-ico-spin-a { from{transform:rotate(0deg)} to{transform:rotate(360deg)} }
+@keyframes rfs-ico-spin-b { from{transform:rotate(0deg)} to{transform:rotate(360deg)} }
+@keyframes rfs-ico-arc-a { 0%{opacity:0.2;stroke:var(--rfs-beacon-ink)} 50%{opacity:1;stroke:var(--rfs-beacon-ink)} 100%{opacity:1;stroke:currentColor} }
+@keyframes rfs-ico-arc-b { 0%{opacity:0.2;stroke:var(--rfs-beacon-ink)} 50%{opacity:1;stroke:var(--rfs-beacon-ink)} 100%{opacity:1;stroke:currentColor} }
+@keyframes rfs-ico-blink-a { 0%,100%{opacity:1} 50%{opacity:0.15;stroke:var(--rfs-beacon-ink)} }
+@keyframes rfs-ico-blink-b { 0%,100%{opacity:1} 50%{opacity:0.15;stroke:var(--rfs-beacon-ink)} }
 
 /* ---- Layout Card, Key-Value Metadata & Skeleton Placeholder ---- */
 .rfs-card {
@@ -1130,5 +2290,17 @@ input[type="checkbox"].rfs-switch[data-switch-fallback]:checked::after {
   .rfs-popover-panel,
   .rfs-tooltip {
     border: 2px solid CanvasText;
+  }
+  input[type="checkbox"].rfs-check:is(:checked, :indeterminate)::before,
+  input[type="checkbox"].rfs-check-shutter:is(:checked, :indeterminate)::after {
+    background-color: HighlightText;
+  }
+  progress.rfs-progress-ring {
+    forced-color-adjust: none;
+    --rfs-steel-ink: CanvasText;
+    --rfs-ring-fill: Highlight;
+    --rfs-beacon: Highlight;
+    --rfs-signal: Highlight;
+    --rfs-ring-track: Canvas;
   }
 }

@@ -1,4 +1,4 @@
-# rfs-brand — Real-Fruit-Snacks Cyclorama Dawn Brand System (v2.2.0)
+# rfs-brand — Real-Fruit-Snacks Cyclorama Dawn Brand System (v2.3.0)
 
 > Authoritative design system, agent skill, drop-in CSS/Tailwind/DTCG/TypeScript tokens, 60-icon Precision Silkscreen library, and deterministic SVG cover/mark generators for Real-Fruit-Snacks (RFS). Tagline: "Built local-first." World: Cyclorama Dawn (Glacial Steel & Maritime Beacon Orange). Modes: LX 263 Beacon Horizon (dark default, `#050507`) and LX 512 Alabaster Day (light opt-in, `#F5F7F9`).
 
@@ -23,7 +23,8 @@
 ## Machine-Readable Tokens & Drop-In Kits
 
 - [CSS Custom Properties (`rfs.css`)](https://real-fruit-snacks.github.io/rfs-brand/assets/rfs.css): Full dark/light tokens, data-viz series, syntax roles, forced-colors, print, and `.rfs-shell` lock.
-- [Component Kit CSS (`rfs-components.css`)](https://real-fruit-snacks.github.io/rfs-brand/assets/rfs-components.css): Buttons, `D · Terminal Token` badges, dialogs, semantic toasts, popovers, tabs, accordions, states.
+- [Component Kit CSS (`rfs-components.css`)](https://real-fruit-snacks.github.io/rfs-brand/assets/rfs-components.css): Buttons, `D · Terminal Token` badges, custom animated hardware controls (checkboxes, switches, jumping radios, faders), 4 upgraded `<progress>` loaders (DMX Cue Meter, Alive Trace, LED Ladder, Precision Ring), opt-in 60-icon click motion, dialogs, semantic toasts, popovers, tabs, accordions, states.
+- [Motion Controller JS (`rfs-motion.js`)](https://real-fruit-snacks.github.io/rfs-brand/assets/rfs-motion.js): Zero-dependency drop-in progressive enhancer for `[data-rfs-radio-jump]`, `[data-rfs-segmented]`, `.rfs-fader`, `[data-rfs-arm]`, `[data-rfs-led-ladder]`, `.rfs-progress-ring`, and `[data-rfs-icon-click]`.
 - [Tailwind CSS v4 Bridge (`rfs-tailwind.css`)](https://real-fruit-snacks.github.io/rfs-brand/assets/rfs-tailwind.css): Theme-reactive `@theme inline` mapping for Tailwind CSS v4.
 - [W3C DTCG Tokens (`rfs.dtcg.json`)](https://real-fruit-snacks.github.io/rfs-brand/assets/rfs.dtcg.json): Standards-compliant `$type`/`$value`/`$description` tokens for Style Dictionary & Figma.
 - [TypeScript Tokens (`rfs-tokens.ts`)](https://real-fruit-snacks.github.io/rfs-brand/assets/rfs-tokens.ts): Typed `as const` exports for Vite/TS/Canvas/WebGL apps.
