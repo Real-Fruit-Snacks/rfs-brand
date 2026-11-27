@@ -63,8 +63,8 @@
   :has(> head > meta[name="color-scheme"][content="light"]),
   [data-theme="light"]
 ) {
-  --wash-steel: rgba(31, 84, 122, 0.11);
-  --wash-beacon: rgba(240, 110, 43, 0.11);
+  --wash-steel: rgba(31, 84, 122, 0.36);
+  --wash-beacon: rgba(240, 110, 43, 0.34);
   --mark-beacon-bg: color-mix(in oklab, var(--rfs-beacon) 18%, transparent);
   --mark-steel-bg: color-mix(in oklab, var(--rfs-steel) 15%, transparent);
 }
