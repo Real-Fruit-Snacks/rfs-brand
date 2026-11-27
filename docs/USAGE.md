@@ -24,9 +24,9 @@ Each GitHub release ships the full kit zip alongside the standalone CSS, DTCG/Ta
 | Component kit CSS | https://github.com/Real-Fruit-Snacks/rfs-brand/releases/latest/download/rfs-components.css |
 | Icon sprite (60 SVGs) | https://github.com/Real-Fruit-Snacks/rfs-brand/releases/latest/download/rfs-icons.svg |
 | Design tokens (JSON) | https://github.com/Real-Fruit-Snacks/rfs-brand/releases/latest/download/rfs.tokens.json |
-| W3C DTCG tokens | https://github.com/Real-Fruit-Snacks/rfs-brand/releases/latest/download/rfs.dtcg.json |
-| Tailwind CSS v4 `@theme` | https://github.com/Real-Fruit-Snacks/rfs-brand/releases/latest/download/rfs-tailwind.css |
-| TypeScript tokens | https://github.com/Real-Fruit-Snacks/rfs-brand/releases/latest/download/rfs-tokens.ts |
+| W3C DTCG tokens | https://real-fruit-snacks.github.io/rfs-brand/assets/rfs.dtcg.json |
+| Tailwind CSS v4 `@theme` | https://real-fruit-snacks.github.io/rfs-brand/assets/rfs-tailwind.css |
+| TypeScript tokens | https://real-fruit-snacks.github.io/rfs-brand/assets/rfs-tokens.ts |
 | Agent brand rules | https://github.com/Real-Fruit-Snacks/rfs-brand/releases/latest/download/BRAND-RULES.md |
 | Hosted agent index (`llms.txt`) | https://real-fruit-snacks.github.io/rfs-brand/llms.txt |
 
