@@ -338,11 +338,25 @@
   const ldSimBtn = document.getElementById("ld-sim-btn");
 
   if (ldDmx && ldBeam && ldLed && ldRing && ldScrub) {
+    const ldWorkbench = document.getElementById("loaders");
     let ldIndet = false;
-    let ldSimTimer = 0;
+    let ldSimRaf = 0;
 
-    const renderAllLoaders = (val) => {
-      if (ldScrubOut) ldScrubOut.innerHTML = `<span class="k">${ldIndet ? "auto" : `${val}%`}</span>`;
+    const setLiveScrub = (active) => {
+      if (ldWorkbench) ldWorkbench.dataset.rfsLiveScrub = active ? "true" : "false";
+    };
+
+    const stopSim = () => {
+      if (ldSimRaf) {
+        cancelAnimationFrame(ldSimRaf);
+        ldSimRaf = 0;
+      }
+    };
+
+    const renderAllLoaders = (rawVal) => {
+      const val = Math.max(0, Math.min(100, Number(rawVal) || 0));
+      const pct = Math.round(val);
+      if (ldScrubOut) ldScrubOut.innerHTML = `<span class="k">${ldIndet ? "auto" : `${pct}%`}</span>`;
       if (ldIndet) {
         [ldDmx, ldBeam, ldRing].forEach((el) => {
           el.removeAttribute("value");
@@ -355,21 +369,22 @@
         if (ldBeamVal) ldBeamVal.textContent = "[busy]";
         if (ldLedVal) ldLedVal.textContent = "LIVE";
       } else {
-        const done = val >= 100;
-        const lit = Math.round((val / 100) * 20);
+        const done = val >= 99.95;
+        const attrVal = done ? "100" : val.toFixed(2);
+        const lit = done ? 20 : Math.round((val / 100) * 20);
         [ldDmx, ldBeam, ldRing].forEach((el) => {
-          el.setAttribute("value", String(val));
-          el.setAttribute("aria-valuetext", `${val}%`);
+          el.setAttribute("value", attrVal);
+          el.setAttribute("aria-valuetext", `${pct}%`);
         });
-        if (window.RFS && window.RFS.setLadder) window.RFS.setLadder(ldLed, val);
+        if (window.RFS && window.RFS.setLadder) window.RFS.setLadder(ldLed, done ? 100 : val);
         if (window.RFS && window.RFS.syncRing) window.RFS.syncRing(ldRing);
-        if (ldRingTxt) ldRingTxt.textContent = done ? "OK" : `${val}%`;
+        if (ldRingTxt) ldRingTxt.textContent = done ? "OK" : `${pct}%`;
         if (ldDmxVal) {
-          ldDmxVal.textContent = done ? "[ok] 100%" : `${val}%`;
+          ldDmxVal.textContent = done ? "[ok] 100%" : `${pct}%`;
           ldDmxVal.style.color = done ? "var(--rfs-signal)" : "var(--rfs-beacon-ink)";
         }
         if (ldBeamVal) {
-          ldBeamVal.textContent = done ? "[ok] 100%" : `${val}%`;
+          ldBeamVal.textContent = done ? "[ok] 100%" : `${pct}%`;
           ldBeamVal.style.color = done ? "var(--rfs-signal)" : "var(--rfs-steel-ink)";
         }
         if (ldLedVal) {
@@ -380,7 +395,8 @@
     };
 
     const setLoaderMode = (indet) => {
-      clearInterval(ldSimTimer);
+      stopSim();
+      setLiveScrub(false);
       ldIndet = indet;
       if (ldDetBtn) ldDetBtn.setAttribute("aria-pressed", String(!indet));
       if (ldIndBtn) ldIndBtn.setAttribute("aria-pressed", String(indet));
@@ -390,27 +406,44 @@
 
     if (ldDetBtn) ldDetBtn.addEventListener("click", () => setLoaderMode(false));
     if (ldIndBtn) ldIndBtn.addEventListener("click", () => setLoaderMode(true));
+
+    ldScrub.addEventListener("pointerdown", () => setLiveScrub(true));
+    ["pointerup", "pointercancel", "blur", "change"].forEach((ev) => {
+      ldScrub.addEventListener(ev, () => {
+        if (!ldSimRaf) setLiveScrub(false);
+      });
+    });
+
     ldScrub.addEventListener("input", () => {
-      clearInterval(ldSimTimer);
+      stopSim();
+      setLiveScrub(true);
       if (ldIndet) setLoaderMode(false);
       renderAllLoaders(Number(ldScrub.value));
     });
 
     if (ldSimBtn) {
       ldSimBtn.addEventListener("click", () => {
-        clearInterval(ldSimTimer);
+        stopSim();
         if (ldIndet) setLoaderMode(false);
-        let v = 0;
-        ldScrub.value = "0";
-        ldScrub.style.setProperty("--control-value", "0");
-        renderAllLoaders(0);
-        ldSimTimer = setInterval(() => {
-          v = Math.min(100, v + (v < 70 ? 6 : 4));
-          ldScrub.value = String(v);
-          ldScrub.style.setProperty("--control-value", String(v));
-          renderAllLoaders(v);
-          if (v >= 100) clearInterval(ldSimTimer);
-        }, 55);
+        setLiveScrub(true);
+        const dur = 2100;
+        const start = performance.now();
+        const step = (now) => {
+          const t = Math.min(1, (now - start) / dur);
+          // Smooth S-curve console ramp (zero stepped jitter)
+          const eased = t < 0.5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2;
+          const v = eased * 100;
+          ldScrub.value = t >= 1 ? "100" : v.toFixed(2);
+          ldScrub.style.setProperty("--control-value", ldScrub.value);
+          renderAllLoaders(t >= 1 ? 100 : v);
+          if (t < 1) {
+            ldSimRaf = requestAnimationFrame(step);
+          } else {
+            ldSimRaf = 0;
+            setLiveScrub(false);
+          }
+        };
+        ldSimRaf = requestAnimationFrame(step);
       });
     }
     renderAllLoaders(68);

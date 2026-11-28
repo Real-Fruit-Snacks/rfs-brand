@@ -543,14 +543,14 @@
   container-type: inline-size;
   --rfs-prog-speed: var(--rfs-motion-speed, 1);
   --progress-bar-fill:
-    linear-gradient(110deg, transparent 36%, rgba(255, 255, 255, 0.32) 50%, transparent 64%),
+    linear-gradient(110deg, transparent 38%, rgba(255, 255, 255, 0.28) 50%, transparent 62%),
     var(--rfs-horizon-rule);
   --progress-bar-indeterminate-size: 36%;
   --progress-bar-indeterminate-animation-duration: calc(1.6s * var(--rfs-prog-speed));
 }
 
 .rfs-progress:not(:indeterminate) {
-  --progress-bar-animation: rfs-beam-sheen calc(1.85s * var(--rfs-prog-speed)) linear infinite;
+  --progress-bar-animation: rfs-beam-sheen calc(2.1s * var(--rfs-prog-speed)) linear infinite;
 }
 
 .rfs-progress[value="100"] {
@@ -578,7 +578,7 @@
 
 .rfs-progress::-webkit-progress-value {
   background: var(--progress-bar-fill);
-  background-size: 220% 100%, 100% 100%;
+  background-size: 260% 100%, 100% 100%;
   border-radius: 4px;
   transition: inline-size var(--rfs-dur-base) var(--rfs-ease);
   animation: var(--progress-bar-animation, revert-rule);
@@ -586,7 +586,7 @@
 
 .rfs-progress::-moz-progress-bar {
   background: var(--progress-bar-fill);
-  background-size: 220% 100%, 100% 100%;
+  background-size: 260% 100%, 100% 100%;
   border-radius: 4px;
   transition: inline-size var(--rfs-dur-base) var(--rfs-ease);
   animation: var(--progress-bar-animation, revert-rule);
@@ -694,8 +694,17 @@ progress.rfs-progress-dmx::-moz-progress-bar {
 }
 
 .rfs-led-ladder[data-indet="true"] .rfs-led-cell {
-  animation: rfs-led-wave calc(1.3s * var(--rfs-motion-speed, 1)) linear infinite;
+  animation: rfs-led-wave calc(1.35s * var(--rfs-motion-speed, 1)) ease-in-out infinite;
   animation-delay: calc((var(--n, 19) - var(--i, 0)) * -55ms * var(--rfs-motion-speed, 1));
+}
+
+/* Zero-lag 1:1 tracking during live fader scrubbing or 60/120fps rAF simulation */
+[data-rfs-live-scrub="true"] .rfs-progress::-webkit-progress-value,
+[data-rfs-live-scrub="true"] .rfs-progress::-moz-progress-bar,
+[data-rfs-live-scrub="true"] progress.rfs-progress-dmx::-webkit-progress-value,
+[data-rfs-live-scrub="true"] progress.rfs-progress-dmx::-moz-progress-bar,
+[data-rfs-live-scrub="true"] progress.rfs-progress-ring {
+  transition-duration: 0ms !important;
 }
 
 /* 4. Precision Progress Ring & Dawn Ring Spinner (native <progress>, background-image ONLY so border-area never resets) */
@@ -818,20 +827,19 @@ progress.rfs-spinner {
 }
 
 @keyframes rfs-beam-sheen {
-  from { background-position: 180% 0, 0 0; }
-  to { background-position: -80% 0, 0 0; }
+  from { background-position: 160% 0, 0 0; }
+  to { background-position: -160% 0, 0 0; }
 }
 
 @keyframes rfs-race-pos {
   from, to { margin-right: auto; }
-  from { translate: -100%; }
+  from { translate: -105%; }
   to { translate: 105cqi; }
 }
 
 @keyframes rfs-race-len {
-  0% { inline-size: 16%; }
-  45% { inline-size: 46%; }
-  100% { inline-size: 18%; }
+  0%, 100% { inline-size: 18%; }
+  48% { inline-size: 46%; }
 }
 
 @keyframes rfs-led-pulse {
