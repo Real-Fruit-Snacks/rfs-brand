@@ -207,9 +207,11 @@ p code, li code, td code, dd code, figcaption code {
   min-width: 0;
   display: flex;
   align-items: center;
-  gap: 0.12rem;
+  justify-content: safe center;
+  gap: 0.22rem;
   overflow-x: auto;
   scrollbar-width: none;
+  scroll-target-group: auto;
 }
 
 @supports not (scrollbar-width: none) {
@@ -220,11 +222,11 @@ p code, li code, td code, dd code, figcaption code {
   flex: none;
   display: inline-flex;
   align-items: center;
-  min-block-size: 2.15rem;
-  padding: 0.28rem 0.36rem;
+  min-block-size: 2.2rem;
+  padding: 0.3rem 0.56rem;
   border-radius: var(--rfs-radius-sm);
   color: var(--rfs-mute);
-  font-size: 0.74rem;
+  font-size: 0.78rem;
   font-weight: 500;
   text-decoration: none;
   border-bottom: 2px solid transparent;
@@ -3895,4 +3897,279 @@ h3 {
 
 .icon-tile:not([data-rfs-toggled="true"]) .rfs-p-chk {
   opacity: 0;
+}
+
+/* ---- v2.4 Layout Refactor: Hero Quick-Kit, 8-Chapter Workspace, Sticky TOC Rail & Wide CAD Sheets ---- */
+:target {
+  scroll-margin-top: 1.5rem;
+}
+
+.hero-quick-kit {
+  margin-top: 1.15rem;
+  padding: 0.55rem 0.7rem;
+  border-radius: var(--rfs-radius-sm);
+  border: 1px solid var(--rfs-line);
+  background: color-mix(in oklab, var(--rfs-code-bg) 92%, transparent);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem 0.65rem;
+  max-inline-size: 38rem;
+}
+
+.hero-quick-kit .quick-cmd {
+  flex: 1 1 14rem;
+  min-inline-size: 0;
+  font: 500 0.76rem/1.3 var(--rfs-font-mono);
+  color: var(--rfs-text);
+  overflow-wrap: anywhere;
+}
+
+.hero-quick-kit .quick-jump {
+  font: 600 0.72rem/1.2 var(--rfs-font-mono);
+  color: var(--rfs-steel-ink);
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+@media (hover: hover) {
+  .hero-quick-kit .quick-jump:hover {
+    color: var(--rfs-beacon-ink);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+}
+
+/* Mobile / Tablet On-Demand Jump Index (< 76em) */
+.toc-mobile-wrap {
+  padding-top: 1.25rem;
+}
+
+.toc-mobile {
+  border-radius: var(--rfs-radius-md);
+  border: 1px solid var(--rfs-line);
+  background: var(--rfs-surface);
+  overflow: clip;
+}
+
+.toc-mobile summary {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  padding: 0.7rem 0.95rem;
+  cursor: pointer;
+}
+
+.toc-mobile summary::-webkit-details-marker {
+  display: none;
+}
+
+.toc-mobile-hint {
+  font: 600 0.72rem/1 var(--rfs-font-mono);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--rfs-mute);
+}
+
+.toc-mobile[open] .toc-mobile-hint {
+  color: var(--rfs-beacon-ink);
+}
+
+.toc-mobile-grid {
+  padding: 0.75rem 0.95rem 1rem;
+  border-top: 1px solid var(--rfs-line);
+  background: var(--rfs-rail);
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(11.5rem, 1fr));
+  gap: 0.85rem 1.15rem;
+}
+
+/* Desktop 2-Column Manual Shell (>= 76em) */
+.manual-shell {
+  min-inline-size: 0;
+}
+
+.manual-content {
+  min-inline-size: 0;
+}
+
+.toc-rail {
+  display: none;
+}
+
+@media (min-width: 76em) {
+  .toc-mobile-wrap {
+    display: none;
+  }
+
+  .manual-shell {
+    display: grid;
+    grid-template-columns: minmax(0, 14.5rem) minmax(0, 1fr);
+    gap: clamp(1.5rem, 2.8vw, 2.75rem);
+    align-items: start;
+    max-inline-size: 94rem;
+    margin-inline: auto;
+    padding-inline: var(--gutter);
+  }
+
+  .toc-rail {
+    display: grid;
+    gap: 0.65rem;
+    position: sticky;
+    inset-block-start: 1.5rem;
+    align-self: start;
+    margin-block: 2.25rem;
+    max-block-size: calc(100dvb - var(--header-h) - 3rem);
+    overflow-y: auto;
+    scrollbar-gutter: stable;
+    overscroll-behavior: contain;
+    padding: 0.85rem 0.75rem;
+    border-radius: var(--rfs-radius-md);
+    border: 1px solid var(--rfs-line);
+    background: var(--rfs-rail);
+  }
+
+  .manual-content .doc-section > .wrap {
+    max-inline-size: none;
+    padding-inline: 0;
+  }
+}
+
+.toc-rail-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.45rem;
+  padding-bottom: 0.55rem;
+  border-bottom: 1px solid var(--rfs-line);
+}
+
+.toc-rail-meta {
+  font: 500 0.65rem/1 var(--rfs-font-mono);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--rfs-mute);
+}
+
+.toc-rail-nav {
+  display: grid;
+  gap: 0.45rem;
+  scroll-target-group: auto;
+}
+
+.toc-group {
+  display: grid;
+  gap: 0.14rem;
+}
+
+.toc-ch {
+  display: flex;
+  align-items: baseline;
+  gap: 0.45rem;
+  padding: 0.28rem 0.45rem;
+  border-radius: var(--rfs-radius-token);
+  border-inline-start: 2px solid transparent;
+  color: var(--rfs-text);
+  font: 600 0.77rem/1.25 var(--rfs-font-sans);
+  text-decoration: none;
+  transition: color var(--rfs-dur-fast) var(--rfs-ease),
+              border-color var(--rfs-dur-fast) var(--rfs-ease),
+              background-color var(--rfs-dur-fast) var(--rfs-ease);
+}
+
+.toc-n {
+  font: 600 0.66rem/1 var(--rfs-font-mono);
+  color: var(--rfs-steel-ink);
+  font-variant-numeric: tabular-nums;
+}
+
+.toc-subs {
+  display: grid;
+  gap: 0.08rem;
+  padding-inline-start: 0.85rem;
+}
+
+.toc-subs a {
+  display: block;
+  padding: 0.18rem 0.45rem;
+  border-radius: var(--rfs-radius-token);
+  border-inline-start: 1.5px solid var(--rfs-line);
+  color: var(--rfs-mute);
+  font: 400 0.72rem/1.3 var(--rfs-font-mono);
+  text-decoration: none;
+  transition: color var(--rfs-dur-fast) var(--rfs-ease),
+              border-color var(--rfs-dur-fast) var(--rfs-ease),
+              background-color var(--rfs-dur-fast) var(--rfs-ease);
+}
+
+@media (hover: hover) {
+  .toc-ch:hover,
+  .toc-subs a:hover {
+    color: var(--rfs-text);
+    background: color-mix(in oklab, var(--rfs-surface) 80%, transparent);
+  }
+}
+
+.toc-rail-nav a:is(:target-current, .target-current) {
+  color: var(--rfs-text);
+  font-weight: 600;
+  border-inline-start-color: var(--rfs-beacon-ink);
+  background: color-mix(in oklab, var(--rfs-surface) 92%, transparent);
+}
+
+.toc-rail-nav .toc-ch:is(:target-current, .target-current) .toc-n {
+  color: var(--rfs-beacon-ink);
+}
+
+/* Consolidated Chapter Sub-Blocks */
+.sub-block {
+  min-inline-size: 0;
+  scroll-margin-top: 1.5rem;
+}
+
+.sub-block:focus {
+  outline: none;
+}
+
+.sub-divider {
+  margin-top: 2.75rem;
+  padding-top: 2.25rem;
+  border-top: 1px solid var(--rfs-line);
+}
+
+.sub-head {
+  display: grid;
+  gap: 0.35rem;
+  margin-bottom: 1.25rem;
+}
+
+.sub-head h3 {
+  margin: 0;
+  font-size: 1.22rem;
+}
+
+.sub-tag {
+  font: 600 0.7rem/1 var(--rfs-font-mono);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--rfs-steel-ink);
+}
+
+/* Wide Engineering CAD Sheets ([dwg] rfs-02 through rfs-05) */
+.blueprint-wide {
+  margin-block: 0.75rem 1.75rem;
+}
+
+@media (min-width: 40em) {
+  .blueprint-wide .bp-spec-strip {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+.blueprint-wide .bp-mode-group {
+  flex-wrap: wrap;
+  flex-wrap: balance;
 }

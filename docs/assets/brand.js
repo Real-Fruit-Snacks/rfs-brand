@@ -66,29 +66,77 @@
   // ---- 2. Scrollspy inside App-Shell Scroll Region (.page-scroll) ----
   const pageScroll = document.getElementById("page-scroll");
   const navLinks = $$(".section-nav a[href^='#']");
-  if (navLinks.length && "IntersectionObserver" in window) {
-    const sections = navLinks
-      .map((a) => document.getElementById(a.getAttribute("href").slice(1)))
-      .filter(Boolean);
-    const markActive = (id) => {
-      navLinks.forEach((a) => {
+  const tocLinks = $$(".toc-rail-nav a[href^='#']");
+  const allSpyNavs = [
+    { el: document.querySelector(".section-nav"), links: navLinks },
+    { el: document.querySelector(".toc-rail-nav"), links: tocLinks },
+  ].filter((n) => n.el && n.links.length);
+
+  if (allSpyNavs.length) {
+    const supportsNativeSpy =
+      window.CSS && typeof CSS.supports === "function" && CSS.supports("scroll-target-group: auto");
+
+    const syncAriaFromNative = () => {
+      let matched = false;
+      allSpyNavs.forEach(({ el, links }) => {
+        const current = el.querySelector("a:target-current");
+        if (current) matched = true;
+        links.forEach((a) => {
+          a.setAttribute("aria-current", a === current ? "true" : "false");
+        });
+      });
+      return matched;
+    };
+
+    const setGroupActive = (links, id) => {
+      links.forEach((a) => {
         const hit = a.getAttribute("href") === `#${id}`;
         a.classList.toggle("target-current", hit);
         a.setAttribute("aria-current", hit ? "true" : "false");
       });
     };
-    const io = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) markActive(entry.target.id);
+
+    if (supportsNativeSpy) {
+      syncAriaFromNative();
+      if (pageScroll) pageScroll.addEventListener("scrollend", syncAriaFromNative, { passive: true });
+      document.addEventListener("scrollend", syncAriaFromNative, { passive: true });
+    }
+
+    if ("IntersectionObserver" in window) {
+      allSpyNavs.forEach(({ el, links }) => {
+        const targets = links
+          .map((a) => document.getElementById(a.getAttribute("href").slice(1)))
+          .filter(Boolean);
+        const io = new IntersectionObserver(
+          (entries) => {
+            if (supportsNativeSpy && el.querySelector("a:target-current")) {
+              syncAriaFromNative();
+              return;
+            }
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) setGroupActive(links, entry.target.id);
+            });
+          },
+          { root: pageScroll || null, rootMargin: "-18% 0px -68% 0px", threshold: 0 }
+        );
+        targets.forEach((t) => io.observe(t));
+        links.forEach((a) => {
+          a.addEventListener("click", () => {
+            if (!supportsNativeSpy) setGroupActive(links, a.getAttribute("href").slice(1));
+          });
         });
-      },
-      { root: pageScroll || null, rootMargin: "-20% 0px -65% 0px", threshold: 0 }
-    );
-    sections.forEach((sec) => io.observe(sec));
-    navLinks.forEach((a) => {
-      a.addEventListener("click", () => markActive(a.getAttribute("href").slice(1)));
-    });
+      });
+    }
+
+    // Close mobile TOC <details> cleanly after picking a section
+    const mobileToc = document.querySelector(".toc-mobile");
+    if (mobileToc) {
+      $$("a[href^='#']", mobileToc).forEach((a) => {
+        a.addEventListener("click", () => {
+          mobileToc.open = false;
+        });
+      });
+    }
   }
 
   // ---- 3. Copy Buttons via Invoker Commands (--copy) + Fallback + Click-to-Copy Swatches ----
@@ -357,17 +405,18 @@
     renderAllLoaders(68);
   }
 
-  const markBp = document.getElementById("mark-blueprint");
-  const markBpBtns = $$("[data-bp-mode-btn]");
-  if (markBp && markBpBtns.length) {
-    markBpBtns.forEach((btn) => {
+  // Multi-instance CAD Blueprint view switcher ([dwg] rfs-01 through rfs-05)
+  $$(".blueprint-box[data-bp-mode]").forEach((box) => {
+    const btns = $$("[data-bp-mode-btn]", box);
+    if (!btns.length) return;
+    btns.forEach((btn) => {
       btn.addEventListener("click", () => {
         const mode = btn.dataset.bpModeBtn || "blueprint";
-        markBp.dataset.bpMode = mode;
-        markBpBtns.forEach((b) => b.setAttribute("aria-pressed", String(b === btn)));
+        box.dataset.bpMode = mode;
+        btns.forEach((b) => b.setAttribute("aria-pressed", String(b === btn)));
       });
     });
-  }
+  });
 
   // ---- 6b. §9 Org Art Standards Tabs (Static vs. Animated One-Shot vs. Ambient Board) ----
   const artTabsRoot = document.getElementById("art-standards-tabs");
