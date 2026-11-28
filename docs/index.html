@@ -71,7 +71,7 @@
     <div class="hero-band">
       <div class="wrap hero-grid">
         <div>
-          <p class="eyebrow">Real-Fruit-Snacks · Cyclorama Dawn v2.3.1</p>
+          <p class="eyebrow">Real-Fruit-Snacks · Cyclorama Dawn v2.3.2</p>
           <h1 class="hero-title" id="main-heading" tabindex="-1">RFS-BRAND</h1>
           <div class="hero-rule" aria-hidden="true"></div>
           <p class="hero-lede">The complete visual, typographic, editorial, and motion system for Real-Fruit-Snacks: matte cyclorama black and Alabaster Day light mode, Glacial Steel sweeping into Maritime Beacon Orange, every highlight and underline rule, interactive control states, installable agent skill, and deterministic generators for every repo.</p>
@@ -94,7 +94,7 @@
         <div class="specimen-card" aria-label="Live brand kit specimen">
           <div class="spec-top-beam" aria-hidden="true"></div>
           <div class="spec-bar">
-            <span class="rfs-badge b-beacon"><span class="k">[spec]</span> v2.3.1</span>
+            <span class="rfs-badge b-beacon"><span class="k">[spec]</span> v2.3.2</span>
             <span class="spec-bar-cue">
               <span class="only-dark">LX 263 · BEACON HORIZON</span>
               <span class="only-light">LX 512 · ALABASTER DAY</span>
@@ -249,7 +249,7 @@
     <div class="manual-shell">
       <aside class="toc-rail" aria-label="Manual table of contents">
         <div class="toc-rail-head">
-          <span class="rfs-badge b-steel"><span class="k">[toc]</span> v2.3.1</span>
+          <span class="rfs-badge b-steel"><span class="k">[toc]</span> v2.3.2</span>
           <span class="toc-rail-meta">5 CAD · 60 Icons</span>
         </div>
         <nav class="toc-rail-nav" aria-label="Brand manual outline">
@@ -3331,13 +3331,13 @@
           </ul>
 
           <aside class="release-box" aria-labelledby="release-h">
-            <h3 id="release-h">New in v2.3.1 — 5 CAD Blueprints, 60-Icon Part Motion &amp; 8-Chapter Manual</h3>
+            <h3 id="release-h">New in v2.3.2 — Shell Scroll Lock, 60/120fps Loaders &amp; 5 CAD Blueprints</h3>
             <p class="release-meta">Cyclorama Dawn · Steel &amp; Beacon Orange · November 2026</p>
             <ul>
+              <li>Hardened <code>.rfs-shell</code> with <code>overflow: clip</code> on <code>html</code> + <code>position: fixed; inset: 0</code> so fragment <code>#anchor</code> jumps never shift top headers, and upgraded loader motion to smooth 60/120fps <code>requestAnimationFrame</code> sweeps with seamless indeterminate loops.</li>
               <li>Added custom mechanical-detent (<code>--rfs-ease-detent</code>) hardware controls in <code>rfs-components.css</code> + <code>rfs-motion.js</code>: 3 checkbox styles, 3 switches, ballistic <strong>Jumping Radios</strong> (Reticle Jump &amp; Aperture Hop), Segmented Cue Bar, Copy-to-Check morph, Armed Latch, and Console Fader.</li>
               <li>Replaced plain progress bars with 4 Cyclorama Dawn loaders: <strong>DMX Cue Meter</strong> (etched 10% ticks + Signal Mint 100% lock), <strong>Horizon Alive Trace</strong>, <strong>20-Cell LED Ladder</strong>, and native <strong>Precision Progress Ring</strong>.</li>
-              <li>Added an official opt-in motion taxonomy (<code>.rfs-icon-live</code> + <code>data-rfs-motion</code>) across all 60 Precision Silkscreen icons, with bespoke part-level hover/click animations on every single icon (<code>tools/make-icons.py</code> + <code>icons.json</code>) and 5 interactive CAD drawings (<code>[dwg] rfs-01</code>–<code>rfs-05</code>).</li>
-              <li>Maintains 100% WCAG parity: native HTML controls, compositor-only animations, <code>forced-colors</code> borders, and calm <code>prefers-reduced-motion</code> fallbacks.</li>
+              <li>Added bespoke part-level hover/click motion across all 60 Precision Silkscreen icons (<code>tools/make-icons.py</code> + <code>icons.json</code>), 5 interactive CAD drawings (<code>[dwg] rfs-01</code>–<code>rfs-05</code>), and calibrated <code>verify-brand.py --repo</code> auditing across all public repos.</li>
             </ul>
             <a class="rfs-link-prose" href="https://github.com/Real-Fruit-Snacks/rfs-brand/blob/main/CHANGELOG.md">Read full CHANGELOG.md</a>
           </aside>
@@ -3757,7 +3757,7 @@ console = <span class="rfs-tok-fn">Console</span>(theme=RFS_THEME) <span class="
 
   <footer class="site-footer">
     <div class="wrap footer-inner">
-      <span>Real-Fruit-Snacks · Cyclorama Dawn v2.3.1 (Steel &amp; Beacon Orange) · Tools MIT · Fonts SIL OFL</span>
+      <span>Real-Fruit-Snacks · Cyclorama Dawn v2.3.2 (Steel &amp; Beacon Orange) · Tools MIT · Fonts SIL OFL</span>
       <span>
         <a class="rfs-link-prose" href="llms.txt">llms.txt</a> ·
         <a class="rfs-link-prose" href="https://real-fruit-snacks.github.io/">Catalog</a> ·

@@ -2,6 +2,15 @@
 
 Each release publishes `rfs-brand.zip` (everything below except `.github/` and `docs/`), `rfs.css`, `rfs-components.css`, `rfs-motion.js`, `rfs.tokens.json`, `rfs.dtcg.json`, `rfs-tailwind.css`, `rfs-tokens.ts`, `rfs-icons.svg`, and `BRAND-RULES.md`.
 
+## 2.3.2 (2026-11-27)
+
+Hardened `.rfs-shell` scroll locking, upgraded loader motion to 60/120fps `requestAnimationFrame` with seamless indeterminate loops, and calibrated the standalone `verify-brand.py` repo auditor across all public Real-Fruit-Snacks repos.
+
+- **Permanent `.rfs-shell` Anchor-Scroll Lock (`rfs.css`, `rfs-components.css`, `docs/index.html`, `brand.css`, `brand.js`, `starter-page.html`):** Added `overflow: clip` on `html:has(> body.rfs-shell)` and `position: fixed; inset: 0; overflow: clip` on `.rfs-shell` (with `@media print` reset) so Chromium `#anchor` fragment navigation can never shift top headers off `y = 0`; fixed 2 mismatched closing `</div>` tags in the brand manual, eliminated the TOC rail wheel trap, and added immediate keyboard scroll handoff (`PageDown`/`Space`/`ArrowDown`).
+- **60/120fps Loader Smoothness (`rfs-components.css`, `brand.js`, `docs/index.html`):** Replaced the stepped `55ms` simulation timer with a `2.1s` S-curve `requestAnimationFrame` continuous float sweep (`step="any"`), added `[data-rfs-live-scrub="true"]` zero-lag scrub tracking, and closed loop seams in `rfs-beam-sheen`, `rfs-race-len`, and `rfs-led-wave`.
+- **Calibrated Standalone Verifier (`tools/verify-brand.py`, `skills/rfs-brand/scripts/verify-brand.py`):** Fixed `RX_MODAL` so method calls like `BeforeInstallPromptEvent.prompt()` do not false-positive as `window.prompt()`, accepted any adaptive `<picture>` pairing `-dark.svg` and `-light.svg` (supporting bespoke README hero art like `panel-*`, `cluster-*`, `seal-*`), and added a check flagging stale `rfs.css` files missing `overflow: clip`.
+- **Skill-First `AGENTS.md` Template (`AGENTS.md`, `templates/repo/AGENTS.md`):** Updated repo guardrails to reference `npx skills add Real-Fruit-Snacks/rfs-brand`, `llms.txt`, `rfs-motion.js`, and `verify-brand.py --repo`.
+
 ## 2.3.1 (2026-11-27)
 
 Upgraded all 60 Cyclorama Precision Silkscreen icons from generic fallback motion verbs to bespoke, part-level hardware animations.

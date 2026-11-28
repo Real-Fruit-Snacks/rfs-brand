@@ -1,4 +1,4 @@
-# rfs-brand — Real-Fruit-Snacks Cyclorama Dawn Brand System (v2.3.1)
+# rfs-brand — Real-Fruit-Snacks Cyclorama Dawn Brand System (v2.3.2)
 
 > Authoritative design system, agent skill, drop-in CSS/Tailwind/DTCG/TypeScript tokens, 60-icon Precision Silkscreen library, and deterministic SVG cover/mark generators for Real-Fruit-Snacks (RFS). Tagline: "Built local-first." World: Cyclorama Dawn (Glacial Steel & Maritime Beacon Orange). Modes: LX 263 Beacon Horizon (dark default, `#050507`) and LX 512 Alabaster Day (light opt-in, `#F5F7F9`).
 

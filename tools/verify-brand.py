@@ -27,7 +27,7 @@ C_INFO = "\033[38;2;116;184;232m" if USE_COLOR else ""
 C_RST = "\033[0m" if USE_COLOR else ""
 
 RX_OKLCH = re.compile(r"gradient\([^)]*in oklch")
-RX_MODAL = re.compile(r"\b(?:window\.)?(?:alert|confirm|prompt)\s*\(")
+RX_MODAL = re.compile(r"(?<![.\w$])(?:(?:window|self|globalThis)\.)?(?:alert|confirm|prompt)\s*\(")
 RX_PRIVATE = re.compile(r"\b(?:pn-selfhost|Eddy)\b")
 RX_OLD_STROKE = re.compile(r'stroke-width[:=]\s*["\']?1\.65')
 RX_CDN_FONTS = re.compile(r"fonts\.googleapis\.com|fonts\.gstatic\.com|use\.typekit\.net")
@@ -142,12 +142,14 @@ def audit_repo(repo_path: str, rep: Reporter):
         if RX_EMOJI.search(body):
             rep.fail(f"[{name}] README.md contains emoji (forbidden)")
 
-        # Check adaptive cover if cover.toml or cover-dark.svg exists
+        # Check adaptive cover if cover-dark.svg or cover-light.svg exists
         cover_dark = os.path.join(repo_dir, "docs", "assets", "cover-dark.svg")
         cover_light = os.path.join(repo_dir, "docs", "assets", "cover-light.svg")
         if os.path.exists(cover_dark) or os.path.exists(cover_light):
-            if "<picture>" not in body or "cover-dark.svg" not in body or "cover-light.svg" not in body:
-                rep.fail(f"[{name}] README.md missing adaptive <picture> referencing cover-dark.svg & cover-light.svg")
+            has_dark_svg = bool(re.search(r"-dark\.svg\b", body))
+            has_light_svg = bool(re.search(r"-light\.svg\b", body))
+            if "<picture>" not in body or not (has_dark_svg and has_light_svg):
+                rep.fail(f"[{name}] README.md missing adaptive <picture> referencing -dark.svg & -light.svg cover pair")
             else:
                 rep.ok(f"[{name}] README.md adaptive <picture> cover verified")
     else:
@@ -191,6 +193,8 @@ def audit_repo(repo_path: str, rep: Reporter):
                     hits.append(f"legacy 1.65 stroke in {rel}")
                 if RX_CDN_FONTS.search(txt):
                     hits.append(f"external font CDN URL in {rel}")
+                if fn == "rfs.css" and "body.rfs-shell" in txt and "overflow: clip" not in txt:
+                    hits.append(f"stale .rfs-shell lock without overflow: clip in {rel} (sync rfs.css >= v2.3.2)")
                 if fn.endswith(".html") and (rel == "index.html" or rel.replace("\\", "/") == "docs/index.html"):
                     html_files.append((rel, txt))
             if fn.endswith((".html", ".js", ".ts", ".json", ".toml", ".md", ".py")):
