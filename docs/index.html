@@ -31,9 +31,9 @@
   <link rel="preload" href="assets/fonts/big-shoulders-stencil-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="assets/fonts/albert-sans-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="assets/fonts/azeret-mono-latin.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="assets/rfs.css?v=2.4.0">
-  <link rel="stylesheet" href="assets/rfs-components.css?v=2.4.0">
-  <link rel="stylesheet" href="assets/brand.css?v=2.4.0">
+  <link rel="stylesheet" href="assets/rfs.css?v=2.4.1">
+  <link rel="stylesheet" href="assets/rfs-components.css?v=2.4.1">
+  <link rel="stylesheet" href="assets/brand.css?v=2.4.1">
 </head>
 <body class="rfs-shell">
   <a class="skip-link visually-hidden" href="#main-heading">Skip to main content</a>
@@ -2120,7 +2120,7 @@
           </div>
 
           <div class="bp-stage">
-            <svg viewBox="-12 -11 214 86" role="img" aria-labelledby="bp5-title">
+            <svg viewBox="-19 -11 221 86" role="img" aria-labelledby="bp5-title">
               <title id="bp5-title">Cyclorama Dawn App-Shell and Control Anatomy CAD blueprint: 100dvh rfs-shell isolating fixed 64px rfs-shell-header above rfs-scroll-region so vertical scrollbars never overlap navigation chrome, paired with 4px Terminal Token badge anatomy, 2px focus ring at 3px outline-offset, and 44 by 44px coarse-pointer touch target</title>
               <defs>
                 <pattern id="bp5-grid-sm" width="4" height="4" patternUnits="userSpaceOnUse">
@@ -2139,8 +2139,8 @@
                 </linearGradient>
               </defs>
 
-              <rect x="-12" y="-11" width="214" height="86" fill="url(#bp5-grid-sm)"/>
-              <rect x="-12" y="-11" width="214" height="86" fill="url(#bp5-grid-lg)"/>
+              <rect x="-19" y="-11" width="221" height="86" fill="url(#bp5-grid-sm)"/>
+              <rect x="-19" y="-11" width="221" height="86" fill="url(#bp5-grid-lg)"/>
 
               <!-- Panel Labels -->
               <g class="bp-axis-lbl" font-family="Azeret Mono, monospace" font-size="2.45" font-weight="600">
@@ -2211,25 +2211,25 @@
                 <rect x="0" y="0" width="88" height="14" fill="rgba(116,184,232,0.14)" stroke="#74B8E8" stroke-width="0.55"/>
                 <text x="44" y="8.2" fill="#74B8E8" font-family="Azeret Mono, monospace" font-size="2.45" font-weight="600" text-anchor="middle">.rfs-shell-header · z-index: 40</text>
                 <rect x="2" y="16" width="77" height="44" fill="rgba(240,110,43,0.06)" stroke="#FF9254" stroke-width="0.45" stroke-dasharray="1.4 1"/>
-                <text x="40.5" y="35" fill="#F4F5F8" font-family="Azeret Mono, monospace" font-size="2.55" font-weight="600" text-anchor="middle">.rfs-scroll-region</text>
-                <text x="40.5" y="39.5" fill="#B3B5C0" font-family="Azeret Mono, monospace" font-size="2.1" text-anchor="middle">flex: 1 · overflow-y: auto</text>
+                <text x="40.5" y="23.2" fill="#F4F5F8" font-family="Azeret Mono, monospace" font-size="2.45" font-weight="600" text-anchor="middle">.rfs-scroll-region · flex: 1 · overflow-y: auto</text>
+                <!-- Clean 2-column Z-Index strata box nested inside Panel A wireframe -->
+                <rect x="5" y="27.5" width="71" height="29" rx="1.2" fill="#08080B" stroke="rgba(116,184,232,0.4)" stroke-width="0.35"/>
+                <text x="8.5" y="32.5" fill="#74B8E8" font-family="Azeret Mono, monospace" font-size="2.15" font-weight="600">Z-INDEX LAYER SCALE</text>
+                <g font-family="Azeret Mono, monospace" font-size="2.05">
+                  <text x="8.5" y="38.2" fill="#B3B5C0">base ····· 0</text>
+                  <text x="8.5" y="44.2" fill="#B3B5C0">sticky ·· 20</text>
+                  <text x="8.5" y="50.2" fill="#74B8E8">nav ····· 40</text>
+                  <text x="42.5" y="38.2" fill="#FF9254">popover · 60</text>
+                  <text x="42.5" y="44.2" fill="#FF9254">modal ··· 80</text>
+                  <text x="42.5" y="50.2" fill="#3DDC97">toast ·· 100</text>
+                </g>
                 <rect x="81" y="16" width="6" height="44" fill="rgba(61,220,151,0.14)" stroke="#3DDC97" stroke-width="0.45"/>
 
-                <!-- Right wireframe: token badge + z-index stack + focus box -->
+                <!-- Right wireframe: token badge + focus box (clear of right-hand callouts) -->
                 <rect x="104" y="2" width="46" height="12" rx="1.8" fill="none" stroke="#74B8E8" stroke-width="0.55"/>
                 <text x="127" y="9.2" fill="#74B8E8" font-family="Azeret Mono, monospace" font-size="2.35" text-anchor="middle">rx 4px · 1px border</text>
                 <rect x="112" y="32" width="24" height="24" rx="3.8" fill="none" stroke="#FF9254" stroke-width="0.7" stroke-dasharray="1.4 1"/>
                 <rect x="116" y="36" width="16" height="16" rx="2.6" fill="rgba(240,110,43,0.14)" stroke="#FF9254" stroke-width="0.6"/>
-                <!-- Z-Index ladder summary -->
-                <g transform="translate(154, 24)" font-family="Azeret Mono, monospace" font-size="2.15">
-                  <text x="0" y="0" fill="#74B8E8" font-weight="600">Z-INDEX SCALE</text>
-                  <text x="0" y="4.5" fill="#B3B5C0">base ······ 0</text>
-                  <text x="0" y="8.5" fill="#B3B5C0">sticky ··· 20</text>
-                  <text x="0" y="12.5" fill="#74B8E8">nav ······ 40</text>
-                  <text x="0" y="16.5" fill="#FF9254">popover ·· 60</text>
-                  <text x="0" y="20.5" fill="#FF9254">modal ···· 80</text>
-                  <text x="0" y="24.5" fill="#3DDC97">toast ··· 100</text>
-                </g>
               </g>
 
               <!-- Layer 4: Calipers & Callouts -->
@@ -3035,7 +3035,7 @@
                 <rect x="7.2" y="10.5" width="12" height="3" rx="0.5" fill="#08080B" stroke="rgba(255,255,255,0.18)" stroke-width="0.3"/>
                 <text x="8.6" y="12.7" fill="#74B8E8" font-family="Azeret Mono, monospace" font-size="1.75" font-weight="600">[rust]</text>
                 <text x="21.2" y="12.7" fill="#74B8E8" font-family="Azeret Mono, monospace" font-size="1.65" letter-spacing="0.2">LOCAL TOOL</text>
-                <text x="7.2" y="25.2" fill="#F4F5F8" font-family="Big Shoulders Stencil, Arial Narrow, sans-serif" font-size="12.2" font-weight="800" letter-spacing="0.55">PORT-SYNC</text>
+                <text x="7.2" y="24.5" fill="#F4F5F8" font-family="Big Shoulders Stencil, Arial Narrow, sans-serif" font-size="9.8" font-weight="800" letter-spacing="0.4">PORT-SYNC</text>
                 <rect x="7.2" y="28.2" width="40" height="0.9" rx="0.45" fill="url(#bp4-rule)"/>
                 <rect x="7.2" y="32.2" width="44" height="2" rx="0.5" fill="#F4F5F8" fill-opacity="0.82"/>
                 <rect x="7.2" y="36" width="33" height="2" rx="0.5" fill="#B3B5C0" fill-opacity="0.65"/>
@@ -3787,7 +3787,7 @@ console = <span class="rfs-tok-fn">Console</span>(theme=RFS_THEME) <span class="
   <div id="rfs-toast-stack" class="rfs-toast-region" popover="manual" role="region" aria-label="Notifications"></div>
 
   <p id="copy-status" class="visually-hidden" role="status" aria-live="polite"></p>
-  <script src="assets/rfs-motion.js?v=2.4.0"></script>
-  <script src="assets/brand.js?v=2.4.0"></script>
+  <script src="assets/rfs-motion.js?v=2.4.1"></script>
+  <script src="assets/brand.js?v=2.4.1"></script>
 </body>
 </html>

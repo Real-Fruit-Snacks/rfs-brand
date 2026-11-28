@@ -77,15 +77,13 @@
       window.CSS && typeof CSS.supports === "function" && CSS.supports("scroll-target-group: auto");
 
     const syncAriaFromNative = () => {
-      let matched = false;
       allSpyNavs.forEach(({ el, links }) => {
         const current = el.querySelector("a:target-current");
-        if (current) matched = true;
         links.forEach((a) => {
+          a.classList.remove("target-current");
           a.setAttribute("aria-current", a === current ? "true" : "false");
         });
       });
-      return matched;
     };
 
     const setGroupActive = (links, id) => {
@@ -100,19 +98,18 @@
       syncAriaFromNative();
       if (pageScroll) pageScroll.addEventListener("scrollend", syncAriaFromNative, { passive: true });
       document.addEventListener("scrollend", syncAriaFromNative, { passive: true });
-    }
-
-    if ("IntersectionObserver" in window) {
-      allSpyNavs.forEach(({ el, links }) => {
+      allSpyNavs.forEach(({ links }) => {
+        links.forEach((a) => {
+          a.addEventListener("click", () => requestAnimationFrame(syncAriaFromNative));
+        });
+      });
+    } else if ("IntersectionObserver" in window) {
+      allSpyNavs.forEach(({ links }) => {
         const targets = links
           .map((a) => document.getElementById(a.getAttribute("href").slice(1)))
           .filter(Boolean);
         const io = new IntersectionObserver(
           (entries) => {
-            if (supportsNativeSpy && el.querySelector("a:target-current")) {
-              syncAriaFromNative();
-              return;
-            }
             entries.forEach((entry) => {
               if (entry.isIntersecting) setGroupActive(links, entry.target.id);
             });
@@ -121,9 +118,7 @@
         );
         targets.forEach((t) => io.observe(t));
         links.forEach((a) => {
-          a.addEventListener("click", () => {
-            if (!supportsNativeSpy) setGroupActive(links, a.getAttribute("href").slice(1));
-          });
+          a.addEventListener("click", () => setGroupActive(links, a.getAttribute("href").slice(1)));
         });
       });
     }

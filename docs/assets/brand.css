@@ -4130,6 +4130,11 @@ h3 {
   scroll-margin-top: 1.5rem;
 }
 
+.mark-layout + .sub-block,
+.sub-block + .sub-block {
+  margin-top: 2rem;
+}
+
 .sub-block:focus {
   outline: none;
 }
