@@ -5,7 +5,7 @@ Different Real-Fruit-Snacks tools solve different problems and **must not** ship
 ## Decision Tree: Pick the Right Archetype
 
 1. **Is the site itself a live interactive browser app (game, puzzle board, local generator)?**
-   → **Archetype 5 — Full-Viewport Offline App** (e.g., `open-file`, `one-billion-pixels`, `identity-gen`).
+   → **Archetype 5 — Full-Viewport Offline App** (e.g., `open-file`, `identity-gen`).
 2. **Is the tool a multi-command workflow, toolkit, or reference collection?**
    → **Archetype 4 — Editorial Handbook & Command Ledger** (e.g., `pwn-broker`, `pwn-playbooks`, `pwn-report`, `pwn-shop`, `powershell-toolbox`).
 3. **Does the tool's core value hinge on safety bounds, exit/status codes, or protocol rules?**

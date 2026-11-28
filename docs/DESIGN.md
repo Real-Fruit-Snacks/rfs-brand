@@ -167,7 +167,7 @@ Load `rfs.css`, then `rfs-components.css`, then optional zero-dependency `rfs-mo
   2. **Safety Matrix & Protocol Spec** (`cred-spray`, `certapi`)
   3. **Topology & Signal Pipeline Workbench** (`shell-tunnel`, `ad-sweep`, `hash-bait`, `carify`, `amazon-order-sync`)
   4. **Editorial Handbook & Command Ledger** (`pwn-broker`, `pwn-playbooks`, `pwn-report`, `pwn-shop`, `powershell-toolbox`)
-  5. **Full-Viewport Offline App** (`open-file`, `one-billion-pixels`, `identity-gen`)
+  5. **Full-Viewport Offline App** (`open-file`, `identity-gen`)
 
 ## 6. Depth, Elevation & Motion
 
