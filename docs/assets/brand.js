@@ -864,14 +864,14 @@
     if (iconCascadeBtn) {
       iconCascadeBtn.addEventListener("click", () => {
         if (activeInteract !== "motion") setInteractMode("motion");
-        const multiPart = iconTiles.filter((t) => !t.hidden && (t.dataset.rfsMotion || "").startsWith("part-"));
-        const targetList = multiPart.length ? multiPart : iconTiles.filter((t) => !t.hidden).slice(0, 12);
-        targetList.forEach((tile, i) => {
+        const visible = iconTiles.filter((t) => !t.hidden);
+        const step = visible.length > 20 ? 45 : 75;
+        visible.forEach((tile, i) => {
           setTimeout(() => {
             if (window.RFS && window.RFS.triggerIconMotion) window.RFS.triggerIconMotion(tile);
-          }, i * 85);
+          }, i * step);
         });
-        setStatus("b-beacon", "[live]", `cascaded ${targetList.length} icons`);
+        setStatus("b-beacon", "[live]", `cascaded ${visible.length} icons`);
       });
     }
 
@@ -918,7 +918,7 @@
     iconTiles.forEach((tile) => {
       tile.addEventListener("click", async () => {
         const name = tile.dataset.iconName || "icon";
-        const verb = tile.dataset.rfsMotion || "seat";
+        const verb = tile.dataset.rfsMotion || "part-arrow-r";
         const svgEl = tile.querySelector("svg");
         if (!svgEl) return;
         activeIconName = name;

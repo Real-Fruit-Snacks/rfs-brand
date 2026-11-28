@@ -2,6 +2,13 @@
 
 Each release publishes `rfs-brand.zip` (everything below except `.github/` and `docs/`), `rfs.css`, `rfs-components.css`, `rfs-motion.js`, `rfs.tokens.json`, `rfs.dtcg.json`, `rfs-tailwind.css`, `rfs-tokens.ts`, `rfs-icons.svg`, and `BRAND-RULES.md`.
 
+## 2.3.1 (2026-11-27)
+
+Upgraded all 60 Cyclorama Precision Silkscreen icons from generic fallback motion verbs to bespoke, part-level hardware animations.
+
+- **All 60 Icons with Bespoke Part-Level Choreography (`tools/make-icons.py`, `brand/tokens/rfs-components.css`, `docs/index.html`):** Replaced every remaining whole-icon fallback verb (including `seat`) with semantic `.rfs-p-*` SVG sub-parts and physically grounded `part-*` click/hover animations across all 6 categories—including `eye` lid blink, `eye-off` Crimson slash draw, `clock` 360° hand sweep, `globe` spinning meridian, `key` `-42°` turn, `unlock` shackle snap, `book` symmetric page fan, `code` `< / >` spread, `git-branch` Mint curve trace, `diff` Mint `+` / Crimson `-`, `cpu` core die + pin pulse, `server` alternating status LEDs, `link` chain lock, `image` mountain draw + sunrise, `volume` staggered sound arcs, `menu` 3-bar stagger, `close` 90° scissor swap, `sun` 8-ray 45° rotation, `calendar` ring lift + page flip, and exact path-length stroke draws (`check`, `check-circle`, `shield`, `shield-check`, `x-circle`, `share`).
+- **Full-Grid Cascade (`docs/assets/brand.js`):** Upgraded the `§13A` `[live] Click Motion` `Cascade` trigger to ripple across all 60 visible icons (or the active filtered category).
+
 ## 2.3.0 (2026-11-27)
 
 Added custom mechanical-detent hardware control animations, an official opt-in motion taxonomy across all 60 Precision Silkscreen icons, and 4 upgraded Cyclorama Dawn loading bar systems.

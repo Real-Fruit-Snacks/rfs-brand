@@ -4,12 +4,12 @@ description: Apply and audit the Real-Fruit-Snacks (RFS) Cyclorama Dawn (Steel &
 license: MIT
 metadata:
   author: Real-Fruit-Snacks
-  version: "2.2.0"
+  version: "2.3.1"
   palette: Cyclorama Dawn — Steel & Beacon Orange
   manual: https://real-fruit-snacks.github.io/rfs-brand/
 ---
 
-# RFS Brand Skill — Cyclorama Dawn (v2.2.0)
+# RFS Brand Skill — Cyclorama Dawn (v2.3.1)
 
 Single-entry agent skill for **Real-Fruit-Snacks** (**RFS**) — tagline **Built local-first.**  
 World: **Cyclorama Dawn** · Palette: **Glacial Steel & Maritime Beacon Orange**  
