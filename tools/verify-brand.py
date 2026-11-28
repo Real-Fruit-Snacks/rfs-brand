@@ -27,7 +27,8 @@ C_INFO = "\033[38;2;116;184;232m" if USE_COLOR else ""
 C_RST = "\033[0m" if USE_COLOR else ""
 
 RX_OKLCH = re.compile(r"gradient\([^)]*in oklch")
-RX_MODAL = re.compile(r"(?<![.\w$])(?:(?:window|self|globalThis)\.)?(?:alert|confirm|prompt)\s*\(")
+RX_MODAL = re.compile(r"(?<![.\w$])(?:(?:window|self|globalThis)\.)?(?:alert|confirm|prompt)\s*\((?![^)]*\)\s*:)")
+RX_JS_COMMENTS = re.compile(r"//[^\n]*|/\*[\s\S]*?\*/")
 RX_PRIVATE = re.compile(r"\b(?:pn-selfhost|Eddy)\b")
 RX_OLD_STROKE = re.compile(r'stroke-width[:=]\s*["\']?1\.65')
 RX_CDN_FONTS = re.compile(r"fonts\.googleapis\.com|fonts\.gstatic\.com|use\.typekit\.net")
@@ -187,7 +188,7 @@ def audit_repo(repo_path: str, rep: Reporter):
                 txt = open(fp, encoding="utf-8", errors="ignore").read()
                 if RX_OKLCH.search(txt):
                     hits.append(f"in oklch gradient in {rel}")
-                if fn.endswith((".js", ".ts")) and RX_MODAL.search(txt):
+                if fn.endswith((".js", ".ts")) and RX_MODAL.search(RX_JS_COMMENTS.sub("", txt)):
                     hits.append(f"native modal call in {rel}")
                 if RX_OLD_STROKE.search(txt):
                     hits.append(f"legacy 1.65 stroke in {rel}")
@@ -352,7 +353,7 @@ def verify_brand_kit(args, rep: Reporter):
                     txt = open(fp, encoding="utf-8", errors="ignore").read()
                     if RX_OKLCH.search(txt):
                         code_hits.append(f"in oklch gradient in {rel}")
-                    if fn.endswith(".js") and RX_MODAL.search(txt):
+                    if fn.endswith(".js") and RX_MODAL.search(RX_JS_COMMENTS.sub("", txt)):
                         code_hits.append(f"native modal call in {rel}")
                     if RX_OLD_STROKE.search(txt):
                         code_hits.append(f"legacy 1.65 stroke in {rel}")
