@@ -882,7 +882,11 @@ progress.rfs-spinner {
 
 /* ---- App-Shell Scroll Layout (scrollbar ALWAYS starts below top header chrome) ---- */
 .rfs-shell {
+  position: fixed;
+  inset: 0;
+  width: 100%;
   height: 100dvh;
+  margin: 0;
   overflow: hidden;
   overflow: clip;
   display: flex;

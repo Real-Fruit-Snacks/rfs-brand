@@ -66,6 +66,13 @@
   // ---- 2. Scrollspy & Immediate Keyboard Scroll inside App-Shell (.page-scroll) ----
   const pageScroll = document.getElementById("page-scroll");
   if (pageScroll) {
+    // Guard against legacy browsers scrolling the root viewport on #hash fragment jumps
+    const clampRoot = () => {
+      if (window.scrollX !== 0 || window.scrollY !== 0) window.scrollTo(0, 0);
+    };
+    window.addEventListener("scroll", clampRoot, { passive: true });
+    window.addEventListener("hashchange", () => requestAnimationFrame(clampRoot));
+
     const SCROLL_KEYS = new Set(["ArrowDown", "ArrowUp", "PageDown", "PageUp", "Home", "End", " "]);
     document.addEventListener("keydown", (e) => {
       if (e.defaultPrevented || e.ctrlKey || e.metaKey || e.altKey || !SCROLL_KEYS.has(e.key)) return;

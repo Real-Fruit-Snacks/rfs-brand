@@ -275,10 +275,12 @@
   overflow-x: auto;
 }
 
-/* Lock viewport scroll when using .rfs-shell so scrollbars start strictly below top chrome */
+/* Lock viewport scroll when using .rfs-shell so scrollbars start strictly below top chrome.
+   Use overflow: clip so fragment #anchor navigation cannot programmatically scroll <html> off y=0. */
 html:has(> body.rfs-shell) {
   height: 100%;
   overflow: hidden;
+  overflow: clip;
 }
 
 /* Reduced transparency: remove glass/blur translucency */
@@ -314,6 +316,7 @@ html:has(> body.rfs-shell) {
     display: block !important;
   }
   :where(.rfs-shell, .rfs-scroll-region, .page-scroll) {
+    position: static !important;
     height: auto !important;
     overflow: visible !important;
     display: block !important;
