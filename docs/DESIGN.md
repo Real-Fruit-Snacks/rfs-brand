@@ -92,10 +92,13 @@ space:
   scale: [4, 8, 12, 16, 24, 32, 48, 64, 96]
 motion:
   ease: "cubic-bezier(0.16, 1, 0.3, 1)"
+  ease-detent: "linear(0, 0.35 12%, 0.78 28%, 1.015 48%, 1.035 58%, 1.01 76%, 1)"
   ease-in-out: "cubic-bezier(0.65, 0, 0.35, 1)"
   ease-exit: "cubic-bezier(0.7, 0, 0.84, 0)"
   dur-fast: "150ms"
   dur-base: "250ms"
+  dur-detent: "340ms"
+  dur-jump: "360ms"
   dur-slow: "520ms"
 z_index:
   base: 0
@@ -143,15 +146,17 @@ Three self-hosted variable SIL OFL families (zero external font CDNs):
 - **UI Chrome & Running Prose:** `Albert Sans` (`400–700`, `1rem` / `1.55` body capped at `58ch`–`66ch`, `0.78rem` `600` uppercase `+0.08em` labels).
 - **Code, CLI, Repo Slugs & Telemetry:** `Azeret Mono` (`400–600`, `tabular-nums`, strictly for real technical identifiers—never general nav links or paragraphs).
 
-## 4. Component Stylings (`rfs-components.css`)
+## 4. Component Stylings (`rfs-components.css` + `rfs-motion.js`)
 
-Load `rfs.css` then `rfs-components.css`:
-- **Buttons:** `.rfs-btn-horizon` (borderless `oklab` Steel→Beacon fill, `#FFFFFF` text), `.rfs-btn-beacon`, `.rfs-btn-steel`, `.rfs-btn-fault` / `.rfs-btn-fault-soft` / `.rfs-btn-fault-outline` (Signal Crimson destructive actions), `.rfs-btn-outline`, `.rfs-btn-ghost`.
+Load `rfs.css`, then `rfs-components.css`, then optional zero-dependency `rfs-motion.js`:
+- **Buttons & Armed Latches:** `.rfs-btn-horizon` (borderless `oklab` Steel→Beacon fill + shimmer sweep, `#FFFFFF` text), `.rfs-btn-beacon`, `.rfs-btn-steel`, `.rfs-btn-fault` / `.rfs-btn-fault-soft` / `.rfs-btn-fault-outline` (Signal Crimson destructive actions), `.rfs-btn-outline`, `.rfs-btn-ghost`, `.rfs-btn-copy-morph`, and `[data-rfs-arm]` two-stage destructive latch.
+- **Hardware Controls (`--rfs-ease-detent`):** Checkboxes (`.rfs-check`, `.rfs-check-shutter`, `.rfs-check-token` with `:indeterminate`), semantic `<input type="checkbox" switch>` toggles (`.rfs-switch`, `.rfs-switch-breaker`, `.rfs-switch-patch`), ballistic Jumping Radios (`[data-rfs-radio-jump="reticle|aperture"]`), sliding `.rfs-segmented` cue bars, and `.rfs-fader` console sliders.
+- **Upgraded Hardware Loaders (4 Native Systems):** `.rfs-progress-dmx-shell` (DMX Cue Meter with etched 10% ticks + Signal Mint `100%` lock), `.rfs-progress` (Horizon Alive Trace), `.rfs-led-ladder` (20-cell patch-bay LED bar), and `.rfs-progress-ring` / `.rfs-spinner` (hollow `border-area` conic ring using `background-image:` overrides).
 - **Badges & Filter Chips (`D · Terminal Token` only):** `4px` radius, `--rfs-code-bg` surface, `1px solid var(--rfs-line)` full perimeter, colored bracketed `.k` prefix (`[ok]`, `[!]`, `[x]`, `[steel]`, `[beacon]`) + neutral `--rfs-text`. Zero `99px` capsule pills or status dots.
 - **Framed Code Cards (`.rfs-code-card`):** Explicit language badge header + `.rfs-tok-*` syntax coloring + wrapped lines by default (`pre-wrap`, `overflow-wrap: anywhere`; `.rfs-code-scroll` opt-in for ASCII art/wide tables). Zero macOS traffic-light dots.
 - **Callouts & Quotes:** `.rfs-callout.is-{note,tip,warn,fail}` and `.rfs-quote` use a `3.5px` inline-start semantic rail paired with `1px` `--rfs-line` borders and explicit uppercase tone labels.
 - **Branded Native `<dialog class="rfs-dialog">` & Semantic Toasts:** Zero `window.alert()`, `window.confirm()`, or `window.prompt()`. Destructive actions use `<dialog class="rfs-dialog is-destructive">` naming the target, `autofocus` on **Cancel**, and `.rfs-btn-fault` confirm. Non-blocking `popover="manual"` toasts tint via `.rfs-toast.is-{ok,warn,fail,info}`.
-- **Icons (`rfs-icons.svg`):** 60 monochrome `24×24` Precision Silkscreen stroke icons (`1.75px`, `square` caps, `miter` joins, sizes `16/20/24/32px`, recolorable via `.rfs-icon-*`).
+- **Icons (`rfs-icons.svg` + `.rfs-icon-live`):** 60 monochrome `24×24` Precision Silkscreen stroke icons (`1.75px`, `square` caps, `miter` joins, `>= 44×44px` tap targets, recolorable via `.rfs-icon-*`). Calm by default; opt into bespoke part-level hover/click choreography on all 60 icons with `.rfs-icon-live` + `data-rfs-motion="part-*"` + `data-rfs-icon-click`.
 
 ## 5. Layout Principles & Page Archetypes
 
@@ -168,7 +173,7 @@ Load `rfs.css` then `rfs-components.css`:
 
 - **Flat Hairline-First Architecture:** Separate resting planes using `1px` full-perimeter hairlines (`--rfs-line`, `--rfs-line-strong` >= 3.11:1) and matte luminance steps (`--rfs-bg` → `--rfs-surface` → `--rfs-raised`)—never neon glows, glassmorphic floating pills, or heavy card drop shadows.
 - **Z-Index Scale:** `base: 0`, `sticky: 20`, `nav: 40`, `popover: 60`, `modal: 80`, `toast: 100`.
-- **Motion:** Enabled by default on web UIs (`--rfs-ease`, `--rfs-ease-in-out`, `--rfs-ease-exit`, `--rfs-dur-fast: 150ms`, `--rfs-dur-base: 250ms`, `--rfs-dur-slow: 520ms`). SVG assets strictly follow the Static-First Invariant with keyframes guarded inside `@media (prefers-reduced-motion: no-preference)`.
+- **Motion & CAD Geometry (`[dwg] rfs-01`–`rfs-05`):** Enabled by default on web UIs (`--rfs-ease`, `--rfs-ease-detent` 3.5% mechanical settle, `--rfs-ease-in-out`, `--rfs-ease-exit`, `--rfs-dur-fast: 150ms`, `--rfs-dur-base: 250ms`, `--rfs-dur-detent: 340ms`, `--rfs-dur-jump: 360ms`, `--rfs-dur-slow: 520ms`). SVG assets strictly follow the Static-First Invariant with keyframes guarded inside `@media (prefers-reduced-motion: no-preference)`. Geometric clear-space rules: `14u` (`1×rx`) on `64×64u` tile (`rfs-01`), `16u` + `< 160px` collapse on `405×64u` lockup (`rfs-02`), `2u` inset + `44×44px` tap target on `24×24u` icons (`rfs-03`), `1200×560` + `40px` social bleed (`1280×640`) on Repo Cover v2 (`rfs-04`), and `64px` shell header scrollbar lock (`rfs-05`).
 
 ## 7. Do's and Don'ts
 

@@ -13,9 +13,10 @@
 ## Agent Skill & Contracts
 
 - [Agent Brand Rules (1-page contract)](https://real-fruit-snacks.github.io/rfs-brand/assets/BRAND-RULES.md): Concise rules block for `AGENTS.md` / `CLAUDE.md`.
-- [Installable Agent Skill (SKILL.md)](https://github.com/Real-Fruit-Snacks/rfs-brand/blob/main/skills/rfs-brand/SKILL.md): Open `agentskills.io` skill (`npx skills add Real-Fruit-Snacks/rfs-brand`).
+- [Installable Agent Skill (SKILL.md)](https://github.com/Real-Fruit-Snacks/rfs-brand/blob/main/skills/rfs-brand/SKILL.md): Self-contained `agentskills.io` skill (`npx skills add Real-Fruit-Snacks/rfs-brand`) bundling 6 references, `scripts/verify-brand.py`, and `assets/starter-page.html`.
 - [Page Archetypes Reference](https://github.com/Real-Fruit-Snacks/rfs-brand/blob/main/skills/rfs-brand/references/page-archetypes.md): 5 bespoke layout archetypes and decision tree.
 - [Web UI & Data Viz Reference](https://github.com/Real-Fruit-Snacks/rfs-brand/blob/main/skills/rfs-brand/references/web-ui-components.md): Copy-ready HTML patterns, `--rfs-viz-1..6` chart palette, Tailwind v4 & TS bridges.
+- [Motion, 60-Icon Verbs & CAD Geometry Reference](https://github.com/Real-Fruit-Snacks/rfs-brand/blob/main/skills/rfs-brand/references/motion-and-icons.md): Full 60-icon `part-*` verb table, `--rfs-ease-detent` hardware controls, 4 loaders, and `[dwg] rfs-01`–`rfs-05` clear-space specs.
 - [Voice, Copy & Docs Reference](https://github.com/Real-Fruit-Snacks/rfs-brand/blob/main/skills/rfs-brand/references/voice-and-docs.md): Before/After microcopy rewrites, README contract, screenshot/redaction rules.
 - [CLI, TUI & Native Reference](https://github.com/Real-Fruit-Snacks/rfs-brand/blob/main/skills/rfs-brand/references/cli-tui-native.md): `NO_COLOR`, Rust `anstyle`, Go ANSI, Python `rich`, Windows DWM titlebars.
 - [Audit Rubric Reference](https://github.com/Real-Fruit-Snacks/rfs-brand/blob/main/skills/rfs-brand/references/audit-rubric.md): CRITICAL/HIGH/MEDIUM review checklist and `verify-brand.py --repo` CLI usage.

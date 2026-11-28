@@ -5,14 +5,14 @@ Run the automated verifier against any repository before pushing, then review th
 ## Automated Audit Command
 
 ```sh
-# Audit any single RFS tool repo
-python <rfs-brand>/tools/verify-brand.py --repo <path-to-repo>
+# Standalone (bundled inside this skill—works in any repo without cloning rfs-brand)
+python scripts/verify-brand.py --repo <path-to-repo>
 
 # Machine-readable JSON output
-python <rfs-brand>/tools/verify-brand.py --repo <path-to-repo> --json
+python scripts/verify-brand.py --repo <path-to-repo> --json
 
-# Audit rfs-brand itself + sibling org repos
-python <rfs-brand>/tools/verify-brand.py --workspace <staging-parent-dir>
+# Inside the rfs-brand repo itself + sibling org repos
+python tools/verify-brand.py --workspace <staging-parent-dir>
 ```
 
 ## Priority Review Rubric
@@ -36,3 +36,4 @@ python <rfs-brand>/tools/verify-brand.py --workspace <staging-parent-dir>
 - **Visual distinction:** Confirm the tool's GitHub Pages layout uses the archetype best suited to its domain (see `references/page-archetypes.md`) rather than cloning another tool's page verbatim.
 - **Light-mode visual parity:** Toggle to `LX 512 Light` and verify marks, covers, Mermaid configs, avatars, and charts all adapt cleanly with `>= 4.5:1` text contrast and `>= 3:1` border contrast.
 - **Code block ergonomics:** Confirm framed snippets show a language header badge, syntax roles (`.rfs-tok-*`), wrap cleanly on mobile (`pre-wrap`), and expose an accessible Copy button with `role="status"` feedback.
+- **Hardware controls, loaders & icon motion:** Load `rfs-motion.js` when using Jumping Radios (`[data-rfs-radio-jump]`), `.rfs-fader`, `[data-rfs-arm]`, `.rfs-led-ladder`, `.rfs-progress-ring`, or opt-in `.rfs-icon-live` icons; keep `progress.rfs-progress-ring` overrides on `background-image:` (never `background:` shorthand) so the center stays hollow, and use canonical `part-*` verbs from `references/motion-and-icons.md`.

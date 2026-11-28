@@ -278,6 +278,15 @@ def main():
         shutil.copy2(os.path.join(TOKENS_DIR, core), os.path.join(DOCS_ASSETS, core))
         print(f"synced brand/tokens/{core} -> docs/assets/{core}")
 
+    # Keep standalone skill verifier byte-synced with tools/verify-brand.py
+    skill_scripts = os.path.join(ROOT, "skills", "rfs-brand", "scripts")
+    os.makedirs(skill_scripts, exist_ok=True)
+    shutil.copy2(
+        os.path.join(ROOT, "tools", "verify-brand.py"),
+        os.path.join(skill_scripts, "verify-brand.py"),
+    )
+    print("synced tools/verify-brand.py -> skills/rfs-brand/scripts/verify-brand.py")
+
 
 if __name__ == "__main__":
     main()

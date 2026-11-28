@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Explicit Dark Default (LX 263 Beacon Horizon); Light (LX 512) is opt-in -->
+  <meta name="color-scheme" content="dark">
+  <meta name="theme-color" content="#050507">
+  <script>
+    try {
+      var saved = localStorage.getItem("rfs-theme") || localStorage.getItem("color-scheme");
+      if (saved === "light" || saved === "dark") {
+        document.querySelector('meta[name="color-scheme"]').content = saved;
+        document.querySelector('meta[name="theme-color"]').content = saved === "light" ? "#f5f7f9" : "#050507";
+      }
+    } catch (e) {}
+  </script>
+  <title>tool-name — Real-Fruit-Snacks</title>
+  <!-- Load in strict order: rfs.css -> rfs-components.css -> page stylesheet (self-hosted fonts only) -->
+  <link rel="stylesheet" href="assets/rfs.css">
+  <link rel="stylesheet" href="assets/rfs-components.css">
+  <style>
+    html { height: 100%; overflow: hidden; background: var(--rfs-bg); color: var(--rfs-text); font-family: var(--rfs-font-sans); }
+    body { margin: 0; background: var(--rfs-bg); color: var(--rfs-text); }
+    .wrap { width: 100%; max-width: 74rem; margin-inline: auto; padding-inline: clamp(1rem, 3vw, 2rem); }
+    .hdr { background: var(--rfs-rail); border-bottom: 1px solid var(--rfs-line); }
+    .hdr-inner { display: flex; align-items: center; justify-content: space-between; gap: 1rem; min-block-size: 4rem; }
+    .brand { display: inline-flex; align-items: center; gap: 0.6rem; color: var(--rfs-text); text-decoration: none; font: 800 1.4rem/1 var(--rfs-font-display); letter-spacing: 0.055em; text-transform: uppercase; }
+    main { padding-block: clamp(2rem, 5vw, 3.5rem); display: grid; gap: 2rem; }
+    h1 { margin: 0; font: 800 clamp(2.4rem, 1.5rem + 3vw, 4.2rem)/0.96 var(--rfs-font-display); letter-spacing: 0.055em; text-transform: uppercase; }
+    .lede { margin: 0; max-width: 60ch; color: var(--rfs-mute); }
+    .row { display: flex; flex-wrap: wrap; align-items: center; gap: 0.75rem; }
+  </style>
+</head>
+<body class="rfs-shell">
+  <!-- App-Shell Header: vertical scrollbar always begins strictly below this bar -->
+  <header class="rfs-shell-header hdr">
+    <div class="wrap hdr-inner">
+      <a class="brand" href="#top">tool-name</a>
+      <button class="rfs-btn rfs-btn-outline rfs-btn-sm" type="button" data-theme-toggle aria-pressed="false">
+        Switch Theme
+      </button>
+    </div>
+  </header>
+
+  <div class="rfs-scroll-region" id="page-scroll" tabindex="0" role="region" aria-label="Main content">
+    <main class="wrap" id="top">
+      <header style="display:grid;gap:0.85rem">
+        <span class="rfs-badge b-steel" style="justify-self:start"><span class="k">[local]</span> Cyclorama Dawn</span>
+        <h1>TOOL-NAME</h1>
+        <p class="lede">Concise description under 60 characters without hype or trailing period.</p>
+        <div class="row">
+          <button class="rfs-btn rfs-btn-horizon" type="button">Primary Action</button>
+          <button class="rfs-btn rfs-btn-outline rfs-icon-live" type="button" data-rfs-motion="part-spin" data-rfs-icon-click>
+            <svg class="rfs-icon" viewBox="0 0 24 24" aria-hidden="true">
+              <g class="rfs-p rfs-p-spin">
+                <path d="M19.5 10A7.5 7.5 0 0 0 6.2 7.2L4.5 9"/>
+                <path d="M4.5 4.5V9H9"/>
+                <path d="M4.5 14A7.5 7.5 0 0 0 17.8 16.8L19.5 15"/>
+                <path d="M19.5 19.5V15H15"/>
+              </g>
+            </svg>
+            <span>Sync Now</span>
+          </button>
+          <button class="rfs-btn rfs-btn-fault" type="button" command="show-modal" commandfor="confirm-delete">Delete Cache…</button>
+        </div>
+      </header>
+
+      <div class="rfs-code-card">
+        <div class="rfs-code-head">
+          <span class="rfs-badge b-steel"><span class="k">[shell]</span></span>
+          <span class="rfs-code-head-meta">Quick start</span>
+        </div>
+        <pre class="rfs-code-block"><code><span class="rfs-tok-fn">tool-name</span> <span class="rfs-tok-kw">check</span> <span class="rfs-tok-str">--json</span></code></pre>
+      </div>
+    </main>
+  </div>
+
+  <!-- Branded Native Confirmation Modal (zero window.alert / confirm / prompt) -->
+  <dialog id="confirm-delete" class="rfs-dialog is-destructive" closedby="any" aria-labelledby="del-h" aria-describedby="del-p">
+    <div class="rfs-dialog-bar" aria-hidden="true"></div>
+    <form class="rfs-dialog-body" method="dialog">
+      <span class="rfs-badge b-fail"><span class="k">[!]</span> destructive action</span>
+      <h2 class="rfs-dialog-title" id="del-h">Delete local cache?</h2>
+      <p class="rfs-dialog-copy" id="del-p">Are you sure you want to permanently remove <code>cache.db</code>? This cannot be undone.</p>
+      <div class="rfs-dialog-actions">
+        <button class="rfs-btn rfs-btn-outline" value="cancel" autofocus>Cancel</button>
+        <button class="rfs-btn rfs-btn-fault" value="delete">Delete Cache</button>
+      </div>
+    </form>
+  </dialog>
+
+  <!-- Non-blocking semantic toast region -->
+  <div id="rfs-toast-stack" class="rfs-toast-region" popover="manual" role="region" aria-label="Notifications"></div>
+
+  <script src="assets/rfs-motion.js"></script>
+  <script>
+    (() => {
+      const meta = document.querySelector('meta[name="color-scheme"]');
+      const themeColor = document.querySelector('meta[name="theme-color"]');
+      const btn = document.querySelector("[data-theme-toggle]");
+      if (!btn || !meta) return;
+      const sync = () => {
+        const isLight = meta.content === "light";
+        btn.setAttribute("aria-pressed", String(isLight));
+        btn.textContent = isLight ? "LX 512 Light" : "LX 263 Dark";
+        if (themeColor) themeColor.content = isLight ? "#f5f7f9" : "#050507";
+      };
+      btn.addEventListener("click", () => {
+        const next = meta.content === "light" ? "dark" : "light";
+        const apply = () => {
+          meta.content = next;
+          try { next === "dark" ? localStorage.removeItem("rfs-theme") : localStorage.setItem("rfs-theme", "light"); } catch {}
+          sync();
+        };
+        document.startViewTransition ? document.startViewTransition(apply) : apply();
+      });
+      sync();
+    })();
+  </script>
+</body>
+</html>

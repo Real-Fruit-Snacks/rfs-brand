@@ -1,6 +1,6 @@
 {
   "$schema": "https://tr.designtokens.org/format/",
-  "$description": "Real-Fruit-Snacks \u2014 Cyclorama Dawn (Steel & Beacon Orange, v2.3.0) \u2014 W3C Design Tokens Community Group (DTCG) export.",
+  "$description": "Real-Fruit-Snacks \u2014 Cyclorama Dawn (Steel & Beacon Orange, v2.3.1) \u2014 W3C Design Tokens Community Group (DTCG) export.",
   "color": {
     "$type": "color",
     "dark": {

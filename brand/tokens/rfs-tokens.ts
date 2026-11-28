@@ -1,4 +1,4 @@
-// RFS Cyclorama Dawn v2.3.0 — Typed TypeScript design tokens.
+// RFS Cyclorama Dawn v2.3.1 — Typed TypeScript design tokens.
 // Generated from brand/tokens/rfs.tokens.json by tools/make-tokens.py. Do not hand-edit.
 
 export const RFS_META = {
@@ -7,7 +7,7 @@ export const RFS_META = {
   "palette": "Steel & Beacon Orange",
   "tagline": "Built local-first.",
   "world": "stagecraft-theater-lighting-cyclorama-dawn",
-  "version": "2.3.0"
+  "version": "2.3.1"
 } as const;
 
 export const RFS_COLORS = {

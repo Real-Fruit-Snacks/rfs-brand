@@ -239,18 +239,26 @@ def verify_brand_kit(args, rep: Reporter):
     except Exception as e:
         rep.fail(f"rfs.dtcg.json invalid: {e}")
 
-    skill_path = os.path.join(ROOT, "skills", "rfs-brand", "SKILL.md")
+    skill_dir = os.path.join(ROOT, "skills", "rfs-brand")
+    skill_path = os.path.join(skill_dir, "SKILL.md")
     if os.path.exists(skill_path):
         stxt = open(skill_path, encoding="utf-8").read()
         has_fm = stxt.startswith("---\n") and re.search(r"^name:\s*rfs-brand\s*$", stxt, re.M) and re.search(r"^description:\s*.+", stxt, re.M)
         refs = re.findall(r"references/[a-z0-9\-]+\.md", stxt)
-        missing_refs = [r for r in sorted(set(refs)) if not os.path.exists(os.path.join(ROOT, "skills", "rfs-brand", r))]
+        missing_refs = [r for r in sorted(set(refs)) if not os.path.exists(os.path.join(skill_dir, r))]
+        bundled_assets = [
+            "scripts/verify-brand.py",
+            "assets/starter-page.html",
+        ]
+        missing_bundled = [a for a in bundled_assets if not os.path.exists(os.path.join(skill_dir, a))]
         if not has_fm:
             rep.fail("skills/rfs-brand/SKILL.md missing valid YAML frontmatter (name/description)")
         elif missing_refs:
             rep.fail(f"skills/rfs-brand/SKILL.md references missing files: {missing_refs}")
+        elif missing_bundled:
+            rep.fail(f"skills/rfs-brand/ missing standalone bundle file(s): {missing_bundled}")
         else:
-            rep.ok(f"skills/rfs-brand/SKILL.md valid ({len(set(refs))} reference modules verified)")
+            rep.ok(f"skills/rfs-brand/SKILL.md valid ({len(set(refs))} references + standalone script & starter asset verified)")
     else:
         rep.fail("skills/rfs-brand/SKILL.md missing")
 
@@ -304,6 +312,7 @@ def verify_brand_kit(args, rep: Reporter):
         ("brand/social/rfs-social-org-light-1280x640.png", "docs/assets/rfs-social-org-light-1280x640.png"),
         ("brand/social/rfs-header-dark-1500x500.png", "docs/assets/rfs-header-dark-1500x500.png"),
         ("brand/social/rfs-header-light-1500x500.png", "docs/assets/rfs-header-light-1500x500.png"),
+        ("tools/verify-brand.py", "skills/rfs-brand/scripts/verify-brand.py"),
     ]
     drift = []
     for src_rel, dst_rel in sync_pairs:
@@ -388,8 +397,11 @@ def main():
     if args.repo:
         for repo_path in args.repo:
             audit_repo(repo_path, rep)
-    else:
+    elif os.path.exists(os.path.join(ROOT, "brand", "tokens", "rfs.tokens.json")):
         verify_brand_kit(args, rep)
+    else:
+        # Standalone skill mode (installed outside rfs-brand via `npx skills add`): audit cwd
+        audit_repo(os.getcwd(), rep)
     rep.finish()
 
 
