@@ -63,8 +63,17 @@
   });
   syncThemeUI();
 
-  // ---- 2. Scrollspy inside App-Shell Scroll Region (.page-scroll) ----
+  // ---- 2. Scrollspy & Immediate Keyboard Scroll inside App-Shell (.page-scroll) ----
   const pageScroll = document.getElementById("page-scroll");
+  if (pageScroll) {
+    const SCROLL_KEYS = new Set(["ArrowDown", "ArrowUp", "PageDown", "PageUp", "Home", "End", " "]);
+    document.addEventListener("keydown", (e) => {
+      if (e.defaultPrevented || e.ctrlKey || e.metaKey || e.altKey || !SCROLL_KEYS.has(e.key)) return;
+      if (document.activeElement === document.body || document.activeElement === document.documentElement) {
+        pageScroll.focus({ preventScroll: true });
+      }
+    });
+  }
   const navLinks = $$(".section-nav a[href^='#']");
   const tocLinks = $$(".toc-rail-nav a[href^='#']");
   const allSpyNavs = [
